@@ -34,7 +34,7 @@ function fizzBuzz(num) {
 		}
 		counter++;
 	}
-    return results;
+    	return results;
 }
 
 module.exports = fizzbuzz;
