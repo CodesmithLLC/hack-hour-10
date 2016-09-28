@@ -19,3 +19,7 @@ function fizzbuzz(stop, start = 1, step = 1) {
 	return results;
 }
 
+
+////
+module.exports = fizzbuzz;
+
