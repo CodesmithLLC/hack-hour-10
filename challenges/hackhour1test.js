@@ -3,7 +3,7 @@ let chai = require('chai');
 let expect = chai.expect;
 
 let fizzbuzz = require('./fizzbuzz.js');
-fizzbuzz = fizzbuzz.fizzbuzz;
+
 
 
 describe('fizzbuzzTesting', function(){

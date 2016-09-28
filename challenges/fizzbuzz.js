@@ -17,8 +17,9 @@
 //                     16 ]
 
 function fizzbuzz(num) {
+	'use strict';
 	let retStr = "";
-	for(let i = 1; i <= n; ++i){
+	for(let i = 1; i <= num; ++i){
 		if(i % 3 === 0 && i % 5 === 0){
 			retStr += "fizzbuzz\n";
 		}else if (i % 5 === 0){
