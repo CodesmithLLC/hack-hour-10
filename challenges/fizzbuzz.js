@@ -17,7 +17,32 @@
 //                     16 ]
 
 function fizzbuzz(num) {
+  if (typeof n !== 'number') {
+      return new TypeError('Input needs to be a number');
+  }
 
+  const fizzAndBuzzArr = [];
+
+  // A counter always start at 1 and we check the
+  // state of the current counter if divisible by 3 and 5
+  // first then check individually
+  let i = 1;
+  while (i <= n) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      fizzAndBuzzArr.push('fizzbuzz');;
+      i++;
+    } else if (i % 3 === 0) {
+      fizzAndBuzzArr.push('fizz');
+      i++;
+    } else if (i % 5 === 0) {
+      fizzAndBuzzArr.push('buzz');
+      i++;
+    } else {
+      fizzAndBuzzArr.push(i);
+      i++;
+    }
+  }
+  return fizzAndBuzzArr;
 }
 
 module.exports = fizzbuzz;
