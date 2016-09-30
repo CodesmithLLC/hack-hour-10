@@ -13,6 +13,6 @@ function fizzbuzz (num) {
 
 }
 
-console.log(fizzbuzz(50));
 
-// module.exports = fizzbuzz;
+
+module.exports = fizzbuzz;
