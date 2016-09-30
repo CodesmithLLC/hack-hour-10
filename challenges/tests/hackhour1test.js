@@ -2,7 +2,7 @@
 let chai = require('chai');
 let expect = chai.expect;
 
-let fizzbuzz = require('./fizzbuzz.js');
+let fizzbuzz = require('../fizzbuzz.js');
 
 
 
