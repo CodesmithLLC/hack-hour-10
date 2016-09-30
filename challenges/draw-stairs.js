@@ -29,5 +29,4 @@ function drawStairs(n) {
 	}
 	return retString;
 }
-drawStairs(100);
 module.exports = drawStairs;
