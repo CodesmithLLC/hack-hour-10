@@ -16,7 +16,7 @@
 //                     'fizzbuzz',
 //                     16 ]
 
-function fizzBuzz(num) {
+function fizzbuzz(num) {
 	let results = [];
 	counter = 1;
 	while(counter <= num){
