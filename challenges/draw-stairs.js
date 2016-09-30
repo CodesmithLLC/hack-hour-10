@@ -33,4 +33,3 @@ function drawStairs(n) {
 
 
 module.exports = drawStairs;
-drawStairs('35');
