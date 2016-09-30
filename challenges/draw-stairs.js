@@ -19,7 +19,10 @@ function drawStairs(n) {
 
     let returnString = '';
     for (let i = 1; i < n + 1; i += 1) {
-        returnString += ' '.repeat(n-i) + '*'.repeat(i) + '\n';
+        returnString += ' '.repeat(n-i) + '*'.repeat(i);
+        if ( i !== n ) {
+           returnString += '\n'
+        };
     } 
     return returnString;   
 }
