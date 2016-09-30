@@ -24,14 +24,15 @@ function drawStairs(n) {
            returnString += '\n'
         };
     } 
-    return returnString;   
+    console.log(returnString);   
 }
 
-//console.log(drawStairs(6));
-//console.log(drawStairs(0));
-//console.log(drawStairs(1));
-//console.log(drawStairs(100));
-//console.log(drawStairs(101));
-//console.log(drawStairs('1'));
+//drawStairs(6);
+//drawStairs(3);
+//drawStairs(0);
+//drawStairs(1);
+//drawStairs(100);
+//drawStairs(101);
+//drawStairs('1');
 
 module.exports = drawStairs;
