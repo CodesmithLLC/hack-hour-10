@@ -27,7 +27,7 @@ function drawStairs(n) {
     return returnString;   
 }
 
-console.log(drawStairs(6));
+//console.log(drawStairs(6));
 //console.log(drawStairs(0));
 //console.log(drawStairs(1));
 //console.log(drawStairs(100));
