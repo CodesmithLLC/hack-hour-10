@@ -15,39 +15,9 @@
 //                     14,
 //                     'fizzbuzz',
 //                     16 ]
-function fizzBuzz(num) {
-  let count = 1;
-  let ans;
-  let ansArr = [];
-  if (num === 0) {
-    console.log("Please enter in a number greater than 1.");
-  }
-  while (count <= num) {
-    if (count % 3 === 0 && count % 5 === 0) {
-      ans = "FizzBuzz";
-      ansArr.push(ans);
-      ans = "";
-      count++;
-    }
-    if (count % 3 === 0) {
-      ans = "Fizz";
-      ansArr.push(ans);
-      ans = "";
-      count++;
-    }
-    if (count % 5 === 0) {
-      ans = "Buzz";
-      ansArr.push(ans);
-      ans = "";
-      count++;
-    } else {
-      ans = count;
-      ansArr.push(ans);
-      ans = "";
-      count++;
-    }
-  }
-  return ansArr;
+
+function fizzbuzz(num) {
+
 }
 
 module.exports = fizzbuzz;
