@@ -14,8 +14,20 @@
 */
 
 function drawStairs(n) {
-
+  if (typeof n === 'number') {
+    let stairs = "";
+    for (let i = 1; i <= n; i++) {
+      stairs += ' '.repeat(n - i);
+      stairs += '*'.repeat(i);
+      stairs += "\n";
+    }
+    console.log(stairs);
+  } else {
+    console.log('Please enter a number as an argument.')
+  }
 }
+
+drawStairs(5);
 
 
 module.exports = drawStairs;
