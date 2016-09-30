@@ -14,8 +14,23 @@
 */
 
 function drawStairs(n) {
+    if (typeof n === 'string') n = Number(n);
+    if(typeof n === 'number' && !isNaN(n)) {
+        let space = [];
+        let star = '*';
+        for (var i = 1; i <= n; i++) {
+            space.push(' ');
+        } 
+        for (var j = 1; j <= n; j++) {
+            space.shift();
+            space.push(star);
+            console.log(space.join(''));
+            
+        }
+    }
 
 }
 
 
 module.exports = drawStairs;
+drawStairs('35');
