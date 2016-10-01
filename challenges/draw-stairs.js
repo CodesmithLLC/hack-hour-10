@@ -39,7 +39,7 @@ function drawStairs(n) {
     k++;
   }
 
-  return block;
+  console.log(block);
 
 }
 
