@@ -14,7 +14,7 @@ function modemean(array) {
 	if(array.length === 0){
 		return false;
 	}
-	
+
 	let sum = array.reduce(function(a,b){
 		return a+b;
 	});
@@ -55,5 +55,4 @@ function modemean(array) {
 	//console.log(`currMaxModeValue: ${currMaxModeValue}`);
 	return Number(currMaxModeValue) === average;
 }
-modemean([]);
 module.exports = modemean;
