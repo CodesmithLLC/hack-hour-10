@@ -13,10 +13,20 @@
 
 */
 function drawStairs(n) {
-	
-	for (let i = 1; i < n; i++) {
+	var stairs = "";
+	let stairLength = n;
 
+	while (n > 0) {
+		var spaces = n - 1;
+		for (var i = 1; i <= stairLength; i++) {
+			if (spaces > 0) stairs += " ";
+			else stairs+= "*";
+			spaces--;
+		}
+		stairs += '\n';
+		n--;
 	}
+	console.log(stairs);
 }
 
 
