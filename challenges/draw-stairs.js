@@ -14,18 +14,29 @@
 */
 
 function drawStairs(n) {
-  if (typeof n === 'number') {
-    let stairs = "";
+  // if (typeof n === 'number') {
+  //   var stairs = "";
+  //   for (var i = 1; i <= n; i++) {
+  //     stairs += ' '.repeat(n - i);
+  //     stairs += '*'.repeat(i);
+  //     stairs += "\n";
+  //   }
+  //   console.log(stairs);
+  // } else {
+  //   console.log('Please enter a number as an argument.')
+  // }
+
+  if (typeof n === 'number') {  
     for (let i = 1; i <= n; i++) {
+      let stairs = "";
       stairs += ' '.repeat(n - i);
       stairs += '*'.repeat(i);
-      stairs += "\n";
-    }
-    console.log(stairs);
+      console.log(stairs);
+    }   
   } else {
     console.log('Please enter a number as an argument.')
   }
-}
 
+}
 
 module.exports = drawStairs;
