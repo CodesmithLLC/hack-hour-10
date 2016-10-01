@@ -20,7 +20,7 @@
    });
    for(let key in modeCheck) {
     if(mode === undefined) mode = key;
-    if(modeCheck[key] > modeCheck[mode]) mode = modeCheck[key];
+    if(modeCheck[key] > modeCheck[mode]) mode = key;
   }
   return mode === mean;
 }
