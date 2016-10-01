@@ -29,4 +29,5 @@ function drawStairs(n) {
 	console.log(stairs);
 }
 
+
 module.exports = drawStairs;
