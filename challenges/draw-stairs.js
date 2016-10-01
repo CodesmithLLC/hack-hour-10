@@ -15,7 +15,7 @@
 
 function drawStairs(n) {
   let result ='',p, q;
-  for(let i = 1; i < n; i++){
+  for(let i = 1; i <= n; i++){
   p = i;
   q = n - i;
   while(q > 0){
@@ -30,6 +30,6 @@ function drawStairs(n) {
    result = '';
 }
 }
-
+drawStairs(6);
 
 module.exports = drawStairs;
