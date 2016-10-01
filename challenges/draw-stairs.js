@@ -15,7 +15,7 @@
 
 function drawStairs(n) {
     let row = Array(n-1).fill(' ');
-	let star = '*'
+	let star = '*';
 
 	for (let i = 1; i <= n; i++) {
 		console.log(row.join('')+star);
