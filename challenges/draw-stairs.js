@@ -6,9 +6,9 @@
  For example:
  drawStairs(6) ->
 =======
- 
- For example:     
- drawStairs(6) ->          
+
+ For example:
+ drawStairs(6) ->
 >>>>>>> 1315ad742ead1caeaeda1300713d1706f65f115a
      *
     **
@@ -30,13 +30,10 @@
 
 
 function drawStairs(n) {
-  for (var x = "x"; x.length < n; x += "x") {
-    var line = "";
-    for (var i = 1; i < n; i++) {
-      line += " ";
-    }
-    console.log(line + x)
-    line -= " ";
+  let str = " ".repeat(n-1) + "*";
+  for (let i = 0; i < n; i++) {
+    console.log(str);
+    str.slice(1) + "*";
   }
 }
 
