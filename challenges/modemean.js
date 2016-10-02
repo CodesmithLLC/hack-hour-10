@@ -9,7 +9,6 @@
  *
  */
 
-
 function modemean(array) {
     let reverseSorted = array.sort().reverse();
     let modeMap = reverseSorted.map((e,i,arr) => {return arr.reduce((a,c) => {if (e === c) a++; return a;},0)});
