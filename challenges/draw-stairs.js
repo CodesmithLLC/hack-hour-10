@@ -13,12 +13,17 @@
 
 */
 
+
 function drawStairs(n) {
-  var results = "";
-	for(var i = "*"; i.length <= n; i+="*" ){
-         results += '\n'+i;
-    }
-  console.log( results );
+	var spaceString = "";
+
+for(let i = 1; i < n; i++){
+	spaceString += " ";
+}
+
+for (let i = "*"; i.length <= n; i += "*"){
+  console.log(spaceString+i+'\n');
+}
 }
 
 
