@@ -16,12 +16,10 @@
 function drawStairs(n) {
   [...Array(n).keys()].forEach(level => {
     var stairString = '';
-    [...Array(5).keys()].forEach(charPosition => {
+    [...Array(n).keys()].forEach(charPosition => {
       stairString += charPosition < n - level - 1 ? ' ' : '*';
     });
     console.log(stairString);
   });
 }
-
-
 module.exports = drawStairs;
