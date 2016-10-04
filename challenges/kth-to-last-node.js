@@ -22,6 +22,15 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
+if (k >= 0) {
+    let count = 0;
+    let store = {};
+    for (current = head; current != null; current = current.next) {
+      store[++count] = current.value;
+    }
+    let val = store[count - k + 1];
+    return val ? val : null;
+}
 
 }
 
