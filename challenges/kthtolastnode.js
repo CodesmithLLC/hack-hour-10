@@ -35,20 +35,4 @@ function kthToLastNode(k, head) {
   else return nodeStore[nodeStore.length - k].value;
 }
 
- var a = new Node('A');
- var b = new Node('B');
- var c = new Node('C');
- var d = new Node('D');
- var e = new Node('E');
- 
- a.next = b;
- b.next = c;
- c.next = d;
- d.next = e;
-
-console.log(kthToLastNode(2, a));
-console.log(kthToLastNode(6, a));
-console.log(kthToLastNode(4, a));
-console.log(kthToLastNode(5, a));
-
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
