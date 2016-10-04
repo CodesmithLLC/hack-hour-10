@@ -28,7 +28,7 @@ function kthToLastNode(k, head) {
     array.push(currentNode);
     currentNode = currentNode.next;
   }
-  return array[array.length - k];
+  return array[array.length - k].value;
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
