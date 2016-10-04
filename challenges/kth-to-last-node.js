@@ -52,7 +52,7 @@ function kthToLastNode(k, head) {
       return undefined;
   }
 
-  return kthNode.value;
+  return kthNode;
 }
 
 
