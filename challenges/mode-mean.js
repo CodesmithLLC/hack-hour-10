@@ -32,6 +32,15 @@
   (mode === mean) ? true : false;
 }
 
+
+//APPROACH LECTURE
+function modemean(array) {
+  
+}
+
+
+
+
 module.exports = modemean;
 
 //tests

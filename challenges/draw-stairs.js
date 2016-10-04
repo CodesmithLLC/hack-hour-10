@@ -12,6 +12,7 @@
 ******
 
 */
+
 function drawStairs(n) {
 	var stairs = "";
 	let stairLength = n;
