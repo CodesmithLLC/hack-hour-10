@@ -21,7 +21,7 @@ function Node(val) {
   this.next = null;
 }
 
-function kthToLastNode(k, head) {
+function kthToLastNode(k, head) { // O(n) --> currNode iterates from 0->k and then k-end of list
   var kValue = 0;
   var currNode = head;
   var kthNode = head;
@@ -52,7 +52,7 @@ function kthToLastNode(k, head) {
       return undefined;
   }
 
-  return kthNode.value;
+  return kthNode;
 }
 
 
