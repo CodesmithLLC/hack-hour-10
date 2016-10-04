@@ -26,6 +26,7 @@ function kthToLastNode(k, head) { // O(n) --> currNode iterates from 0->k and th
   var currNode = head;
   var kthNode = head;
   var listLength = 0;
+
   // move currNode over k times
   // A - B - C - D - E -
   //     /\
@@ -52,9 +53,7 @@ function kthToLastNode(k, head) { // O(n) --> currNode iterates from 0->k and th
       return undefined;
   }
 
-  return kthNode;
+  return kthNode.value;
 }
-
-
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
