@@ -49,7 +49,7 @@ function kthToLastNode(k, head) { // O(n) --> currNode iterates from 0->k and th
   }
   //console.log("k: " + k);
   //console.log("listlength: " + listLength);
-  if(k === 0 || k > listeLength){
+  if(k === 0 || k > listLength){
       return undefined;
   }
 
