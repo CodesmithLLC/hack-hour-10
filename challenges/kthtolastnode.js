@@ -31,9 +31,8 @@ function kthToLastNode(k, head) {
   }
   // Don't forget to push the tail!
   nodeStore.push(currentNode);
-  console.log(nodeStore.length, k);
-  if (k >= nodeStore.length) return nodeStore[0];
-  else return nodeStore[nodeStore.length - k];
+  if (k >= nodeStore.length) return nodeStore[0].value;
+  else return nodeStore[nodeStore.length - k].value;
 }
 
  var a = new Node('A');
