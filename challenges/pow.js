@@ -15,4 +15,6 @@ function pow(base, power) {
 // console.log('0^0 should equal 1 :: result = ', pow(0,0));
 // console.log('3^-2 should equal 0.1111 :: result = ', pow(3,-2));
 
+asdfasd
+
 module.exports = pow;
