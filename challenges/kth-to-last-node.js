@@ -29,6 +29,7 @@ function kthToLastNode(k, head) {
     counter++;
   }
   console.log(counter + 1 - k);
+  if (counter + 1 - k < 1) return undefined;
   if (counter + 1 - k === 1) return head.value;
   if (counter + 1 - k === 2) return head.next.value;
   counter = counter - k;
