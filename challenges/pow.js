@@ -2,13 +2,13 @@
  * Use recursion!
  */
 
- function pow(base, power) {
-   	let exp = 1;
-     if (power === 0) return 1;
-     if (base > 0 && power > 0) {
-     	exp *= base;
-     	return exp * pow(base,power-1);
- 	}
+function pow(base, power) {
+    let exp = base;
+    if (power === 0) return 1;
+    if (base > 0 && power > 0) {
+        exp = base * pow(base, power - 1);
+        return exp
+    }
 }
 
 module.exports = pow;
