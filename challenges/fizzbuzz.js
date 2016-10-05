@@ -16,6 +16,8 @@
 //                     'fizzbuzz',
 //                     16 ]
 
+'use strict'
+
 function fizzbuzz(num) {
     const output = [];
 	for(var i = 1; i <= num; i++) {
@@ -32,4 +34,5 @@ function fizzbuzz(num) {
 	return output;
 }
 
-module.exports = fizzbuzz;
+console.log(fizzbuzz(15));
+// module.exports = fizzbuzz;
