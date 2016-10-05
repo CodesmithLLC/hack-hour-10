@@ -16,6 +16,6 @@ function pow(base, power) {
 }
 
 // un-comment the following line to run from the CLI
-// console.log(pow(process.argv[2], process.argv[3]));
+console.log(pow(process.argv[2], process.argv[3]));
 
 module.exports = pow;
