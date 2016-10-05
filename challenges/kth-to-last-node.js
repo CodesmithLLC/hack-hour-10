@@ -15,7 +15,7 @@
  *
  * kthToLastNode(2,a); -> returns the node with the value 'D' (the second to last node)
  */
-"use strict"
+
 function Node(val) {
   this.value = val;
   this.next = null;
