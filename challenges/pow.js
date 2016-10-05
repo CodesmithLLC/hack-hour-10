@@ -2,8 +2,19 @@
  * Use recursion!
  */
 
-function pow(base, power) {
+function pow(base,power){
+    var result;
+    
+    if(power < 0) result = 1/pow(base,Math.abs(power));
+    else result = recpow(base, power);
 
+    return result;
+
+    function recpow(base, power) {
+        if(power <= 0) return 1;
+        return base * (pow(base, power-1))
+    }
 }
 
 module.exports = pow;
+
