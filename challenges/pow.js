@@ -1,9 +1,3 @@
-/* Write a function that calculates x^y, where x is given as the base and y is given as the power.
- * Use recursion!
- */
-
-function pow(base, power) {
-
-}
+pow=(b,p)=>p===0?1:pow(b,p-1)*b;
 
 module.exports = pow;
