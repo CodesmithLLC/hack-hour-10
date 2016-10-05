@@ -14,6 +14,7 @@
  * d.next = e;
  *
  * kthToLastNode(2,a); -> returns the node with the value 'D' (the second to last node)
+ * REFACTOR: keep two counters, one of which is k elements behind the other.
  */
 
 function Node(val) {
@@ -22,17 +23,19 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
-  let nodeStore = [];
+  if (k <= 0) return undefined;
+  const nodeStore = [];
   let currentNode = head;
-  // When this loop exits, we should be holding the 'tail', and have a store of every object, indexed.
+  // When this loop exits, we should be holding the 'tail', and have a store
+  // of every object, indexed.
   while (currentNode.next) {
     nodeStore.push(currentNode);
     currentNode = currentNode.next;
   }
   // Don't forget to push the tail!
   nodeStore.push(currentNode);
-  if (k >= nodeStore.length) return nodeStore[0].value;
-  else return nodeStore[nodeStore.length - k].value;
+  if (k >= nodeStore.length) return undefined;
+  return nodeStore[nodeStore.length - k].value;
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
