@@ -8,8 +8,8 @@
 
 function pow(base, power) {
 	
-	// Edge cases: base 0, user not including base or power, non-integer power values, no infinities
-	if (!base || !isFinite(base) || !Number.isInteger(power)) return undefined;
+	// Edge cases: user not including base or power, non-integer power values, infinities
+	if (!isFinite(base) || !Number.isInteger(power)) return undefined;
 	
 	if (power === 0) return 1;
 	return base * pow(base, power - 1);
