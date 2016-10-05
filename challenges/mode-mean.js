@@ -31,13 +31,10 @@ function modemean(array) {
             if (modeMap[keys] === max) 
                 maxArr.push(keys);
         }
-        return maxArr.reduce((acc, num) => {
-            if (num > acc) acc = num;
-            return acc;
-        });
+        return Math.max(...maxArr);
     }
 
-    //console.log('mean: ', mean, 'mode: ', mode);
+    console.log('mean: ', mean, 'mode: ', mode);
     return mode === mean;
 }
 
