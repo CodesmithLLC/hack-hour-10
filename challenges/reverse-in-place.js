@@ -12,8 +12,7 @@
  */
 
 function reverseInPlace(array) {
-    for (let i = 0; i < array.length; array.unshift(array[i]), i += 2);
-    for (let i = 0; i < array.length; array.pop(), i++);
+    for (let i = 0; i < array.length; array = array.splice(i,1).concat(array), i++);
     return array;
 }
 
