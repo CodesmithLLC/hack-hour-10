@@ -14,8 +14,7 @@
  */
 
 function reverseInPlace(array) {
-    if (!array) return undefined;
-    if (array.length === 0) return array;
+    if (!array || array.length === 0) return [];
 
     for (let i = 0; i < Math.floor(array.length/2); i++) {
         let front = array[i]
@@ -27,6 +26,8 @@ function reverseInPlace(array) {
 
     return array;
 }
+
+console.log(reverseInPlace());
 
 
 
