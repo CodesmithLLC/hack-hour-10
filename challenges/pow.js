@@ -3,6 +3,7 @@
  */
 
 function pow(base, power) {
+    if(base === 0 && power === 0) return undefined;
     if(power > -1) {
         if(power === 0) return 1;
         else if(power === 1) return base *= 1;
