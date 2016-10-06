@@ -13,7 +13,7 @@
 
 function reverseInPlace(array) {
   let arr = [];
-  if (array[0] === undefined) return [];
+  if (arguments.length === 0) return [];
   for (let i = array.length - 1; i >= 0; i--) {
     arr.push(array[i]);
   }
@@ -23,6 +23,6 @@ function reverseInPlace(array) {
   return array;
 }
 
-console.log(reverseInPlace(['d', 'a', 'n','g','e','r']));
+console.log(reverseInPlace());
 
 module.exports = reverseInPlace;
