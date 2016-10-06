@@ -17,6 +17,8 @@ function reverseInPlace(array) {
     array[ind1] = array[ind2];
     array[ind2] = temp;
   }
+  
+  if (array === undefined) return undefined;
 
   const LENGTH = Math.floor(array.length / 2);
   let leftInd = 0;
