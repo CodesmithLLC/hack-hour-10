@@ -10,12 +10,13 @@
  * Since strings are immutable in javascript, we will be reversing an array of characters instead.
  *
  */
+"use strict"
 
 function reverseInPlace(array) {
 	//if input is not an array:
 	if(!Array.isArray(array)) return "error";
 
-	var lengthOfArray = array.length;
+	let lengthOfArray = array.length;
 
 	//if array is empty
 	if(lengthOfArray === 0) return [];
@@ -25,8 +26,8 @@ function reverseInPlace(array) {
 	//array[i] is going to start from the left
 	//array[lengthOfArray-j] == starts from the right
 	if(lengthOfArray > 1){
-		for(var i = 0, j=1; i < lengthOfArray-j; i++, j++){
-			var temp = array[i];
+		for(let i = 0, j=1; i < lengthOfArray-j; i++, j++){
+			let temp = array[i];
 			array[i] = array[lengthOfArray-j];
 			array[lengthOfArray-j] = temp;
 		}
