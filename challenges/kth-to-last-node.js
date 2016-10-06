@@ -24,14 +24,15 @@ function Node(val) {
 function kthToLastNode(k, head) {
   let current = head;
   let nodeCount = 0;
-
+  
+  if (current.value === undefined) return undefined;
   while (current.next) {
     current = current.next;
     nodeCount++;
   }
   nodeCount++;
   current = head;
-  if (k < 0) return undefined;
+  if (k <= 0) return undefined;
   for (let i = 0; i < nodeCount - k; i++) {
     current = current.next;
   }
