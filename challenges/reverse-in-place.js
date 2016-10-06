@@ -12,9 +12,8 @@
  */
 
 function reverseInPlace(array) {
-	let swapHolder;
-	for (let i = 0; i < array.length; i++) {
-		swapHolder = array[i];
+	for (let i = 0; i < Math.floor(array.length / 2); i++) {
+		let swapHolder = array[i];
 		array[i] = array[array.length - 1 - i];
 		array[array.length - 1 - i] = swapHolder;
 	}
