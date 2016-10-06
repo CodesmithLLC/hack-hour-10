@@ -12,7 +12,18 @@
  */
 
 function reverseInPlace(array) {
-
+  if (!Array.isArray(array)) return "error";
+  let temp, mid = array.length / 2;
+  for (let i = 0, j = array.length -1 ; i < mid; i += 1, j -= 1) {
+    temp = array[j];
+    array[j] = array[i];
+    array[i] = temp;
+  }
+  return array;
 }
 
 module.exports = reverseInPlace;
+let a = ['a', 'b', 'c', 'd'];
+a = 12;
+a = reverseInPlace(a);
+console.log(a);
