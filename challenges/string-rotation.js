@@ -29,7 +29,7 @@ function stringRotation(s1, s2) {
       falseCount++;
     }
   }
-  if (falseCount === 2) return false;
+  if (falseCount >= 2) return false;
 
   return true;
 }
