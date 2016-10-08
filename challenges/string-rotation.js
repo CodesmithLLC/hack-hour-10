@@ -31,9 +31,9 @@ function stringRotation(s1, s2) {
   return isSubstring(bigString, s2);
 }
 
-///tests
-console.log(stringRotation("hello", "ohell")) //-> true
-console.log(stringRotation("hello", "llohe")) // -> true
-console.log(stringRotation("hello", "he")) // -> false
-console.log(stringRotation("hello", "ollhe")) // -> false (not a rotation, just an anagram)
+// ///tests
+// console.log(stringRotation("hello", "ohell")) //-> true
+// console.log(stringRotation("hello", "llohe")) // -> true
+// console.log(stringRotation("hello", "he")) // -> false
+// console.log(stringRotation("hello", "ollhe")) // -> false (not a rotation, just an anagram)
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
