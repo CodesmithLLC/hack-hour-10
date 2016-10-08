@@ -16,7 +16,26 @@ function isSubstring(s1, s2) {
 }
 
 function stringRotation(s1, s2) {
+  // Since we are only allowed one check, then we
+  // need to gather all the possible rotations of s1 and then check if
+  // s2 exist in it. The only way to do this is to build one large string...
+  // However, we may need to think about possible overlapping so we can
+  // add some sort of separator to separate words.
+  //
+  // To do at O(n) times, we can rotate s2 and check if s2 is a substring
+  // of s1 at each rotation.
 
+  if (s1.length !== s2.length) return false;
+
+  let rotations = '';
+
+  for (let i = 0; i < s1.length; i++) {
+    const sub1 = s1.substring(0, i + 1);
+    const sub2 = s1.substring(i + 1);
+    rotations += sub2 + sub1 + ',';
+  }
+
+  return isSubstring(rotations, s2);
 }
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
