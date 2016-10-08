@@ -12,7 +12,26 @@
  */
 
 function reverseInPlace(array) {
+    let length = array.length;
+    let middle = Math.floor(length / 2);
+    let temp;
 
+    if (!Array.isArray(array)) return 'error';
+
+    for (let i = 0; i < middle; i++) {
+        temp = array[i];
+        array[i] = array[length - 1 - i];
+        array[length - 1 - i] = temp;
+    }
+    return array;
 }
+
+//finding the middle of the array and swapping each index with its inverse :)
+
+//tests
+    //reverseInPlace([]) => [];
+    //reverseInPlace([1,2,3,4]); => [4,3,2,1];
+    //reverseInPlace([]);['Hey'] => error;
+
 
 module.exports = reverseInPlace;
