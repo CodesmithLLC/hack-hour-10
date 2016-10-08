@@ -26,4 +26,7 @@ function reverseInPlace(array) {
 
 };
 
+let array = [1,2,3];
+console.log(reverseInPlace(array));
+
 module.exports = reverseInPlace;
