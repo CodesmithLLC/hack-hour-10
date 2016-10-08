@@ -3,11 +3,9 @@
  */
 
 function pow(base, power) {
-    let exp = base;
     if (power === 0) return 1;
     if (base > 0 && power > 0) {
-        exp = base * pow(base, power - 1);
-        return exp
+        return base * pow(base, power - 1);
     }
 }
 
