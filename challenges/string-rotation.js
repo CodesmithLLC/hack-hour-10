@@ -16,19 +16,22 @@ function isSubstring(s1, s2) {
 }
 
 function stringRotation(s1, s2) {
+  let bigString = s1.slice();
   let length = s1.length;
   if (length !== s2.length) return false;
-  for (let i = 0; i < s1.length; i++) {
+
+  // build a string containing all rotations of s1
+  for (let i = 1; i < s1.length; i++) {
     let result = true;
     for (let j = 0; j < s1.length; j++) {
-      if (s1[(i + j) % length].toLowerCase() !== s2[j].toLowerCase()) result = false;
+      bigString += s1[(i + j) % length]
     }
-    if (result === true) return result;
   }
-  return false;
+  // check if s2 is a rotation
+  return isSubstring(bigString, s2);
 }
 
-///tests
+// ///tests
 // console.log(stringRotation("hello", "ohell")) //-> true
 // console.log(stringRotation("hello", "llohe")) // -> true
 // console.log(stringRotation("hello", "he")) // -> false
