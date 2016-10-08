@@ -17,6 +17,25 @@ function isSubstring(s1, s2) {
 
 function stringRotation(s1, s2) {
 
-}
+  if(arguments.length === 0) return "undefined";
 
+  if(s1 === s2) return true;
+
+  //create the split strings;
+   let firststring = s1.slice(0, Math.floor(s1.length/2));
+   let secondstring = s1.slice(Math.floor(s1.length/2));
+
+  //join the two newstrings (but opposite order)
+   let newString = secondstring.concat(firststring);
+
+   //make s1 == newString for comparison purposes
+     s1 = newString;
+    // do final check, if lengths are equal PLUS s1 == s
+    if(s1.length !== s2.length){
+      return false;
+    } else {
+	return isSubstring(s1, s2);
+    }
+}
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
+
