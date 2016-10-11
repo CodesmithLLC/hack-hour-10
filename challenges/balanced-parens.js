@@ -29,44 +29,46 @@ function balancedParens(input) {
   const strippedStr = input.replace(/\s+/g, '');
   if (strippedStr.length === 0) return true;
   // set up our counts.
-  let parenCount = 0;
-  let curlyCount = 0;
-  let brackCount = 0;
+  const countObj = {
+    '(': 0,
+    '[': 0,
+    '{': 0,
+  };
   // lastOpen is a stack implemented via shift/unshift
   let lastOpen = [];
   const inputArr = input.split('');
   for (let i = 0; i < inputArr.length; i++) {
     const character = inputArr[i];
     if (character === '(') {
-      parenCount++;
+      countObj[character]++;
       lastOpen.unshift(character);
     }
     if (character === '[') {
-      brackCount++;
+      countObj[character]++;
       lastOpen.unshift(character);
     }
     if (character === '{') {
-      curlyCount++;
+      countObj[character]++;
       lastOpen.unshift(character);
     }
     if (character === ')') {
       if (lastOpen[0] !== '(') return false;
       lastOpen.shift();
-      parenCount--;
+      countObj['(']--;
     }
     if (character === ']') {
       if (lastOpen[0] !== '[') return false;
       lastOpen.shift();
-      brackCount--;
+      countObj['[']--;
     }
     if (character === '}') {
       if (lastOpen[0] !== '{') return false;
       lastOpen.shift();
-      curlyCount--;
+      countObj['{']--;
     }
-    if (curlyCount < 0 || brackCount < 0 || parenCount < 0) return false;
+    if (countObj['('] < 0 || countObj['{'] < 0 || countObj['['] < 0) return false;
   }
-  if (curlyCount !== 0 || brackCount !== 0 || parenCount !== 0) return false;
+  if (countObj['('] !== 0 || countObj['{'] !== 0 || countObj['['] !== 0) return false;
   return true;
 }
 
