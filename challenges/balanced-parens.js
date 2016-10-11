@@ -24,8 +24,19 @@
  *
  */
 
-function balancedParens(input){
+function balancedParens(input) {
+const inputRep = input.replace(/[^\(\)\[\]\{\}]/g, '');
+let arr = []; 
 
+if (inputRep.length % 2 !== 0) return false;
+
+for (let i = 0; i < inputRep.length; i++) {
+	if (inputRep[i] === '(' || inputRep[i] === '[' || inputRep[i] === '{') arr.push(inputRep[i]);
+	else if (inputRep[i] === ')') if (arr.pop() !== '(') return false;	
+	else if (inputRep[i] === ']') if (arr.pop() !== '[') return false;	
+	else if (inputRep[i] === '}') if (arr.pop() !== '{') return false;	
+}
+return true;
 }
 
 module.exports = balancedParens;

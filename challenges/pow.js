@@ -2,7 +2,7 @@
  * Use recursion!
  */
  function pow(base, power) {
-   if (base.constructor !== Number || power.constructor !== Number || base < 0 || power < 0) return 'base and power must both be positive numbers';
+   if (base.constructor !== Number || power.constructor !== Number || power < 0) return 'base must be a number and power must be a positive number';
    if (base === 0 && base === power) return 0;
    let result = 1;
    let p = power;
