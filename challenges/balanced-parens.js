@@ -35,14 +35,17 @@ function balancedParens(input){
      * balanced
      */
     for(let i = 0; i < input.length; ++i){
-        if(input[i] === '(' || input[i] === '{' || input[i] === '[')
+        if(input[i] === '(' || input[i] === '{' || input[i] === '['){
             parenStack.push(input[i]);
-        else if(input[i] === '}')
+        }else if(input[i] === '}'){
             if(parenStack.pop() !== '{') return false;
-        else if(input[i] === ')')
+        }else if(input[i] === ')'){
             if(parenStack.pop() !== '(') return false;
-        else if(input[i] === ']')
+        }else if(input[i] === ']'){
             if(parenStack.pop() !== '[') return false;
+        }else{
+            return false;
+        } 
     }
     return parenStack.length === 0;
 }
@@ -60,5 +63,7 @@ console.log(`expected true`);
 console.log(`testing with ['[({})]']: ${balancedParens('[({})]')}`);   // true
 console.log(`expected true`);
 console.log(`testing with ['[(]{)}']: ${balancedParens('[(]{)}')}`); // false
-console.log(`expected false`);*/
+console.log(`expected false`);
+console.log(`testing with ['[(){[([])]}]']: ${balancedParens('[(){[([])]}]')}`); 
+console.log(`testing with ['[({a}s)][({})]']: ${balancedParens('[({a}s)][({})]')}`);*/ 
 module.exports = balancedParens;
