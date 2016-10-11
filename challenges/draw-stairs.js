@@ -12,7 +12,7 @@
 ******
 
 */
-
+"use strict"
 function drawStairs(n) {
   // if (typeof n === 'number') {
   //   var stairs = "";
@@ -38,5 +38,7 @@ function drawStairs(n) {
   }
 
 }
+
+console.log(drawStairs(6));
 
 module.exports = drawStairs;
