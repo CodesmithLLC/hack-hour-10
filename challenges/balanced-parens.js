@@ -43,12 +43,14 @@
      } else if (current in closingBraces) {
        if (checkArr[checkArr.length - 1] === current) {
          checkArr.pop();
+       }
      }else {
        //do nothing
      }
   }
-  console.log(checkArr.length)
+   console.log(checkArr.length)
   return checkArr.length < 1
 }
 
 module.exports = balancedParens;
+}
