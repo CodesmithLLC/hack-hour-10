@@ -1,4 +1,4 @@
-/* Given two strings, write a function to check if the second one is a rotation of the first,
+/* Given two strinopen gs, write a function to check if the second one is a rotation of the first,
  * using only one call to isSubstring. The function isSubstring takes in two strings and returns
  * true if the second string is found in the first, false otherwise.
  *
@@ -17,6 +17,13 @@ function isSubstring(s1, s2) {
 
 function stringRotation(s1, s2) {
 
+
+
+
 }
 
-module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
+// module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
+
+
+
+
