@@ -25,7 +25,31 @@
  */
 
 function balancedParens(input){
+  input = input.replace(/[^\(\)\{\}\[\]]/g, '');
+  if (input.length % 2 !== 0) return false;
+  let matches = {
+    "}" : "{",
+    "]": "[",
+    ")": "("
+  }
 
+  for (let i = 0; i < input.length; i++) {
+    for (let key in matches) {
+      let result = false;
+      if (input[i] === matches[key]) {
+        for (let j = i+1; j < input.length; j++) {
+          if (input[j] === key) {
+            result = true;
+            break;
+          }
+        }
+        if (result === true) break;
+        else return result;
+      }
+    }
+  }
+  return true;
 }
 
+// console.log(balancedParens(' var hubble = function() { telescopes.awesome();'));
 module.exports = balancedParens;

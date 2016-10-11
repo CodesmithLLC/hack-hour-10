@@ -25,6 +25,11 @@ function stringRotation(s1, s2) {
       }
   }
 
-  return isSubstring(s1, s2);
+  // let newStr = s2 + s2;
+  //
+  // llohe + llohe => llohellohe
+  return isSubstring(newStr, s1);
 }
+
+console.log(stringRotation("hey you", " youhey"))
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
