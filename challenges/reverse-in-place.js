@@ -12,15 +12,12 @@
  */
 
 function reverseInPlace(array) {
-  let arr = [];
-  if (arguments.length === 0) return [];
-  for (let i = array.length - 1; i >= 0; i--) {
-    arr.push(array[i]);
+  let temp;
+  for (let i = 0, j = array.length - 1; i < j; i++, j--) {
+    temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
   }
-  for (let i = 0; i < arr.length; i++) {
-    array[i] = arr[i];
-  }
-  return array;
 }
 
 console.log(reverseInPlace());
