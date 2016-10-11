@@ -12,6 +12,7 @@
  */
 
  function reverseInPlace(array) {
+   if (array === undefined || array.length === 0) return [];
    if (!Array.isArray(array)) return 'input must be an array';
    for (let i = 0; i < array.length / 2; i++) {
    	 let temp = array[array.length - 1 - i];
