@@ -24,8 +24,31 @@
  *
  */
 
-function balancedParens(input){
-
+ function balancedParens(input) {
+   const checkArr = [];
+   const pairsOfChars = {
+     '(': ')',
+     '[': ']',
+     '{': '}',
+   };
+   const closingBraces = {
+     '}': 1,
+     ']': 1,
+     ')': 1,
+   };
+   for (let i = 0; i < input.length; i += 1) {
+     const current = input[i];
+     if (pairsOfChars[current]) {
+       checkArr.push(pairsOfChars[current]);
+     } else if (current in closingBraces) {
+       if (checkArr[checkArr.length - 1] === current) {
+         checkArr.pop();
+     }else {
+       //do nothing
+     }
+  }
+  console.log(checkArr.length)
+  return checkArr.length < 1
 }
 
 module.exports = balancedParens;
