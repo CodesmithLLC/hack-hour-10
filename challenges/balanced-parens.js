@@ -25,7 +25,22 @@
  */
 
 function balancedParens(input){
+    var matches = [];
+    var str = input;
 
+    for(let i = 0; i < input.length; i++) {
+        if(input[i] === '(' || input[i] === '[' || input[i] === '{'){
+            matches.push(input[i]);
+            console.log(matches);
+        }
+        if(input[i] === ')' || input[i] === ']' || input[i] === '}'){
+            let pop = matches.pop();
+            console.log(matches);
+            if (pop === undefined) {return false};
+        }
+    }
+    return matches[0] === undefined ? true : false;
 }
+
 
 module.exports = balancedParens;
