@@ -25,7 +25,27 @@
  */
 
 function balancedParens(input){
-
+	if (input.indexOf('(') < 0 && input.indexOf('[') < 0 && input.indexOf('{') < 0) return false;
+	let result = false;
+	function checkMirror(str) {
+	    for (let i = 0; i < str.length; i++) {
+	        if (str[i] === '(') {
+	            let substr = str.substring(i, str.length);
+	            //console.log(substr);
+	            if (str.indexOf(')') < 0) return false;
+	            for (let k = substr.length - 1; k >= 0; k--) {
+	                if (substr[k] === ')') {
+	                    result = true;
+	                    let temp = str.substring(str[i+1], str[k]);
+	                    //console.log(temp);
+	                    checkMirror(str.substring(str[i+1], str[k]));
+	                }
+	            }
+	        }
+	    }
+	    return result;
+	}
+	return checkMirror(input);
 }
 
 module.exports = balancedParens;
