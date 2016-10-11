@@ -34,13 +34,23 @@ function balancedParens(input){
     bracket   : 0,
     curly     : 0,
   }
+  let totalBalance = 0;
+  const balanceAdds = ['(', '[', '{'];
+  const balanceSubs = [')', ']', '}'];
+
   let mode = [];
   for (let i = 0; i < arr.length; i++) {
     const val = arr[i];
 
-    // Handle balance and mode violation    
+    // Handle balance
+    if (balanceAdds.indexOf(val) !== -1) {
+      totalBalance += 1;
+    } else if (balanceSubs.indexOf(val) !== -1) {
+      totalBalance -= 1;
+    }
+
+    // Handle mode and mode violation    
     if (val === ')') {
-      balance.paren -= 1;
       if (mode[0] !== '(') { 
         return false 
       };
@@ -48,7 +58,6 @@ function balancedParens(input){
     }
     
     if (val === ']') {
-      balance.bracket -= 1;
       if (mode[0] !== '[') { 
         return false 
       };
@@ -56,7 +65,6 @@ function balancedParens(input){
     }
     
     if (val === '}') {
-      balance.curly -= 1;
       if (mode[0] !== '{') { 
         return false 
       };
@@ -64,21 +72,18 @@ function balancedParens(input){
     }
 
     if (val === '(') {
-      balance.paren += 1;
       mode.unshift('(');
     }
     if (val === '[') {
-      balance.bracket += 1;
       mode.unshift('[');
     }
     if (val === '{') {
-      balance.curly += 1;
       mode.unshift('{');
     }
   }
   
 
-  return balance.paren + balance.bracket + balance.curly === 0;
+  return totalBalance === 0;// balance.paren + balance.bracket + balance.curly === 0;
 
 }
 
