@@ -43,8 +43,9 @@
      } else if (current in closingBraces) {
        if (checkArr[checkArr.length - 1] === current) {
          checkArr.pop();
+        }
        }
-     }else {
+     } else {
        //do nothing
      }
   }
