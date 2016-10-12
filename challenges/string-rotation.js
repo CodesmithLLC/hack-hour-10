@@ -31,15 +31,16 @@ function stringRotation(s1, s2) {
 		// If s1 matches concat, return true.
 		// Else, return false.
 
-	let slice1, slice2
+	// let slice1, slice2
 
-	if (s2.includes(s1[0])) slice1 = s2.slice(s2.indexOf(s1[0]), s2.length);
-	else return false;
+	// if (s2.includes(s1[0])) slice1 = s2.slice(s2.indexOf(s1[0]), s2.length);
+	// else return false;
   
-	if (s1.includes(slice1)) slice2 = s2.slice(0, s2.indexOf(s1[0]));
-	else return false;
+	// if (s1.includes(slice1)) slice2 = s2.slice(0, s2.indexOf(s1[0]));
+	// else return false;
 
-	return s1 === slice1.concat(slice2);
+	// return s1 === slice1.concat(slice2);
+	return s1.length === s2.length && isSubstring(s1 + s1, s2);
 }
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
