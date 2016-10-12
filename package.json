@@ -27,5 +27,8 @@
     "type": "git",
     "url": "git+https://github.com/CodesmithLLC/hack-hour-10.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.7.1"
+  }
 }
