@@ -76,6 +76,5 @@ function balancedParens(input) {
 //   console.log(storage)
 // }
 
-balancedParens('[({})]');   // true
 
 module.exports = balancedParens;
