@@ -67,7 +67,7 @@ function romanNumeral(num) {
 		str+= 'IV';
 		num-= 4;
 	}
-	while(num > 1) {
+	while(num >= 1) {
 		str+= 'I';
 		num-= 1;
 	}
