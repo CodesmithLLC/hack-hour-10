@@ -26,25 +26,38 @@
 'use strict'
 
 function balancedParens(input){
-    
-    // not complete...will submit revisions before 9a Wednesday
 
-    const parens = '[]{}()';
-    const stash = [];
+    const partners = {
+        ']': '[',
+        ')': '(',
+        '}': '{'
+    }    
+    const openStash = [];
+    let balanceCount = 0;
+    let char;
 
     for (let i = 0; i < input.length; i++) {
-        if (parens.includes(input[i])) stash.push(input[i]);
+        char = input[i];
+        if (char === '{' || char === '[' || char === '(') {
+            openStash.push(char);
+            balanceCount++;
+        }
+        if (char === '}' || char === ']' || char === ')') {
+            if (partners[char] !== openStash[openStash.length - 1]) return false
+            else openStash.pop();
+            balanceCount--;
+        }   
     }
-
-    if (stash.length % 2 !== 0 || [')', ']', '}'].indexOf(stash[0]) > -1) return false;
-    
-    return true;
+    return balanceCount === 0;
 }
 
-console.log(balancedParens('('));
-console.log(balancedParens('()')); 
-console.log(balancedParens(')(')); 
-console.log(balancedParens('(())'));
-console.log(balancedParens('[(]{)}'));
+
+console.log(balancedParens('((')); // false
+console.log(balancedParens('()')); // true
+console.log(balancedParens(')(')); // false
+console.log(balancedParens('(())')); // true
+console.log(balancedParens('[(]{)}')); // false
+console.log(balancedParens('[](){}')); // true
+console.log(balancedParens('[({})]'));   // true
 
 module.exports = balancedParens;
