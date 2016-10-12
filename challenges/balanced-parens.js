@@ -1,9 +1,9 @@
+'use strict'
 /*
  * write a function that takes a string of text and returns true if
  * the parentheses are balanced and false otherwise.
  *
  * Example:
- *   balancedParens('(');  // false
  *   balancedParens('()'); // true
  *   balancedParens(')(');  // false
  *   balancedParens('(())');  // true
@@ -24,6 +24,8 @@
  *
  */
 
+
+console.log(balancedParens('('))
 function balancedParens(input){
 
     // Count each parens
