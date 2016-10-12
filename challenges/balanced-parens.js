@@ -26,62 +26,40 @@
 
 function balancedParens(input) {
   let str = input.split('');
-  let test = '';
   let balanced = true;
+  let stack = [];
 
   for (let i = 0; i < input.length; i++) {
-    if (str[i] === '(') {
-      if (!str.includes(')')) {
-         balanced = false;
-      }
-      str[str.indexOf(')')] = '';
+    if (str[i] === '(') stack.push(str[i]);
+    else if (str[i] === '[') stack.push(str[i]);
+    else if (str[i] === '{') stack.push(str[i]);
+
+    if (str[i] === ')') {
+      if (stack[stack.length - 1] !== '(') balanced = false;
+      stack.pop();
     }
-    else if (str[i] === '[') {
-      if (!str.includes(']')) {
-        balanced = false;
-      }
-      str[str.indexOf(']')] = '';
+    else if (str[i] === ']') {
+      if (stack[stack.length - 1] !== '[') balanced = false;
+      stack.pop();
     }
-    else if (str[i] === '{') {
-      if (!str.includes('}')) {
-        balanced = false;
-      }
-      str[str.indexOf('}')] = '';
+    else if (str[i] === '}') {
+      if (stack[stack.length - 1] !== '{') balanced = false;
+      stack.pop();
     }
-    str[i] = '';
   }
+  if (stack[0] !== undefined) balanced = false;
   return balanced;
-  
-//take care of special case '[(]{)}'
-  // let inParens = false;
-  // let inBrackets = false;
-  // let inBraces = false;
-  // for (let i = 0; i < input.length; i++) {
-  //   if (str[i] === ')') {
-  //     if (inParens || )
-  //     inParens = true;
-  //   }
-  //   else if (str[i] === ']') {
-  //     inBrackets = true;
-  //   }
-  //   else if (str[i] === '}') {
-  //     inBraces = true;
-  //   }
-  //   str[i] = '';
-  // }
-
-  //return balanced;
 }
-// //true
-// console.log(balancedParens('()'));
-// console.log(balancedParens('(())'));
-// console.log(balancedParens('[](){}'));
-// console.log(balancedParens('[({})]'));
-// console.log(balancedParens(' var wow  = { yo: thisIsAwesome() }'));
-// //false
-
-// console.log(balancedParens('[(]{)}'));
-// console.log(balancedParens(')('));
-// console.log(balancedParens('('));
-// console.log(balancedParens(' var hubble = function() { telescopes.awesome();'));
-module.exports = balancedParens;
+  // //true
+  console.log(balancedParens('()'));
+  console.log(balancedParens('(())'));
+  console.log(balancedParens('[](){}'));
+  console.log(balancedParens('[({})]'));
+  console.log(balancedParens(' var wow  = { yo: thisIsAwesome() }'));
+  
+  // //false
+  console.log(balancedParens('[(]{)}'));
+  console.log(balancedParens(')('));
+  console.log(balancedParens('('));
+  console.log(balancedParens(' var hubble = function() { telescopes.awesome();'));
+  module.exports = balancedParens;
