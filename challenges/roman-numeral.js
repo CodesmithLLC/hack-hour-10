@@ -75,5 +75,4 @@ function romanNumeral(n) {
   return romanNumeralStorage.reverse().join('')
 }
 
-console.log(romanNumeral(7fa));
 module.exports = romanNumeral;
