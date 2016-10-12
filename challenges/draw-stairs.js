@@ -16,7 +16,7 @@
  * @return {[type]}   [description]
  */
 function drawStairs(n) {
-  for(var i = 0; i < n; i += 1){
+  for (var i = 0; i < n; i += 1){
           var output = "";
           for(var j = 0; j < n; j +=1 ){
               if(n - i - 2 < j){
