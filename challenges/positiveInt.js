@@ -38,14 +38,13 @@ function romanNumeral(n) {
 
   //for every key in optionsObj
   for (let i in optionsObj ) {
-  	//while N is greater than the number held @ that key , build up the string w/ the key (aka the Roman letter) && also subtract the number passed in by the number value in the obj.
+  	//while N is greater than the value held @ that key, build up the string w/ the key (aka the Roman letter) && also subtract the n passed by the number value held @ that key.
     while ( n >= optionsObj[i] ) {
       buildupString += i;
       n -= optionsObj[i];
     }
   }
   return buildupString;
-
 }
 
 
