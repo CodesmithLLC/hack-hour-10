@@ -25,23 +25,29 @@
  */
 
  function balancedParens(input) {
-   if (input.indexOf('(') > input.indexOf(')')) return false;
-   if (input.indexOf('[') > input.indexOf(']')) return false;
-   if (input.indexOf('{') > input.indexOf('}')) return false;
-   if (input.indexOf('(') === 0 && input.indexOf(')') !== input.length) return false;
-   if (input.indexOf('[') === 0 && input.indexOf(']') !== input.length) return false;
-   if (input.indexOf('{') === 0 && input.indexOf('}') !== input.length) return false;
-   let check = [];
+   let storage = {
+     '(': ')',
+     '[': ']',
+     '{': '}'
+   }
+
+   let ans = [];
+   let counter = 0;
+
    for (let i = 0; i < input.length; i++) {
+     let check;
      if (input[i] === '(' || input[i] === '[' || input[i] === '{') {
-       check.push('open');
+       ans.push(input[i])
+       counter++;
      }
      if (input[i] === ')' || input[i] === ']' || input[i] === '}') {
-       check.pop();
+       check = ans.pop();
+       if (storage[check] === input[i]) {
+         counter--;
+       }
      }
    }
-   if (check.length > 1) return false;
-   else return true;
+   return counter === 0 ? true : false;
  }
 
 module.exports = balancedParens;
