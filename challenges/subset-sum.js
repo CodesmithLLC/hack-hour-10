@@ -13,7 +13,7 @@ function subsetSum(array, target) {
         ? true
         : !array.length
             ? false
-            : subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target)
+            : subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
 }
 
 module.exports = subsetSum;
