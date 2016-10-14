@@ -10,6 +10,7 @@
 
 function subsetSum(array, target) {
 
+  // return false if empty array
   if (array.length === 0) return false;
 
   // base case: array has only one element
