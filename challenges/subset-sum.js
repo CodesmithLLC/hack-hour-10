@@ -9,7 +9,15 @@
  */
 
 function subsetSum(array, target) {
-
+    let count = target;
+    function countDown(counter, arr) {
+    	if (counter === 0) return true;
+    	for (let i = 0; i < arr.length; i++) {
+    		countDown(counter - arr[i], arr.slice(1));
+    	}
+    }
+    countDown(count, array);
+    return false;
 }
 
 module.exports = subsetSum;
