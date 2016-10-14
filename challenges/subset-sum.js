@@ -10,13 +10,22 @@
 
 function subsetSum(array, target) {
 
+  if (array.length === 0) return false;
+
   // base case: array has only one element
   if (array.length === 1) return array[0] === target;
-
-  // otherwise, take the first element in the array and check the subsests containing that element
+  
+  // otherwise, take the first element in the array and check the subsets containing that element
   // if none of those work, check the subsets that do not contain that element
   return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
 
 }
 
+// console.log(subsetSum([3,7,4,2], 5))
+// console.log(subsetSum([3, 34, 4, 12, 5, 12], 32))
+// console.log(subsetSum([8, 2, 4, 12], 13))
+// console.log(subsetSum([8, -2, 1, -3], 6) )
+//  console.log(subsetSum([-2, 5, 0, -2, -15, 25], 15))
+// console.log(subsetSum([5], 5))
+// console.log(subsetSum([], 5))
 module.exports = subsetSum;
