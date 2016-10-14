@@ -25,7 +25,6 @@
  */
 
 function balancedParens(input){
-<<<<<<< HEAD
 	const newInput = input.split('');
 	let newArr = [];
 	let count = 0;
@@ -35,9 +34,6 @@ function balancedParens(input){
 	}
 		
 	return newArr;
-=======
-
->>>>>>> 027eef7cfa088762966b33be7baaf86ef5126a39
 }
 
 module.exports = balancedParens;

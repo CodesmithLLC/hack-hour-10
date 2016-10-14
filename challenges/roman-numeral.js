@@ -31,5 +31,5 @@ for(var keys in obj) {
  return newString;;
 }
 
-console.log(romanNumeral(1500));
-module.exports = romanNumeral;
+console.log(romanNumeral(3999));
+module.exports = romanNumeral();
