@@ -16,7 +16,7 @@ function subsetSum(array, target) {
     return array[0] === target;
   }
   //let stack = [array[0]];
-  let ret = subsetRec(array, target, 1, array[0]);
+  let ret = subsetRec(array, target, 0, 0);
   function subsetRec(array, target, index, total, stack){
     if(total === array[index]){
       return true;
@@ -45,5 +45,5 @@ function subsetSum(array, target) {
   return ret;
 }
 
-
+console.log(subsetSum([5,4,3,2,1], 1));
 module.exports = subsetSum;
