@@ -9,15 +9,9 @@
  */
 
 function subsetSum(array, target) {
-
-
-  function subSum(array, target) {
-    if (array === [] || target > 0) return false;
-    if (target === 0) return true;
-    return subSum(array.slice[1], target - array[0]) || subSum(array.slice[1], target);
-  }
-  let sorted = array.sort((a, b) => b - a);
-  return subSum(sorted, target);
+  if (target === 0) return true;
+  if (array.length === 0) return false;
+  return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
 }
 
 module.exports = subsetSum;
