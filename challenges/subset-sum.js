@@ -10,6 +10,21 @@
 
 function subsetSum(array, target) {
 
+
+  function subSum(array, target) {
+    if (array === [] || target > 0) return false;
+    if (target === 0) return true;
+    return subSum(array.slice[1], target - array[0]) || subSum(array.slice[1], target);
+  }
+  let sorted = array.sort((a, b) => b - a);
+  return subSum(sorted, target);
 }
 
 module.exports = subsetSum;
+
+console.log('expected: true, true, false, true\n', 'actual:',
+  subsetSum([3, 7, 4, 2], 5),
+  subsetSum([3, 34, 4, 12, 5, 12], 32),
+  subsetSum([8, 2, 4, 12], 13),
+  subsetSum([8, -2, 1, -3], 6)
+);
