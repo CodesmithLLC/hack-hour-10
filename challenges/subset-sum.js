@@ -12,7 +12,7 @@ function subsetSum(array, target) {
 
   // return false if empty array
   if (array.length === 0) return false;
-
+  if (array[0] === target) return true;
   // base case: array has only one element
   if (array.length === 1) return array[0] === target;
   
@@ -22,11 +22,25 @@ function subsetSum(array, target) {
 
 }
 
-// console.log(subsetSum([3,7,4,2], 5))
-// console.log(subsetSum([3, 34, 4, 12, 5, 12], 32))
-// console.log(subsetSum([8, 2, 4, 12], 13))
-// console.log(subsetSum([8, -2, 1, -3], 6) )
-//  console.log(subsetSum([-2, 5, 0, -2, -15, 25], 15))
+// // console.log(subsetSum([3,7,4,2], 5))
+// // console.log(subsetSum([3, 34, 4, 12, 5, 12], 32))
+// // console.log(subsetSum([8, 2, 4, 12], 13))
+// // console.log(subsetSum([8, -2, 1, -3], 6) )
+// console.log(subsetSum([-3, 0, -3], -6)) // true
+// console.log(subsetSum([-3, 0, 0], -3)) // true
+// console.log(subsetSum([-3, 5, -3], -1)) // true
+// console.log(subsetSum([5, 0, -3], 2)) // true
+// console.log(subsetSum([-3, 5, -3], -6)) // true
+
+// console.log(subsetSum([-3, 0, -5], -4)) // false
+// console.log(subsetSum([-3, 0, 0], -2)) // false
+// console.log(subsetSum([-3, 5, -3], 10)) // false
+// console.log(subsetSum([5, 0, -3], 0)) // true
+// console.log(subsetSum([-3, 5, -3], -20)) // false
+
+
+// console.log(subsetSum([-3, 5, -3], -20)) // false
+
 // console.log(subsetSum([5], 5))
 // console.log(subsetSum([], 5))
 module.exports = subsetSum;
