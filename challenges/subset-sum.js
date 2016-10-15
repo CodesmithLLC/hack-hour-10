@@ -10,23 +10,14 @@
  * subsetSum([8, 2, 4, 12], 13) -> false
  * subsetSum([8, -2, 1, -3], 6) -> true, 8 + 1 + (-3) = 6
  */
-
+const storage = [];
 function subsetSum(array, target) {
-	newArr = array.sort((a,b) => a-b);
-	if (newArr.reduce( (prev,curr) => prev + curr) === target) return true
-	if (target < Math.max.apply(null,array)) return false;
-	for (num of newArr){
-			if (newArr.indexOf(target - num) !== -1) return true;
-		for (num2 of newArr){
-			if (newArr.indexOf(target - num2) !== -1) return true;
-			subsetSum(array,target-num)
-			subsetSum(array,target-num-num2)
-			}
-	}
+  if (array.indexOf(target) !== -1) return true;
+  for (let i = 0; i < array.length; i++){
+    if (array.indexOf(target - array[i]) !== -1 ) return true;
+   storage.push(subsetSum(array.slice(0, i).concat(array.slice(i + 1, array.length)), target));
+   }
+  }
 
-
-	return false
-}
-
-
+subsetSum([3, 34, 4, 12, 5, 12], 32);
 module.exports = subsetSum;
