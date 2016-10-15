@@ -10,7 +10,7 @@
 
 function subsetSum(array, target) {
   // Validate input
-  if (!Array.isArray(array)) return false;
+  if (!Array.isArray(array) || array.length === 0) return false;
   // check for only one item in array
   if (array.length === 1) return array[0] === target;
   // Generate a sum and check if it is the one we want
