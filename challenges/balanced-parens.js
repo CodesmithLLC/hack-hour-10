@@ -25,7 +25,17 @@
  */
 
 function balancedParens(input){
+  let parensArr = [];
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === "{" || "[" || "(") parensArr.push(input[i]);
+    if (input[i] === "}") if (parensArr.pop() !== "{") return false;
+    if (input[i] === "]") if (parensArr.pop() !== "[") return false;
+    if (input[i] === ")") if (parensArr.pop() !== "(") return false;
+    // console.log("i: " + i + parensArr);
+  }
 
+  return true;
 }
 
+// console.log(balancedParens('[(]{)}'));
 module.exports = balancedParens;
