@@ -9,7 +9,41 @@
  */
 
 function subsetSum(array, target) {
+    var accum = [array[0]];
+    var tack = [0];
+    var length = array.length;
+   function find(accumu, arr, trk, test) {
+       var total = 0;
+       var listOfIndex = {};
+       for (var i = 0; i < accumu.length; i++) {
+           listOfIndex[(trk[i] + 1)] = true;
+           total += accumu[i];
+       }
+       console.log(accumu)
+       if (total === target) return true;
 
+       for (var j = 0; j!== null;j++) {
+           if(listOfIndex[trk[j]]) trk[j] += 1;
+           accumu[j] = arr[trk[j]]
+           trk[j] += 1;
+           if(trk[j] > length) {
+               trk[j] = 0;
+               accumu[j] = arr[0];
+               if (trk[j+1] === undefined){
+                trk[j + 1] = 0;
+                accum[j + 1] = 0;
+               }
+           }
+           else break;
+           //listOfIndex[trk[j]] = true;
+       }
+       console.log(listOfIndex);
+    //    if(test == 30) return false;
+       if (accumu.length >= length) return false;
+       else return find(accumu, arr, trk);
+   }
+   return find(accum, array, tack);
 }
 
 module.exports = subsetSum;
+
