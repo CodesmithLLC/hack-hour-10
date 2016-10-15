@@ -14,6 +14,7 @@ function subsetSum(array, target) {
   let len = array.length;
   let sum = 0;
 
+  if (array.length === 0 || target === undefined) return false;
   function perms(count, sum) {
     if (count === len) return sums.push(sum)
     for (let i = 0; i < len; i++) {
@@ -28,8 +29,8 @@ function subsetSum(array, target) {
   });
   return found;
 }
-console.log(subsetSum([3, 7, 4, 2], 5));
- console.log(subsetSum([3, 34, 4, 12, 5, 12], 32));
-console.log(subsetSum([8, 2, 4, 12], 13));
- console.log(subsetSum([8, -2, 1, -3], 6));
+// console.log(subsetSum([3, 7, 4, 2], 5));
+//  console.log(subsetSum([3, 34, 4, 12, 5, 12], 32));
+// console.log(subsetSum([8, 2, 4, 12], 13));
+//  console.log(subsetSum([8, -2, 1, -3], 6));
 module.exports = subsetSum;
