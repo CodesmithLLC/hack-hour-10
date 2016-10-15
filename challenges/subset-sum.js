@@ -19,17 +19,4 @@ function subsetSum(array, target) {
 
 
 /**
- 	return a boolean, determining whether ANY sum of any values held in an array equal the target.
- 	edge cases:
- 				- if all of the numbers are larger than target === false
- 				- if all numbers are 0 & target is NOT 0 === false
- 				- PATTERN:
- 					* you can pick one number (say the first one) have it add to another number & if it is not equal to target, add on Another number to the sum and so on until you reach all of the numbers in the array (array.length times). To do this faster, convert the original array to an array with each value being its own array, so you can use reduce.
- 					If after doing so, the additions never matched to target, then MOVE on to the next number adn continue until you have done the same pattern for EVERY value in the array.
-
- 					OR
-					sort the array from largest to smalles
- 					you can subtract Target by a value in arrayif the leftover target is still > 0, keep on subtracting. if you hit 0, return true. if you go into the negative realm, return false.
-
-
  */
