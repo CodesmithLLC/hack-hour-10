@@ -14,7 +14,17 @@
  */
 
 function binToDec(binary) {
+if (binary.constructor !== String || binary.match(/[01]/g).length !== binary.length) return 'input must be a binary number';
+let len = binary.length - 1;
+let dec = 0;
+let power = 0;
 
+for (let i = len; i >= 0; i--) {
+  if (i === len && binary[i].match('1')) dec += 1; 
+  else if (binary[i].match('1')) dec += Math.pow(2, power);
+  power++;
+}
+return dec;
 }
 
 module.exports = binToDec;
