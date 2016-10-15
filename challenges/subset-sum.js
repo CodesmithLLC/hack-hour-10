@@ -9,7 +9,6 @@
  */
 
 function subsetSum(array, target) {
-  if (array.includes(target)) return true;
   
   function recurse(arr) {
     let sum = arr.reduce((a, b) => a + b, 0);
@@ -25,14 +24,13 @@ function subsetSum(array, target) {
   }
 
   return recurse(array);
-
 }
 
 
 // test cases
-// console.log(subsetSum([3, 7, 4, 2], 5)); // - > true, 3 + 2 = 5
-// console.log(subsetSum([3, 34, 4, 12, 5, 12], 32)); // -> true, 3 + 12 + 5 + 12 = 32
-//subsetSum([8, 2, 4, 12], 13) // -> false
+console.log(subsetSum([3, 7, 4, 2], 5)); // - > true, 3 + 2 = 5
+console.log(subsetSum([3, 34, 4, 12, 5, 12], 32)); // -> true, 3 + 12 + 5 + 12 = 32
+subsetSum([8, 2, 4, 12], 13) // -> false
 console.log(subsetSum([8, -2, 1, -3], 6)); // -> true, 8 + 1 + (-3) = 6
 
 // console.log(subsetSum([2, 3, 4], 5));
