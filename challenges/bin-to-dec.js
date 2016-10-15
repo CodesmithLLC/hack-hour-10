@@ -55,4 +55,16 @@ function hexToDec(hex){
   return total;
 }
 
+function anyToDec(number, base, representation){
+  if(!number) return 0;
+  //console.log(`hex: ${hex}`);
+  let total = 0;
+  for( let i = number.length-1, power = 0; i >= 0; --i, ++power ){
+    console.log(representation[number[i]]);
+    total += representation[number[i]] * Math.pow(base,power); 
+  }
+  //console.log(total);
+  return total;
+}
+
 module.exports = binToDec;
