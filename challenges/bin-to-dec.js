@@ -15,6 +15,20 @@
 
 function binToDec(binary) {
 
+  binArr = binary.split("").reverse();
+  let sum = 0;
+
+  function processBinary(binArr, exponent) {
+    if (binArr.length === 0) {
+      return sum;
+    } else {
+      let newNum = binArr.shift() * Math.pow(2, exponent);
+      exponent++;
+      return sum + newNum + processBinary(binArr, exponent);
+    }
+  }
+  return processBinary(binArr, 0);
 }
+
 
 module.exports = binToDec;
