@@ -11,21 +11,18 @@
 function subsetSum(array, target) {
   let sums = [];
   let found = false;
-  let test = 0;
+  let len = array.length;
+  let sum = 0;
 
-  for (let i = 0; i < array.length; i++) {
-    sums.push(array[i]);
-    for (let j = 0; j < array.length; j++) {
-      if (array[i] === array[j]) continue;
-      if (test + array[j] <= target) {
-        test += array[j];
-        sums.push(test);
-      }
+  function perms(count, sum) {
+    if (count === len) return sums.push(sum)
+    for (let i = 0; i < len; i++) {
+      sums.push(sum);
+      perms(count + 1, sum + array[i]);
     }
-    test = 0;
   }
+  perms(0, sum);
 
-  // console.log(sums);
   sums.forEach(num => {
     if (num === target) found = true;
   });
@@ -34,5 +31,5 @@ function subsetSum(array, target) {
 console.log(subsetSum([3, 7, 4, 2], 5));
  console.log(subsetSum([3, 34, 4, 12, 5, 12], 32));
 console.log(subsetSum([8, 2, 4, 12], 13));
-// console.log(subsetSum([8, -2, 1, -3], 6));
+ console.log(subsetSum([8, -2, 1, -3], 6));
 module.exports = subsetSum;
