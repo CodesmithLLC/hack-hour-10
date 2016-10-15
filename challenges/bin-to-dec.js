@@ -14,7 +14,14 @@
  */
 
 function binToDec(binary) {
-
+  let numsArr = [32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1];
+  let decimal = 0;
+  for (let i = 0; i < binary.length; i++) {
+    if (binary[binary.length-1-i] === '1') {
+      decimal += numsArr[numsArr.length-1-i];
+    }
+  }
+  return decimal;
 }
 
 module.exports = binToDec;
