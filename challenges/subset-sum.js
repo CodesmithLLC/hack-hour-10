@@ -14,7 +14,7 @@ function subsetSum(array, target) {
   let len = array.length;
   let sum = 0;
 
-  if (array.length === 0 || target === undefined) return false;
+  if (array[0] === undefined || target === undefined) return false;
   function perms(count, sum) {
     if (count === len) return sums.push(sum)
     for (let i = 0; i < len; i++) {
