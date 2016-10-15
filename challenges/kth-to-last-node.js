@@ -25,13 +25,35 @@ function kthToLastNode(k, head) {
 if (k >= 0) {
     let count = 0;
     let store = {};
+    let storeNode = {};
     for (current = head; current != null; current = current.next) {
       store[++count] = current.value;
+
     }
-    let val = store[count - k + 1];
+    let index = count - k + 1;
+    let val = store[index];
     return val ? val : null;
 }
 
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
+
+var a = new Node('A');
+var b = new Node('B');
+var c = new Node('C');
+var d = new Node('D');
+var e = new Node('E');
+var f = new Node('F');
+var g = new Node('G');
+var h = new Node('H');
+var i = new Node('I');
+var j = new Node('J');
+var k = new Node('K');
+
+ 
+ a.next = b;
+ b.next = c;
+ c.next = d;
+ d.next = e;
+ console.log(kthToLastNode(2,a))
