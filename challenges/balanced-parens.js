@@ -23,7 +23,7 @@
  *
  *
  */
-"use strict"
+
 function balancedParens(input) {
   const parentheses = "[]{}()";
   const stack = [];
