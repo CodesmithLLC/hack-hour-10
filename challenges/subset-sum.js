@@ -18,7 +18,7 @@ function subsetSum(array, target) {
     for (let i = 0; i < arr.length; i++) {
       let newArr = arr.slice();
       newArr.splice(i, 1);
-      if (recurse(newArr), sum) return true;
+      if (recurse(newArr)) return true;
     }
     return false;
   }
