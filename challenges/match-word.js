@@ -8,6 +8,9 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+  // Make string case insensitive
+  str = str.toLowerCase();
+
   // Store reverse as a string in a stack
   const reversedStrings = [];
   for (let i = 0; i < str.length; i++) {
