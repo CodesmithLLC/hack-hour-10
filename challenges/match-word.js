@@ -15,7 +15,9 @@ function matchWord(str) {
  	if(ele.match(/[A-Za-z]/)){
  		temp.push(ele);
  	}else if (temp.length !== 0){
- 		if(runner[runner.length-1] === temp.reverse().join('')){
+    let check = JSON.parse(JSON.stringify(temp));
+ 		check = check.reverse().join('');
+ 		if(runner[runner.length-1] === check){
  				runner = runner.slice(0,runner.length-1);
  				temp = [];
  		}
