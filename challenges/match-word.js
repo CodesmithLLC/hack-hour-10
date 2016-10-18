@@ -21,11 +21,14 @@ function matchWord(str) {
     }
     if (currentWord.filter(e => e).length > 0) wordArr.push(currentWord.join(""))
     if (wordArr.length === 1) return false;
-    for (var j = 0; j < wordArr.length; j++) {
-        if (wordArr[j] !== wordArr[wordArr.length - 1 - j].split("").reverse().join(""))
-            return false;
+    for (var stack = [], k = 0; k < wordArr.length; k++) {
+        if (stack.length) {
+            if (stack[stack.length - 1] === wordArr[k].split("").reverse().join("")) stack.pop();
+            else stack.push(wordArr[k])
+        }
+        else stack.push(wordArr[k]);
     }
-    return true;
+    return !stack.length;
 }
 
 module.exports = matchWord;
