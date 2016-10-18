@@ -8,7 +8,24 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+ str+='-';
+ let runner = [];
+ let temp = [];
+ str.toLowerCase().split('').forEach(ele => {
+ 	if(ele.match(/[A-Za-z]/)){
+ 		temp.push(ele);
+ 	}else if (temp.length !== 0){
+ 		if(runner[runner.length-1] === temp.reverse().join('')){
+ 				runner = runner.slice(0,runner.length-1);
+ 				temp = [];
+ 		}
+ 		else {
+      runner.push(temp.join(''));
+ 		  temp = [];
+    }
+ 	}
+ 	});
+ 	return runner.join('').length === 0;
 }
 
 module.exports = matchWord;
