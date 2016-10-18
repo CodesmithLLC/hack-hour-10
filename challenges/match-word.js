@@ -51,7 +51,7 @@ function matchWord(str) {
         }
         break;
       case states["IGNORE"]:
-        if(isAlpha(str[i])){
+        if(isAlpha(str[i])){ // git cstarting a new word
           state = states["WORD"];
           currWord += str[i];
         }else{ // don't change state but be sure to reset the currWord.
@@ -73,18 +73,5 @@ function checkTopIsReverse(stack, str){
   if(stack.length === 0) return false;
   return stack[stack.length - 1] === str.split('').reverse().join('');
 }
-
-/*let a = matchWord('__END_DNE-----');
-let b = matchWord('__ENDDNE__'); 
-let c = matchWord('IF()()fi[]'); 
-let d = matchWord('for__if__rof__fi'); 
-let e = matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw'); 
-let f = matchWord(''); 
-console.log(`a: ${a}`);
-console.log(`b: ${b}`);
-console.log(`c: ${c}`);
-console.log(`d: ${d}`);
-console.log(`e: ${e}`);
-console.log(`f: ${f}`);*/
 
 module.exports = matchWord;
