@@ -16,13 +16,13 @@ function matchWord(str) {
   for (let i = 0; i < str.length; i++) {
     const char = str.charCodeAt(i);
     // Prep our word
-    if ((char >= 65 && char <= 90) || (char >= 97 && char <= 122)) {
+    if (char >= 65 && char <= 90) {
       let word = '';
       let reverse = '';
 
       // Generate a word
       let char = str.charCodeAt(i);
-      while ((char >= 65 && char <= 90) || (char >= 97 && char <= 122)) {
+      while (char >= 65 && char <= 90) {
         word += str[i];
         reverse = str[i] + reverse;
         i++;
