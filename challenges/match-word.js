@@ -8,7 +8,32 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+  // Store reverse as a string in a stack
+  const reversedStrings = [];
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    // Prep our word
+    if ((char >= 65 && char <= 90) || (char >= 97 && char <= 122)) {
+      let word = '';
+      let reverse = '';
 
+      // Generate a word
+      let char = str.charCodeAt(i);
+      while ((char >= 65 && char <= 90) || (char >= 97 && char <= 122)) {
+        word += str[i];
+        reverse = str[i] + reverse;
+        i++;
+        char = str.charCodeAt(i);
+      }
+      // Logic to check if next string is in the stack
+      if (reversedStrings[reversedStrings.length - 1] === word) reversedStrings.pop();
+      else reversedStrings.push(reverse);
+    }
+  }
+
+  // In the end, we should have an empty array
+  if (reversedStrings.length > 0) return false;
+  return true;
 }
 
 module.exports = matchWord;
