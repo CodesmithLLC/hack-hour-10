@@ -24,34 +24,37 @@
  *
  */
 
-function balancedParens(input, typeLeft = "(", typeRight = ")") {
+function balancedParens(input) {
  
   let inputArr = input.split(""); 
+
+  function checkParens(inputArr, typeLeft, typeRight) {
+
   let left = inputArr.indexOf(typeLeft);
   let right = inputArr.indexOf(typeRight);
   
-  if (left !== -1) {
-    if (right === -1 ) {
-      return false;
-    } else {
-      inputArr.splice(left,1);
-      right = inputArr.indexOf(typeRight);
-      inputArr.splice(right,1);
+    if (left !== -1) {
+      if (right === -1 ) {
+        return false;
+      } else {
+        inputArr.splice(left,1);
+        right = inputArr.indexOf(typeRight);
+        inputArr.splice(right,1);
+      }
     }
+    inputArr = inputArr.join("");
   }
-  
-  inputArr = inputArr.join("");
  
   if (inputArr.indexOf("(") != -1) {
-      return balancedParens(inputArr, "(", ")");
+      return checkParens(inputArr, "(", ")");
    }
 
   if (inputArr.indexOf("[") != -1) {
-      return balancedParens(inputArr, "[", "]");
+      return checkParens(inputArr, "[", "]");
    }
   
    if (inputArr.indexOf("{") != -1) {
-      return balancedParens(inputArr, "{", "}");
+      return checkParens(inputArr, "{", "}");
    }
   
    return true;
