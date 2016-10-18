@@ -9,30 +9,30 @@
  */
 
 function subsetSum(array, target) {
-  let ans = 0;
-  if(array.length === 1 && array[0] === target) return true;
-  for (let i = 0; i < array.length; i++) {
-    if (ans === target) {
-      return true;
-    } else {
-      ans += array[i];
-    }
-    for (let j = i + 1; j < array.length; j++) {
-      if (ans === target) {
-        return true;
-      } else {
-        ans += array[j];
-      }
-    }
-    for (let k = i + 1; k < array.length; k++) {
-      if (ans === target) {
-        return true;
-      } else {
-        ans -= array[k];
-      }
-    }
-  }
-  return false;
+	let ans = 0;
+	if(array.length === 1 && array[0] === target) return true;
+	for (let i = 0; i < array.length; i++) {
+		if (ans === target) {
+			return true;
+		} else {
+			ans += array[i];
+		}
+		for (let j = i + 1; j < array.length; j++) {
+			if (ans === target) {
+				return true;
+			} else {
+				ans += array[j];
+			}
+		}
+		for (let k = i + 1; k < array.length; k++) {
+			if (ans === target) {
+				return true;
+			} else {
+				ans -= array[k];
+			}
+		}
+	}
+	return false;
 }
 
 module.exports = subsetSum;
