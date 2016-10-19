@@ -8,6 +8,8 @@
 // matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw');  -> true
 // matchWord('');  -> true
 
+// METHOD ONE
+
 function matchWord(str) {
 if (str.constructor !== String) {
   throw new Error('Input type must be a string.');
@@ -39,5 +41,21 @@ for (let i = str.length - 1; i >= str.indexOf(openStmt.split('').reverse().join(
 return openStmt.toLowerCase() === closeStmt.toLowerCase();
 }
 
+// METHOD TWO
+
+// function matchWord(str) {
+//   var keywords = str.match(/[a-zA-Z]+/g) || [];
+//   var wordStack = [];
+//   for (var word of keywords) {
+//     if (
+//       word.split('').reverse().join('').toLowerCase() === 
+//       (wordStack[0] || '').toLowerCase()
+//     )
+//       wordStack.shift();
+//     else
+//       wordStack.unshift(word);
+//   }
+//   return !wordStack.length;
+// }
 
 module.exports = matchWord;
