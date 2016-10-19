@@ -8,26 +8,25 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
- str+='-';
- let runner = [];
- let temp = [];
- str.toLowerCase().split('').forEach(ele => {
- 	if(ele.match(/[A-Za-z]/)){
- 		temp.push(ele);
- 	}else if (temp.length !== 0){
-    let check = JSON.parse(JSON.stringify(temp));
- 		check = check.reverse().join('');
- 		if(runner[runner.length-1] === check){
- 				runner = runner.slice(0,runner.length-1);
- 				temp = [];
- 		}
- 		else {
-      runner.push(temp.join(''));
- 		  temp = [];
-    }
- 	}
- 	});
- 	return runner.join('').length === 0;
+	str += '-';				// add one extra char for forEach call
+	let runner = [];		//total array, can only delete words when matched to last one, must end empty
+	let temp = [];		//one word builder-array
+	str.toLowerCase().split('').forEach(ele => {
+		if (ele.toUpperCase() !== ele) {
+			temp.push(ele);
+		} else if (temp.length !== 0) {
+			let check = temp.slice(0).reverse().join('');		// avoiding mutating the original array by cloning
+			if (runner[runner.length - 1] === check) {
+				runner = runner.slice(0, runner.length - 1);
+				temp = [];			//reset one-word builder array
+			}
+			else {
+				runner.push(temp.join(''));
+				temp = [];
+			}
+		}
+	});
+	return runner.join('').length === 0;
 }
 
 module.exports = matchWord;
