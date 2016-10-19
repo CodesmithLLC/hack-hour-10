@@ -3,12 +3,14 @@
  */
 
 function highestProduct(array) {
-  let negArr = array.sort().slice(0, 2);
-  let posArr = array.sort((a, b) => { return b - a }).slice(0, 3);
-  if (negArr.reduce((a, c) => a * c) > posArr.slice(0, 2).reduce((a, c) => a * c)) {
-    return negArr.concat(posArr[2]).reduce((a, c) => a * c);
-  }
-  else return posArr.reduce((acc, curr) => { return acc * curr });
+	if(!array || array.length < 3) return 0;
+	let negArr = array.sort((a,b) => {return a-b}).slice(0,3);
+	let posArr = array.sort((a,b) => {return b-a}).slice(0,3);
+	if(negArr[0]*negArr[1] > posArr[1]*posArr[2] ){
+		let a = negArr[0]*negArr[1]*posArr[0];
+		if(a > 0) return a;
+	}
+	return posArr.reduce((a,c) => {return a*c});
 }
 
 
