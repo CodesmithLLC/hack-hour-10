@@ -19,16 +19,13 @@ function matchWord(str) {
             currBool = false;
         }
     }
-    if (currentWord.filter(e => e).length > 0) wordArr.push(currentWord.join(""))
-    if (wordArr.length === 1) return false;
-    for (var stack = [], k = 0; k < wordArr.length; k++) {
-        if (stack.length) {
-            if (stack[stack.length - 1] === wordArr[k].split("").reverse().join("")) stack.pop();
-            else stack.push(wordArr[k])
-        }
-        else stack.push(wordArr[k]);
-    }
+    if (currentWord.filter(e => e).length > 0) wordArr.push(currentWord.join("").toLowerCase())
+    for (var stack = [], k = 0; k < wordArr.length; k++)
+        if (stack.length && (stack[stack.length - 1] === wordArr[k].split("").reverse().join(""))) stack.pop();
+        else stack.push(wordArr[k])
     return !stack.length;
 }
 
 module.exports = matchWord;
+
+console.log(matchWord('__ENDDNE__'))
