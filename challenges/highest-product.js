@@ -1,10 +1,7 @@
 function highestProduct(array) {
-  const positives = array.filter(x => x > 0).sort();
-  const negatives = array.filter(x => x < 0).sort();
-  let x, y, z;
-  if (negatives.length >= 2)
-    negatives.forEach(x => positives.push(Math.abs(x)));
-  return positives.pop() * positives.pop() * positives.pop();
+  if (array.length < 3) return 0;
+  let sorted = array.sort((a, b) => b - a);
+  return Math.max(sorted[0] * sorted[1] * sorted[2], sorted[0] * sorted[sorted.length - 1] * sorted[sorted.length - 2]);
 }
 
 module.exports = highestProduct;
