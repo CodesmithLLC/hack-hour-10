@@ -14,7 +14,6 @@
  */
 
 function binToDec(binary) {
-<<<<<<< HEAD
     for (var i = 0, binArr = binary.split(""), decimal = 0; binArr.length; i++) {
         decimal += Number(binArr.pop()) * Math.pow(2, i);
     }
@@ -22,9 +21,3 @@ function binToDec(binary) {
 }
 
 module.exports = binToDec;
-=======
-
-}
-
-module.exports = binToDec;
->>>>>>> a9fb23ad919e6ee3577811e1d76e8a8eca09b13b
