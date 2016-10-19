@@ -9,21 +9,11 @@
  */
 
 function subsetSum(array, target) {
-  if(target === undefined) return false;
-  let test = 0;
-  for( let i = 0; i < array.length; i++) {
-    if(test === target) return true;
-    test+=array[i];
-    for( let k = 0; k < array.length; k++) {
-    	if(test === target) return true;
-      	test+=array[k];
-    }
-    for( let j = 0; j < array.length; j++) {
-    if(test === target) return true;
-      test-=array[j];
-    }
-  }
-  return false;
+  if (!target) return true; // you've hit the target, it's zerod out
+  if (!array.length) return false;  //the array is empty. oh no
+  return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(0), target)
+  //the magic. left side bottoms out first, it subtracts the first ele from target and tries again with target changed,
+  //the right side tries again with target intact. this recursive branching tries all combinations via || short circuiting
 }
 
 module.exports = subsetSum;
