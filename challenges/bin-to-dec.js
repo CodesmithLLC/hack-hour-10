@@ -21,7 +21,3 @@ function binToDec(binary) {
 }
 
 module.exports = binToDec;
-
-}
-
-module.exports = binToDec;
