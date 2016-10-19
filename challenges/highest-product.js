@@ -4,6 +4,7 @@
 
 
 function highestProduct(array) {
+  if (!arguments.length) return 0;
   if (array.length === 0 || array.length === 1 || array.length === 2) return 0;
   let sorted = array.sort((a, b) => a - b);
   let length = sorted.length - 1;
@@ -11,6 +12,6 @@ function highestProduct(array) {
     sorted[0] * sorted[1] * sorted[length]);
 }
 
-// console.log(highestProduct([1, 2, 3, -5, -8]));
+console.log(highestProduct());
 
 module.exports = highestProduct;
