@@ -5,6 +5,7 @@
 function highestProduct(array) {
 	let emptyArray = [];
 	let thereAreNoNegs = false;
+	if (array.length < 3 ) return 0;
 	let sortedArray = array.sort(function(a,b){ return a-b; });
 
 	thereAreNoNegs = sortedArray.every(elem => elem >= 0);
