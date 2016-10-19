@@ -10,7 +10,7 @@
    const negCheck = [sorted[0], [sorted[1]]];
    const posCheck = [sorted[sorted.length - 1], sorted[sorted.length - 2]];
    if (sorted[0] <= 0 && sorted[sorted.length - 1] <= 0) {
-     return sorted[sorted.length - 1] * sorted[sorted.length - 2] * sorted[sorted.length - 3];
+     return sorted[0] * sorted[1] * sorted[2];
    }
    if (negCheck.reduce((prev, curr) => prev * curr) > posCheck.reduce((prev, curr) => prev * curr)) {
      return negCheck.reduce((prev, curr) => prev * curr) * newArr[0];

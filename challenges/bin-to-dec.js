@@ -17,5 +17,5 @@ function binToDec(binary) {
   if (binary.constructor !== String || binary.match(/[a-zA-Z2-9]/g)) return false;
   return parseInt(binary, 2);
 }
-
+binToDec('11');
 module.exports = binToDec;
