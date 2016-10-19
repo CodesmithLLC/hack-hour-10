@@ -12,12 +12,12 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-	const possibles = {
-		'if': 'fi',
-		'while':'elihw',
-		'for' : 'rof',
-		'end' : 'dne'
-	};
+  const possibles = {
+  'if': 'fi',
+  'while':'elihw',
+  'for' : 'rof',
+  'end' : 'dne'
+  };
 	const multiples = {};
   if (str === '') return true;
  // const removeString = str.replace(/[!@#$%-_^&*]/g," ").toLowerCase();
@@ -25,7 +25,6 @@ function matchWord(str) {
   for (let prop in possibles){
   	//console.log(removeString);
 //  	console.log(prop)
-  	console.log(lowerCase.indexOf([prop]));
   	if (lowerCase.indexOf(possibles[prop]) !== -1){
   	if (!lowerCase.includes(possibles[prop]) || lowerCase.indexOf(possibles[prop]-1) === lowerCase.indexOf(prop) ) return false
   	}
