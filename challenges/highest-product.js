@@ -5,6 +5,7 @@
 function highestProduct(array) {
 	let emptyArray = [];
 	let thereAreNoNegs = false;
+	if (array.length < 3 ) return 0;
 	let sortedArray = array.sort(function(a,b){ return a-b; });
 
 	thereAreNoNegs = sortedArray.every(elem => elem >= 0);
@@ -39,7 +40,7 @@ function highestProduct(array) {
 	}// end of else
 
 }// enc of function
-console.log(highestProduct([-2,-1,0,1,2,2,-4000, -5000]));
+// console.log(highestProduct([-2,2,2, -5000,-1,0,1]));
  			// [5,8,12,44,130]; // 68640
  			// [-4000, -5000, 1, 2, 3] // -60000000
  			// [ -5000, -4000, 1, 2, 3 ]
