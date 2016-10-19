@@ -14,18 +14,10 @@
  */
 
 function binToDec(binary) {
-  if (typeof binary !== 'string')
-    return false;
-  let sum = 0;
-  let mult = 1;
-
-  for (let i = binary.length - 1; i >= 0; i--) {
-    if (binary[i] !== '1' || binary[i] !== '0')
-      return false;
-    if (binary[i] === '1') sum += mult;
-    mult *= 2;
-  }
-  return sum;
+  if (typeof binary !== 'string') return false;
+  return parseInt(binary, 2)
 }
+
+console.log(binToDec('10101'));
 
 module.exports = binToDec;
