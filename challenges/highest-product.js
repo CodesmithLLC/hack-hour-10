@@ -4,8 +4,7 @@
 
 
 function highestProduct(array) {
-  if (!arguments.length) return 0;
-  if (array.length === 0 || array.length === 1 || array.length === 2) return 0;
+  if (!array || array.length < 3) return 0;
   let sorted = array.sort((a, b) => a - b);
   let length = sorted.length - 1;
   return Math.max((sorted[length] * sorted[length - 1] * sorted[length - 2]), 
