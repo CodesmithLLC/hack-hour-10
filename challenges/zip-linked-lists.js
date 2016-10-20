@@ -1,16 +1,24 @@
-/* Merge two linked lists so that their nodes alternate. Let the first node of the zipped list be
- * the first node of the first argument, if it exists.
- * Implement the linked list using only a Node class. No need for a wrapper LinkedList class
- *
- * BONUS: Do this in place
- */
-
 function Node(val) {
   this.value = val;
   this.next = null;
 }
 
 function zip(l1, l2) {
+  let currentA = l1;
+  let nextA = l1.next;
+  let currentB = l2;
+  let nextB = l2.next;
+  while (currentB.next) {
+  	currentA.next = currentB;
+  	currentB.next = nextA;
+  	nextA.next = nextB;
+  	
+  	currentA = nextA;
+  	nextA = currentA.next;
+  	currentB = nextB;
+  	nextB = currentB.next;
+  }
+  return currentA;
 };
 
-module.exports = {Node: Node, zip: zip};
+module.exports = { Node: Node, zip: zip };
