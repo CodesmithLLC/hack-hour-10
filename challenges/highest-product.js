@@ -9,6 +9,9 @@
    const newArr = [sorted[sorted.length - 1], sorted[sorted.length - 2], sorted[sorted.length - 3]];
    const negCheck = [sorted[0], sorted[1]];
    const posCheck = [sorted[sorted.length - 1], sorted[sorted.length - 2]];
+   if (sorted[sorted.length-1] * sorted[sorted.length-2] > newArr.reduce(prev,curr) => prev*curr){
+   		negCheck.reduce( (prev,curr) => prev* curr) * newArr[sorted.length-1];
+   }
    if (sorted[0] <= 0 && sorted[sorted.length - 1] <= 0) {
      return sorted[sorted.length-1] * sorted[sorted.length-2] * sorted[sorted.length-3];
    }
