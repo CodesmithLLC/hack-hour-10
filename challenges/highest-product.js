@@ -3,7 +3,7 @@
  */
 
 function highestProduct(array, product = 1, count = 3) {
-    return array.length < 3 && count === 3
+    return !array || (array.length < 3 && count === 3)
         ? 0
         : !count
             ? product
