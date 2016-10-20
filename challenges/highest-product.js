@@ -8,7 +8,7 @@
    if (array.length < 3) return 0;
    if (count === 0) return multiply;
    return Math.max(
-    highestProduct(array.slice(1)), count - 1, multiply * array[0],
+    highestProduct(array.slice(1), count - 1, multiply * array[0],
     highestProduct(array.slice(1), count, multiply)
 );
 
