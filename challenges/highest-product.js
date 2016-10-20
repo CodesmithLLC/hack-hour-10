@@ -3,7 +3,7 @@
  */
 
 function highestProduct(array, product = 1, count = 3) {
-    return !array || (array.length < 3 && count === 3)
+    return !array || array.length < count
         ? 0
         : !count
             ? product
@@ -13,13 +13,4 @@ function highestProduct(array, product = 1, count = 3) {
 }
 
 module.exports = highestProduct;
-/**
- * Given an array of integers, find the highest product you can get from three of the integers.
- */
 
-function highestProduct(array) {
-
-}
-
-
-module.exports = highestProduct;
