@@ -46,4 +46,5 @@ console.log(matchWord('for__if__rof__fi'));  // -> false     not properly closed
 console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw'));  // -> true
 console.log(matchWord(''));  // -> true
 
+
 module.exports = matchWord;
