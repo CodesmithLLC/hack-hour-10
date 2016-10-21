@@ -11,56 +11,48 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
-  let zipList = {};
-  zipList.length = 0;
-  // let currentl1 = l1.head;
-  // let currentl2 = l2.head;
-  // console.log(l1);
-  // console.log(l1.head);
-  // console.log(l1.head.next);
+  if (!l1) return l2;
+  if (!l2) return l1;
 
+  let head = l1;
+  let temp = l1;
+  l1 = l1.next;
 
-  let current = l1.head;
-  if (l1.head === null) {
-    zipList.head = new Node(current);
-  } else {
-    while (current.next) {
-      zipList.next = current.next;
-      current.next = new Node(current.next.next);
-      zipList.length++;
-    }
+  while (l2 && l1) {
+    temp.next = l2;
+    l2 = l2.next;
+    temp = temp.next;
+
+    temp.next = l1;
+    l1 = l1.next;
+    temp = temp.next;
   }
 
-  return zipList;
+  //  return the rest of the tail if necessary
+  temp.next = l2 ? l2 : l1;
 
+  return head;
 }
 
-
-var bird = { name: 'DoDo' };
-var cat = { name: 'felix' };
-var dog = { name: 'Scooby Doo' };
-var duck = { name: 'Howard' };
-var animals = {
-  head: bird,
-  length: 4
-};
+//  Ex. LINKED LIST1
+var bird = { value: 'DoDo' };
+var cat = { value: 'felix' };
+var dog = { value: 'Scooby Doo' };
+var duck = { value: 'Howard' };
 bird.next = cat;
 cat.next = dog;
 dog.next = duck;
 
-
-var red = { name: 'angry' };
-var blue = { name: 'sad' };
-var black = { name: 'negative' };
-var white = { name: 'blank' };
-var colors = {
-  head: red,
-  length: 4
-};
+//  Ex. LINKED LIST2
+var red = { value: 'angry' };
+var blue = { value: 'sad' };
+var green = { value: 'relaxed' };
+var white = { value: 'refreshed' };
 red.next = blue;
-blue.next = black;
-black.next = white;
+blue.next = green;
+green.next = white;
 
-console.log(zip(animals, colors));
+// TEST
+console.log(zip(bird, red));
 
 module.exports = { Node: Node, zip: zip };
