@@ -25,7 +25,19 @@ return largestNum * secondLargestNum * thirdLargestNum > minNum * secondMinNum *
   minNum * secondMinNum * largestNum;
 }
 
+// Refactored version in progress
+// function highestProduct(array) {
+// if (array === null || array.length < 3) {
+//   return 0;
+// }
 
+// let sortedArr = array.sort((b, a) => b - a);
+
+// let cand1 = sortedArr.slice(0, 3).reduce((a,b) => a * b);
+// let cand2 = sortedArr.slice(-2).concat(sortedArr[0]).reduce((a,b) => a * b);
+
+// return cand1 > cand2 ? cand1 : cand2;
+// }
 
 
 module.exports = highestProduct;
