@@ -4,21 +4,10 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
-  let currentA = l1;
-  let nextA = l1.next;
-  let currentB = l2;
-  let nextB = l2.next;
-  while (currentB.next) {
-  	currentA.next = currentB;
-  	currentB.next = nextA;
-  	nextA.next = nextB;
-  	
-  	currentA = nextA;
-  	nextA = currentA.next;
-  	currentB = nextB;
-  	nextB = currentB.next;
-  }
-  return currentA;
+  if (!l1) return l2;
+  if (!l2) return l1;
+  l1.next = zip(l2, l1.next);
+  return l1;
 };
 
 module.exports = { Node: Node, zip: zip };
