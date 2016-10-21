@@ -7,7 +7,27 @@
  */
 
 function Stack() {
-  // body...
-}
+  this.stack = [];
+};
+
+Stack.prototype.push = function(val) {
+  this.stack.push(val);
+  return this.stack.length;
+};
+
+Stack.prototype.pop = function () {
+  return this.stack.pop();
+};
+
+Stack.prototype.getMax = function () {
+  return this.stack.reduce((max, elem) => elem > max ? elem : max);
+};
+
+let test = new Stack();
+// console.log(test);
+console.assert(test.push(1) === 1);
+console.assert(test.getMax() === 1);
+console.assert(test.pop() === 1);
+console.log(test.pop());
 
 module.exports = Stack;
