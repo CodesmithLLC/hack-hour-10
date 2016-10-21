@@ -12,7 +12,7 @@ function Stack() {
   this.index = 0;
 }
 Stack.prototype.push = function (val) {
-  this.storage[this.index-1] = val;
+  this.storage[this.index] = val;
   this.index += 1;
   return this.index;
 };
