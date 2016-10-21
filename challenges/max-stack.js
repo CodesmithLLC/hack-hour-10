@@ -17,7 +17,10 @@ function Stack() {
   }
   this.pop = () => {
     for (var i = 0; arrayLikeObj[i] !== undefined; i++);
-    if (i && this.max === arrayLikeObj[i - 1]) this.max = arrayLikeObj[i - 1].reduce((a, c) => c > a ? c : a);
+    if (i && this.max === arrayLikeObj[i - 1]) {
+      this.max = undefined;
+      for (var j = 0; j < i - 1; this.max = !this.max || arrayLikeObj[j] > this.max ? arrayLikeObj[j] : this.max, j++);
+    }
     if (i) delete arrayLikeObj[i - 1];
   }
   this.getMax = () => {
