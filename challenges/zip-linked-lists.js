@@ -21,7 +21,7 @@ function zip(l1, l2) {
     l2 = temp2;
     console.log(l1.value, "end" ,l2.value);
   }
-  if (!l1.next || !l2.next){
+  if (!l1.next && !l2.next){
   	l1.next = l2;
   }
   else if (!l1.next){
@@ -48,11 +48,11 @@ function print (l1) {
 let newNode1 = new Node('a');
  newNode1.next = new Node('b');
  newNode1.next.next = new Node('c');
+ newNode1.next.next.next = new Node('d');
 
 let newNode2 = new Node('1');
  newNode2.next = new Node('2');
  newNode2.next.next = new Node('3');
-newNode2.next.next.next = new Node('d');
 
  zip(newNode1,newNode2);
  module.exports = {Node: Node, zip: zip};
