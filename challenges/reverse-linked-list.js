@@ -14,16 +14,6 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
-	let lastFirstValue;
-	if(head.next !== null){
-		reverseLinkedList(head.next, head);
-	}
-	head.next = lastFirstValue;
-}
-
-
-module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
-/*
 	let lastValue = null;
 	let nextValue;
 	let current = head;
@@ -40,4 +30,15 @@ module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
 	}
 	current.next = lastValue;
 	return current;
+}
+
+
+module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
+/*
+
+	let lastFirstValue;
+	if(head.next !== null){
+		reverseLinkedList(head.next, head);
+	}
+	head.next = lastFirstValue;
  */
