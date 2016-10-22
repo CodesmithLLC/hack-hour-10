@@ -4,7 +4,7 @@ function Node(value) {
 }
 
 function reverseLinkedList(head, prev = null) {
-    if (!head) return 0;
+    if (!head) return undefined;
     if (head.next === null) {
         head.next = prev;
         return head;
