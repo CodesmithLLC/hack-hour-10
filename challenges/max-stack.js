@@ -31,50 +31,6 @@ function Stack() {
   this.getMax = () => {
     return this.max;
   }
-  this.print = () => {
-    console.log(this.storage);
-  }
 }
-
-let s = new Stack();
-s.push(5);
-s.print();
-console.log(s.getMax());
-s.push(20);
-s.print();
-console.log(s.getMax());
-s.push(1);
-s.print();
-console.log(s.getMax());
-s.push(12);
-s.print();
-console.log(s.getMax());
-s.push(50);
-s.print();
-console.log(s.getMax());
-s.push(0);
-s.pop();
-s.print();
-console.log(s.getMax());
-s.pop();
-s.print();
-console.log(s.getMax());
-s.pop();
-s.print();
-console.log(s.getMax());
-s.push(100);
-s.print();
-console.log(s.getMax());
-s.push(2000);
-s.print();
-console.log(s.getMax());
-s.pop();
-s.print();
-console.log(s.getMax());
-
-
-
-
-
 
 module.exports = Stack;
