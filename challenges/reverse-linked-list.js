@@ -8,16 +8,6 @@
  *
  */
 
-
-
-
-
-//OR 
-
-// link n2 to n1 
-// link n3 to n2
-// link n4
-
 function Node(value) {
     this.value = value;
     this.next = null;
