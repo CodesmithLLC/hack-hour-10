@@ -46,6 +46,7 @@ function reverseLinkedList(head) {
 // link3.next = link4;
 
 // console.log(reverseLinkedList(link1));
+// console.log(reverseLinkedList(null));
 
 module.exports = {
     Node: Node,
