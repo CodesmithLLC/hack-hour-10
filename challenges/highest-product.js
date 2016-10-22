@@ -8,11 +8,6 @@ function highestProduct(array) {
       return a-b;
     });
 
-    while (sortedArr.includes(0)) {
-      let zeroPos = sortedArr.indexOf(0);
-      sortedArr.splice(zeroPos,1);
-    };
-
     let product1 = 1;
     let product2 = 1;
 
