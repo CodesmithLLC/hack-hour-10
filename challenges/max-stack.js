@@ -16,6 +16,7 @@ function Stack() {
   this.pop = () => {
     let value = this.storage[(this.length - 1)];
     delete this.storage[(this.length - 1)];
+    this.length--;
     return value;
   }
   this.getMax = () => {
