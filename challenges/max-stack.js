@@ -15,6 +15,7 @@
  Stack.prototype.push = function(val) {
    this.stack[this.length] = val;
    this.length++;
+   return this.length;
  }
 
  Stack.prototype.pop = function() {
