@@ -16,3 +16,6 @@ function Stack() {
 }
 
 module.exports = Stack;
+
+let stack = new Stack();
+console.log(stack.getMax());
