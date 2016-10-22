@@ -23,15 +23,6 @@ function Node(value) {
     this.next = null;
 }
 
-// n1 - n2 - n3 
-// n3 - n2 - n1
-
-// tail.next = reverseLinkedListRecurs(tail)
-
-// recursive?
-// if linked list has just two elements swap them
-
-// otherwise link the node to th
 function reverseLinkedList(head) {
     if (!(head.next)) return head;
 
