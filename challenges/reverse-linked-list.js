@@ -14,6 +14,8 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
+    if (!head) return null;
+
     let reversed = null;
     while (head.next) {
         let next = head.next;
@@ -26,18 +28,18 @@ function reverseLinkedList(head) {
     return head;
 }
 
-const a = new Node('A');
-const b = new Node('B');
-const c = new Node('C');
-const d = new Node('D');
-const e = new Node('E');
+// const a = new Node('A');
+// const b = new Node('B');
+// const c = new Node('C');
+// const d = new Node('D');
+// const e = new Node('E');
 
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
+// a.next = b;
+// b.next = c;
+// c.next = d;
+// d.next = e;
 
 // console.log(a);
-console.log(reverseLinkedList(a));
+// console.log(reverseLinkedList(a));
 
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
