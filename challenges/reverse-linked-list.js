@@ -14,31 +14,28 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
-	let previous;
+	// let previous;
 
-	while(head.next){
-		let next = head.next;
-		head.next = previous;
-		previous = head;
-		head = next;
+	// while(head.next){
+	// 	let next = head.next;
+	// 	head.next = previous;
+	// 	previous = head;
+	// 	head = next;
+	// }
+	// head.next = previous;
+	// return head;
+	let lastFirstValue;
+	if(head.next !== null){
+		reverseLinkedList(head.next, head);
 	}
-	head.next = previous;
-	return head;
+	head.next = lastFirstValue;
 }
 
 
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
 /*
 
-function reverseLinkedList(data, next) {
-  this.data = data;
-  this.next = next;
-}
-	let lastFirstValue;
-	if(head.next !== null){
-		reverseLinkedList(head.next, head);
-	}
-	head.next = lastFirstValue;
+
 
 
 	___
