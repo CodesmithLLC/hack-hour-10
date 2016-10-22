@@ -7,7 +7,24 @@
  */
 
 function Stack() {
-  // body...
+  this.storage = {};
+  this.length = 0;
+  this.max = undefined;
+  this.push = function (ele) {
+    if(ele > this.max || this.max === undefined) this.max = ele;
+    this.storage[this.length] = ele;
+    return ++this.length;
+  };
+  this.pop = function () {
+    let temp = this.storage[this.length - 1];
+    delete this.storage[this.length - 1];
+    // deleting makes sure the key disappears, but using undefined instead actually has speed boost
+    this.length--;
+    return temp;
+  };
+  this.getMax = function () {
+    return this.max;
+  };
 }
 
 module.exports = Stack;

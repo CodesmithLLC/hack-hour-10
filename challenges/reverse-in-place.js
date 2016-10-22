@@ -12,7 +12,10 @@
  */
 
 function reverseInPlace(array) {
-
+    if(array[0] !== undefined){
+        return reverseInPlace(array.slice(1)).concat(array[0]);
+    }
+    return array.concat([]);
 }
 
 module.exports = reverseInPlace;
