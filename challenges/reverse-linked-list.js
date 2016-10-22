@@ -29,6 +29,7 @@ function reverseLinkedList(head) {
 		reverseLinkedList(head.next, head);
 	}
 	head.next = lastFirstValue;
+	return head;
 }
 
 
