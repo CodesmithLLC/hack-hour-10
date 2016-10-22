@@ -5,31 +5,13 @@
  * BONUS: Do this in place
  */
 
-function Node(val) {
+function Node(val, n = null) {
   this.value = val;
-  this.next = null;
+  this.next = n;
 }
 
 function zip(l1, l2) {
-  if (!l1) return l2;
-  if (!l2) return l1;
-  
-  const head = l1;
-  let curr = l1;
-  let next1 = l1.next
-  let next2 = l2.next;
-  if (l2) curr.next = l2;
-  if (curr.next) curr = curr.next;
-
-  while (curr) {
-    if (next1) curr.next = next1;
-    if (curr.next) curr = curr.next; else break;
-    next1 = next1.next;
-    if (next2) curr.next = next2;
-    if (curr.next) curr = curr.next; else break;
-    next2 = next2.next;
-  }
-  return head;
+  return !l1 ? l2 : !l2 ? l1 : new Node(l1.value, zip(l2, l1.next))
 };
 
 module.exports = {Node: Node, zip: zip};
