@@ -13,8 +13,7 @@ function matchWord(str) {
   let letters = /^[a-z]+$/;
   let curr = '';
   let inStr = false;
-  // console.log(letters.test(str));
-  // console.log(char);
+
   for (let i = 0; i < str.length; i++) {
     if (letters.test(str[i])) {
       inStr = true;
@@ -44,8 +43,8 @@ function reverse(str) {
   return reversed;
 }
 
-console.log(matchWord('__END_DNE-----'));//t
-console.log(matchWord('__ENDDNE__'));//f
-console.log(matchWord('IF()()fi[]'))//t
-console.log(matchWord('for__if__rof__fi'));//f
+// console.log(matchWord('__END_DNE-----'));//t
+// console.log(matchWord('__ENDDNE__'));//f
+// console.log(matchWord('IF()()fi[]'))//t
+// console.log(matchWord('for__if__rof__fi'));//f
 module.exports = matchWord;
