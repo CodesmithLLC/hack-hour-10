@@ -24,6 +24,7 @@ function printList(head){
     return str;
 }
 
+
 function reverseLinkedList(head) {
     if(!head || !head.next) return head;
     let newHead = null;
