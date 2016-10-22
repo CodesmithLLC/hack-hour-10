@@ -8,9 +8,9 @@
  *
  */
 
-function Node(value, last = null) {
+function Node(value) {
     this.value = value;
-    this.next = last;
+    this.next = null;
 }
 
 function reverseLinkedList(head, last = null) {
