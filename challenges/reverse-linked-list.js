@@ -8,13 +8,16 @@
  *
  */
 
-function Node(value) {
+function Node(value, last = null) {
     this.value = value;
-    this.next = null;
+    this.next = last;
 }
 
-function reverseLinkedList(head) {
-
+function reverseLinkedList(head, last = null) {
+    var look = head.next
+    head.next = last;
+    if (look) return reverseLinkedList(look, head);
+    return head;
 }
 
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
