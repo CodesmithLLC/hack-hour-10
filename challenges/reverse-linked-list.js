@@ -18,7 +18,7 @@ function reverseLinkedList(head) {
     if(!head.next) return head;
     let a = head;
     let track = {};
-    for( let i = 0; a.next; i++) {
+    for( let i = 0; a.next !== null; i++) {
         track[i] = a;
         a = a.next;
     }
