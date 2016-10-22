@@ -15,7 +15,7 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
-    if (typeof head !== 'object') return undefined;
+    if (typeof head !== 'object' || head === null) return undefined;
 
     function generatePrevs(prev, current) {
         current.prev = prev;
