@@ -21,6 +21,7 @@ function printList(head){
         itr = itr.next;
     }
     console.log(str);
+    return str;
 }
 
 function reverseLinkedList(head) {
