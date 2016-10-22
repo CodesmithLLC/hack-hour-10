@@ -7,25 +7,27 @@
  */
 
 function Stack() {
-  const arrayLikeObj = {};
+  this.arrayLikeObj = {};
   this.max = undefined;
   this.push = (thingToPush) => {
-    for (var i = 0; arrayLikeObj[i] !== undefined; i++);
-    arrayLikeObj[i] = thingToPush;
-    this.max = !this.max || thingToPush > this.max ? thingToPush : this.max;
-    return i + 1;
+    for (var u = 0; this.arrayLikeObj[u] !== undefined; u++);
+    this.arrayLikeObj[u] = thingToPush;
+    this.max = this.max === undefined || thingToPush > this.max ? thingToPush : this.max;
+    return u + 1;
   }
   this.pop = () => {
-    for (var i = 0; arrayLikeObj[i] !== undefined; i++);
-    if (i && this.max === arrayLikeObj[i - 1]) {
+    for (var o = 0; this.arrayLikeObj[o] !== undefined; o++);
+    if (o && this.max === this.arrayLikeObj[o - 1]) {
       this.max = undefined;
-      for (var j = 0; j < i - 1; this.max = !this.max || arrayLikeObj[j] > this.max ? arrayLikeObj[j] : this.max, j++);
+      for (let m = 0; m < o - 1; this.max = this.max === undefined || this.arrayLikeObj[m] > this.max ? this.arrayLikeObj[m] : this.max, m++);
     }
-    if (i) delete arrayLikeObj[i - 1];
+    if (o) {
+      let toReturn = this.arrayLikeObj[o - 1];
+      delete this.arrayLikeObj[o - 1];
+      return toReturn;
+    }
   }
-  this.getMax = () => {
-    return this.max;
-  }
+  this.getMax = () => { return this.max }
 }
 
 module.exports = Stack;
