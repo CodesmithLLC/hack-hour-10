@@ -37,7 +37,5 @@ function reverseLinkedList(head) {
     head.next = null;
     return newHead;
 }
-let a1 = new Node(1);
-printList(a1);
-printList(reverseLinkedList(ai));
+
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
