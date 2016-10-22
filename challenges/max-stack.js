@@ -38,13 +38,3 @@ Stack.prototype.getMax = function () {
 };
 
 module.exports = Stack;
-const myStack = new Stack();
-for (let i = -100; i > -500; i--) {
-  console.log('New Length:', myStack.push(i));
-}
-console.log('MaxMax:', myStack.getMax());
-
-for (let i = 0; i < 400; i++) {
-  console.log('popped Val:', myStack.pop());
-  console.log('currMax:', myStack.getMax());
-}
