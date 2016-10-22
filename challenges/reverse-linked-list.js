@@ -14,22 +14,22 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
-	// let previous;
-
-	// while(head.next){
-	// 	let next = head.next;
-	// 	head.next = previous;
-	// 	previous = head;
-	// 	head = next;
-	// }
-	// head.next = previous;
-	// return head;
-	let lastFirstValue;
-	if(head.next !== null){
-		reverseLinkedList(head.next, head);
+	let previous;
+	if(head.next ===  null) return null;
+	while(head.next){
+		let next = head.next;
+		head.next = previous;
+		previous = head;
+		head = next;
 	}
-	head.next = lastFirstValue;
+	head.next = previous;
 	return head;
+	// let lastFirstValue;
+	// if(head.next !== null){
+	// 	reverseLinkedList(head.next, head);
+	// }
+	// head.next = lastFirstValue;
+	// return head;
 }
 
 
