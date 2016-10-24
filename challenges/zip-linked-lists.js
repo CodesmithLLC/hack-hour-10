@@ -6,19 +6,27 @@
  */
 
 function Node(val) {
-  this.value = val;
-  this.next = null;
+	this.value = val;
+	this.next = null;
 }
 
 function zip(l1, l2) {
-	let node1, node2;
-	
-	if(!node1){
-		node1 = new Node(args[0])
-		node2 = new Node(args[1])
+
+	let temp;
+
+	while(11.next && 12.next) {
+		temp = 11;
 		
+		11 = 11.next;
+
+		12 = 12.next;
+
 	}
+
 
 };
 
-module.exports = {Node: Node, zip: zip};
+module.exports = {
+	Node: Node,
+	zip: zip
+};

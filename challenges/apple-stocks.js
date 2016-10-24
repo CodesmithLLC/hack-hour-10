@@ -13,6 +13,16 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+    if(arguments[0] === null) return 0;
+    let array = stock_prices_yesterday:
+    let purchase = array[0];
+    let sale = array[0];
+
+    for(let i = 1; i<array.length; i++ ) {
+        if(purchase>array[i]) purchase = array[i];
+        else if(sale<array[i]) sale = array[i];
+    }
+    return (sale - purchase);
 
 }
 
