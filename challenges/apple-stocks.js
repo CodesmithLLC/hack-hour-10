@@ -19,21 +19,34 @@
 //   }
 //   return trashCanS;
 // } 
+// var test = shitStocks(100);
+// //console.log(test)
+// console.log(bestProfit(test));
+
+
 function bestProfit(stock_prices_yesterday) {
-  if (stock_prices_yesterday.length < 2) return 0;
+  if (stock_prices_yesterday.length < 2 || !stock_prices_yesterday) return 0;
+  var halfday1 = stock_prices_yesterday.slice(0, stock_prices_yesterday.length / 2);
+  var halfday2 = stock_prices_yesterday.slice(stock_prices_yesterday.length / 2);
+  // console.log(halfday1);
+  // console.log(halfday2);
   var largest = -Infinity;
   var smallest = Infinity;
-  function splitAndCompare(array) {
+  function splitAndCompare(array, up) {
     if (array.length > 1) {
-      splitAndCompare(array.slice(0, array.length / 2));
-      splitAndCompare(array.slice(array.length / 2));
+      splitAndCompare(array.slice(0, array.length / 2), up);
+      splitAndCompare(array.slice(array.length / 2), up);
     }
     else { 
-      if (array[0] > largest) largest = array[0];
-      if (array[0] < smallest) smallest = array[0];
+      if (up === 'large') if (array[0] > largest) largest = array[0];
+      else {
+        if (array[0] < smallest) smallest = array[0];
+      }  
     }
   }
-  splitAndCompare(stock_prices_yesterday);
+
+  splitAndCompare(halfday2, 'large');
+   splitAndCompare(halfday1, 'small');
   var profit = largest - smallest;
   return profit > 0 ? profit: 0;
 }
