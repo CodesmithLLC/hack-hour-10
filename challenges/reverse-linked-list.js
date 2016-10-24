@@ -28,7 +28,7 @@ function reverseLinkedList(head) {
 	populateValueArr(head);
 	
 	function reverser(node) {
-		while (valueArr.length > 0) {
+		if (valueArr.length > 0) {
 			node.value = valueArr.pop();
 			reverser(node.next);
 		}
