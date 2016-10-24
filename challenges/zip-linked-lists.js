@@ -12,7 +12,33 @@
 
  function zip(l1, l2) {
 
-  
+  let val = l1.value;
+  let head = new Node(val)
+  let tail = head;
+  l1 = l1.next;
+  let cur = l2;
+
+  while (cur) {
+
+    if (cur === l2) {
+      val = cur.value;
+      tail.next = new Node(val);
+      tail = tail.next;
+      l2 = l2.next;
+      cur === l1;
+    }
+
+    if (cur === l1) {
+      val = cur.value;
+      tail.next = new Node(val);
+      tail = tail.next;
+      l1 = l1.next;
+      cur === l2;
+    }
+
+  }
+  return head;
+
  }
 
 module.exports = {Node: Node, zip: zip};
