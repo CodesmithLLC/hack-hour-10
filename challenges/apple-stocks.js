@@ -13,7 +13,31 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  if (!Array.isArray(stock_prices_yesterday) || stock_prices_yesterday.length === 0) {
+    return 0;
+  }
 
+  let stockHigh = { index: -Infinity, value: -Infinity };
+  let stockLow = { index: -Infinity, value: +Infinity };
+
+  for (let i = 0; i < stock_prices_yesterday.length; i++) {
+    if (stockLow.value >= stock_prices_yesterday[i]) {
+      stockLow.value = stock_prices_yesterday[i];
+      stockLow.index = i;
+    }
+
+    if (stockHigh.value <= stock_prices_yesterday[i]) {
+      stockHigh.value = stock_prices_yesterday[i];
+      stockHigh.index = i;
+    }    
+  }
+  if (stockHigh.index < stockLow.index && stockHigh.value > stockLow.value) {
+    return stockHigh.value - stockLow.value;
+  }
+  else {
+    stock_prices_yesterday.splice(stockHigh.index, 1);
+    return bestProfit(stock_prices_yesterday)
+  }
 }
 
 module.exports = bestProfit;
