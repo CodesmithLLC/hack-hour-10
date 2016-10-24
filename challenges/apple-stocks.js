@@ -13,7 +13,31 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  // if (typeof stock_prices_yesterday != "array") return 0;
+  stockArr = stock_prices_yesterday.map(item => Number(item));
+  let max = {index:0, value: 0};
+  let min = {index:0, value: 0};
+  stockArr.forEach( (price, i) => {
+    if (price > max.value || max.value === 0) {
+        max.value = price;
+        max.index = i;
+    }
+  });
 
+  stockArr.forEach( (price, i) => {
+    if (price < min.value || min.value === 0) {
+      if (i < max.index || min.value === 0) {
+        min.value = price;
+        min.index = i;
+      }
+    }
+  });
+
+  return max.value - min.value;
 }
+
+stock_prices_yesterday = [2, 3, 100, 2, 4, 200, 1, 199];
+// stock_prices_yesterday = [100, 99, 98, 97];
+console.log(bestProfit(stock_prices_yesterday));
 
 module.exports = bestProfit;
