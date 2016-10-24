@@ -32,18 +32,6 @@ Stack.prototype.getMax = function () {
 }
 
 let stack = new Stack();
-stack.push(5);
-stack.push(6)
-stack.push(-5);
-stack.push(7)
-stack.pop();
-stack.push(8);
-stack.push(9);
-stack.push(10);
-stack.push(10);
-console.log(stack.max);
-stack.pop();
-console.log(stack.max);
 
 
 module.exports = Stack;
