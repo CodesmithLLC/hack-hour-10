@@ -15,7 +15,29 @@
 
 function drawStairs(n) {
 
+	let holder = "";
+
+	for(let i = 1; i<=n; i++){
+		let counter = n - i;
+		for (let k = 1; k<=counter; k++) {
+			holder +=" ";
+		}
+
+		for(let j = 1; j<=i; j++){
+			holder +="*";
+		}
+
+		console.log(holder);
+
+		counter = 0;
+		holder ="";
+	}
+
+
+
 }
+
+drawStairs(8);
 
 
 module.exports = drawStairs;

@@ -12,7 +12,20 @@
  */
 
 function reverseInPlace(array) {
-
+	if(!Array.isArray(array)) return;
+	let length = array.length;
+	while(length){
+		for(let i =0; i<array.length-1;i++){
+			if(array[i].charCodeAt(0) < array[i+1].charCodeAt(0)) {
+					let temp = array[i];
+					array[i] = array[i+1];
+					array[i+1] = temp;
+				}
+			}
+	  length--;
+	}
+	return array;
 }
 
+console.log(reverseInPlace());
 module.exports = reverseInPlace;

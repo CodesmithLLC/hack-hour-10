@@ -11,6 +11,14 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+	let node1, node2;
+	
+	if(!node1){
+		node1 = new Node(args[0])
+		node2 = new Node(args[1])
+		
+	}
+
 };
 
 module.exports = {Node: Node, zip: zip};

@@ -8,6 +8,21 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+    let holder = [];
+	str.split('').forEach(function(item, index){
+		if (str[index].match(/[a-z]/i)) {
+  			holder.push(str[index].toLowerCase());
+		}
+	});
+
+	for(let i = 0; i < holder.length/2; i++) {
+		console.log(holder[i],holder[holder.length-1-i]);
+		if(holder[i] !== holder[holder.length-1-i]) {
+		    return false;
+		}
+	}
+	
+	return true;
 
 }
 

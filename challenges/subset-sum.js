@@ -9,7 +9,21 @@
  */
 
 function subsetSum(array, target) {
+<<<<<<< HEAD
+    let len = array.length;
+    for(let i=0; i<len; i++){
+        let sum = 0;
+        for(let n = 0; n<len; n++){
+            sum += array[n];
+            if(sum === target) return true;
+        }
+        let shift = array.shift();
+        array.push(shift);
+    }
+    return false;
+=======
 
+>>>>>>> 6472679f9e9b1e46a3eb30207938cd1a560f742c
 }
 
 module.exports = subsetSum;
