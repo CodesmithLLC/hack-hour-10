@@ -15,8 +15,20 @@ function isSubstring(s1, s2) {
   return s1.indexOf(s2) >= 0;
 }
 
-function stringRotation(s1, s2) {
 
+function stringRotation(s1, s2) {
+  if(s1.length !== s2.length) { return false; }
+
+  let counter = s2.length;
+  
+  s2 = s2.split('');
+
+  while(counter-- > 0) {
+    s2.push(s2.shift());
+    if(s2.join('') === s1) break;
+  }
+  
+  return isSubstring(s1, s2.join(''))
 }
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};

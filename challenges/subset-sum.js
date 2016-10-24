@@ -9,7 +9,20 @@
  */
 
 function subsetSum(array, target) {
-
+  let result = false;
+  function find(array, target, sum, start) {
+    if (sum === target) { 
+      result = true;
+      return;
+    } 
+    
+    for(var i = start; i < array.length; i++) {
+      find(array, target, sum + array[i], i + 1);
+    }
+  }
+  
+  find(array, target, 0, 0);
+  return result;
 }
 
 module.exports = subsetSum;
