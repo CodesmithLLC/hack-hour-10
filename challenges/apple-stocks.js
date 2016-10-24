@@ -14,6 +14,35 @@
 
 function bestProfit(stock_prices_yesterday) {
 
+  // Check edge case where input is not an array
+  if (!Array.isArray(stock_prices_yesterday)) return 0;
+  
+  // Check edge case where values are not numbers
+  for (let i = 0; i < stock_prices_yesterday.length; i++) {
+    const n = stock_prices_yesterday[i];
+    if (isNaN(parseFloat(n)) || !isFinite(n)) return 0;
+  }
+
+  // Track absolute minimum value while looping, starting with first stock price
+  let min = stock_prices_yesterday[0];
+
+  // Track greatest profit while looping
+  let maxProfit = 0;
+  
+  // Track profit with absolute smallest value up to that point
+  stock_prices_yesterday.forEach(stock => {
+    if (stock < min) min = stock;
+    else if (stock - min > maxProfit) maxProfit = stock - min;
+  });
+
+  return maxProfit;
 }
+
+// const stocks1 = [500, 495, 505, 600, 510, 400, 605];
+// const stocks2 = [500, 505, 510, '515', 'x', 525, 530];
+// const stocks3 = [500, 495, 480, 460];
+// console.log(bestProfit(stocks1));
+// console.log(bestProfit(stocks2));
+// console.log(bestProfit(stocks3));
 
 module.exports = bestProfit;
