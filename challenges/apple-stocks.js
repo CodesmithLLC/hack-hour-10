@@ -17,16 +17,17 @@ function bestProfit(stock_prices_yesterday) {
   for (let i = 0; i < stock_prices_yesterday.length; i++) {
     if (typeof stock_prices_yesterday[i] != "number")  return 0;
   }
-  
+
   let maxDiff = 0;
   let diff;
-  stock_prices_yesterday.forEach((price, i) => {
-    for (let j = i + 1; j < stock_prices_yesterday.length; j++) {
-      diff = stock_prices_yesterday[j] - price; 
-      if (diff > maxDiff) maxDiff = diff;
-    }
-  })
-  return maxDiff
+  let min = stock_prices_yesterday[0];
+  
+  for (let i = 1; i < stock_prices_yesterday.length; i++) {
+    diff = stock_prices_yesterday[i] - min; 
+    if (diff > maxDiff) maxDiff = diff;
+    if (stock_prices_yesterday[i] < min) min = stock_prices_yesterday[i];
+  }
+  return maxDiff;
 }
 
 module.exports = bestProfit;
