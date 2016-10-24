@@ -13,22 +13,14 @@
  */
 
 function bestProfit(stocks) {
-  if (stocks.length < 2) return 0;
+  if (stocks.length < 2 || !Array.isArray(stocks)) return 0;
   let currentBest = stocks[1] - stocks[0];
   let currentMin = stocks[0];
   for (let i = 1; i < stocks.length; i += 1) {
-    if (stocks[i] - currentMin > currentBest) {
-      currentBest = stocks[i] - currentMin;
-    }
-    if (stocks[i] < currentMin) {
-      currentMin = stocks[i];
-    }
+    if (stocks[i] - currentMin > currentBest) currentBest = stocks[i] - currentMin;
+    if (stocks[i] < currentMin) currentMin = stocks[i];
   }
   return currentBest > 0 ? currentBest : 0;
 }
 
 module.exports = bestProfit;
-
-const stocks = [542, 512, 588, 662, 611, 777, 443];
-
-console.log(bestProfit(stocks));
