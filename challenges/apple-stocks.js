@@ -13,7 +13,23 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  let min = stock_prices_yesterday[0];
+  let maxProfit = 0;
+  let currProfit = 0;
 
+  // O(n) - iterate through stock prices once while
+  // keeping track of min and max possible profit 
+  for (let i = 1; i < stock_prices_yesterday.length; i++) {
+
+    // calculate possible profit given smallest previous price and current stock price
+    if (min >= stock_prices_yesterday[i]) currProfit = 0;
+    else currProfit = stock_prices_yesterday[i] - min;
+
+    // update min and max profit
+    if (stock_prices_yesterday[i] < min) min = stock_prices_yesterday[i];
+    if (currProfit > maxProfit) maxProfit = currProfit;
+  }
+  return maxProfit;
 }
 
 module.exports = bestProfit;
