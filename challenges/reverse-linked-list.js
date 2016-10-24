@@ -13,23 +13,28 @@ function Node(value) {
     this.next = null;
 }
 
-function reverseLinkedList(head) {
-	let previous;
-
-	while(head.next !== null){
-		let next = head.next;
-		head.next = previous;
-		previous = head;
-		head = next;
-	}
-	head.next = previous;
-	return head;
-	// let lastFirstValue;
-	// if(head.next !== null){
-	// 	reverseLinkedList(head.next, head);
+function reverseLinkedList(head, previous) {
+	/* CORRECT ANSWER:
+	// let previous;
+	// while(head.next !== null){
+	// 	let next = head.next;
+	// 	head.next = previous;
+	// 	previous = head;
+	// 	head = next;
 	// }
-	// head.next = lastFirstValue;
+	// head.next = previous;
 	// return head;
+*/
+	let lastFirstValue = head;
+	previous = head.next;
+
+	if(!head) return null;
+
+	if(head.next !== null){
+		reverseLinkedList(head.next, head);
+	}
+	head.next = lastFirstValue;
+	return head;
 }
 
 
