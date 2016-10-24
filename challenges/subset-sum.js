@@ -9,11 +9,9 @@
  */
 
 function subsetSum(array, target) {
-  if (!target) return true; // you've hit the target, it's zerod out
-  if (!array.length) return false;  //the array is empty. oh no
-  return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(0), target)
-  //the magic. left side bottoms out first, it subtracts the first ele from target and tries again with target changed,
-  //the right side tries again with target intact. this recursive branching tries all combinations via || short circuiting
+  if (!target) return true;
+  if (!array.length) return false;
+  return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target)
 }
 
 module.exports = subsetSum;
