@@ -14,6 +14,9 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
+    // Check head type
+    if (!(head instanceof Node)) throw new Error('Bad Input');
+
     const stack = [];
 
     // Populate our stack with references to our nodes
