@@ -1,4 +1,4 @@
-/**
+ /**
  *  I have an array stock_prices_yesterday where:
  *
  *    - The indices are the time in minutes past trade opening time, which was 9:30am local time
@@ -13,7 +13,20 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-
+  if (!Array.isArray(stock_prices_yesterday)) { return 0 };
+  for (let i = 0; i < stock_prices_yesterday.length; i++) {
+    if (typeof stock_prices_yesterday[i] != "number")  return 0;
+  }
+  
+  let maxDiff = 0;
+  let diff;
+  stock_prices_yesterday.forEach((price, i) => {
+    for (let j = i + 1; j < stock_prices_yesterday.length; j++) {
+      diff = stock_prices_yesterday[j] - price; 
+      if (diff > maxDiff) maxDiff = diff;
+    }
+  })
+  return maxDiff
 }
 
 module.exports = bestProfit;
