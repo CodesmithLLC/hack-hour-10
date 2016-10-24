@@ -15,17 +15,32 @@
 
 // length = 390
 
-function bestProfit(stock_prices_yesterday) {
-  let min = Infinity;
-  let max = stock_prices_yesterday.reduce((a, b) => {
-    min = min > b ? b : min;
-    return b > a ? b : a;
-  }, 0);
+// function bestProfit(stock_prices_yesterday) {
+//   if(!stock_prices_yesterday || stock_prices_yesterday.length === 0) return 0
+//   let min = Infinity;
+//   let max = stock_prices_yesterday.reduce((a, b) => {
+//     min = min > b ? b : min;
+//     return b > a ? b : a;
+//   }, 0);
 
-  return (max - min);
+//   return (max - min) > 0 ? (max - min) : 0;
+// }
+
+function bestProfit(stock_prices_yesterday) { 
+  if (!stock_prices_yesterday || stock_prices_yesterday.length === 0) return 0;
+  let min = stock_prices_yesterday[0], max, profit;
+
+  for (let i = 0; i < stock_prices_yesterday.length; i++) {
+    min = min > stock_prices_yesterday[i] ? stock_prices_yesterday[i] : min;
+    if (stock_prices_yesterday[i] >= min) {
+      max = stock_prices_yesterday[i];
+      profit = (profit > (max - min)) ? profit : (max - min);
+    } else {
+      min = stock_prices_yesterday[i];
+    }
+  }
+
+  return profit;  
 }
-
-
-bestProfit([1, 2, 3, 4, 5, 6, 7, 8]);
 
 module.exports = bestProfit;
