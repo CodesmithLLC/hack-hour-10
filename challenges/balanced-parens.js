@@ -24,7 +24,7 @@
  *
  */
 
-function balancedParens(input){
+function balancedParens(input) {
   // check for invalid input
   if (typeof input !== 'string') return undefined;
 
