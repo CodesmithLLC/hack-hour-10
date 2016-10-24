@@ -24,4 +24,4 @@ function bestProfit(stock_prices_yesterday) {
  return max;
 }
 
-//module.exports = bestProfit;
+module.exports = bestProfit;
