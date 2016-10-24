@@ -13,7 +13,9 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-
+    return !stock_prices_yesterday.length || !Array.isArray(stock_prices_yesterday)
+        ? 0
+        : Math.max(Math.max(...stock_prices_yesterday.slice(1)) - stock_prices_yesterday[0], bestProfit(stock_prices_yesterday.slice(1)))
 }
 
 module.exports = bestProfit;
