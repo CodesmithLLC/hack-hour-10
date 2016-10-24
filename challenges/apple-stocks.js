@@ -14,7 +14,7 @@
 
 function bestProfit(stock_prices_yesterday) {
     if(arguments[0] === null) return 0;
-    let array = stock_prices_yesterday:
+    let array = stock_prices_yesterday;
     let purchase = array[0];
     let sale = array[0];
 
