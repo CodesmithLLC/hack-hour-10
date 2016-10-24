@@ -13,7 +13,22 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  let yes = stock_prices_yesterday;
+  if (!Array.isArray(yes)) return 0;
+  // start time is 930, index = minutes past start, values are prices of stock at time
+  const profit = [];
 
+  //calculate the possible differences
+  for (let i = 0; i < yes.length - 1; i++) {
+    for (let j = i + 1; j <  yes.length; j++) {
+      profit.push(yes[j] - yes[i]);
+    }
+  }
+
+  let maxProfit = Math.max(...(profit.filter(num => Boolean(num))));
+  if (maxProfit < 0) return 0;
+  return maxProfit;
 }
+console.log(bestProfit([500, 400, 600, 700, 800]));
 
 module.exports = bestProfit;

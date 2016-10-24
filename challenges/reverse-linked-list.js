@@ -16,6 +16,7 @@ function Node(value) {
 function reverseLinkedList(head) {
     const stack = [];
     let current = head;
+    if (!(head instanceof Node)) return null;
     while (current) {
         stack.push(current);
         current = current.next;
@@ -39,6 +40,6 @@ function reverseLinkedList(head) {
 //   a.next = b;
 //   b.next = c;
  
-//   console.log(reverseLinkedList(a));
+// console.log(reverseLinkedList({value: 0, next:0}));
 
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
