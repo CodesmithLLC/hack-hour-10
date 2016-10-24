@@ -14,8 +14,8 @@
 
 function bestProfit(stock_prices_yesterday) {
 
-  // Check edge case where input is not an array
-  if (!Array.isArray(stock_prices_yesterday)) return 0;
+  // Check edge case where input is not an array or given less than 2 values
+  if (!Array.isArray(stock_prices_yesterday) || array.length < 2) return 0;
   
   // Check edge case where values are not numbers
   for (let i = 0; i < stock_prices_yesterday.length; i++) {
