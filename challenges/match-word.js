@@ -8,7 +8,29 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+  let wordArr = str.toLowerCase().replace(/[_\W]+/g, " ").split(" ").filter(Boolean);
+	let firstWord = [];
+	
+	if (wordArr.length === 1) return false;
+	
+	let wordHash = wordArr.reduce((acc, curr) => {
+		let str = "";
+		for (let i = curr.length - 1; i >= 0; i--) {
+			str += curr[i];
+		}
+		if (!acc[str]) acc[curr] = str;
+		return acc;
+	}, {});
+	
+	for (let i = 0; i < wordArr.length; i++) {
+		if (wordHash[wordArr[i]]) {
+			firstWord.push(wordArr[i]);
+		} else if (wordHash[firstWord.pop()] !== wordArr[i]) {
+			return false;
+		}
+	}
 
+	return true;
 }
 
 module.exports = matchWord;
