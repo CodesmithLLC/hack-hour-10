@@ -23,9 +23,7 @@ function mergeArrays(arr1, arr2) {
       result.push(arr1.shift());
     } else result.push(arr2.shift());
   }
-  if (arr1.length) result.concat(arr1);
-  if (arr2.length) result.concat(arr2);
-  return result;
+  return result.concat(arr1).concat(arr2);
 }
 
 module.exports = mergeArrays;
