@@ -10,11 +10,18 @@
  * 
  * BONUS: 
  * Complete in O(n) time and O(n) space 
- *
+ * ie, use MergeSort
  */
 
 function mergeArrays(arr1, arr2) {
+  let newArr = [];
+  newArr = arr1.concat(arr2).sort((a,b) => a-b);
+  return newArr;
 
 }
+
+// const my_array = [3,4,6,10,11,15,21];
+// const another_array = [1,5,8,12,14,19];
+// console.log(mergeArrays(my_array, another_array)); //-> [1, 3, 4, 5, 6, 8, 10, 11, 12, 14, 15, 19, 21]
 
 module.exports = mergeArrays;
