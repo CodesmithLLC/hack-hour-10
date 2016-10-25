@@ -18,11 +18,11 @@ function mergeArrays(arr1, arr2) {
   let result = [];
   let a1i = 0;
   let a2i = 0;
-  while (arr1[a1i] && arr2[a2i]) {
-    arr1[a1i] > arr2[a2i] ? (result.push(arr2[a2i]), a2i++) : (result.push(arr1[a1i]), a1i++);
+  while (arr1[a1i] || arr2[a2i]) {
+    if (!arr1[a1i]) result.push(arr2[a2i++])
+    else if (!arr2[a2i]) result.push(arr1[a1i++])
+    else arr1[a1i] > arr2[a2i] ? (result.push(arr2[a2i++])) : (result.push(arr1[a1i++]));
   }
-  if (arr1[a1i] === undefined) result.push(...arr2.splice(a2i, arr2.length));
-  if (arr2[a2i] === undefined) result.push(...arr1.splice(a1i, arr1.length));
   return result;
 }
 
