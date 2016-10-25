@@ -14,27 +14,21 @@
 
  function bestProfit(stocks) {
 
-   let sortedArr = [];
-   for (let i=0; i<stocks.length; i++) {
-     sortedArr.push(stocks[i]);
-   }
+  if (Array.isArray(stocks) == false || stocks.length < 2) return 0;
+  let max = 0;
 
-   sortedArr = sortedArr.sort(function(a, b) {
-     return a - b;
-   });
+  for (let i=0; i<stocks.length-1; i++) {
+    for (let j=i+1; j<stocks.length; j++) {
+      let change = stocks[j] - stocks[i];
+      if (change > max) {
+        max = change;
+      }
+    }
+  }
 
-   let min = sortedArr[0];
-   let max = sortedArr[sortedArr.length-1];
+  return max;
+}
 
-   if (stocks.indexOf(max) > stocks.indexOf(min)) {
-     return max - min;
-   } if (stocks.length === 0 ) {
-     return 0;
-   } else {
-     return bestProfit(stocks.slice(0, stocks.length-2)) || bestProfit(stocks.slice(1));
-   }
-   return 0;
- }
 
 
 module.exports = bestProfit;
