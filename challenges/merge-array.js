@@ -14,7 +14,43 @@
  */
 
 function mergeArrays(arr1, arr2) {
+  if (arr1 && !Array.isArray(arr2)) return arr1;
+  if (arr2 && !Array.isArray(arr1)) return arr2;
 
+  // Loop through each element in your array
+  //  Add elements in the second array to another array up until
+  //  that current element is greater than the element in your array
+  //  --> avoid looping to all by exiting out early and keeping track
+  //      of where you last ended
+
+  const merged = [];
+
+  let i_of_second = 0;
+  arr1.forEach(val => {
+    // Adding any elements less than or equal to current to the merged
+    for (let i = i_of_second; i < arr2.length; i++) {
+      if (arr2[i] <= val) {
+        merged.push(arr2[i]);
+        // We keep track of our position in the second array
+        i_of_second++;
+      }
+      // We break out early to avoid looping through all of the second array
+      else break;
+    }
+    // Finally adding your element
+    merged.push(val);
+  });
+
+  // Takes care of the situation where the second array pre-maturely ends
+  // when the last item of first array is less than one or more elements 
+  // in the second array
+  if (i_of_second < arr2.length) {
+    for (let i = i_of_second; i < arr2.length; i++) {
+      merged.push(arr2[i]);
+    }
+  }
+
+  return merged;
 }
 
 module.exports = mergeArrays;
