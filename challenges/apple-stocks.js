@@ -13,23 +13,24 @@
  */
 
  function bestProfit(stock_prices_yesterday) {
-    console.log(stock_prices_yesterday);
-   let greatest = Math.max.apply(null, stock_prices_yesterday);
-   let smallest = Math.min.apply(null, stock_prices_yesterday);
-   if (greatest === smallest) return 0;
-   if (stock_prices_yesterday.indexOf(greatest) === 0){
-      const stocks = stock_prices_yesterday.slice(1);
-      bestProfit(stocks);
-    }
-   if (!stock_prices_yesterday) return 0;
-   if (stock_prices_yesterday.indexOf(smallest) > stock_prices_yesterday.indexOf(greatest)) {
-     delete stock_prices_yesterday[stock_prices_yesterday.indexOf(smallest)];
-     bestProfit(stock_prices_yesterday);
+    if (!Array.isArray(stock_prices_yesterday)) return 0;
+   const largest = Math.max.apply(null,stock_prices_yesterday);
+   const smallest = Math.min.apply(null,stock_prices_yesterday);
+   if (stock_prices_yesterday[0] === largest){
+      stock_prices_yesterday = stock_prices_yesterday.slice(1);
+      bestProfit(stock_prices_yesterday);
    }
-   console.log(greatest - smallest);
-   return greatest - smallest;
+   if (stock_prices_yesterday[stock_prices_yesterday.length - 1] === smallest){
+      delete stock_prices_yesterday[stock_prices_yesterday.length - 1]
+      stock_prices_yesterday.length--;
+   }
+   const newLarge = Math.max.apply(null,stock_prices_yesterday);
+   const newSmall = Math.min.apply(null,stock_prices_yesterday);
+   console.log(newLarge, newSmall);
+   console.log(newLarge - newSmall);
+   return newLarge - newSmall;
  }
- const prices = [50,5,20,1];
- bestProfit(prices);
+ const prices = [10,30,3,10,40];
+ bestProfit(0);
 
 module.exports = bestProfit;
