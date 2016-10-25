@@ -14,9 +14,7 @@
  */
 
 function mergeArrays(arr1, arr2) {
-  let newArr = [];
-  newArr = arr1.concat(arr2).sort((a,b) => a-b);
-  return newArr;
+  return arr1.concat(arr2).sort((a,b) => a-b);
 
 }
 
