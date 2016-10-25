@@ -30,8 +30,8 @@ function mergeArrays(arr1, arr2) {
   return result.concat(arr1.slice(il)).concat(arr2.slice(ir));
 }
 
-const arr1 = [3, 4, 6, 10, 11, 15, 21];
-const arr2 = [1, 5, 8, 12, 14, 19];
-console.log(mergeArrays(arr1, arr2));//[1, 3, 4, 5, 6, 8, 10, 11, 12, 14, 15, 19, 21]
+// const arr1 = [3, 4, 6, 10, 11, 15, 21];
+// const arr2 = [1, 5, 8, 12, 14, 19];
+// console.log(mergeArrays(arr1, arr2));//[1, 3, 4, 5, 6, 8, 10, 11, 12, 14, 15, 19, 21]
 
 module.exports = mergeArrays;
