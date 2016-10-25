@@ -76,5 +76,5 @@ function bestProfitN(prices){
 }
 
 //console.log(bestProfitN([100,90,80,70,74,73,50,60,70,80,80,100,200,500,800]));
-console.log(bestProfitN([50,60,80,70,80,100,80,90,10]));
+//console.log(bestProfitN([50,60,80,70,80,100,80,90,10]));
 module.exports = bestProfit;
