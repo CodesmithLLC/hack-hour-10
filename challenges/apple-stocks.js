@@ -13,7 +13,7 @@
  */
 
  function bestProfit(stock_prices_yesterday) {
-    if (!Array.isArray(stock_prices_yesterday)) return 0;
+    if (!Array.isArray(stock_prices_yesterday) || stock_prices_yesterday.length < 2) return 0;
    const largest = Math.max.apply(null,stock_prices_yesterday);
    const smallest = Math.min.apply(null,stock_prices_yesterday);
    if (stock_prices_yesterday[0] === largest){
