@@ -17,7 +17,13 @@
 //                     16 ]
 
 function fizzbuzz(num) {
-
+  return Array.from(Array(num), (el, ind) => ind + 1)
+    .map(num => {
+      let message = '';
+      if (num%3 === 0) { message += 'fizz'; }
+      if (num%5 === 0) { message += 'buzz'; }
+      return message ? message : num;
+    });
 }
 
 module.exports = fizzbuzz;
