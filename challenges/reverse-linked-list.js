@@ -34,6 +34,14 @@ function reverseLinkedList(head) {
         else currNode = currNode.next;
     }
     return newHead;
+    if (!head.next) {
+        newHead = head.next;
+        head.next = null;
+        head.next = (reverseLinkedList())
+    }
+    
+    head.next = reverseLinkedList(head.next)
+
 }
 
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
