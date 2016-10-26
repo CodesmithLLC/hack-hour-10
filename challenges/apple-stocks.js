@@ -29,6 +29,4 @@
   return max;
 }
 
-
-
 module.exports = bestProfit;
