@@ -43,7 +43,7 @@ function numToWords(num) {
         60: 'Sixty',
         70: 'Seventy',
         80: 'Eighty',
-        90: 'Ninty',
+        90: 'Ninety',
     };
     let base = num;
     const quadrillions_count = Math.floor(base / 1000000000000000); 
