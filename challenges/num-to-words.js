@@ -88,4 +88,3 @@ function numToWords(num) {
     return result;
   }
 module.exports = numToWords;
-console.log(numToWords(43));
