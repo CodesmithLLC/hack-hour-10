@@ -55,7 +55,7 @@ mags = [
 ];
 
 function numToWords(num) {
-  if (!num || typeof num !== 'Number') return 'Bad input.';
+  if (!num || typeof num !== 'Number') return '';
   if (num === 0) return 'Zero';
   numString = num.toString();
   let chunkArr = [];
