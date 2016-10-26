@@ -27,3 +27,8 @@ function mergeArrays(arr1, arr2) {
 }
 
 module.exports = mergeArrays;
+
+var my_array;
+var another_array = [1,5,8,12,14,19];
+
+console.log(mergeArrays(my_array, another_array));
