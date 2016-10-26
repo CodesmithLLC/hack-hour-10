@@ -13,7 +13,67 @@
  */
 
 function numToWords(num) {
+  if (typeof num === 'string') {
+    num = parseInt(num, 10);
+  }
+  if (typeof num === 'number' && !isNaN(num) && isFinite(num)) {
+    num = num.toString(10);
+  }
+  else {
+    return null;
+  }
+  var digits = num.split('');
+  var digitsNeeded = 3 - digits.length % 3;
+  if (digitsNeeded !== 3) {
+    while (digitsNeeded > 0) {
+      digits.unshift('0');
+      digitsNeeded--;
+    }
+  }
+  var digitsGroup = [];
+  var numberOfGroups = digits.length / 3;
+  for (var i = 0; i < numberOfGroups; i++) {
+    digitsGroup[i] = digits.splice(0, 3);
+  }
+  var digitsGroupLen = digitsGroup.length;
+  var numTxt = [
+    [null, 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'],
+    [null, 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'],
+    [null, 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+  ];
+  var tenthsDifferent = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
+  for (var j = 0; j < digitsGroupLen; j++) {
+    for (var k = 0; k < 3; k++) {
+      var currentValue = digitsGroup[j][k];
+      digitsGroup[j][k] = numTxt[k][currentValue]
+      if (k === 0 && currentValue !== '0') {
+        digitsGroup[j][k] += 'hundred';
+      }
+      else if (k === 1 && currentValue === '1') {
+        digitsGroup[j][k] = tenthsDifferent[digitsGroup[j][2]];
+        digitsGroup[j][2] = 0;
+      }
+    }
+  }
 
+  for (var l = 0; l < digitsGroupLen; l++) {
+    if (digitsGroup[l][1] && digitsGroup[l][2]) {
+      digitsGroup[l][1] += '';
+    }
+    digitsGroup[l].filter(function (e) { return e !== null });
+    digitsGroup[l] = digitsGroup[l].join('');
+  }
+
+  var posfix = [null, 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion'];
+  if (digitsGroupLen > 1) {
+    var posfixRange = posfix.splice(0, digitsGroupLen).reverse();
+    for (var m = 0; m < digitsGroupLen - 1; m++) {
+      if (digitsGroup[m]) {
+        digitsGroup[m] += posfixRange[m];
+      }
+    }
+  }
+  return digitsGroup.join('')
 }
 
 module.exports = numToWords;
