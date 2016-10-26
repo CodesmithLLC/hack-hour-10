@@ -55,7 +55,7 @@ mags = [
 ];
 
 function numToWords(num) {
-  if (!num || typeof num !== 'Number') return '';
+  if (!num || typeof num !== 'number') return '';
   if (num === 0) return 'Zero';
   numString = num.toString();
   let chunkArr = [];
@@ -88,3 +88,4 @@ function numToWords(num) {
     return result;
   }
 module.exports = numToWords;
+console.log(numToWords(43));
