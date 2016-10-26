@@ -13,6 +13,7 @@
  */
 
 function numToWords(num) {
+    if (typeof num !== 'number') { return NaN; };
     if (num === 0) { return 'Zero'; }
     let returnString = ''
     const lookups = {
