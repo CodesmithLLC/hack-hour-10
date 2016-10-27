@@ -12,8 +12,8 @@
  * numToWords(92120000000000000) -> 'NintyTwoQuadrillionOneHundredTwentyTrillion'
  */
 
-function numToWords(num, orig = true) {
-    if (!num) return orig ? 'Zero' : [];
+function numToWords(num) {
+    if (!num) return 'Zero';
     const keyArr = [
         1000000000000000,
         1000000000000,
@@ -84,21 +84,17 @@ function numToWords(num, orig = true) {
         1000000000000: 'Trillion',
         1000000000000000: 'Quadrillion'
     }
-    const wordArr = [];
-
-    for (let i = 0, n = num; n < 0; i++) {
+    let wordArr = [];
+    for (let i = 0, n = num; n > 0; i++) {
         if (n >= keyArr[i]) {
             const count = Math.floor(n / keyArr[i]);
-            console.log(n, count)
-            wordArr = wordArr.concat(numToWords(count, false)).concat(keyObj[keyArr[i]]);
+            wordArr = (count > 1)
+                ? wordArr.concat(numToWords(count)).concat(keyObj[keyArr[i]])
+                : wordArr.concat(keyObj[keyArr[i]]);
             n -= count * keyArr[i];
         }
-
     }
-
-    return orig ? wordArr.join("") : wordArr;
+    return wordArr.join("");
 }
 
 module.exports = numToWords;
-
-console.log(numToWords(2))
