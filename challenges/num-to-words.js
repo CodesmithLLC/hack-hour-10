@@ -3,7 +3,6 @@
 // (a.k.a.Pascal case). Don't worry about spaces.
 // Include support for 11-19 ('Eleven', 'Twelve', 'Thirteen', ... 'Nineteen').
 
-
 /**
  * numToWords(0) -> 'Zero'
  * numToWords(43) -> 'FortyThree'
@@ -14,61 +13,81 @@
  * numToWords(92120000000000000) -> 'NinetyTwoQuadrillionOneHundredTwentyTrillion'
  */
 
-  // 0-9 digits
-  // 11-19 hardcode
-  // 20-90 twenty + digit
-  // 100-900 digit hundred
-  // 1000 digits + thousand
-  // 10000 tens + thousand
-  // 100000 digit + hundred + thousand
-  // repeat pattern for million, billion, trillion, quadrillion
-
 function numToWords(num) {
-  if (num === undefined || typeof num !== 'number') return '';
-  if (num == 0) return 'Zero';
-  if (num == 11) return 'Eleven';
-  if (num == 12) return 'Twelve';
-  if (num == 13) return 'Thirteen';
-  if (num == 14) return 'Fourteen';
-  if (num == 15) return 'Fifteen';
-  if (num == 16) return 'Sixteen';
-  if (num == 17) return 'Seventeen';
-  if (num == 18) return 'Eighteen';
-  if (num == 19) return 'Nineteen';
+  if (typeof num !== 'number' || num < 0 || num > 9007199254740991) return '';
+  if (num === 0) return 'Zero';
 
-  let result = '';
-  let numStr = num.toString();
-  let reversed = numStr.split('').reverse().join('');
+const ONE_TO_NINETEEN = [
+  "One", "Two", "Three", "Four", "Five",
+  "Six", "Seven", "Eight", "Nine", "Ten",
+  "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
+  "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+];
 
-  const digits = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
-  const tens = ['Ten', 'Twenty', 'Thirty', 'Fourty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+const TENS = [
+  "Ten", "Twenty", "Thirty", "Forty", "Fifty",
+  "Sixty", "Seventy", "Eighty", "Ninety"
+];
 
-  for (let i = numStr.length - 1; i >= 0; i--) {
-    if ((Number(reversed[i]) - 1) < 0);
-    else if (i === 0) result += digits[Number(reversed[i]) - 1];
-    else if (i === 1) result += tens[Number(reversed[i]) - 1];
-    else if (i === 2) result += digits[Number(reversed[i]) - 1] + 'Hundred';
-    else if (i === 3) result += digits[Number(reversed[i]) - 1] + 'Thousand';
-    else if (i === 4) result += tens[Number(reversed[i]) - 1];
-    else if (i === 5) result += digits[Number(reversed[i]) - 1] + 'Hundred';
-    else if (i === 6) result += digits[Number(reversed[i]) - 1] + 'Million';
-    else if (i === 7) result += tens[Number(reversed[i]) - 1];
-    else if (i === 8) result += digits[Number(reversed[i]) - 1] + 'Hundred';
-    else if (i === 9) result += digits[Number(reversed[i]) - 1] + 'Billion';
-    else if (i === 10) result += tens[Number(reversed[i]) - 1];
-    else if (i === 11) result += digits[Number(reversed[i]) - 1] + 'Hundred';
-    else if (i === 12) result += digits[Number(reversed[i]) - 1] + 'Trillion';
-    else if (i === 13) result += tens[Number(reversed[i]) - 1];
-    else if (i === 14) result += digits[Number(reversed[i]) - 1] + 'Hundred';
-    else if (i === 15) result += digits[Number(reversed[i]) - 1] + 'Quadrillion';
-    else if (i === 16) result += tens[Number(reversed[i]) - 1];
-    else if (i === 17) result += digits[Number(reversed[i]) - 1] + 'Hundred';
-  }
+const SCALES = ["Thousand", "Million", "Billion", "Trillion", "Quadrillion"];
 
-  // does not work for teens beyond one hundred or 0 in single digit place beyond one thousand  
-  return result;
+// helper function for use with Array.filter
+function isTruthy(item) {
+  return !!item;
 }
 
-// console.log(numToWords(500300200232));
+// convert a number into "chunks" of 0-999
+function chunk(number) {
+  const thousands = [];
+
+  while (number > 0) {
+    thousands.push(number % 1000);
+    number = Math.floor(number / 1000);
+  }
+
+  return thousands;
+}
+
+// translate a number from 1-999 into English
+function inEnglish(number) {
+  let thousands, hundreds, tens, ones, words = [];
+
+  if (number < 20) {
+    return ONE_TO_NINETEEN[number - 1]; // may be undefined
+  }
+
+  if (number < 100) {
+    ones = number % 10;
+    tens = number / 10 | 0; // equivalent to Math.floor(number / 10)
+
+    words.push(TENS[tens - 1]);
+    words.push(inEnglish(ones));
+
+    return words.filter(isTruthy).join("-");
+  }
+
+  hundreds = number / 100 | 0;
+  words.push(inEnglish(hundreds));
+  words.push("Hundred");
+  words.push(inEnglish(number % 100));
+
+  return words.filter(isTruthy).join("");
+}
+
+// append the word for a scale. Made for use with Array.map
+  function appendScale(chunk, exp) {
+    let scale;
+    if (!chunk) return null;
+    scale = SCALES[exp - 1];
+    return [chunk, scale].filter(isTruthy).join("");
+  }
+
+  return chunk(num)
+  .map(inEnglish)
+  .map(appendScale)
+  .filter(isTruthy)
+  .reverse()
+  .join("");
+}
 
 module.exports = numToWords;
