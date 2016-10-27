@@ -37,17 +37,17 @@ function numToWords(num) {
   }
   var digitsGroupLen = digitsGroup.length;
   var numTxt = [
-    [null, 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'],
-    [null, 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'],
-    [null, 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    [null, 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'],
+    [null, 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'],
+    [null, 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'],
   ];
-  var tenthsDifferent = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
+  var tenthsDifferent = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen']
   for (var j = 0; j < digitsGroupLen; j++) {
     for (var k = 0; k < 3; k++) {
       var currentValue = digitsGroup[j][k];
       digitsGroup[j][k] = numTxt[k][currentValue]
       if (k === 0 && currentValue !== '0') {
-        digitsGroup[j][k] += 'hundred';
+        digitsGroup[j][k] += 'Hundred';
       }
       else if (k === 1 && currentValue === '1') {
         digitsGroup[j][k] = tenthsDifferent[digitsGroup[j][2]];
@@ -64,7 +64,7 @@ function numToWords(num) {
     digitsGroup[l] = digitsGroup[l].join('');
   }
 
-  var posfix = [null, 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion'];
+  var posfix = [null, 'Thousand', 'Million', 'Billion', 'Trillion', 'Quadrillion', 'Quintillion', 'Sextillion'];
   if (digitsGroupLen > 1) {
     var posfixRange = posfix.splice(0, digitsGroupLen).reverse();
     for (var m = 0; m < digitsGroupLen - 1; m++) {
