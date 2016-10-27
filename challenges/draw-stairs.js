@@ -12,9 +12,25 @@
 ******
 
 */
-
 function drawStairs(n) {
+	function repeat(string, times) {
+		var result = "";
+		for (let i = 1; i <= times; i++) {
+		  result = result + string;
+		}
+		return result;
+	}
 
+	if (1> n || n > 100) {
+		return console.log("invalid number");
+	} else {
+		let star = "*";
+		let space = " ";
+
+		for (let i = 1; i <= n; i++) {
+			console.log(repeat(space, n - i) + repeat(star, i));
+		}
+	}
 }
 
 
