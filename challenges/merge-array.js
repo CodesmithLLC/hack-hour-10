@@ -12,34 +12,28 @@
  * Complete in O(n) time and O(n) space 
  *
  */
+
 function mergeArrays(arr1, arr2) {
-  if (!Array.isArray(arr1) && !Array.isArray(arr2)) {
-    return undefined;
+  var merged = [];
+  while (arr1.length && arr2.length) {
+    if (arr1[0] < arr2[0]) {
+      merged.push(arr1.shift());
+    }
+    else {
+      merged.push(arr2.shift());
+    }
   }
-  if (!Array.isArray(arr1)) {
-    return arr2;
-  }
-  if (!Array.isArray(arr2)) {
-    return arr1;
-  }
-
-let i = 0;
-let j = 0;
-let output = [];
-
-while (arr1[i] && arr2[j]) {
-  if (arr1[i] >= arr2[j]) {
-    output.push(arr2[j]);
-    j++;
-  }
-  else if (arr1[i] <= arr2[j]) {
-    output.push(arr1[i]);
-    i++;
-  }
+  return merged.concat(arr1, arr2);
 }
-arr1[i] ? output.concat(arr2) : output.concat(arr1); 
-return output;
-}
+
+// Slow solution
+// function mergeArrays(arr1, arr2) {
+//   return arr1.concat(arr2).sort(function(a, b) {
+//     return a > b;
+//   });
+// }
+
+// Faster solution uses temp vars representing indices
 
 module.exports = mergeArrays;
 
