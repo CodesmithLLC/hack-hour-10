@@ -23,7 +23,6 @@ function permPalin(str) {
 
   // sum the frequencies
   const charMod2Sum = Object.keys(charCounts).reduce((prev, curr) => prev + charCounts[curr], 0);
-  
   return charMod2Sum <= 1;
 }
 
