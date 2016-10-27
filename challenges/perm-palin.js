@@ -11,7 +11,7 @@
 
 function permPalin(str) {
 
-//convert the string to a letter
+//convert the string to an array
   let strArr = str.split('');
   let letterObj = {};
 
@@ -24,7 +24,7 @@ function permPalin(str) {
     }
   }
 
-//Make sure there is an even number of each letter. If one letter appears one time, it is still a valid palindrome. 
+//Make sure there is an even number of each letter. If one letter appears one time, it is still a valid palindrome.
   let oneCount = 0;
   for (let key in letterObj) {
     if (letterObj[key] % 2 != 0) {
