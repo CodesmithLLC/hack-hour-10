@@ -88,7 +88,7 @@ function numToWords(num) {
     for (let i = 0, n = num; n > 0; i++) {
         if (n >= keyArr[i]) {
             const count = Math.floor(n / keyArr[i]);
-            wordArr = (count > 1)
+            wordArr = (count > 1 || i <= 5)
                 ? wordArr.concat(numToWords(count)).concat(keyObj[keyArr[i]])
                 : wordArr.concat(keyObj[keyArr[i]]);
             n -= count * keyArr[i];
