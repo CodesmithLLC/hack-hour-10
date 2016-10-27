@@ -26,8 +26,6 @@
    }
    const newLarge = Math.max.apply(null,stock_prices_yesterday);
    const newSmall = Math.min.apply(null,stock_prices_yesterday);
-   console.log(newLarge, newSmall);
-   console.log(newLarge - newSmall);
    if (newLarge - newSmall < 0) return 0;
    return newLarge - newSmall;
  }
