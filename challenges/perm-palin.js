@@ -10,7 +10,7 @@
  */
 
 function permPalin(str) {
-  if (str === null || str === undefined) return str;
+  if (str === null || str === undefined) return false;
 	if (str.length == 1) return true;
   if (str.length === str.split('').reverse().join('')) return true;
   var counter = {};
@@ -22,11 +22,15 @@ function permPalin(str) {
     else ++counter[str[i]];
   }
   var countSingles = 0;
+  var tots = 0;
   for (var keys in counter) { 
     if (counter[keys] === 1)++countSingles;
+    else tots += counter[keys]
   }
-  return countSingles <= 1 ? true : false;
+
+  return (tots % 2) && countSingles >= 1 ? false : true;
 }
 
 module.exports = permPalin;
 
+console.log(permPalin('cbac'))
