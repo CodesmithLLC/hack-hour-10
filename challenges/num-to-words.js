@@ -84,7 +84,6 @@ function numToWords(num) {
         1000000000000: 'Trillion',
         1000000000000000: 'Quadrillion'
     }
-
     let wordArr = [];
     for (let i = 0, n = num; n > 0; i++) {
         if (n >= keyArr[i]) {
