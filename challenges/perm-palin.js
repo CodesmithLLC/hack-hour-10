@@ -24,12 +24,12 @@ function permPalin(str) {
     }
   }
 
-//Make sure there is an even number of each letter. If one letter appears one time, it is still a valid palindrome.
-  let oneCount = 0;
+//Make sure there is an even number of each letter. If one letter appears an odd number of times, the word is still a valid palindrome.
+  let oddCount = 0;
   for (let key in letterObj) {
     if (letterObj[key] % 2 != 0) {
-      if (letterObj[key] == 1 && oneCount === 0) {
-        oneCount++;
+      if (oddCount === 0) {
+        oddCount++;
       } else {
         return false;
       }
