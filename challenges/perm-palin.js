@@ -10,7 +10,21 @@
  */
 
 function permPalin(str) {
-	
+    if (str.length === 1) return true;
+    else {
+        let length = str.length;
+        for (let i = 0; i < length; i++) {
+            if (str.length !== 1) {
+                let reverse = str.split('').reverse().join('');
+                console.log(str, reverse)
+                if (str === reverse) return true;
+                else {
+                    str = str.slice(1, str.length);
+                }
+            }
+        }
+        return false;
+    }
 }
 
 module.exports = permPalin;
