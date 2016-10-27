@@ -12,6 +12,15 @@
  * numToWords(92120000000000000) -> 'NintyTwoQuadrillionOneHundredTwentyTrillion'
  */
 
+
+let dictionaryZeros = { 1000000000000000: 'Quadrillion',
+                           1000000000000: 'Trillion',
+                              1000000000: 'Billion',
+                                 1000000: 'Million',
+                                    1000: 'Thousand'};
+let dictionaryNums = { 1: 'One', 2: 'two'}
+          // quadrillion       trillion      billion     million  thousand
+let keys = [1000000000000000, 1000000000000, 1000000000, 1000000, 1000]
 function numToWords(num) {
 
 }
