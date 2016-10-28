@@ -15,9 +15,22 @@
  *
  * BONUS: Do this in place
  */
-
+//non-bonus way
 function rotateGrid(grid, n) {
+  let result = [];
 
+  for (let i = 0; i < n; i++) {
+    let tempArr = [];
+    for (let j = n - 1; j >= 0; j--) {
+      tempArr.push(grid[j][i]);
+    }
+    result.push(tempArr);
+  }
+
+  return result;
 }
 
+console.log(rotateGrid([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3));
+//[[7, 4, 1], [8, 5, 2], [9, 6, 3]]
+      // console.log(grid[i][j], tempArr);
 module.exports = rotateGrid;
