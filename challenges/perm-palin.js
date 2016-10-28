@@ -20,7 +20,7 @@ function permPalin(str) {
   }
 
   for (let key in cache) {
-    if (cache[key]%2!==0) odd++;
+    if (cache[key] % 2 !== 0) odd++;
   }
 
   return odd <= 1;
