@@ -17,7 +17,22 @@
  */
 
 function rotateGrid(grid, n) {
-
+    for (let x = 0; x < Math.floor(n / 2); x++) {
+        for (let y = x; y < n - x; y++) {
+            let tempUR = grid[y][n - x - 1];
+            let tempDR = grid[n - x - 1][n - y - 1];
+            let tempDL = grid[n - y - 1][x];
+            let tempUL = grid[x][y];
+            let temp = grid[y][n - x - 1];
+            grid[y][n - x - 1] = grid[x][y];
+            grid[x][y] = grid[n - y - 1][x];
+            grid[n - y - 1][x] = grid[n - x - 1][n - y - 1];
+            grid[n - x - 1][n - y - 1] = temp;
+        }
+    }
+    return grid;
 }
 
 module.exports = rotateGrid;
+
+console.log(rotateGrid([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3))
