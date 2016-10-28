@@ -17,6 +17,7 @@
  */
 
 function rotateGrid(grid, n) {
+  if( n <= 1) return grid;
   let newGrid = [];
   for(let i = 0; i < n; ++i){newGrid.push([])}
   
