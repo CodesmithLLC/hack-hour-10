@@ -30,5 +30,5 @@ function rotateGrid(grid, n) {
 }
 
 module.exports = rotateGrid;
-console.log(rotateGrid( [
-    [1, 2, 3], [4, 5, 6], [7, 8, 9]  ]));
+// console.log(rotateGrid( [
+//     [1, 2, 3], [4, 5, 6], [7, 8, 9]  ]));
