@@ -21,16 +21,15 @@ function permPalin(str) {
     }
     else ++counter[str[i]];
   }
-  var countSingles = 0;
+  var countOdds = 0;
   var tots = 0;
   for (var keys in counter) { 
-    if (counter[keys] === 1)++countSingles;
+    if (counter[keys] % 2)++countOdds;
     else tots += counter[keys]
   }
 
-  return (tots % 2) && countSingles >= 1 ? false : true;
+  return countOdds > 1 ? false : true;
 }
 
 module.exports = permPalin;
 
-console.log(permPalin('cbac'))
