@@ -17,7 +17,21 @@
  */
 
 function rotateGrid(grid, n) {
+  // Check if it is a square
+  // Doesnt check all rows but just checks the firt row
+  if (!Array.isArray(grid) || grid.length !== n || grid[0].length !== n) throw new Error('invalid grid');
 
+  // We see that each column becomes the new row in a 90 degrees rotation
+  const rotatedGrid = [];
+  for (let i = 0; i < n; i++) {
+    const newRow = [];
+    for (let j = n - 1; j >= 0; j--) {
+      newRow.push(grid[j][i]);
+    }
+    rotatedGrid.push(newRow);
+  }
+
+  return rotatedGrid;
 }
 
 module.exports = rotateGrid;
