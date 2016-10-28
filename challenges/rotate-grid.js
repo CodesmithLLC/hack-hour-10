@@ -17,7 +17,28 @@
  */
 
 function rotateGrid(grid, n) {
+if (!Array.isArray(grid)) {
+  return undefined;
+}
 
+if (grid.length !== n || grid[0].length !== n) {
+  return 'n must accurately represent grid dimensions';
+}
+
+let inputGrid = grid;
+let outputGrid = [];
+let outputRow = [];
+
+for (let i = 0; i < n; i++) {
+
+inputGrid.forEach(inputRow => {
+  outputRow.unshift(inputRow.shift());
+});
+
+outputGrid.push(outputRow);
+outputRow = [];
+}
+return outputGrid;
 }
 
 module.exports = rotateGrid;
