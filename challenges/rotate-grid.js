@@ -17,7 +17,70 @@
  */
 
 function rotateGrid(grid, n) {
+  const floor = Math.floor(n / 2);
+  const ceil = Math.ceil(n / 2);
 
+  for (let i = 0; i < floor; i++) {
+    for (let j = 0; j < ceil; j++) {
+      let temp = grid[i][j];
+      grid[i][j] = grid[n - 1 - j][i];
+      grid[n - 1 - j][i] = grid[n - 1 - i][n - 1 - j];
+      grid[n - 1 - i][n - 1 - j] = grid[j][n - 1 - i];
+      grid[j][n - 1 - i] = temp;
+    }
+  }
+
+  return grid;
 }
+
+// const grid1 = [   [1, 2, 3],
+//                   [4, 5, 6],
+//                   [7, 8, 9]   ]
+// console.log(rotateGrid(grid1, 3));
+/*
+4x4 BEFORE
+[   [1, 2, 3, 10],
+ *  [4, 5, 6, 16],
+ *  [7, 8, 9, 11],
+ *  [12, 13, 14, 15]   ]
+ *
+  [0][0] becomes [0][3] === [0][n]
+  [0][3] becomes [3, 3] === [n][n]
+  [3, 3] becomes [3][0] === [n][n - 3]
+  [3][0] becomes [0][0] === [n - 3][0]
+
+  pattern for corners:
+  if [0][0] add n-1 to second array
+  if [0][n] add n-1 to first array
+  if [n][n] subtract n-1 from second array
+  if [n][0] subtract n-1 from first array
+
+  pattern for middle outer:
+    [0][1] becomes [1][3] === [1][n]
+    [0][2] becomes [2][3] === [2][n]
+    if [0] and not 0 or n second, then swap array indices and make second n
+
+    [1][3] becomes [3][2] === [n][n - 1]
+    [2][3] becomes [3][1] === [n][n - 2]
+    if end in n, swap and subtract second from n
+
+  general pattern:
+  [0,i] -> [i,n-i],
+  [i,n-i] -> [n-1,n-(i+1)],
+  [n-1,n-(i+1)] -> [n-(i+1),0],
+  [n-(i+1),0] to [0,i]
+
+*/
+
+/*
+4x4 AFTER
+[   [12, 7, 4, 1],
+ *  [13, 8, 5, 2],
+ *  [14, 9, 6, 3],
+ *  [15, 11, 16, 10]   ]
+/*
+
+
+*/
 
 module.exports = rotateGrid;
