@@ -22,7 +22,7 @@ function rotateGrid(grid, n) {
       cur.forEach(ele => acc.push([ele]));
       return acc
     } else {
-      cur.forEach((ele, ind) => acc[ind].unshift(ele));
+      cur.forEach((ele, ind2) => acc[ind2].unshift(ele));
       return acc;
     }
   }, []);
