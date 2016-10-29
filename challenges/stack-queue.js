@@ -16,10 +16,14 @@ function Stack() {
 
 
 function Queue() {
-    const inStack = new Stack();
-    const outStack = new Stack();
-    this.enqueue = (val) => { inStack.push(val); outStack.push(inStack.pop()) }
-    this.dequeue = () => { return outStack.pop() }
+    this.last = new Stack();
+    this.next = new Stack();
+    this.enqueue = (val) => {
+        while (this.last.length) { this.next.push(this.last.pop()) }
+        this.next.push(val);
+        while (this.next.length) { this.last.push(this.next.pop()) }
+    }
+    this.dequeue = () => { return this.last.pop() }
 }
 
-module.exports = {Stack: Stack, Queue: Queue};
+module.exports = { Stack: Stack, Queue: Queue };
