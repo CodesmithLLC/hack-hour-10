@@ -23,8 +23,11 @@ function rotateGrid(grid, n) {
     for (let j = grid[i].length-1; j >= 0; j--) {
       newRow.push(grid[j][i]);
     }
-    console.log(newRow);
+    newGrid.push(newRow)
+
   }
+  //console.log(newGrid);
+  return newGrid;
 
 }
 const sample = [   [1, 2, 3],
