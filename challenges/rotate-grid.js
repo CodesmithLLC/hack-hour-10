@@ -33,17 +33,23 @@ function rotateGrid(grid, n) {
   return grid;
 }
 
+// const grid0 = [[0, 1],
+//                [2, 3]]
+// console.log(rotateGrid(grid0, 2));
 // const grid1 = [   [1, 2, 3],
 //                   [4, 5, 6],
 //                   [7, 8, 9]   ]
 // console.log(rotateGrid(grid1, 3));
+
+// const grid2 = [   [1, 2, 3, 4],
+//                   [5, 6, 7, 8],
+//                   [9, 10, 11, 12],
+//                   [13, 14, 15, 16]];
+// console.log(rotateGrid(grid2, 4));
 /*
 4x4 BEFORE
-[   [1, 2, 3, 10],
- *  [4, 5, 6, 16],
- *  [7, 8, 9, 11],
- *  [12, 13, 14, 15]   ]
- *
+
+ 
   [0][0] becomes [0][3] === [0][n]
   [0][3] becomes [3, 3] === [n][n]
   [3, 3] becomes [3][0] === [n][n - 3]
@@ -69,17 +75,6 @@ function rotateGrid(grid, n) {
   [i,n-i] -> [n-1,n-(i+1)],
   [n-1,n-(i+1)] -> [n-(i+1),0],
   [n-(i+1),0] to [0,i]
-
-*/
-
-/*
-4x4 AFTER
-[   [12, 7, 4, 1],
- *  [13, 8, 5, 2],
- *  [14, 9, 6, 3],
- *  [15, 11, 16, 10]   ]
-/*
-
 
 */
 
