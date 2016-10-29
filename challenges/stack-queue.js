@@ -4,33 +4,24 @@
 
 function Stack() {
   this.stack = [];
-  this.push = function (value) {
-    this.stack.push(value);
-  }
-  this.pop = function () {
-    return this.stack.pop();
-  }
+  this.push = value => this.stack.push(value);
+  this.pop = () => this.stack.pop()
 }
-
 
 /**
 * Queue Class
 */
 
 function Queue() {
-  this.stack1 = new Stack();
-  this.stack2 = new Stack();
+  this.a = new Stack();
+  this.b = new Stack();
 
-  this.enqueue = function (value) {
-    this.stack1.push(value);
-  }
+  this.enqueue = value => this.a.push(value);
 
-  this.dequeue = function () {
-    while (this.stack1.stack.length)
-      this.stack2.push(this.stack1.pop());
-    let popped = this.stack2.pop();
-    while (this.stack2.stack.length)
-      this.stack1.push(this.stack2.pop());
+  this.dequeue = () => {
+    while (this.a.stack.length) this.b.push(this.a.pop());
+    let popped = this.b.pop();
+    while (this.b.stack.length) this.a.push(this.b.pop());
     return popped;
   }
 }
