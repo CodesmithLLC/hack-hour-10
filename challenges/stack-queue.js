@@ -31,7 +31,7 @@ Queue.prototype.enqueue = function (val) {
   this.stack_1.push(val);
 }
 Queue.prototype.dequeue = function () {
-  let dequeueVal = null;
+  let dequeueVal = undefined;
   while (this.stack_1.length > 0) {
     dequeueVal = this.stack_1.pop();
     if ( this.stack_1.length !== 0 ) {
