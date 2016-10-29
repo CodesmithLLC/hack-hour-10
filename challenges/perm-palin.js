@@ -36,3 +36,26 @@ function permPalin(str) {
 }
 
 module.exports = permPalin;
+
+
+
+function permPalin(str) {
+  const storage = {};
+
+  str.split('').forEach((letter) => {
+    if (!storage[letter]) {
+      storage[letter] = 1;
+    } else {
+      storage[letter] += 1;
+    }
+  });
+
+  for (let key in storage) {
+    if (storage[key] === 1 || storage[key] % 2 !== 0) {
+      return false;
+    }
+  }
+
+
+
+}

@@ -12,30 +12,39 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
-  let current = l1.head;
-  let temp = l2.head;
-  const zipped = {};
+  if (!l1) return l2;
+  if (!l2) return l1;
 
-  while (temp !== l2.tail) {
-    current.next = temp;
-    temp.next = current.next;
-    current.next = temp;
+  let head = l1;
+  let temp = l1;
+  l1 = l1.next;
+
+  while (l2 && l1) {
+    temo.next = l2;
+    l2 = l2.next;
+    temp.next = l1;
+
+    temp.next = l1;
+    l1 = l1.next;
     temp = temp.next;
   }
 
-//not sure what to push this into, but need to return that at the end?
+  temp.next = l2 ? l2 : l1;
+  return head;
+}
 
-//i think this works for two linked lists with just two nodes each  
-  // if (l1 && l2) {
-  //   l1.head.next = l2.head;
-  //   l2.head.next = l1.tail;
-  //   l1.tail.next = l2.tail;
-  // } else { 
-  //   return l1;
-  // }
+// function zip(l1, l2) {
+//   let current = l1.head;
+//   let temp = l2.head;
+//   const zipped = {};
+
+//   while (temp !== l2.tail) {
+//     current.next = temp;
+//     temp.next = current.next;
+//     current.next = temp;
+//     temp = temp.next;
+//   }
+// }
 
 
-  }
-};
-
-module.exports = {Node: Node, zip: zip};
+module.exports = { Node: Node, zip: zip };
