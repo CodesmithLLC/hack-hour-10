@@ -13,6 +13,7 @@ function Stack() {
   this.pop = () => {
     let value = this.storage[--this.index];
     delete this.storage[this.index];
+    this.index = this.index < 0 ? 0 : this.index;
     return value;
   }
 }
@@ -24,9 +25,9 @@ function Stack() {
 function Queue() {
   this.iniStorage = new Stack();
   this.finStorage = new Stack();
-  this.push = (item) => this.iniStorage.push(item);
+  this.enqueue = (item) => this.iniStorage.push(item);
 
-  this.shift = () => {
+  this.dequeue = () => {
     while(this.iniStorage.index > 0) {
       this.finStorage.push(this.iniStorage.pop());
     }
@@ -36,9 +37,15 @@ function Queue() {
     }
     return shifted;
   }
-
 }
 
+// var myQueue = new Queue();
+// myQueue.enqueue(1);
+// myQueue.enqueue(2);
+// myQueue.enqueue(3);
+// myQueue.enqueue(4);
+
+// console.log(myQueue.dequeue(), myQueue);
 
 
 module.exports = {Stack: Stack, Queue: Queue};
