@@ -25,10 +25,7 @@ function rotateGrid(grid, n) {
          }
          result.unshift(row);
     }
-  console.log(result);
   return result;
 }
 
-
-rotateGrid(sample,3);
 module.exports = rotateGrid;
