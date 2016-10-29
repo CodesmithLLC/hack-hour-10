@@ -4,7 +4,9 @@
 
 
 function Stack() {
-
+    this.storage = [];
+    this.pop = () => { return this.storage.pop(); }
+    this.push = (val) => { this.storage.push(val); }
 }
 
 
@@ -14,7 +16,10 @@ function Stack() {
 
 
 function Queue() {
-
+    const inStack = new Stack();
+    const outStack = new Stack();
+    this.enqueue = (val) => { inStack.push(val); outStack.push(inStack.pop()) }
+    this.dequeue = () => { return outStack.pop() }
 }
 
 module.exports = {Stack: Stack, Queue: Queue};
