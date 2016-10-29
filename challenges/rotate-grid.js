@@ -17,21 +17,18 @@
  */
 
 function rotateGrid(grid, n) {
-  const newGrid = [];
-  for (let i = 0; i < grid.length; i++) {
-    const newRow = [];
-    for (let j = grid[i].length-1; j >= 0; j--) {
-      newRow.push(grid[j][i]);
+    const result = [];
+    for (let k = 0; k < n; k++) {
+  	   const row = [];
+  	    for (let i = 0; i < n; i++) {
+  	       row.unshift(grid[i].pop());
+         }
+         result.unshift(row);
     }
-    newGrid.push(newRow)
-
-  }
-  //console.log(newGrid);
-  return newGrid;
-
+  console.log(result);
+  return result;
 }
-const sample = [   [1, 2, 3],
-                    [4, 5, 6],
-                    [7, 8, 9]  ];
+
+
 rotateGrid(sample,3);
 module.exports = rotateGrid;
