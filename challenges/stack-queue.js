@@ -113,6 +113,7 @@ console.log(q.pop());
 q.print("popped /\\");
 q.push(100);
 q.print("pushed 100");
+// give me results or give me tacos
 */
 
 module.exports = {Stack: Stack, Queue: Queue};
