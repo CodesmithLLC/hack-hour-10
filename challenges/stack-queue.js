@@ -24,6 +24,8 @@ function Queue() {
         while (this.next.length) { this.last.push(this.next.pop()) }
     }
     this.dequeue = () => { return this.last.pop() }
+    this.push = (val) => { this.enqueue(val) }
+    this.pop = () => { return this.dequeue(val) }
 }
 
 module.exports = { Stack: Stack, Queue: Queue };
