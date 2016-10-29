@@ -21,6 +21,9 @@ function Stack() {
   this.isEmpty = () => { return this.data.length === 0; };
   this.peek = () => {return this.data[ this.data.length - 1 ];};
   this.length = () => {return this.data.length;};
+
+  this.enqueue = (item) => this.push(item);
+  this.dequeue = () => this.pop();
 }
 
 
@@ -72,6 +75,8 @@ function Queue() {
     this.activeStack === 1 ? this.ds1.print() : this.ds2.print();
   };
 
+  this.enqueue = (item) => this.push(item);
+  this.dequeue = () => this.pop();
 }
 
 
