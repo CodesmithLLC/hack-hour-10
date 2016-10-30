@@ -63,6 +63,9 @@ Queue.prototype.dequeue = function () {
   ////////////////////////////////////
   // more concise approach
   if (!this.outbox.length) {
+    if (!this.inbox.length) {
+      return undefined;
+    }
     while (this.inbox.length) {
       this.outbox.push(this.inbox.pop());
     }
