@@ -3,7 +3,13 @@
  */
 
 function twoSum(arr, n) {
+  const cache = {};
+	let result = false;
+	arr.forEach(num => {
+		!cache[n - num] ? cache[num] = n - num : result = true;
+	});
 
+	return result;
 }
 
 module.exports = twoSum;

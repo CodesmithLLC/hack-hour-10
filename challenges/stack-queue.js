@@ -9,10 +9,11 @@ function Stack() {
 
 Stack.prototype.push = function(value) {
 	this.storage.push(value);
+  return this.storage.length - 1;
 };
 
 Stack.prototype.pop = function() {
-	this.storage.pop();
+	return this.storage.pop();
 };
 
 
@@ -36,7 +37,7 @@ Queue.prototype.dequeue = function() {
 		for (let i = 0; i < this.storage[0].storage.length; i++) {
 			this.storage[1].storage.push(this.storage[0].storage.pop());
 		}
-		this.storage[0].storage.pop();
+		return this.storage[0].storage.pop();
 	}
 };
 
