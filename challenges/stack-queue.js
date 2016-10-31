@@ -17,16 +17,10 @@ function Queue() {
   this.end = new Stack();
   this.beginning = new Stack();
   this.dequeue = function () {
-    while(this.end.length > 1) {
+    while(this.end.length > 0) {
     this.beginning.push(this.end.pop());
     }
-    let output = this.end.pop();
-    if( this.beginning.length > 0) {
-    	let swap = this.beginning;
-    	this.beginning = this.end;
-    	this.end = swap;
-    }
-    return output;
+    return this.beginning.pop();
   };
   this.enqueue = function (ele) {
     return this.end.push(ele);

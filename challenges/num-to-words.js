@@ -13,7 +13,7 @@
  */
 
 function numToWords(num) {
-  if (num === 0) return 'zero';
+  if (num === 0) return 'Zero';
   if (typeof num === 'string') {
     num = parseInt(num, 10);
   }
