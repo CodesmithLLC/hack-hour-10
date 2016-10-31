@@ -84,17 +84,18 @@ function numToWords(num) {
         1000000000000: 'Trillion',
         1000000000000000: 'Quadrillion'
     }
-    let wordArr = [];
+    let words = '';
     for (let i = 0, n = num; n > 0; i++) {
         if (n >= keyArr[i]) {
-            const count = Math.floor(n / keyArr[i]);
-            wordArr = (count > 1 || i <= 5)
-                ? wordArr.concat(numToWords(count)).concat(keyObj[keyArr[i]])
-                : wordArr.concat(keyObj[keyArr[i]]);
-            n -= count * keyArr[i];
+            const count = Math.floor(n / keyArr[i])
+            words = count > 1 || i <= 5
+                ? words.concat(numToWords(count)).concat(keyObj[keyArr[i]])
+                : words.concat(keyObj[keyArr[i]])
+            n -= count * keyArr[i]
         }
     }
-    return wordArr.join("");
+    return words
 }
 
 module.exports = numToWords;
+console.log(numToWords(92120000000000000))
