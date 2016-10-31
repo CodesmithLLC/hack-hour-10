@@ -8,7 +8,7 @@ function Stack() {
   this.storage = {};
 
   this.push = function (value) {
-    this.storage[this.length++] = value;
+    return this.storage[this.length++] = value;
   }
 
   this.pop = function () {
@@ -35,7 +35,7 @@ function Queue() {
   this.OutboxStack = new Stack();
   
   this.enqueue = function (value) {
-    this.InboxStack.push(value);
+    return this.InboxStack.push(value);
   };
   
   this.dequeue = function () {
@@ -43,15 +43,16 @@ function Queue() {
       if (!this.InboxStack.length) return undefined;
       while (this.InboxStack.length) this.OutboxStack.push(this.InboxStack.pop());
     }
-  }
 
     return this.OutboxStack.pop();
+  }
 }
 
-const newQueue = new Queue();
-newQueue.enqueue(9);
-newQueue.enqueue(8);
-newQueue.dequeue();
-console.log(newQueue);
+// const newQueue = new Queue();
+// newQueue.enqueue(9);
+// newQueue.enqueue(8);
+// newQueue.dequeue();
+// newQueue.dequeue();
+// console.log(newQueue);
 
 module.exports = {Stack: Stack, Queue: Queue};
