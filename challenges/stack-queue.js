@@ -1,7 +1,7 @@
 /**
  * Create a stack.Then create a queue using two stacks.
  */
-function Stack() {  //  LIFO  last-in first-out
+function Stack() {  //  LIFO
   this.storage = {};
   this.length = 0;
 }
@@ -13,23 +13,23 @@ Stack.prototype.push = function (val) {
 }
 
 Stack.prototype.pop = function () {
-  let result = this.storage[this.length];
+  let result = this.storage[this.length - 1];
   delete this.storage[this.length - 1];
   this.length--;
   return result;
 }
 
-let testStack = new Stack();
-testStack.push(10);
-testStack.push(20);
-testStack.push(30);
-testStack.pop();
+// let testStack = new Stack();
+// testStack.push(10);
+// testStack.push(20);
+// testStack.push(30);
+// testStack.pop();
 // console.log(testStack);
 
 /**
-* Queue Class
+* Queue Class (traditional way)
 */
-// function Queue() {   //  FIFO first-in first-out
+// function Queue() {   //  FIFO
 //   this.storage = {};
 //   this.length = 0;
 // }
@@ -52,22 +52,25 @@ testStack.pop();
 //   return result;
 // }
 
+/**
+* Queue Class (using 2 stacks)
+*/
 function Queue() {
-  let inbox = new Stack();
-  let outbox = new Stack();
+  this.inbox = new Stack();
+  this.outbox = new Stack();
 }
 
 Queue.prototype.enqueue = function (val) {
-  inbox.push(val);
+  this.inbox.push(val);
 }
 
 Queue.prototype.dequeue = function() {
-  if (outbox.length === 0) {
-    while (inbox.length !== 0) {
-      outbox.push(inbox.pop());
+  if (this.outbox.length === 0) {
+    while (this.inbox.length !== 0) {
+      this.outbox.push(this.inbox.pop());
     } 
   }
-  return outbox.pop();
+  return this.outbox.pop();
 }
 
 let testQueue = new Queue();
@@ -75,9 +78,9 @@ testQueue.enqueue(0);
 testQueue.enqueue(1);
 testQueue.enqueue(2);
 testQueue.enqueue(3);
+console.log(testQueue);
 testQueue.dequeue();
 console.log(testQueue);
-
 
 
 module.exports = {Stack: Stack, Queue: Queue};
