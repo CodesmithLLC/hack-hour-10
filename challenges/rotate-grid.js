@@ -29,7 +29,7 @@ function rotateGrid(grid, n) {
       grid[j][n - 1 - i] = temp;
     }
   }
-
+  
   return grid;
 }
 
