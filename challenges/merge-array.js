@@ -13,33 +13,14 @@
  *
  */
 
-// function mergeArrays(arr1, arr2) {
-//     return !arr1 || !arr1.length
-//         ? arr2
-//         : !arr2 || !arr2.length
-//             ? arr1
-//             : arr1[0] <= arr2[0]
-//                 ? [arr1[0]].concat(mergeArrays(arr1.slice(1), arr2))
-//                 : [arr2[0]].concat(mergeArrays(arr1, arr2.slice(1)))
-// }
-
 function mergeArrays(arr1, arr2) {
-    if (!arr2 || !arr2.length) return arr1;
-    if (!arr1 || !arr1.length) return arr2;
-    const min = Math.min(Math.min(...arr1), Math.min(...arr2));
-    const max = Math.max(Math.max(...arr1), Math.max(...arr2));
-    const pivot = (min + max) / 2;
-    const small = [];
-    const big = [];
-    for (let i = 0, temp; i < arr1.length; i++)
-        if (arr1[i] > pivot) big.push(arr1[i]);
-        else small.push(arr1[i]);
-    for (let i = 0, temp; i < arr2.length; i++)
-        if (arr2[i] > pivot) big.push(arr2[i]);
-        else small.push(arr2[i]);
-    return mergeArrays(small.slice(0, Math.floor(small.length / 2)), small.slice(Math.floor(small.length / 2)))
-        .concat(mergeArrays(big.slice(0, Math.floor(big.length / 2)), big.slice(Math.floor(big.length / 2))))
+return !arr1 || !arr1.length
+        ? arr2
+        : !arr2 || !arr2.length
+            ? arr1
+            : arr1[0] <= arr2[0]
+                ? [arr1[0]].concat(mergeArrays(arr1.slice(1), arr2))
+                : [arr2[0]].concat(mergeArrays(arr1, arr2.slice(1)))
 }
 
 module.exports = mergeArrays;
-
