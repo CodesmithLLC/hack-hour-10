@@ -89,8 +89,8 @@ function numToWords(num) {
         if (n >= keyArr[i]) {
             const count = Math.floor(n / keyArr[i])
             words = count > 1 || i <= 5
-                ? words.concat(numToWords(count)).concat(keyObj[keyArr[i]])
-                : words.concat(keyObj[keyArr[i]])
+                ? words + numToWords(count) + keyObj[keyArr[i]]
+                : words + keyObj[keyArr[i]]
             n -= count * keyArr[i]
         }
     }
@@ -98,4 +98,3 @@ function numToWords(num) {
 }
 
 module.exports = numToWords;
-console.log(numToWords(92120000000000000))
