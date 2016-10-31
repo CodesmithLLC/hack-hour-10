@@ -37,4 +37,6 @@ function twoSumLinear(arr, n){
   return false;
 }
 
+// travis CI love <3 run my tests!
+
 module.exports = twoSum;
