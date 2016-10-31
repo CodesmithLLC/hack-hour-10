@@ -3,18 +3,30 @@
  */
 
 function twoSum(arr, n) {
+  // for (let i = 0; i < arr.length; i++) {
+  //   let without = arr.slice();
+  //   without.splice(i, 1);
+
+  //   for (let j = 0; j < without.length; j++) {
+  //     if (arr[i] + without[j] === n) {
+  //       return true;
+  //     }
+  //   }
+  // }
+  // return false;
+
+  let store = {};
+  let toSum = [];
+
   for (let i = 0; i < arr.length; i++) {
-    let without = arr.slice();
-    without.splice(i, 1);
-
-    for (let j = 0; j < without.length; j++) {
-      if (arr[i] + without[j] === n) {
-        return true;
-      }
+    store[n - arr[i]] = i;
+    if (store[arr[i]] !== undefined || i === arr.length-1) {
+      toSum[0] = arr[i];
+      toSum[1] = arr[store[arr[i]]]
+      return toSum[0] + toSum[1] === n;
     }
+    
   }
-  return false;
 }
-
 
 module.exports = twoSum;
