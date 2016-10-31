@@ -3,7 +3,11 @@
  */
 
 function twoSum(arr, n) {
-
+  if (!n) return true;
+  if (!arr.length) return false;
+  return arr.reduce( (acc, ele) => {
+    return arr.includes(n - ele) || acc;
+  }, false);
 }
 
 module.exports = twoSum;
