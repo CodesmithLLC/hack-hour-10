@@ -11,8 +11,8 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-function validBST(tree) {
-    return (!this.left || (this.left.value <= this.value && validBST(this.left))) && (!this.right || (this.right.value > this.value && validBST(this.right)))
+function validBST(tree, topVal) {
+    return (!tree.left || (tree.left.value <= tree.value && tree.left.value <= topVal ? topVal : tree.value && validBST(tree.left, topVal ? topVal : tree.value))) && (!tree.right || (tree.right.value > tree.value && tree.right.value > topVal ? topVal : tree.value && validBST(tree.right, topVal ? topVal : tree.value)))
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
