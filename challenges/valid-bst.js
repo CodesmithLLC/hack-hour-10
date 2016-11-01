@@ -32,23 +32,23 @@ function validBST(tree) {
 
   return valid;
 }
-let a = new BinaryTree(20);
-let al = new BinaryTree(10);
-let ar = new BinaryTree(25);
-let bl = new BinaryTree(5);
-let br = new BinaryTree(13);
-let cl = new BinaryTree(22);
-let cr = new BinaryTree(27);
+// let a = new BinaryTree(20);
+// let al = new BinaryTree(10);
+// let ar = new BinaryTree(25);
+// let bl = new BinaryTree(5);
+// let br = new BinaryTree(13);
+// let cl = new BinaryTree(22);
+// let cr = new BinaryTree(27);
 
-a.left = al;
-a.right = ar;
+// a.left = al;
+// a.right = ar;
 
-al.left = bl;
-al.right = br;
+// al.left = bl;
+// al.right = br;
 
-ar.left = cl;
-ar.right = cr;
-cr.right = new BinaryTree(500);
-console.log(validBST(a));
+// ar.left = cl;
+// ar.right = cr;
+// cr.right = new BinaryTree(500);
+// console.log(validBST(a));
 
 module.exports = { BinaryTree: BinaryTree, validBST: validBST };
