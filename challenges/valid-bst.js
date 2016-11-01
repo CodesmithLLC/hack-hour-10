@@ -19,6 +19,7 @@ function validBST(tree) {
        validBST(this.left);
        validBST(this.right);
   }
+}
   return true;
 }
 
