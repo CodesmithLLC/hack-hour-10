@@ -13,9 +13,13 @@ function BinaryTree(val) {
 
 function validBST(tree) {
 	let rootNode = tree.value;
+
+	if(rootNode && tree.left.value === undefined && tree.right.value === undefined) return true;
 	if(tree === null) return true;
+
 	if(tree.left !== undefined && tree.left.value > rootNode) return false;
-	if(tree.right !== undefined && tree.right.value <= tree.value) return false;
+
+	if(tree.right !== undefined && tree.right.value <= rootNode) return false;
 
 	return validBST(tree.left) && validBST(tree.right);
 }
