@@ -33,6 +33,6 @@ function validBST(tree) {
 // node_1.right = node_5;
 // node_5.right = node_6_Err;
 
-console.log(validBST(node_1));
+// console.log(validBST(node_1));
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
