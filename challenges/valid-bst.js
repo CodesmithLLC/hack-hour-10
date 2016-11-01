@@ -20,6 +20,7 @@ function validBST(tree) {
       return true;
     return false;
   }
+  return bst(tree, -Infinity, Infinity);
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
