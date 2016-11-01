@@ -1,20 +1,15 @@
-/**
- * Write a function for reversing a linked list.
- * Your function will have one input: the head of the list
- * Your function should return the new head of the list
- *
- * BONUS:
- * Do it in place
- *
- */
-
 function Node(value) {
     this.value = value;
     this.next = null;
 }
 
-function reverseLinkedList(head) {
-
+function reverseLinkedList(head, prev = null) {
+    if (!head) return null;
+    const next = head.next;
+    head.next = prev;
+    return next ? reverseLinkedList(next, head) : head;
 }
 
-module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
+module.exports = { Node: Node, reverseLinkedList: reverseLinkedList };
+
+console.log(reverseLinkedList(null));
