@@ -23,17 +23,24 @@ function validBST(tree) {
         })()
     }
     find(tree);
-    let lowest = values[0];
-    return values.reduce( (acc, cur) => {
-        return acc && cur >= lowest;
-    }, true);
+    let unsortedValues = [];
+    values.forEach( (ele) => {
+        unsortedValues.push(ele);
+    })
+    let sortedValues = values.sort( (a,b) => a - b);
+    for(let i = 0; i < values.length; i++) {
+        if(sortedValues[i] !== unsortedValues[i]) {
+            return false;
+        }
+    }
+    return true;
 }
 
-let myTree = new BinaryTree(5);
-myTree.left = new BinaryTree(4);
-myTree.right = new BinaryTree(8);
-myTree.right.right = new BinaryTree(10);
+// let myTree = new BinaryTree(5);
+// myTree.left = new BinaryTree(4);
+// myTree.right = new BinaryTree(8);
+// myTree.right.right = new BinaryTree(10);
 
-console.log(validBST(myTree));
+// console.log(validBST(myTree));
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
