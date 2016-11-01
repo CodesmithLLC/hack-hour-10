@@ -27,9 +27,12 @@ function bestProfit(stock_prices_yesterday) {
 	//if input is invalid (stock_prices_yesterday !== an array || there are more than 390 indices)
 	if ( (!Array.isArray(stock_prices_yesterday) || stock_prices_yesterday.length > 390) )  return 0;
 
-	let maxNumber = Math.max(...stock_prices_yesterday), minNumber = Math.min(...stock_prices_yesterday);
+	// let maxNumber = Math.max(...stock_prices_yesterday), minNumber = Math.min(...stock_prices_yesterday);
 
-	if (maxNumber - minNumber !== 0) return maxNumber - minNumber;
+
 }
 
 module.exports = bestProfit;
+
+
+  }
