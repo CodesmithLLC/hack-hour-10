@@ -12,7 +12,13 @@
  */
 
 function reverseInPlace(array) {
-
+    var len;
+    for(var i = 0, len = array.length; i < Math.floor(len/2); ++i){
+        console.log("swapping " + array[i] + " and " +  array[len-i-1]);
+        var tmp = array[i];
+        array[i] = array[len-i-1]; 
+        array[len -i-1] = tmp;
+    }
 }
 
 module.exports = reverseInPlace;
