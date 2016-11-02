@@ -8,6 +8,14 @@
  */
 
 function gcd(a, b) {
+	let divisor = b;
+	let remainder = a % b;
+
+	if(remainder === 0) {
+		return divisor;
+	}
+	
+	return gcd(divisor, remainder); 
 
 }
 
