@@ -54,4 +54,33 @@ function Queue() {
   };
 }
 
+/* APPROACH #2
+
+function Queue() {
+  this.stack1 = new Stack();
+  this.stack2 = new Stack();
+  this.enqueue = (val) => {
+    this.stack1.push(val);
+  },
+  this.dequeue = () => {
+    if (this.stack2.storage.length !== 0) {
+      return this.stack2.pop();
+    } 
+    else {
+      while (this.stack1.storage.length) {
+        this.stack1.storage.forEach((val, i = 1) => {
+          this.stack2.storage[this.stack1.storage.length - i] = val;
+          i++;
+        });
+        this.stack1.storage = [];
+        let val = this.stack2.pop();
+        this.stack2.storage = this.stack2.storage.slice(1);
+        return val;
+      }
+    }
+  };
+}
+
+*/
+
 module.exports = {Stack: Stack, Queue: Queue};
