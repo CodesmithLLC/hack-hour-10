@@ -20,10 +20,10 @@ function validBST(tree) {
 	if(tree === null) return true;
 
 	//checking for validity of the left values
-	if(tree.left !== undefined && tree.left.value > rootNode && tree.left.right > rootNode) return false;
+	if(tree.left !== undefined && tree.left.value > rootNode) return false;
 
 	//checking for validity of the right values
-	if(tree.right !== undefined && tree.right.value <= rootNode && tree.right.left <= rootNode) return false;
+	if(tree.right !== undefined && tree.right.value <= rootNode) return false;
 
 
 
