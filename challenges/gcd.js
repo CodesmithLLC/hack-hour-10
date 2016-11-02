@@ -8,7 +8,16 @@
  */
 
 function gcd(a, b) {
-
+  if(a === undefined || b === undefined) return;
+  let grcodi = 1;
+  let smaller = Math.abs(a) > Math.abs(b) ? Math.abs(b) : Math.abs(a);
+  for( let i = 2; i <= smaller; i++ ){
+    if(a%i === 0 && b%i === 0) {
+      grcodi = i;
+    }
+  }
+  return grcodi;
 }
+
 
 module.exports = gcd;
