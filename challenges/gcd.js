@@ -28,7 +28,7 @@
 // find the largest factor of the smallest number and recursively call the function when found
    } else {
      let i = 2;
-     while (i < smallest) {
+     while (i < smallest / i) {
        if (smallest % i === 0) {
          return gcd(smallest / i, largest);
        }
