@@ -15,4 +15,15 @@ for (let i = 0; i < arr.length; i++) {
 return false;
 }
 
+// Hash improved
+// function twoSum(arr, n) {
+//   var nums = {};
+//   for (var i = 0; i < arr.length; i++) {
+//     if (nums[n - arr[i]]) return true;
+//     nums[arr[i]] = 1;
+//   }
+//   return false;
+// }
+
+
 module.exports = twoSum;

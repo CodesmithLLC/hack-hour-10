@@ -7,8 +7,16 @@
  *
  */
 
+// EUCLID'S ALGORITHM
+
+gcd = (a, b) => b ? gcd(b, a % b) : a;
+
+/*
+
+APPROACH #1
+
 function gcd(a, b) {
-if (a % b === 0) {
+if (a / b === 1) {
   return a;
 }
 	
@@ -22,5 +30,6 @@ for (let i = divisor; i > 0; i--) {
 return 1;
 }
 
+*/
 
 module.exports = gcd;
