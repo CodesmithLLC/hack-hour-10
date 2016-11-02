@@ -23,8 +23,8 @@ const gcd = (a, b) => b ? gcd(b, a % b) : a;
 //   }
 // }
 
-console.log(gcd(10, 8));
-console.log(gcd(10, 9));
-console.log(gcd(500, 400));
+// console.log(gcd(10, 8));
+// console.log(gcd(10, 9));
+// console.log(gcd(500, 400));
 
 module.exports = gcd;
