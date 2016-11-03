@@ -26,7 +26,14 @@
  */
 
 function applyIt(func, args) {
-
+    // Getting functions arguments and putting them (as strings) in an array.
+    let argIter = args[Symbol.iterator];
+    // Getting function instructions.
+    let funcBlock = func.toString().slice(func.toString().indexOf('{') + 1, -1).trim();
+    // Creating and returning new function.
+    return new Function(...args, funcBlock);
 }
 
 module.exports = applyIt;
+
+console.log(applyIt)
