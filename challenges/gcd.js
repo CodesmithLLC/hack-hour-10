@@ -11,4 +11,6 @@ function gcd(a, b) {
 
 }
 
-module.exports = gcd;
+console.log(gcd(10, 8))// -> 2
+console.log(gcd(10, 9))// -> 1
+// module.exports = gcd;
