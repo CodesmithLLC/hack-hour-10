@@ -9,7 +9,6 @@
 
 function matchWord(str) {
   const wordsRegex = /[^a-z]*([a-z]+)[^a-z]*/gi
-
   // extract all of the words into an array
   const words = [];
   for (let word = wordsRegex.exec(str); word !== null; word = wordsRegex.exec(str)) {
@@ -35,5 +34,4 @@ function matchWord(str) {
   return (words.length === 0);
 }
 
-// console.log(matchWord('while elihw try yrt if cat dog god try tac yrt fi'));
 module.exports = matchWord;

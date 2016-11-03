@@ -64,5 +64,4 @@ function reverseLinkedIterative(head) {
     return nodeToSwap;
 }
 
-
 module.exports = { Node: Node, reverseLinkedList: reverseLinkedList };
