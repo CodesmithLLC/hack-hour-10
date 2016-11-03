@@ -15,7 +15,7 @@ function reverseInPlace(array, times = array.length) {
     if(times > array.length){
         return reverseInPlace(array.slice(1), times - 1).concat(array[0]);
     }
-    return array ? array : array.concat([]);
+    return !array || !array.length ? [] : array;
 }
 
 module.exports = reverseInPlace;
