@@ -26,7 +26,16 @@
  */
 
 function applyIt(func, args) {
-
+  return function() {
+    return func(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9], args[10]);
+  }
 }
+
+var jae = function(name, age, location) {
+  return name + " is " + age + " and he lives in " + location;
+};
+ 
+var jaero = applyIt(jae, ["Jae", 19, "South Carolina"]);
+console.log(jaero()); //Returns "Jae is 19 and he lives in South Carolina"
 
 module.exports = applyIt;
