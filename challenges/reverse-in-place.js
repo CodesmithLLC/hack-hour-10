@@ -11,11 +11,11 @@
  *
  */
 
-function reverseInPlace(array) {
-    if(array[0] !== undefined){
-        return reverseInPlace(array.slice(1)).concat(array[0]);
+function reverseInPlace(array, times = array.length) {
+    if(times > array.length){
+        return reverseInPlace(array.slice(1), times - 1).concat(array[0]);
     }
-    return array.concat([]);
+    return array ? array : array.concat([]);
 }
 
 module.exports = reverseInPlace;
