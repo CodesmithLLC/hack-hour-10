@@ -27,13 +27,19 @@
 
 function applyIt(func, args) {
   // return func(...args);
-  let coolFunc = func;
+  // for (let i = 0; i < args.length; i++) {
+  //   func = func.bind(this, args[i]);
+  // }
 
+  // return func;
+  let toEval = 'func('
   for (let i = 0; i < args.length; i++) {
-    coolFunc = coolFunc.bind(this, args[i]);
+    if (i === args.length - 1) toEval += 'args[' + i + ']' + ')';
+    else toEval += 'args[' + i + ']' + ',';
   }
-
-  return coolFunc;  
+  return function () {
+    return eval(toEval);
+  } 
 }
 
 module.exports = applyIt;
