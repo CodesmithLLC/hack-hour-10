@@ -55,5 +55,5 @@ function applyIt(func, args) {
 
 // //Returns "Jae is 19 and he lives in South Carolina"
 
-// // module.exports = applyIt;
+module.exports = applyIt;
 
