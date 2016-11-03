@@ -27,6 +27,15 @@
 
 function applyIt(func, args) {
 
+  // build string of function arguments
+  argsStr = '';
+  args.forEach((arg, index) => {
+    argsStr += (JSON.stringify(arg));
+    if (index < args.length - 1) argsStr += ',';
+  })
+
+  //eval a stringified version of the function call we want
+  return (() => eval(`func(${argsStr})`))
 }
 
 module.exports = applyIt;
