@@ -15,7 +15,7 @@ function subsetSum(array, target) {
   if (array[0] === target) return true;
   // base case: array has only one element
   if (array.length === 1) return array[0] === target;
-  
+ 
   // otherwise, take the first element in the array and check the subsets containing that element
   // if none of those work, check the subsets that do not contain that element
   return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
