@@ -11,14 +11,17 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-function validBST(tree, history) {
-    if (tree.left !== null) {if (tree.left.value > tree.value || tree.left.value > history) return false}
-    if (tree.right !== null) {if (tree.right.value <= tree.value || tree.right.value > history) return false}
+function validBST(tree, leftRightHistory = Infinity, rightLeftHistory = -Infinity) {
+    if (tree.left !== null) {if (tree.left.value > tree.value || tree.left.value > leftRightHistory || tree.left.value <= rightLeftHistory) return false}
+    if (tree.right !== null) {if (tree.right.value <= tree.value || tree.right.value > leftRightHistory || tree.right.value < rightLeftHistory) return false}
     if (tree.left && tree.right) {
-        return history ? validBST(tree.left, history) && validBST(tree.right, history) : validBST(tree.left, tree.value) && validBST(tree.right);
+        if(isFinite(leftRightHistory)) {
+            return isFinite(rightLeftHistory) ? validBST(tree.left, leftRightHistory, rightLeftHistory) && validBST(tree.right, leftRightHistory, rightLeftHistory) : validBST(tree.left, leftRightHistory, rightLeftHistory) && validBST(tree.right, leftRightHistory, tree.value);
+        }
+        else return isFinite(rightLeftHistory) ? validBST(tree.left, tree.value, rightLeftHistory) && validBST(tree.right, leftRightHistory, rightLeftHistory) : validBST(tree.left, tree.value, rightLeftHistory) && validBST(tree.right, leftRightHistory, tree.value) ;
     }
-    if (tree.left) return history ? validBST(tree.left, history) : validBST(tree.left, tree.value);
-    if (tree.right) return history ? validBST(tree.right, history) : validBST(tree.right);
+    if (tree.left) isFinite(leftRightHistory) ? validBST(tree.left, leftRightHistory, rightLeftHistory) : validBST(tree.left, tree.value, rightLeftHistory);
+    if (tree.right) isFinite(leftRightHistory) ? validBST(tree.right, leftRightHistory, rightLeftHistory) : validBST(tree.right, leftRightHistory, tree.value);
     return true;
 }
 
