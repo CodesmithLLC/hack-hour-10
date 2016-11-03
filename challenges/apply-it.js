@@ -26,7 +26,16 @@
  */
 
 function applyIt(func, args) {
-
+  return () => func(...args);
 }
+
+// var jae = function (name, age, location) {
+//   return name + " is " + age + " and he lives in " + location;
+// };
+
+// var jaero = applyIt(jae, ["Jae", 19, "South Carolina"]);
+// // console.log([].slice.call(["Jae", 19, "South Carolina"]))
+// console.log(Array.constructor);
+// console.log(jaero());
 
 module.exports = applyIt;
