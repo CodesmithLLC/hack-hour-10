@@ -26,7 +26,10 @@
  */
 
 function applyIt(func, args) {
-
+  let f = func;
+  return () => {
+  	return f(args[0] || undefined, args[1] || undefined, args[2] || undefined, args[3] || undefined, args[4] || undefined, args[5] || undefined, args[6] || undefined, args[7] || undefined, args[8] || undefined, args[9] || undefined);
+  }
 }
 
 module.exports = applyIt;
