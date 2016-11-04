@@ -35,13 +35,15 @@ function applyIt(func, args) {
   const labels = funcArr.splice(firstOpenParen, firstCloseParen - firstOpenParen + 1, '()').join('');
   const noParams = labels === '()';
   const paramVals = {};
-  const newFun = funcArr.join('');
+  let newFun = funcArr.join('');
   if (!noParams) {
     const params = labels.slice(1, -1).split(',');
     console.log('params', params);
     params.forEach((val, index) => {
+      val = val[0] === ' ' ? val.slice(1) : val;
       paramVals[val] = args[index];
-      newFun.replace(val, 'this.' + val);
+      newFun = newFun.replace(val, 'this.' + val);
+      // newFun = newFun.replace('function () ', '');
     });
   }
   console.log('newFun', newFun);
@@ -53,7 +55,7 @@ function applyIt(func, args) {
   function child() {
     eval(newFun);
   }
-  // child();
+  // return child();
 }
 
 var jae = function (name, age, location) {
