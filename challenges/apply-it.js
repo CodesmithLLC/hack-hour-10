@@ -26,7 +26,15 @@
  */
 
 function applyIt(func, args) {
-  return () => func(...args);
+  // return () => func(...args); // use args[0] - args[11] instead of ...
+  //hh solution using eval
+  let funcCall = "func(";
+  for (let i in context) {
+    funcCall += `context[${i}],`;
+  }
+  funcCall = funcCall.replace(/,$/, ');');
+
+  return () => eval(funcCall);
 }
 
 // var jae = function (name, age, location) {

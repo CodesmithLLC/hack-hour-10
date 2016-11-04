@@ -8,23 +8,23 @@
 
 function Stack() {
   this.index = 0;
-  this.storage = {};
+  this.storage = [];
 }
 
 Stack.prototype.push = function (value) {
-  this.storage[this.index] = value;
-  this.index++;
+  this.storage.push(value);
+  return this.storage.length;
+
+
 }
 
-Stack.prototype.pop = function() {
-  let value = this.storage[this.index- 1]; 
-  delete this.storage[this.index - 1];
-  this.index--;
-  return value;
+Stack.prototype.pop = function(value) {
+  return this.storage.pop();
 }
 
 Stack.prototype.getMax = function () {
   let max = -Infinity;
+  if (!stack) return undefined;
   for (let key in this.storage) {
     if (this.storage[key] >= max) {
       max = this.storage[key];
@@ -42,37 +42,4 @@ Stack.prototype.getMax = function () {
 // let max = test.getMax();
 // console.log(test, max);
 
-
 module.exports = Stack;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function Stack() {
-  this.storage = {};
-  this.index = 0;
-}
-
-Stack.prototype.push = function(value) {
-  this.storage[this.index] = value;
-  this.index++;
-};
-
-Stack.prototype.pop = function() {
-    let value = this.storage[this.index - 1]; 
-    delete this.storage[this.index - 1];
-    this.index--;
-    return value;
-};
