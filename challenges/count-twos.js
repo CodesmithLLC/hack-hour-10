@@ -8,7 +8,11 @@
 
 
 function countTwos(num) {
-
+  let result = 0;
+  for (let i = 0; i <= num; i++) {
+    result += (i.toString().match(/2/g)||[]).length
+  }
+  return result;
 }
 
 module.exports = countTwos;
