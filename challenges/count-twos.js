@@ -8,7 +8,14 @@
 
 
 function countTwos(num) {
-
+  let counter = 0;
+  
+  while(num > 0) {
+  	counter += String(num).match(/2/g) === null ? 0 : String(num).match(/2/g).length;
+  	num--
+  }
+  
+  return counter;
 }
 
 module.exports = countTwos;
