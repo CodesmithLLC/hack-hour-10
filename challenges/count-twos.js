@@ -14,8 +14,9 @@ function countTwos(num) {
     if(j < 3) {
     	if( j === 2) {
     		sum += Number(length[i]);
-    	 	if(Number(length[i]) > 1) sum += 1;
-    	 	sum += Number(length[i - 1] * j + placer);
+    		if(Number(length[i]) > 1) sum += 1;
+    	 	if(Number(length[i + 1]) > 1) sum += 1;
+    	 	if(length[i-1])sum += Number(length[i - 1] * j + placer);
     	}
     	j++;
     	placer += '0';
