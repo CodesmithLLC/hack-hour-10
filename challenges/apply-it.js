@@ -26,14 +26,15 @@
  */
 
 function applyIt(func, args) {
-    // Getting functions arguments and putting them (as strings) in an array.
-    let argIter = args[Symbol.iterator];
-    // Getting function instructions.
-    let funcBlock = func.toString().slice(func.toString().indexOf('{') + 1, -1).trim();
-    // Creating and returning new function.
-    return new Function(...args, funcBlock);
+    var a = args[0];
+    if (args[1] === undefined) {
+        return () => { return func(a) }
+    }
+    else {
+        return applyIt((b) => {
+            return func(a, b)
+        }, args.slice(1));
+    }
 }
 
 module.exports = applyIt;
-
-console.log(applyIt)
