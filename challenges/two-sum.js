@@ -3,7 +3,16 @@
  */
 
 function twoSum(arr, n) {
+  const cache = {};
 
+  for (let i = 0; i < arr.length; i++) {
+    if (cache[arr[i]]) return true;
+    cache[n - arr[i]] = arr[i];
+  }
+
+  return false;
 }
+
+console.log(twoSum([1, 2, -5], 90));
 
 module.exports = twoSum;
