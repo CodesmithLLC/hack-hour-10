@@ -26,7 +26,23 @@
  */
 
 function applyIt(func, args) {
+    let functionCall = "func(";
 
+    for (let i = 0; i < args.length; i++) {
+        functionCall += "\"" + args[i] + "\"";
+        if (i < args.length - 1) functionCall += ",";
+    }
+
+    functionCall += ")";
+    return () => eval(functionCall);
 }
+
+
+// const jae = function(name, age, location) {
+//   return name + " is " + age + " and he lives in " + location;
+// }
+
+// const jaero = applyIt(jae, ["Jae", 19, "South Carolina"]);
+// console.log(jaero()); //Returns "Jae is 19 and he lives in South Carolina"
 
 module.exports = applyIt;
