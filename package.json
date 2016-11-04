@@ -27,8 +27,5 @@
     "type": "git",
     "url": "git+https://github.com/CodesmithLLC/hack-hour-10.git"
   },
-  "license": "ISC",
-  "devDependencies": {
-    "sinon": "^1.17.6"
-  }
+  "license": "ISC"
 }
