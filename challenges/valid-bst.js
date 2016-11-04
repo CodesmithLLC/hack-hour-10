@@ -11,75 +11,60 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-// function validBST(tree) {
-
-//     inOrderTraverseTree(tree, checkTree);
-
-//     function inOrderTraverseTree (tree, checkTree) {
-//         if (tree !== null) {
-//             inOrderTraverseTree(tree.left, checkTree);
-//             checkTree(tree.key);
-//             inOrderTraverseTree(tree.right, checkTree);
-//         }
-//         return true;
-//     };
-
-//     function checkTree(value) {
-//       if (tree.left.value > tree.right.value) {
-//         return false;
-//       }
-//     }
-
-// }
-
-// let tree = new BinaryTree(10);
-// tree.left = new BinaryTree(6);
-// tree.right = new BinaryTree(9);
-// tree.left.left = new BinaryTree(4);
-// tree.right.right = new BinaryTree(7);
-// console.log(tree);
-// console.log(validBST(tree));
-
-function validBST(tree) {
-    function checkTree(tree, grandparent) {
-        console.log(tree);
-        if (tree.left === null && tree.right === null) return true;
-        if (tree.left) {
-            if (tree.right) {
-                if (tree.left.value > tree.value || tree.right.value > grandparent) return false;
-            }
-            if (tree.left.value > tree.value) return false;
-        };
-        if (tree.right) {
-            if (tree.left) {
-                if (tree.right.value <= tree.value || tree.left.value < grandparent) return false;
-            }
-            if (tree.right.value <= tree.value) return false;
-        };
-        if (tree.left && !tree.right) return checkTree(tree.left, tree.value);
-        if (!tree.left && tree.right) return checkTree(tree.right, tree.value);
-        return checkTree(tree.left, tree.value) && checkTree(tree.right, tree.value);
+function validBST(root) {
+  //  Using depth-first search
+  let stack = [root];
+  
+  while (stack.length !== 0) {
+    var node = stack.pop();
+    if (node.left) {
+      stack.push(node.left);
+      if (node.left.value > node.value) return false;
     }
-     if (tree.left === null && tree.right === null) return true;
+    if (node.right) {
+      stack.push(node.right);
+      if (node.right.value < node.value) return false;
+    }
+  }
 
-    if (tree.left && !tree.right) return checkTree(tree.left, tree.value)
-    if (!tree.left && tree.right) return checkTree(tree.right, tree.value)
-    if (tree.left && tree.right) return checkTree(tree.left, tree.value) && checkTree(tree.right, tree.value)
+  return true;
+
+//   //  Using breadth-first search
+//   let queue = [root];
+
+//   while(queue.length !== 0) {
+//     var node = queue.shift();
+//     if (node.left) {
+//       queue.push(node.left);
+//       if (node.left.value > node.value) return false;
+//     }
+//     if (node.right) {
+//       queue.push(node.right);
+//       if (node.right.value < node.value) return false;
+//     }
+//   }
+  
+//   return true;
 }
 
-// const myTree = new BinaryTree(5);
-// const subTreeA = new BinaryTree(3);
-// const subTreeB = new BinaryTree(3);
-// const subTreeC = new BinaryTree(5);
-// const subTreeD = new BinaryTree(7);
+let tree = new BinaryTree(11);
+let tree2 = new BinaryTree(7);
+let tree3 = new BinaryTree(15);
+tree.left = tree2;
+tree.right = tree3;
 
-// myTree.left = subTreeC;
-// subTreeC.left = subTreeB;
-// subTreeC.right = subTreeD;
-// // subTreeB.left = subTreeA;
-// myTree.right = new BinaryTree(10);
+let tree4 = new BinaryTree(5);
+let tree5 = new BinaryTree(9);
+tree2.left = tree4;
+tree2.right = tree5;
 
-// console.log(validBST(myTree));
+let tree6 = new BinaryTree(13);
+let tree7 = new BinaryTree(20);
+tree3.left = tree6;
+tree3.right = tree7;
+
+console.log(tree);
+console.log(validBST(tree));
 
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
