@@ -8,7 +8,16 @@
 
 
 function countTwos(num) {
+let overallCount = 1;
+let twosCount = 0;
 
+while (overallCount <= num) {
+  let arr = String(overallCount).split('');
+  let twos = arr.filter(strNum => strNum === '2').length;
+    twosCount += twos;
+    overallCount++;
+}
+return twosCount;
 }
 
 module.exports = countTwos;
