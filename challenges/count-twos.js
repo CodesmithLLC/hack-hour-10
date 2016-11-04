@@ -10,10 +10,8 @@
 
 function countTwos(num) {
   let count = 0;
-  for (let i = 0; i < num; i++) {
-    let arr = Array.from(i.toString()).filter(n => n === '2');
-    count += arr.length;
-  }
+  for (let i = 2; i <= num; i++)
+    count += Array.from(i.toString()).filter(n => n === '2').length;
   return count;
 }
 
