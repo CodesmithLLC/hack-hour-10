@@ -9,21 +9,10 @@
  */
 
 function subsetSum(array, target) {
-<<<<<<< HEAD
-    let len = array.length;
-    for(let i=0; i<len; i++){
-        let sum = 0;
-        for(let n = 0; n<len; n++){
-            sum += array[n];
-            if(sum === target) return true;
-        }
-        let shift = array.shift();
-        array.push(shift);
-    }
-    return false;
-=======
-
->>>>>>> 6472679f9e9b1e46a3eb30207938cd1a560f742c
+    if(target === 0) return true;
+    if (array.length === 0 || target < 0) return false;
+    return subsetSum(array.slice(1),target-array[0]) || subsetSum(array.slice(1),target);
 }
 
-module.exports = subsetSum;
+// module.exports = subsetSum;
+console.log(subsetSum([3, 7, 4, 2], 5));

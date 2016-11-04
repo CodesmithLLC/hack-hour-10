@@ -12,19 +12,10 @@ function Node(val) {
 
 function zip(l1, l2) {
 
-	let temp;
-
-	while(11.next && 12.next) {
-		temp = 11;
-		
-		11 = 11.next;
-
-		12 = 12.next;
-
-	}
 
 
-};
+
+}
 
 module.exports = {
 	Node: Node,
