@@ -18,10 +18,3 @@ function countTwos(num) {
 }
 
 module.exports = countTwos;
-
-console.log(
-  countTwos(1),
-  countTwos(3),
-  countTwos(13),
-  countTwos(1000),
-  countTwos(11420));
