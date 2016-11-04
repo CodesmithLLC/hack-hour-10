@@ -25,8 +25,8 @@
  *  DO NOT USE THE BUILT IN APPLY METHOD OR THE SPREAD OPERATOR
  */
 
-function applyIt(func, ...args) {
-  return func(...args);
+function applyIt(func, args) {
+  return func.bind(this, ...args);
 }
 
 module.exports = applyIt;
