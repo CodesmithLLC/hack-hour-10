@@ -6,26 +6,30 @@
 
 
 function BinaryTree(val) {
-    this.value = val;
-    this.left = null;
-    this.right = null;
+  this.value = val;
+  this.left = null;
+  this.right = null;
 }
 
 function validBST(tree) {
 
-  if (tree.left === null && tree.right === null) {
-    return true;
-  }
+  let arr = [];
+  arr.push(tree.value);
 
-  else if (tree.left.value != null && tree.right.value != null) {
-    console.log('left', tree.left.value)
-    if (tree.left.value < tree.value && tree.right.value > tree.value) {
-      return validBST(tree.left) && validBST(tree.right);
-    } else {
-      return false;
+  function getNodes(tree) {
+
+    while (tree.left != null && tree.right != null) {
+      if (tree.left) {
+        arr.unshift(tree.left.value);
+        tree = tree.left;
+        getNodes(tree.left);
+      } else {
+        arr.push(tree.right.value);
+        tree = tree.right;
+        getNodes(tree.right)
     }
-  }
 
+    return getNodes(tree);
 }
 
 
