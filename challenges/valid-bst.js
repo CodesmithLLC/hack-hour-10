@@ -15,7 +15,7 @@ function validBST(tree) {
   if (tree.value === undefined) return false;
   
   function traverse(current) {
-    console.log(current, valid);
+    // console.log(current, valid);
     if (current.value) {
       if (current.left !== null) {
         if (current.left.value > current.value) valid = false;
