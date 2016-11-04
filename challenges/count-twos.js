@@ -11,7 +11,7 @@
 function countTwos(num) {
   let count = 0;
   for (let i = 0; i <= num; i++) {
-    i.split('').forEach((e) => { if (e === '2') count++ })
+    i.toString().split('').forEach((e) => { if (e === '2') count++ })
   }
   return count;
 }
