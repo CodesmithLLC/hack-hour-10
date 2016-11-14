@@ -40,7 +40,9 @@ function validBST(tree) {
     // console.log(`${tree.value} returning value: ${leftValid && rightValid}`);
     return leftValid && rightValid;
 }
-
+// I love travis
+// Travis loves me
+// continuous integration FTW
 // function xvalidBST(tree) {
 //     if(tree === null) return;
 //     console.log(tree.value);

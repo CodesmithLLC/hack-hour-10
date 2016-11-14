@@ -14,7 +14,68 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-
+  let head;
+  let ll = null;
+  let h1 = l1; 
+  let h2 = l2;
+  while(h1 || h2){
+    if(h1 !== null && h2 !== null){
+      if(ll === null){
+        ll = new Node(h1.value + h2.value);
+        head = ll;
+      }else{
+        ll.next = new Node(h1.value + h2.value);
+        ll = ll.next;
+      }
+      h1 = h1.next;
+      h2 = h2.next;
+    }else if(h1 === null){
+      if(ll === null){
+        ll = new Node(h2.value);
+        head = ll;
+      }else{
+        ll.next = new Node(h2.value);
+        ll = ll.next;
+      }
+      h2 = h2.next;
+    }else if(h2 === null){
+      if(ll === null){
+        ll = new Node(h1.value);
+        head = ll;
+      }else{
+        ll.next = new Node(h1.value);
+        ll = ll.next;
+      }
+      h1 = h1.next;
+    }
+  }
+  return head;
 }
+
+// function print(l){
+//   let temp = l;
+//   let str = '';
+//   while(temp){
+//     str += temp.value + ' -> ';
+//     temp = temp.next;
+//   }
+//   console.log(str);
+// }
+// let a = new Node(5);
+// let a1 = new Node(1);
+// a.next = a1;
+// let a2 = new Node(2);
+// a1.next = a2;
+
+// let b = new Node(1);
+// let b1 = new Node(2);
+// b.next = b1;
+// let b2 = new Node(3);
+// b1.next = b2;
+// let b3 = new Node(5);
+// b2.next = b3;
+
+// let g = addLinkedList(a,b);
+// print(g);
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};
