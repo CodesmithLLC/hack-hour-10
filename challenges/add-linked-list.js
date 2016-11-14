@@ -9,11 +9,6 @@
  */
 
 function Node(val) {
-  this.value = val;
-  this.next = null;
-}
-
-function addLinkedList(l1, l2) {
   function numberMaker(list) {
 		let counter = 0;
 		let result = 0;
@@ -26,13 +21,16 @@ function addLinkedList(l1, l2) {
 	}
   
 	let total = numberMaker(l1) + numberMaker(l2);
-	return total.toString().split('').reverse().map(num => {
+	total = total.toString().split('').reverse().map(num => {
 		return parseInt(num);
-	}).reduce((acc, curr) => {
-			acc = new Node(acc);
-			acc.next = new Node(curr);
-			return acc;
 	});
+	let head = new Node(total[0]);
+	let node = head;
+	for (let i = 1; i < total.length; i++) {
+		node.next = new Node(total[i]);
+		node = node.next;
+	}
+	return head;
 }
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};
