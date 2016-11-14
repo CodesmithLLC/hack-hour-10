@@ -14,7 +14,6 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-
   if (!l1 && l2) return l2;
   if (!l2 && l1) return l1;
   let remainder = 0;
@@ -42,11 +41,7 @@ function addLinkedList(l1, l2) {
     l2 = l2.next;
   }
   if (remainder) prevNode.next = new Node(remainder);
-  // console.log('list', head);
-  // console.log(remainder);
   const leftover = l1 ? l1 : l2;
-  // console.log('leftover', leftover);
-  // console.log('head', head);
   if (leftover) prevNode.next = addLinkedList(leftover, new Node(remainder));
   return head;
 }
