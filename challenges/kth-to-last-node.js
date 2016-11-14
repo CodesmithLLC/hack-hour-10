@@ -23,41 +23,41 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
-	let length = 0;
-	let current = head;
-	while (current !== null) {
-		length++;
-		current = current.next;
-	}
+  let length = 0;
+  let current = head;
+  while (current !== null) {
+    length++;
+    current = current.next;
+  }
 
-	if (k > length) return undefined;
-	current = head;
-	for (let i = 0; i < length - k; i++) {
-		current = current.next;
-	}
-	
-	return current.value;
+  if (k > length) return undefined;
+  current = head;
+  for (let i = 0; i < length - k; i++) {
+    current = current.next;
+  }
+  
+  return current.value;
 }
 
-// var a = new Node('A');
-// var b = new Node('B');
-// var c = new Node('C');
-// var d = new Node('D');
-// var e = new Node('E');
-// var f = new Node('F');
-// var g = new Node('G');
-// var h = new Node('H');
+var a = new Node('A');
+var b = new Node('B');
+var c = new Node('C');
+var d = new Node('D');
+var e = new Node('E');
+var f = new Node('F');
+var g = new Node('G');
+var h = new Node('H');
 
-// a.next = b;
-// b.next = c;
-// c.next = d;
-// d.next = e;
-// e.next = f;
-// f.next = g;
-// g.next = h;
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = e;
+e.next = f;
+f.next = g;
+g.next = h;
 
 
-// console.log(kthToLastNode(10,a));
+console.log(kthToLastNode(5, a));
 
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
