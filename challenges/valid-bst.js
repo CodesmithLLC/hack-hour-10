@@ -47,24 +47,24 @@ function validBST(root) {
 //   return true;
 }
 
-let tree = new BinaryTree(11);
-let tree2 = new BinaryTree(7);
-let tree3 = new BinaryTree(15);
-tree.left = tree2;
-tree.right = tree3;
+// let tree = new BinaryTree(11);
+// let tree2 = new BinaryTree(7);
+// let tree3 = new BinaryTree(15);
+// tree.left = tree2;
+// tree.right = tree3;
 
-let tree4 = new BinaryTree(5);
-let tree5 = new BinaryTree(9);
-tree2.left = tree4;
-tree2.right = tree5;
+// let tree4 = new BinaryTree(5);
+// let tree5 = new BinaryTree(9);
+// tree2.left = tree4;
+// tree2.right = tree5;
 
-let tree6 = new BinaryTree(13);
-let tree7 = new BinaryTree(20);
-tree3.left = tree6;
-tree3.right = tree7;
+// let tree6 = new BinaryTree(13);
+// let tree7 = new BinaryTree(20);
+// tree3.left = tree6;
+// tree3.right = tree7;
 
-console.log(tree);
-console.log(validBST(tree));
+// console.log(tree);
+// console.log(validBST(tree));
 
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
