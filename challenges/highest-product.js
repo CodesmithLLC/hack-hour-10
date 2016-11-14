@@ -3,6 +3,7 @@
  */
 
 function highestProduct(array) {
+<<<<<<< HEAD
   // var lst = array.length - 1;
   // var products = [];
   // function prod(array, start, produ) { 
@@ -43,8 +44,14 @@ function highestProduct(array) {
   var try2 = array[0] * array[length - 1] * array[length - 2];
   if (try1 > try2) return try1;
   else return try2;
+=======
+
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d
 }
 
 
 module.exports = highestProduct;
+<<<<<<< HEAD
 console.log(highestProduct([7, -30, -1 ,1,3,8,12,50]));
+=======
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

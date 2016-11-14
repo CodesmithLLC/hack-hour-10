@@ -8,6 +8,7 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+<<<<<<< HEAD
   if (!str.length) return true;
   var qeue = [];
   
@@ -37,3 +38,9 @@ console.log(checkqeue)
 
 module.exports = matchWord;
 
+=======
+
+}
+
+module.exports = matchWord;
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

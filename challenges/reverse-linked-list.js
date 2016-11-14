@@ -12,6 +12,7 @@ function Node(value) {
     this.value = value;
     this.next = null;
 }
+<<<<<<< HEAD
 // function factory(listConst, num) { 
 //   var head = new listConst(Math.floor(Math.random() * 5000));
 //   var dummy = head; 
@@ -45,3 +46,11 @@ function reverseLinkedList(head) {
 
 
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
+=======
+
+function reverseLinkedList(head) {
+
+}
+
+module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

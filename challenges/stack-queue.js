@@ -4,6 +4,7 @@
 
 
 function Stack() {
+<<<<<<< HEAD
   this.content = {};
   this.length = 0;
   this.push = function (val) {
@@ -24,6 +25,8 @@ function Stack() {
       return hold;
     }
   }
+=======
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d
 
 }
 
@@ -34,6 +37,7 @@ function Stack() {
 
 
 function Queue() {
+<<<<<<< HEAD
   this.hold1 = new Stack();
   this.hold2 = new Stack();
   this.length = 0;
@@ -65,3 +69,9 @@ module.exports = { Stack: Stack, Queue: Queue };
 
 
 
+=======
+
+}
+
+module.exports = {Stack: Stack, Queue: Queue};
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

@@ -13,5 +13,4 @@ function gcd(a, b) {
   else return gcd(b, mod);
 
 }
-console.log(gcd(10, 3))
 module.exports = gcd;
