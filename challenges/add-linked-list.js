@@ -17,12 +17,12 @@ function addLinkedList(l1, l2, carry = 0) {
   if (!l1 & !l2 & !carry) return null;
   if (!l1 & !carry) return l2;
   if (!l2 & !carry) return l1;
-  const total = 0
+  const total = 0;
   if (l1.value) total += l1.value;
   if (l2.value) total += l2.value
   if (carry) total += carry;
-  const ones = total > 9 ? total - 10 : total
-  const newCarry = total > 9 ? 1 : 0
+  const ones = total > 9 ? total - 10 : total;
+  const newCarry = total > 9 ? 1 : 0;
   const node = new Node(ones);
   node.next = addLinkedList(l1.next, l2.next, newCarry);
   return node;
