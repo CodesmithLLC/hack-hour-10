@@ -29,22 +29,36 @@
 function applyIt(func, args) {
 	let secondParamArray = args;
 	let index = 0;
+	let funcstring = 'func(';
+	let length = secondParamArray.length;
+
+		while(length > 0){
+			funcstring += secondParamArray[index];
+			length--;
+			index++;
+		}
+
+	console.log('this is funcstring', funcstring);
+	let newfuncstring = funcstring;
 
 	return function(){
-		return func(secondParamArray[0], secondParamArray[1], secondParamArray[2]);
+		return eval(newfuncstring);
 	}
+	// return function(){
+	// 	return func(secondParamArray[0], secondParamArray[1], secondParamArray[2]);
+	// }
 }
 
-// var jasmine = function(name, age) {
-//  if(!age){
-//  	return "We don't know how old " + name + " is!";
-// 	}
-// 	else{
-// 		return name + " is " + age + " years old!";
-// 	}
-// 	};
-// var jmoney = applyIt(jasmine, ["Jasmine"]);
-// console.log(jmoney()); //Returns "We don't know how old Jasmine is!"
+var jasmine = function(name, age) {
+ if(!age){
+ 	return "We don't know how old " + name + " is!";
+	}
+	else{
+		return name + " is " + age + " years old!";
+	}
+	};
+var jmoney = applyIt(jasmine, ["Jasmine"]);
+console.log(jmoney()); //Returns "We don't know how old Jasmine is!"
 
 //  var jae = function(name, age, location) {
 //  	return name + " is " + age + " and he lives in " + location;
@@ -55,5 +69,5 @@ function applyIt(func, args) {
 
 // //Returns "Jae is 19 and he lives in South Carolina"
 
-module.exports = applyIt;
+// module.exports = applyIt;
 
