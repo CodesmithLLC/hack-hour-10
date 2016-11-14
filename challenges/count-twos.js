@@ -7,7 +7,7 @@
 // countTwos(11420);  -> 4483
 
 
-function countTwos(num) {
+
   function countTwos(num) {
    	let count = 0;
     while (num) {
