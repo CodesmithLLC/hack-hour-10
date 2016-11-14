@@ -24,7 +24,7 @@ function addLinkedList(l1, l2, carry = 0) {
   const ones = total > 9 ? total - 10 : total;
   const newCarry = total > 9 ? 1 : 0;
   const node = new Node(ones);
-  node.next = addLinkedList(l1.next, l2.next, newCarry);
+  node.next = addLinkedList(l1 ? l1.next : null, l2 ? l2.next : null, newCarry);
   return node;
 }
 
