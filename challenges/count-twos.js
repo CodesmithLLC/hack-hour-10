@@ -18,5 +18,7 @@ function countTwos(num) {
   }
   return sum;
 }
-
+console.time('start');
+console.log(countTwos(107653400376320956));
+console.timeEnd('start');
 module.exports = countTwos;
