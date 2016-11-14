@@ -14,7 +14,25 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-
+  function numberMaker(list) {
+		let counter = 0;
+		let result = 0;
+		while (list) {
+			result += (list.value * Math.pow(10, counter));
+			counter++;
+			list = list.next;
+		}
+		return result;
+	}
+  
+	let total = numberMaker(l1) + numberMaker(l2);
+	return total.toString().split('').reverse().map(num => {
+		return parseInt(num);
+	}).reduce((acc, curr) => {
+			acc = new Node(acc);
+			acc.next = new Node(curr);
+			return acc;
+	});
 }
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};
