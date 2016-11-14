@@ -75,6 +75,7 @@ function addLinkedList(l1, l2, carryover) {
       l2 ? l2.next : null,
       sum >= 10 ? 1 : 0
     );
+    
     result.next = rest;
   }
   return result;
