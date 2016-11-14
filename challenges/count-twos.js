@@ -19,7 +19,6 @@ function countTwos(num) {
       if (parseInt(length[j]) === 2) count += 1;
     }
   }
-  console.log(count);
   return count;
 }
 countTwos(13)
