@@ -30,7 +30,7 @@ function addLinkedList(l1, l2) {
   let result =  Number(num1) + Number(num2) + '';
   let nodeList;
   let curr;
-  result.split('').forEach((ele, ind) => {
+  result.split('').reverse().forEach((ele, ind) => {
     if(ind === 0) {
       nodeList = new Node(Number(ele));
       curr = nodeList;
