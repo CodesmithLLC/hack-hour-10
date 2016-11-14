@@ -11,6 +11,7 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+<<<<<<< HEAD
   if(!l1) return l2;
   if(!l2) return l1;
   var node2 = l2;
@@ -38,3 +39,8 @@ function zip(l1, l2) {
 };
 
 module.exports = {Node: Node, zip: zip};
+=======
+};
+
+module.exports = {Node: Node, zip: zip};
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

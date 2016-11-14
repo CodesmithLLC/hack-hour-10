@@ -26,6 +26,7 @@
  */
 
 function applyIt(func, args) {
+<<<<<<< HEAD
   if (args[0] !== undefined) {
     var bind = func.bind(this, args[0]);
     for (var i = 1; i < args.length; i++) {
@@ -36,3 +37,9 @@ function applyIt(func, args) {
 }
 
 module.exports = applyIt;
+=======
+
+}
+
+module.exports = applyIt;
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

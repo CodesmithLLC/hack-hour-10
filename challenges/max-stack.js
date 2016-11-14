@@ -7,6 +7,7 @@
  */
 
 function Stack() {
+<<<<<<< HEAD
   this.stack = {};
   this.length = 0;
   this.max = -Infinity
@@ -34,3 +35,9 @@ function Stack() {
 }
 
 module.exports = Stack;
+=======
+  // body...
+}
+
+module.exports = Stack;
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

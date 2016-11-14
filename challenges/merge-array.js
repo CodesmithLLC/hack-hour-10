@@ -14,6 +14,7 @@
  */
 
 function mergeArrays(arr1, arr2) {
+<<<<<<< HEAD
   if (!arr1) return arr2;
   if (!arr2) return arr1;
   if (!arr1 && !arr2) return [];
@@ -40,3 +41,9 @@ function mergeArrays(arr1, arr2) {
 module.exports = mergeArrays;
 
 
+=======
+
+}
+
+module.exports = mergeArrays;
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

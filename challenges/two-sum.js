@@ -3,6 +3,7 @@
  */
 
 function twoSum(arr, n) {
+<<<<<<< HEAD
   const finder = {};
   var final = false;
   for (var i = 0; i < arr.length; i++) {
@@ -19,3 +20,9 @@ module.exports = twoSum;
 
 
 console.log(twoSum([6, 5, 3, 9], 10))
+=======
+
+}
+
+module.exports = twoSum;
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

@@ -10,6 +10,7 @@
  */
 
 function permPalin(str) {
+<<<<<<< HEAD
   if (str === null || str === undefined) return false;
 	if (str.length == 1) return true;
   if (str.length === str.split('').reverse().join('')) return true;
@@ -33,3 +34,9 @@ function permPalin(str) {
 
 module.exports = permPalin;
 
+=======
+	
+}
+
+module.exports = permPalin;
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

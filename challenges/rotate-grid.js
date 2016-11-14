@@ -17,6 +17,7 @@
  */
 
 function rotateGrid(grid, n) {
+<<<<<<< HEAD
   var nu = [];
   for (var i = 0; i < n; i++) {
     nu.push([]);
@@ -34,3 +35,9 @@ function rotateGrid(grid, n) {
 module.exports = rotateGrid;
 //console.log(rotateGrid([[1,2,3, 'b'], [4,5,6, 'a'], [7,8,9, 'n']], 4))
 //Contact GitHub API Training Shop Blog About
+=======
+
+}
+
+module.exports = rotateGrid;
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d

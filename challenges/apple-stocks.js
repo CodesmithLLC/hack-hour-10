@@ -12,6 +12,7 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
+<<<<<<< HEAD
 // function shitStocks(number) { 
 //   var trashCanS = [];
 //   for (var i = 0; i < number; i++) { 
@@ -52,3 +53,10 @@ function bestProfit(stock_prices_yesterday) {
 }
 
 module.exports = bestProfit;
+=======
+function bestProfit(stock_prices_yesterday) {
+
+}
+
+module.exports = bestProfit;
+>>>>>>> 1fc71476c68176665849c71dab3cf9ea5913440d
