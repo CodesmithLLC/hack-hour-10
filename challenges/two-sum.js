@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 /*  Given an array of numbers and a target number, return true if there are two numbers in the
+=======
+/*  Given an array of numbers and a target number, return true if there are two numbers in the 
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
  *  array that sum up to the target value; return false otherwise
  */
 
 function twoSum(arr, n) {
+<<<<<<< HEAD
   if (!arr.length) return [];
   // The most niave of methods
   for (var i = 0; i < arr.length; i++) {
@@ -24,3 +29,9 @@ module.exports = twoSum;
 // console.log(twoSum(arr2, 8));
 // console.log(twoSum(arr2, 18));
 // console.log(twoSum(arr2, 13));
+=======
+
+}
+
+module.exports = twoSum;
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178

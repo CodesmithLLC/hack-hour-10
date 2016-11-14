@@ -2,9 +2,15 @@
  * Write a function to reverse an array in place
  *
  * "In place" means "without creating a new object in memory"
+<<<<<<< HEAD
  *
  * In some languages, strings are mutable (like in Ruby). In other languages,
  * such as Python and Javascript, strings are immutable, meaning they cannot
+=======
+ * 
+ * In some languages, strings are mutable (like in Ruby). In other languages, 
+ * such as Python and Javascript, strings are immutable, meaning they cannot 
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
  * be changed after they're created.
  *
  * Since strings are immutable in javascript, we will be reversing an array of characters instead.
@@ -12,6 +18,7 @@
  */
 
 function reverseInPlace(array) {
+<<<<<<< HEAD
   // validate input
   if (!Array.isArray(array)) return 'That\'s not an array!';
   if (!array) return 'No Input! Error!';
@@ -26,3 +33,9 @@ function reverseInPlace(array) {
 }
 
 module.exports = reverseInPlace;
+=======
+
+}
+
+module.exports = reverseInPlace;
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178

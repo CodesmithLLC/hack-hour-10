@@ -7,6 +7,7 @@
  */
 
 function Stack() {
+<<<<<<< HEAD
   this.max = undefined;
   this.storage = {};
   this.index = 0;
@@ -38,3 +39,9 @@ Stack.prototype.getMax = function () {
 };
 
 module.exports = Stack;
+=======
+  // body...
+}
+
+module.exports = Stack;
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178

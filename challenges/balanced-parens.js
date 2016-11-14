@@ -73,11 +73,3 @@ function balancedParens(input) {
 }
 
 module.exports = balancedParens;
-
-console.log(balancedParens('(')); // false
-console.log(balancedParens('()')); // true
-console.log(balancedParens(')(')); // false
-console.log(balancedParens('()()')); // true
-console.log(balancedParens('[({})]')); // true
-console.log(balancedParens('[(]{)}')); // false
-console.log(balancedParens('[](){}')); // true

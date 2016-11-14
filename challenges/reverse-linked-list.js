@@ -9,6 +9,7 @@
  */
 
 function Node(value) {
+<<<<<<< HEAD
   this.value = value;
   this.next = null;
 }
@@ -58,3 +59,14 @@ function printLL(head) {
     currNode = currNode.next;
   }
 }
+=======
+    this.value = value;
+    this.next = null;
+}
+
+function reverseLinkedList(head) {
+
+}
+
+module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178

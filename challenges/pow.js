@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Ahmad's implementation of a power function.
  * @param {int} base - exponential base
  * @param {int} power - exponent
@@ -17,5 +18,14 @@ function pow(base, power) {
 
 // un-comment the following line to run from the CLI
 // console.log(pow(process.argv[2], process.argv[3]));
+=======
+/* Write a function that calculates x^y, where x is given as the base and y is given as the power.
+ * Use recursion!
+ */
+
+function pow(base, power) {
+
+}
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
 
 module.exports = pow;

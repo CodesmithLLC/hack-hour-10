@@ -1,4 +1,3 @@
-
 /**
  * Given an array of integers, find the highest product you can get from three of the integers.
  */
@@ -41,14 +40,6 @@ function highestProduct(array) {
     || (reallyreallyLowVal * reallyLowVal) > (highestValArr[1] * highestValArr[2])) {
       return productOfThree(reallyLowVal, reallyreallyLowVal, highestValArr[0]);
   } else return productOfThree(...highestValArr);
-}
 
 
 module.exports = highestProduct;
-console.log(highestProduct([3, 5, 1]));
-console.log(highestProduct([5, 5, 1]));
-console.log(highestProduct([5, 1, 1]));
-console.log(highestProduct([5, 1]));
-console.log(highestProduct([13, 5, 1]));
-console.log(highestProduct([11, 10, 10, 5, 5, 10, 99]));
-console.log(highestProduct([3, 5, 1, 16, 23]));
