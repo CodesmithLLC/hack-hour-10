@@ -2,7 +2,11 @@
  * the first node of the first argument, if it exists.
  * Implement the linked list using only a Node class. No need for a wrapper LinkedList class
  *
+<<<<<<< HEAD
  * Done in place
+=======
+ * BONUS: Do this in place
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
  */
 
 function Node(val) {
@@ -11,6 +15,7 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+<<<<<<< HEAD
   // if either list is ommitted, there is no work to do.
   if (!l1 && !l2) return 'I need at least one list...';
   if (!l1) return l2;
@@ -34,5 +39,8 @@ function zip(l1, l2) {
   traverse(l1, l2);
   return bigListHead;
 }
+=======
+};
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
 
 module.exports = {Node: Node, zip: zip};

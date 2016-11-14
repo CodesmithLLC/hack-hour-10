@@ -14,6 +14,7 @@
 function isSubstring(s1, s2) {
   return s1.indexOf(s2) >= 0;
 }
+<<<<<<< HEAD
 let count = 0;
 function stringRotation(s1, s2) {
   if (s1.length !== s2.length) return false
@@ -26,6 +27,11 @@ function stringRotation(s1, s2) {
   }
   return isSubstring(s2array.join(''), s1array.join(''))
   // return s1.split('').every(letter => s2array.includes(letter));
+=======
+
+function stringRotation(s1, s2) {
+
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
 }
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};

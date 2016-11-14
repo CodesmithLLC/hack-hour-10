@@ -11,6 +11,7 @@
  * numToWords(300525151340440) -> 'ThreeHundredTrillionFiveHundredTwentyFiveBillionOneHundredFiftyOneMillionThreeHundredFortyThousandFourHundredForty'
  * numToWords(92120000000000000) -> 'NintyTwoQuadrillionOneHundredTwentyTrillion'
  */
+<<<<<<< HEAD
 const singleDigits = [
   '',
   'One',
@@ -87,4 +88,11 @@ function numToWords(num) {
     }
     return result;
   }
+=======
+
+function numToWords(num) {
+
+}
+
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
 module.exports = numToWords;

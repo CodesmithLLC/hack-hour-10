@@ -4,6 +4,7 @@
 
 
 function Stack() {
+<<<<<<< HEAD
   this.storage = [];
   this.index = 0;
     this.pop = function() {
@@ -12,6 +13,9 @@ function Stack() {
     this.push = function(val) {
       this.storage[this.index++] = val;
     }
+=======
+
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
 }
 
 
@@ -21,6 +25,7 @@ function Stack() {
 
 
 function Queue() {
+<<<<<<< HEAD
   this.storageOne = new Stack();
   this.storageTwo = new Stack();
   this.enqueue = function(val) {
@@ -36,6 +41,9 @@ function Queue() {
     }
     return this.storageTwo.pop();
   }
+=======
+
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
 }
 
 module.exports = {Stack: Stack, Queue: Queue};

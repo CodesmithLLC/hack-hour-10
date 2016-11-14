@@ -46,5 +46,3 @@ function bestProfit(stock_prices_yesterday) {
 }
 
 module.exports = bestProfit;
-// const stocks = [50, 50, 51, 51, 52, 52, 49, 49, 48, 45, 42, 45, 50, 55, 56, 60, 61, 55, 52, 45, 40, 45, 50, 60, 70, 65, 38, 65, 67];
-// console.log(bestProfit(stocks));

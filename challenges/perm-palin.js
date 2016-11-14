@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178
 /**
  * Given a string, determine if any of the permutations of that string is a palindrome
  *
@@ -11,6 +14,7 @@
  */
 
 function permPalin(str) {
+<<<<<<< HEAD
   // to be a palindrome, all letters must have a mirror, minus
   // one for odd-length strings.
   if (str.length === 0) return false;
@@ -28,3 +32,9 @@ function permPalin(str) {
 }
 
 module.exports = permPalin;
+=======
+	
+}
+
+module.exports = permPalin;
+>>>>>>> 124383488a9afbdcfc751399f0edaab82ddd1178

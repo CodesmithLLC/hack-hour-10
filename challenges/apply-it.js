@@ -39,4 +39,3 @@ function fn(name, age, loc) {
   return name + 'is' + age + 'years old';
 }
 module.exports = applyIt;
-console.log(applyIt(fn, ['Jae', 19, 'SoCal']));

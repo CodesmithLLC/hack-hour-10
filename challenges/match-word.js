@@ -35,7 +35,7 @@ function matchWord(str) {
   wordStack.forEach(word => {
     if (word !== '') result.push(word);
   });
-  return (result.length === 0)
+  return (result.length === 0);
 }
 
 module.exports = matchWord;

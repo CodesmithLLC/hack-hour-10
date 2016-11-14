@@ -27,10 +27,3 @@ function binToDec(binary) {
 }
 
 module.exports = binToDec;
-
-console.log(binToDec('0'));
-console.log(binToDec('01'));
-console.log(binToDec('10'));
-console.log(binToDec('101'));
-console.log(binToDec('100001'));
-console.log(binToDec('100101'));

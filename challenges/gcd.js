@@ -10,7 +10,7 @@
 function gcd(a, b) {
   const bigger = Math.max(a, b);
   const smaller = Math.min(a, b);
-  for (var potentialDivisor = smaller; potentialDivisor >= 2; potentialDivisor--) {
+  for (let potentialDivisor = smaller; potentialDivisor >= 2; potentialDivisor--) {
     if ((bigger % potentialDivisor === 0) &&
       (smaller % potentialDivisor === 0)) return potentialDivisor;
   }
