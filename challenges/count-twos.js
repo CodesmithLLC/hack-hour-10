@@ -10,15 +10,12 @@
 function countTwos(num) {
   let numArr = num.toString().split("").reverse();
   let result = 0;
-  if (num[0] >= 2) {
-    result = 1
-  }
 
-  for (let i=1; i<numArr.length; i++) {
-    if (numArr[i] >= 2) {
-      result += (Math.pow(10, i-1) * i) + Math.pow(10, i-1);
-    } else if (numArr[i] == 1) {
-      result += (Math.pow(10, i-1) * i);
+  for (let i=0; i<numArr.length; i++) {
+   if (numArr[i] == 1) {
+      result += (2 * Math.pow(10,i-1)) + Math.pow(10,i-1);
+    } else if (numArr[i] >= 2) {
+      result += (2 * Math.pow(10,i-1)) + (numArr[i] * Math.pow(10,i-1));
     }
   }
   return result;
@@ -26,4 +23,4 @@ function countTwos(num) {
 
 module.exports = countTwos;
 
-console.log(countTwos(1000));
+console.log(countTwos(11420));
