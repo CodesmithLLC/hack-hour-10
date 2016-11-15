@@ -12,17 +12,17 @@ function Node(val) {
   this.value = val;
   this.next = null;
 }
-// function createll(constr, leng) {
-//   var nu = new Node(Math.floor(Math.random() * 9));
-//   var holder = nu;
-//   for(var i = 1; i <= leng; i++) {
-//     holder.next = new Node(Math.floor(Math.random() * 9));
-//     holder = holder.next;
-//   }
-//   return nu;
-// }
-// var test1 = createll(Node, 5);
-// var test2 = createll(Node, 3);
+function createll(constr, leng) {
+  var nu = new Node(Math.floor(Math.random() * 9));
+  var holder = nu;
+  for(var i = 1; i <= leng; i++) {
+    holder.next = new Node(Math.floor(Math.random() * 9));
+    holder = holder.next;
+  }
+  return nu;
+}
+var test1 = createll(Node, 1);
+var test2 = createll(Node, 1);
 //
 function addLinkedList(l1, l2) {
   var node1 = l1;
@@ -51,7 +51,8 @@ function addLinkedList(l1, l2) {
     hold.value = node2.value + carryover
     hold.next = node2.next;
   }
+  if(!node1 && !node2 && carryover) hold.next = new Node(carryover);
   return sumll
 }
-// console.log('this is result', JSON.stringify(addLinkedList(test1, test2)))
+console.log('this is result', JSON.stringify(addLinkedList(test1, test2)))
 module.exports = {Node: Node, addLinkedList: addLinkedList};
