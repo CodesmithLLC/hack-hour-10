@@ -1,0 +1,35 @@
+/**
+ * Write a function to see if a binary tree "superbalanced".
+ * An empty tree is balanced. A non-empty binary tree T is balanced if:
+1) Left subtree of T is balanced
+2) Right subtree of T is balanced
+3) The difference between heights of left subtree and right subtree is not more than 1.
+example: http://www.geeksforgeeks.org/wp-content/uploads/balanced_tree.GIF
+ */
+
+function BinaryTree(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+
+function superbalanced(tree) {
+
+  function countNodes(tree) {
+    if (!tree) return 0;
+    if (!tree.left && !tree.right) return 1;
+    return 1 + countNodes(tree.left) + countNodes(tree.right);
+  }  
+
+  return Math.abs(countNodes(tree.left) - countNodes(tree.right)) <= 1;
+}
+
+
+// let bst = new BinaryTree('a');
+// bst.left = new BinaryTree('b');
+// bst.right = new BinaryTree('c');
+// bst.right.right = new BinaryTree('d');
+// bst.right.left = new BinaryTree('e');
+// bst.left.left = new BinaryTree('f');
+
+module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
