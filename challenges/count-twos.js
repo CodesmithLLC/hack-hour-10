@@ -6,17 +6,25 @@
 // countTwos(1000);  -> 300
 // countTwos(11420);  -> 4483
 
+// function countTwos(num) {
+//   let count = 0;
+//   if (num < 2) return 0;
+//   for (let i = 2; i <= num; i++) {
+//     let str = i.toString();
+//     for (let j = 0; j < str.length; j++) {
+//       if (str[j] === '2') count++;
+//     }
+//   }
+//   return count;
+// }
 
+
+//  FUNCTIONAL VERSION
 function countTwos(num) {
-  let count = 0;
-  if (num < 2) return 0;
-  for (let i = 2; i <= num; i++) {
-    let str = i.toString();
-    for (let j = 0; j < str.length; j++) {
-      if (str[j] === '2') count++;
-    }
-  }
-  return count;
+  return Array.from( { length: num + 1 }, (el, index) => index)
+    .reduce((a, b) => a.toString() + b.toString())
+    .split('')
+    .filter(el => el === '2').length;
 }
 
 // console.log(countTwos(1));//  -> 0
