@@ -14,7 +14,29 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
-
+  function height(tree) {
+    if(!(tree instanceof BinaryTree)) return 0;
+    let height = 0;
+    function find(t, h) {
+      if(t === null) return false;
+      else {
+        if(h > height) height = h;
+        return find(t.right, h+1) || find(t.left, h+1)
+      }
+    }
+    find(tree, 1);
+    return height;
+  }
+  return Math.abs(height(tree.right) - height(tree.left)) < 2;
 }
+
+// var myTree = new BinaryTree(5);
+// myTree.left = new BinaryTree(3);
+// myTree.right = new BinaryTree(9);
+// myTree.right.left = new BinaryTree(6);
+// myTree.right.left.right = new BinaryTree(7);
+
+// console.log(myTree);
+// console.log(superbalanced(myTree));
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
