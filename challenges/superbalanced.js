@@ -23,7 +23,18 @@ function superbalanced(tree) {
     if (tree.right)
       return height(tree.right);
   }
-  return Math.abs(height(tree.left) - height(tree.right)) <= 1;
+  function heightbalanced(tree) {
+    return Math.abs(height(tree.left) - height(tree.right)) <= 1;
+  }
+  function bst(tree, min, max) {
+    if (tree === null) return true;
+    if (tree.value > min && tree.value < max
+      && bst(tree.left, min, tree.value)
+      && bst(tree.right, tree.value, max))
+      return true;
+    return false;
+  }
+  return bst(tree, -Infinity, Infinity) && heightbalanced(tree);
 }
 
 module.exports = { BinaryTree: BinaryTree, superbalanced: superbalanced };
