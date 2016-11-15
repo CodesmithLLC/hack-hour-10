@@ -14,7 +14,51 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
+if (tree.left === null && tree.right === null) {
+  return true;
+}
 
+let leftHeight;
+let curBranchLeft = tree.left.left;
+let curBranchRight = tree.left.right;
+
+if (curBranchLeft && curBranchRight) {
+
+while (curBranchLeft.left !== null && curBranchRight.right !== null) {
+  curBranchLeft = curBranchLeft.left;
+  curBranchRight = curBranchRight.right;
+  leftHeight++;
+}
+
+if (curBranchLeft.left === null && curBranchRight.right !== null || curBranchLeft.left !== null && curBranchRight.right === null) {
+  return false;
+}
+
+}
+else {
+  return false;
+}
+
+let rightHeight;
+curBranchLeft = tree.right.left;
+curBranchRight = tree.right.right;
+
+if (curBranchLeft && curBranchRight) {
+	
+while (curBranchLeft.left !== null && curBranchRight.right !== null) {
+  curBranchLeft = curBranchLeft.left;
+  curBranchRight = curBranchRight.right;
+  rightHeight++;
+}
+
+if (curBranchLeft.left === null && curBranchRight.right !== null || curBranchLeft.left !== null && curBranchRight.right === null) {
+  return false;
+}
+
+return leftHeight === rightHeight || leftHeight - 1 === rightHeight || leftHeight === rightHeight - 1;
+
+}
+return false;
 }
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
