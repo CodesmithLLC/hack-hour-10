@@ -14,6 +14,16 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
+  if(!tree) return true;
+
+  let left = superbalanced(tree.left);
+  let right = superbalanced(tree.right);
+
+  if((left === null) || (right === null)) return false;
+
+  if(Math.abs(left-right) > 1) return false;
+
+  return Max.max(left, right) + 1;
 
 }
 

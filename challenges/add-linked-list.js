@@ -5,7 +5,6 @@
  * EXAMPLE
  * Input: (3 -> 1 -> 5) + (5 -> 9 -> 2)
  * Output: 8 -> 0 -> 8
- *
  */
 
 function Node(val) {
@@ -14,6 +13,21 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
+  let obj1 = l1;
+  let obj2 = l2;
+  let number = '';
+
+  while(obj1 && obj2) {
+      obj1.value
+      obj2.value
+
+
+      obj1 = obj1.next;
+      obj2 = obj1.next;
+
+  }
+
+
 
 }
 
