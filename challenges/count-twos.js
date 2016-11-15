@@ -28,6 +28,17 @@ function countTwos(num) {
   return count;
 }
 
-// console.log(countTwos(222));
+function countTwo(num) {
+  let count = 0;
+  for( let i = 2; i <= num; i++) {
+    let str = i.toString();
+    for( let j = 0; j < str.length; j++ ) {
+      if( str[j] === '2') {
+        count++;
+      }
+    }
+  }
+  return count;
+}
 
 module.exports = countTwos;
