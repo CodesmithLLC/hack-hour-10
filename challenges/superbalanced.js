@@ -24,7 +24,7 @@ function superbalanced(tree) {
     right += 1;
     superbalanced(tree.right);
   }
-  if (right + 1 === left) return true;
+  if (right + 1 === left || left === right) return true;
   return false;
 }
 
