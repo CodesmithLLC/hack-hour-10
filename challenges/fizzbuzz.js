@@ -16,8 +16,23 @@
 //                     'fizzbuzz',
 //                     16 ]
 
-function fizzbuzz(num) {
+'use strict'
 
+function fizzbuzz(num) {
+    const output = [];
+	for(var i = 1; i <= num; i++) {
+		let str='';
+		if(i%3===0) {
+			str+='fizz';
+		}
+		if(i%5===0) {
+			str+='Buzz';
+		}
+		// str === '' ? output.push(i) : output.push(str);
+		output.push(str || i);
+	}
+	return output;
 }
 
-module.exports = fizzbuzz;
+console.log(fizzbuzz(15));
+// module.exports = fizzbuzz;

@@ -11,7 +11,10 @@
  */
 
 function repeatNumbers(array) {
-
+  return array.reduce((a, b, i) => {
+    return b - i;
+  }, 0);
 }
 
 module.exports = repeatNumbers;
+

@@ -8,7 +8,10 @@
  */
 
 function gcd(a, b) {
-
+  // let dividend = Math.max(a, b);
+  // let divisor = Math.min(a, b);
+  if (!b) return a;
+  return gcd(b, a % b);
 }
 
 module.exports = gcd;
