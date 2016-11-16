@@ -13,8 +13,59 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function superbalanced(tree) {
+// function superbalanced(tree) {
+//   let countLeft = 0;
+//   let countRight = 0;
+//   if (tree.value === undefined) return true;
 
+//   function traverse(current) {
+//     if (current.value) {
+//       if (current.left !== null) {
+//         countLeft++;
+//         traverse(current.left);
+//       }
+//       if (current.right !== null) {
+//         countRight++;
+//         traverse(current.right);
+//       }
+//     }
+//     return;
+//   }
+//   traverse(tree);
+//   // console.log(countLeft, countRight);
+//   let value = countLeft - countRight;
+//   if (countLeft - countRight >= -1 && countLeft - countRight <= 1) return true;
+//   else return false;
+// }
+
+function height(tree) {
+  if (tree === null) return 0;
+  return 1 + Math.max(height(tree.left), height(tree.right));
 }
+
+function superbalanced(tree) {
+  if (tree === null) return true;
+  return Math.abs(height(tree.left) - height(tree.right)) <= 1 && superbalanced(tree.left) && superbalanced(tree.right);
+}
+
+// let a = new BinaryTree(20);
+// let al = new BinaryTree(10);
+// let ar = new BinaryTree(25);
+// let bl = new BinaryTree(5);
+// let br = new BinaryTree(13);
+// let cl = new BinaryTree(22);
+// let cr = new BinaryTree(27);
+
+// a.left = al;
+// a.right = ar;
+
+// al.left = bl;
+// al.right = br;
+
+// ar.left = cl;
+// ar.right = cr;
+// cr.right = new BinaryTree(500);
+// console.log(superbalanced(a));
+
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};

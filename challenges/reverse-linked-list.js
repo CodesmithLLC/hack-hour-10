@@ -14,7 +14,32 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
+    const stack = [];
+    let current = head;
+    if (!(head instanceof Node)) return null;
+    while (current) {
+        stack.push(current);
+        current = current.next;
+    }
 
+    current = stack.pop();
+    const newHead = current;
+
+    while (stack.length) {
+        const temp = stack.pop();
+        if (!stack.length)
+            temp.next = null;
+        current.next = temp;
+        current = temp;
+    }
+    return newHead;
 }
+//   var a = new Node('A');
+//   var b = new Node('B');
+//   var c = new Node('C');
+//   a.next = b;
+//   b.next = c;
+ 
+// console.log(reverseLinkedList({value: 0, next:0}));
 
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
