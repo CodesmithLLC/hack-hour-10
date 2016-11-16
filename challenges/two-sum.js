@@ -3,7 +3,21 @@
  */
 
 function twoSum(arr, n) {
-
+  if (!n) return true;    // faster
+  if (!arr.length) return false;
+  let obj = {};
+  for( let i = 0; i < arr.length; i++){
+    if(obj[n - arr[i]]) return true;
+    else obj[arr[i]] = 'anything';
+  }
+  return false;
 }
+// function twoSum(arr, n) {
+//   if (!n) return true;
+//   if (!arr.length) return false;
+//   return arr.reduce( (acc, ele) => {
+//     return arr.includes(n - ele) || acc;
+//   }, false);
+// }
 
 module.exports = twoSum;

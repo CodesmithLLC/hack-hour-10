@@ -8,7 +8,26 @@
 
 
 function countTwos(num) {
-
+  let length = num.toString();
+  let sum = 0, placer = '', j = 1;
+  for( let i = length.length - 1; i >= 0; i --) {
+    if(j < 3) {
+    	if( j === 2) {
+    		sum += Number(length[i]);
+    		if(Number(length[i]) > 1) sum += 1;
+    	 	if(Number(length[i + 1]) > 1) sum += 1;
+    	 	if(length[i-1])sum += Number(length[i - 1] * j + placer);
+    	}
+    	j++;
+    	placer += '0';
+    	continue;
+    }
+    if(length[i] > 1) sum += Number(1 + placer);
+    if(length[i - 1]) sum += Number(length[i - 1] * j + placer);
+    j++;
+    placer += '0';
+  }
+  return sum;
 }
 
 module.exports = countTwos;

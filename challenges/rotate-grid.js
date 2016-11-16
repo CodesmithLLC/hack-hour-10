@@ -17,7 +17,15 @@
  */
 
 function rotateGrid(grid, n) {
-
+  return grid.reduce((acc, cur, ind, arr) => {
+    if (ind === 0) {
+      cur.forEach(ele => acc.push([ele]));
+      return acc
+    } else {
+      cur.forEach((ele, ind2) => acc[ind2].unshift(ele));
+      return acc;
+    }
+  }, []);
 }
 
 module.exports = rotateGrid;

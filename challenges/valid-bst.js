@@ -11,8 +11,18 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-function validBST(tree) {
-
+function validBST(tree, leftRightHistory = Infinity, rightLeftHistory = -Infinity) {
+    if (tree.left !== null) {if (tree.left.value > tree.value || tree.left.value > leftRightHistory || tree.left.value <= rightLeftHistory) return false}
+    if (tree.right !== null) {if (tree.right.value <= tree.value || tree.right.value > leftRightHistory || tree.right.value < rightLeftHistory) return false}
+    if (tree.left && tree.right) {
+        if(isFinite(leftRightHistory)) {
+            return isFinite(rightLeftHistory) ? validBST(tree.left, leftRightHistory, rightLeftHistory) && validBST(tree.right, leftRightHistory, rightLeftHistory) : validBST(tree.left, leftRightHistory, rightLeftHistory) && validBST(tree.right, leftRightHistory, tree.value);
+        }
+        else return isFinite(rightLeftHistory) ? validBST(tree.left, tree.value, rightLeftHistory) && validBST(tree.right, leftRightHistory, rightLeftHistory) : validBST(tree.left, tree.value, rightLeftHistory) && validBST(tree.right, leftRightHistory, tree.value) ;
+    }
+    if (tree.left) isFinite(leftRightHistory) ? validBST(tree.left, leftRightHistory, rightLeftHistory) : validBST(tree.left, tree.value, rightLeftHistory);
+    if (tree.right) isFinite(leftRightHistory) ? validBST(tree.right, leftRightHistory, rightLeftHistory) : validBST(tree.right, leftRightHistory, tree.value);
+    return true;
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
