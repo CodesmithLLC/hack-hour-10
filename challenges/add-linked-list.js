@@ -20,11 +20,10 @@ function Node(val) {
   this.next = null;
 }
 
-
 LinkedList.prototype.push = function(val){
 	var newNode = new Node(val);
 
-	if(this.head === null){
+	if (this.head === null){
 		this.head = newNode;
 	} else {
 		let currentnodebeinglookedat = this.head;
