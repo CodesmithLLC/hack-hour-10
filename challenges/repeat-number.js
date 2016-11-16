@@ -13,21 +13,11 @@
 function repeatNumbers(array) {
 	let obj = {};
 	for (let i = 0; i < array.length; i++) {
-		if (!obj[array[i]]) {
-			obj[array[i]] = 1;
-		} else {
-			obj[array[i]]++;
+		if (obj[array[i]]) {
+			return array[i];
 		}
+		obj[array[i]] = array[i];
 	}
-	for (let key in obj) {
-		if (obj[key] === 2) {
-			return key;
-		}
-	}
-	return undefined;
 }
 
 module.exports = repeatNumbers;
-
-
-console.log(repeatNumbers([1,2,3,4,5,6,6]));
