@@ -11,13 +11,13 @@
  */
 
 function repeatNumbers(array) {
-var holder = {};
+var repeat = {};
 array.forEach(val => {
-	if(!holder[val]) holder[val] = 1;
-	else ++holder[val]
+	if(!repeat[val]) repeat[val] = 1;
+	else ++repeat[val]
 })
-for(var keys in holder){
-	if(holder[keys] === 2) return keys;
+for(var keys in repeat){
+	if(repeat[keys] === 2) return keys;
 }
 return null;
 }
