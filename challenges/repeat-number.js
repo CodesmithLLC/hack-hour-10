@@ -11,11 +11,9 @@
  */
 
 function repeatNumbers(array) {
-  let cache = {};
-  for (let i = 0; i < array.length; i++) {
-    if (!cache[array[i]]) cache[array[i]] = 1;
-    else return array[i];
-  }
+  return array.reduce((a, b, i) => {
+    return b - i;
+  }, 0);
 }
 
 module.exports = repeatNumbers;
