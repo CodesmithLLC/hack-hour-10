@@ -11,7 +11,16 @@
  */
 
 function repeatNumbers(array) {
+  const cache = {};
 
+  for (let i = 0; i < array.length; i++) {
+    if (!cache[array[i]]) {
+      cache[array[i]] = 1;
+    }
+    else return cache[array[i]];
+  }
 }
+
+console.log(repeatNumbers([1,2,3,4,5,1,7,8,9,10]));
 
 module.exports = repeatNumbers;
