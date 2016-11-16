@@ -11,7 +11,12 @@
  */
 
 function repeatNumbers(array) {
-
+  while(array.length) {
+		let num = array.pop();
+		if (array.indexOf(num) !== -1) {
+			return num;
+		}
+	}
 }
 
 module.exports = repeatNumbers;
