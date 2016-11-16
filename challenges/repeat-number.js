@@ -11,7 +11,18 @@
  */
 
 function repeatNumbers(array) {
+  // Cache number as it goes through array
+  // When the number is found again, then
+  // store that double and return that
+  let double;
 
+  const cache = {};
+  array.forEach(num => {
+    if (!cache[num]) cache[num] = true;
+    else double = num;
+  });
+
+  return double;
 }
 
 module.exports = repeatNumbers;
