@@ -14,7 +14,7 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
-  if(!tree) return true;
+  if(!tree) return 0;
 
   let left = superbalanced(tree.left);
   let right = superbalanced(tree.right);
