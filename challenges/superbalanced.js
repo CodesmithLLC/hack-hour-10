@@ -14,6 +14,7 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
+  if(!(tree instanceof BinaryTree)) return false;
   function height(tree) {
     if(!(tree instanceof BinaryTree)) return 0;
     let height = 0;
