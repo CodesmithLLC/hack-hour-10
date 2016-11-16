@@ -13,27 +13,39 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function superbalanced(tree) {
-  let countLeft = 0;
-  let countRight = 0;
-  if (tree.value === undefined) return true;
+// function superbalanced(tree) {
+//   let countLeft = 0;
+//   let countRight = 0;
+//   if (tree.value === undefined) return true;
 
-  function traverse(current) {
-    if (current.value) {
-      if (current.left !== null) {
-        countLeft++;
-        traverse(current.left);
-      }
-      if (current.right !== null) {
-        countRight++;
-        traverse(current.right);
-      }
-    }
-    return;
-  }
-  traverse(tree);
-  // console.log(countLeft, countRight);
-  return countLeft === countRight;
+//   function traverse(current) {
+//     if (current.value) {
+//       if (current.left !== null) {
+//         countLeft++;
+//         traverse(current.left);
+//       }
+//       if (current.right !== null) {
+//         countRight++;
+//         traverse(current.right);
+//       }
+//     }
+//     return;
+//   }
+//   traverse(tree);
+//   // console.log(countLeft, countRight);
+//   let value = countLeft - countRight;
+//   if (countLeft - countRight >= -1 && countLeft - countRight <= 1) return true;
+//   else return false;
+// }
+
+function height(tree) {
+  if (tree === null) return 0;
+  return 1 + Math.max(height(tree.left), height(tree.right));
+}
+
+function superbalanced(tree) {
+  if (tree === null) return true;
+  return Math.abs(height(tree.left) - height(tree.right)) <= 1 && superbalanced(tree.left) && superbalanced(tree.right);
 }
 
 // let a = new BinaryTree(20);
