@@ -14,11 +14,9 @@ function repeatNumbers(array) {
   let cache = {};
   for (let i = 0; i < array.length; i++) {
     if (!cache[array[i]]) cache[array[i]] = 1;
-    else return cache[array[i]];
+    else return array[i];
   }
 }
 
 module.exports = repeatNumbers;
-
-console.log(repeatNumbers(arr));
 
