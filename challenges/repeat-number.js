@@ -10,7 +10,7 @@
  *
  */
 
-function repeatNumbers(array) {
+function xrepeatNumbers(array) {
   let i = 0;
   let runningSum = array.reduce((acc, curr) => {
     i++;
@@ -28,6 +28,10 @@ function repeatNumbers(array) {
   return totalSum - runningSum + 1;
 }
 
-// console.log(repeatNumbers([2,4,6,8,1,3,5,2,7,9]));
+function repeatNumbers(array){
+  return array.reduce((acc, curr, idx) => {
+    return acc + (curr - idx);
+  }, 0);
+}
 
 module.exports = repeatNumbers;
