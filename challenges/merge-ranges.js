@@ -11,7 +11,25 @@
 
 
 function mergeRanges(array) {
+	if(array.length === 0) return array;
+	if(array === undefined) return undefined
+	var sorted = array.sort((a, b) => a[0] - b[0])
+	var nu = [];
+	for(var i = 0, holder = null, compare; i < sorted.length - 1; i++) {
+		compare = sorted[i][1];
+		if(!holder) holder = sorted[i][0]
+		if(compare >= sorted[i + 1][0]) {
+			compare = sorted[i + 1][1]
+		}
+		if(compare < sorted[i + 1][0]) {
+			nu.push([holder, compare]);
+			holder = null;
+			compare = null;
+		}
+
+	}
+	nu.push([holder, compare])
+	console.log(nu)
 
 }
-
 module.exports = mergeRanges;
