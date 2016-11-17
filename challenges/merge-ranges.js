@@ -11,7 +11,27 @@
 
 
 function mergeRanges(array) {
+  // Iterate through the array and check if it is mergeable
+  // Something is mergeable when the first lower bound lies
+  // between (inclusively) the lower and upperbound of a range
+  return array.reduce((prev, cur) => {
+    let [cur_x, cur_y] = cur;
 
+    for (let i = 0; i < prev.length; i++) {
+      if (cur_x >= prev[i][0] && cur_x <= prev[i][1]) {
+        prev[i][1] = cur_y;
+        return prev;
+      }
+      else if (prev[i][0] >= cur_x && prev[i][0] <= cur_y) {
+        cur_y = prev[i][1];
+        prev[i] = cur;
+        return prev;
+      }
+    }
+
+    prev.push(cur);
+    return prev;
+  }, []);
 }
 
 module.exports = mergeRanges;
