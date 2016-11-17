@@ -13,7 +13,19 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  if (stock_prices_yesterday.length) throw new Error('err');
+  const obj = {};
+  let best = 0;
+  for (let i = 0; i < stock_prices_yesterday.length; i++) {
+    obj[i] = stock_prices_yesterday[i];
+  }
+  for (let key in obj) {
 
+  }
+  return best;
 }
 
 module.exports = bestProfit;
+
+
+console.log({'1':2332, '2':324, '3':343}.reverse());
