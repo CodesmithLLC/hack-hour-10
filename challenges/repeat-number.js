@@ -19,3 +19,6 @@ function repeatNumbers(array) {
 }
 
 module.exports = repeatNumbers;
+
+const array = [3, 1, 2, 9, 4, 7, 8, 7];
+console.log(repeatNumbers(array));
