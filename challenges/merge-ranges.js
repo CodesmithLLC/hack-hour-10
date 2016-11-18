@@ -11,30 +11,9 @@
 
 
 function mergeRanges(array) {
-  let newArr = array
-    .reduce((all, item) => {
-      counter = item[0]
-      for (let i = 0; i <= (item[item.length - 1] - item[0]); i++) {
-        all.push(counter + i);
-      }
-      return all;
-    }, [])
-    .sort((a, b) => a - b);
-
-  let finalArr = [];
-  let secondFinalArr = [];
-  for (let i = 0; i < newArr.length; i++) {
-    if (!finalArr.includes(newArr[i])) finalArr.push(newArr[i]);
-  }
-  for (let i = 0; i < finalArr.length; i++) {
-    secondFinalArr.push(finalArr[i]);
-    if (finalArr[i] + 1 !== finalArr[i + 1]) {
-      secondFinalArr.push('x');
-    }
-  }
-  
-  console.log(secondFinalArr);
-
+  return array
+  .sort((a, b) => { return a[0] > b[0] })
+  .reduce((a, c, i, s) => { return a[a.length - 1][1] < c[0] ? a.concat([c]): a.slice(0,-1).concat([[a[a.length - 1][0], a[a.length - 1][1] < c[1] ? c[1] : a[a.length - 1][1]]]) }, [array[0]])
 }
 
 const times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]];
