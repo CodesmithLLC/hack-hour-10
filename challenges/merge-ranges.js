@@ -11,7 +11,9 @@
 
 
 function mergeRanges(array) {
-
+  array.reduce((rangeObj, range) => {
+    rangeObj.
+  })
 }
 
 module.exports = mergeRanges;
