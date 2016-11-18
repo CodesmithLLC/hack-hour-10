@@ -21,7 +21,7 @@ function mergeRanges(array) {
   }
 
   for (let i = 0; i < array.length; i++){
-    for (var j = 0;j  < upper.length; j++) {
+    for (let j = 0;j  < upper.length; j++) {
       if (upper[j] > array[i][0] && upper[j] < array[i][1]) mergable.push(array[i]);
       else unmergable.push(array[i]);
     }
