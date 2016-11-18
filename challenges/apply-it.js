@@ -26,7 +26,25 @@
  */
 
 function applyIt(func, args) {
-
+  return func(args[0], args[1], args[2], args[3], args[4], args[5],args[6], args[7], args[8],args[9], args[10], args[11],args[12], args[13], args[14]);
 }
 
 module.exports = applyIt;
+
+var jae = function(name, age, location) {
+  return name + " is " + age + " and he lives in " + location;
+};
+var jaero = applyIt(jae, ["Jae", 19, "South Carolina"]);
+console.log(jaero);
+
+
+var jasmine = function(name, age) {
+  if (!age) {
+    return "We don't know how old " + name + " is!";
+  }
+  else {
+    return name + " is " + age + " years old!";
+  }
+};
+var jmoney = applyIt(jasmine, ["Jasmine"]);
+console.log(jmoney);
