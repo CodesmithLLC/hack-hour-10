@@ -29,7 +29,7 @@ function mergeRanges(array) {
 
 	}
 	nu.push([holder, compare])
-	console.log(nu)
+	return nu
 
 }
 module.exports = mergeRanges;
