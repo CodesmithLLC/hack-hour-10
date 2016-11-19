@@ -18,24 +18,25 @@ function maxSubarray(arr) {
 	for(var i = 0; i < arr.length; i++){
 		if( arr[i] < 0){ count++;}
 		if(count === arr.length){
+			//the "biggest" negative will always be the largest negative numbers
 			return "ALL NEGS";
 		}
-		console.log(i);
-		console.log('this is array value', arr[i]);
+		// console.log(i);
+		// console.log('this is array value', arr[i]);
 		previous = Math.max(0, previous + arr[i]);
-		console.log('this is prev', previous);
+		// console.log('this is prev', previous);
 		maxSoFar = Math.max(maxSoFar, previous);
-		console.log('this is max', maxSoFar);
+		// console.log('this is max', maxSoFar);
 }
 	return maxSoFar;
 }
 
 // console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5])); // if you add all = 12
-console.log( maxSubarray([15,20,-5,10]));
+// console.log( maxSubarray([15,20,-5,10]));
 // console.log(maxSubarray([20,40]));
 // console.log(maxSubarray([40]));
 // console.log(maxSubarray([-5,-3,-2,-20]));
 //
 //
-// module.exports = maxSubarray;
+module.exports = maxSubarray;
 
