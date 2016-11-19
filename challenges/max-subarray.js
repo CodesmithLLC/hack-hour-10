@@ -7,8 +7,9 @@
  *
  */
 
-function maxSubarray(arr) {
-
+function maxSubarray(arr, sum = 0) {
+  if(!arr.length) return 0;
+  return Math.max(arr[0], arr[0] + sum, maxSubarray(arr.slice(1), arr[0] + sum), maxSubarray(arr.slice(1)));
 }
 
 module.exports = maxSubarray;
