@@ -11,8 +11,7 @@
 
 
 function mergeRanges(array) {
-  array = array.sort((a,b) => {return a[0] - b[0];});
-  return array.reduce((acc, curr, idx) => {
+  return array.sort((a,b) => {return a[0] - b[0];}).reduce((acc, curr, idx) => {
     let accLast = acc[acc.length-1];
     // console.log(idx);
     // console.log(`acc: ${acc.length} :: ${acc}`);
