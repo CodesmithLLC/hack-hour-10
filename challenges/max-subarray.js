@@ -14,6 +14,7 @@ function maxSubarray(arr) {
   let sum = 0;
   const possibles = [];
   if (Math.max.apply(null, arr) <= 0) return Math.max.apply(null, arr);
+
   while (arr[arr.length-1] <= 0 || arr[0] <= 0) {
     if (arr[arr.length - 1] <= 0) arr.pop();
     if (arr[0] <= 0) arr.shift();
@@ -22,9 +23,6 @@ function maxSubarray(arr) {
     possibles.push(arr.slice(i).reduce((a, b) => a + b));
     i += 1
   }
-
   return Math.max.apply(null, possibles) || Math.max.apply(null, arr);
 }
-
-maxSubarray([-15,-20,-5,-10]);
 module.exports = maxSubarray;
