@@ -32,11 +32,11 @@ function maxSubarray(arr) {
 }
 
 // console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5])); // if you add all = 12
-console.log( maxSubarray([15,20,-5,10]));
+// console.log( maxSubarray([15,20,-5,10]));
 // console.log(maxSubarray([20,40]));
 // console.log(maxSubarray([40]));
 // console.log(maxSubarray([-5,-3,-2,-20]));
 //
 //
-// module.exports = maxSubarray;
+module.exports = maxSubarray;
 
