@@ -22,3 +22,5 @@ const objectToExport = {
   sumMultiples3Or5Below1000,
   sumMultiplesXOrYBelowZ,
 };
+
+module.exports = objectToExport;
