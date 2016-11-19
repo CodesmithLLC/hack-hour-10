@@ -7,7 +7,30 @@
  */
 
 function Stack() {
-  // body...
+  this.storage = [];
+  this.max = -Infinity;
+  this.push = (item) => {
+    if(item > this.max){
+      this.max = item;
+    }
+    this.storage.push(item);
+    return this.storage.length;
+  };
+  this.pop = () => {
+    let retVal = this.storage.pop();
+    if(retVal === this.max){
+      this.max = -Infinity;
+      this.storage.forEach( (item) => {
+        if(item > this.max){
+          this.max = item;
+        }
+      } );
+    }
+    return retVal;
+  };
+  this.getMax = () => {
+    return this.max;
+  }
 }
 
 module.exports = Stack;

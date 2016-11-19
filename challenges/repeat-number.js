@@ -10,8 +10,28 @@
  *
  */
 
-function repeatNumbers(array) {
+function xrepeatNumbers(array) {
+  let i = 0;
+  let runningSum = array.reduce((acc, curr) => {
+    i++;
+    return i === array.length - 1 ? acc : acc + i;
+  }, 0);
+  // console.log('========');
+  // console.log(array);
+  // console.log(array.length);
+  // console.log(runningSum);
+  // console.log('========');
+  let totalSum = array.reduce((acc, curr) => {
+    return acc + curr;
+  }, 0)
+  // console.log(totalSum);
+  return totalSum - runningSum + 1;
+}
 
+function repeatNumbers(array){
+  return array.reduce((acc, curr, idx) => {
+    return acc + (curr - idx);
+  }, 0);
 }
 
 module.exports = repeatNumbers;
