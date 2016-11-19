@@ -12,18 +12,29 @@
 // 2 1 3
 
 function maxSubarray(arr) {
-  let maxSum = arr[0];
-  let currentSum = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > currentSum + arr[i]) currentSum = arr[i];
-    else if (currentSum + arr[i] > currentSum) currentSum += arr[i];
-    else if (currentSum + arr[i] < currentSum) {
-      if (currentSum + arr[i] > arr[i]) currentSum += arr[i];
-      else currentSum = arr[i];
+  if (arr.length === 1) return arr[0];
+
+  let maxSum = -Infinity;
+  arr.reduce((accum, curr) => {
+    if (accum + curr < curr) accum = curr;
+    else if (accum + curr > accum) accum += curr;
+    else if (accum + curr < accum) {
+      if (accum + curr > curr) accum += curr;
+      else accum = curr;
     }
-    if (currentSum > maxSum) maxSum = currentSum;
-  }
+    if (accum > maxSum) maxSum = accum;
+    return accum;
+  })
+  // for (let i = 1; i < arr.length; i++) {
+  //   if (arr[i] > currentSum + arr[i]) currentSum = arr[i];
+  //   else if (currentSum + arr[i] > currentSum) currentSum += arr[i];
+  //   else if (currentSum + arr[i] < currentSum) {
+  //     if (currentSum + arr[i] > arr[i]) currentSum += arr[i];
+  //     else currentSum = arr[i];
+  //   }
+  //   if (currentSum > maxSum) maxSum = currentSum;
+  // }
   return maxSum;
 }
-
+console.log(maxSubarray([15, -15]));
 module.exports = maxSubarray;
