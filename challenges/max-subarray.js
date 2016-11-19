@@ -7,21 +7,18 @@
  *
  */
 
-function maxSubarray(arr) {
-  let maxSum = -Infinity;
-  let maxStore = [];
-  for (let i = 0; i < arr.length; i++) {
-    let sum = -Infinity;
-    let store = [];
-    for (let j = arr.length - 1; j >= 0; j--) {
-      sum += arr[i]
-      store.push(arr[i]);
-      if (sum > maxSum) {
-        maxSum = sum;
-        maxStore.pop().push(store);
-      }
-    }
+function maxSubarray(array) {
+  var currentMax = 0;
+  var max = 0;
+  for (var i = 0; i < array.length; i++) {
+    currentMax = Math.max(0, currentMax + array[i]);
+    max = Math.max(max, currentMax);
+    console.log('round: ', i, 'currentMax: ', currentMax, 'max: ', max);
   }
+  return max;
 }
+
+console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5])); // -> 18 from [3, 10, -4, 7, 2]
+// console.log(maxSubarray([15,20,-5,10])); // -> 40
 
 module.exports = maxSubarray;
