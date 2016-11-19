@@ -22,14 +22,15 @@ function sumMultiplesXOrYBelowZ(x, y, z) {
   let i = 2;
   // console.log(i);
   while (i++, i < z){
+  	console.log('this is sum', sum);
   	sum += i % x && i % y ? 0 : i;
-  	// console.log('this is i AFTER', i)
-  	// console.log('this is SUM', sum);
+  	console.log('this is i AFTER', i)
+  	console.log('this is SUM', sum);
   }
   return sum;
 }
 
-// console.log(sumMultiplesXOrYBelowZ(3,5,15));
+console.log(sumMultiplesXOrYBelowZ(3,5,15));
 
 const objectToExport = {
   sumMultiples3Or5Below1000,
