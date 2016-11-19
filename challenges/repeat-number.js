@@ -11,10 +11,13 @@
  */
 
 function repeatNumbers(array) {
-  let a = Array.from(new Set(array));
-  for (let i = 0; i < a.length; i++) {
-    if (array[i] !== a[i]) return (array[i]);
-  }
+  return array.reduce((acc, curr, ind) => { //due to zeroth index, adds +1 until it hits the doubled value, then stops adding
+    return acc + (curr - ind);
+  }, 0);
+  // let a = Array.from(new Set(array));  //works for anything, including numberless array values
+  // for (let i = 0; i < a.length; i++) {
+  //   if (array[i] !== a[i]) return (array[i]);
+  // }
 }
 
 module.exports = repeatNumbers;
