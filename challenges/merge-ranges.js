@@ -44,4 +44,6 @@ function mergeRanges(array) {
     })
 }
 
+
+
 module.exports = mergeRanges;
