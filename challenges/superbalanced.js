@@ -13,35 +13,21 @@ function BinaryTree(value) {
   this.right = null;
 }
 
+function height(tree) {
+  if (tree === null) {
+      return 0;
+  }
+  return 1 + Math.max(height(tree.left), height(tree.right));
+}
+
 function superbalanced(tree) {
-  if (!tree || !tree.root) {
+  if (tree === null) {
     return true;
   }
-
-  let node = tree.root,
-    cache = {
-      min: Number.MAX_SAFE_INTEGER,
-      max: Number.MIN_SAFE_INTEGER
-    };
-
-  findDepth(cache, node, 0);
-  return cache.max - cache.min <= 1;
+  return Math.abs(height(tree.left) - height(tree.right)) <= 1 
+    && superbalanced(tree.left) && superbalanced(tree.right);
 }
 
-function findDepth(cache, node, depth) {
-  if (!node) {
-    if (depth < cache.min) {
-      cache.min = depth;
-    }
-    if (depth > cache.max) {
-      cache.max = depth;
-    }
-  } else {
-    findDepth(cache, node.left, depth + 1);
-    findDepth(cache, node.right, depth + 1);
-  }
-
-}
 
 // let tree = new BinaryTree(11);
 // let tree2 = new BinaryTree(7);
@@ -61,6 +47,5 @@ function findDepth(cache, node, depth) {
 
 // console.log(tree);
 // console.log(superbalanced(tree));
-
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
