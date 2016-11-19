@@ -8,7 +8,7 @@
  */
 
 function maxSubarray(arr, on = false, sum = 0) {
-    return !arr.length ? sum : on ? Math.max(sum, maxSubarray(arr.slice(1), true, sum + arr[0])) : Math.max(maxSubarray(arr.slice(1), false, sum), maxSubarray(arr.slice(1), true, sum + arr[0]))
+    return !arr.length ? sum : on ? Math.max(sum, maxSubarray(arr.slice(1), true, sum + arr[0])) : Math.max(0, maxSubarray(arr.slice(1), false, sum), maxSubarray(arr.slice(1), true, sum + arr[0]))
 }
 
 module.exports = maxSubarray;
