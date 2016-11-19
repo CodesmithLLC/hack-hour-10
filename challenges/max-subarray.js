@@ -18,14 +18,15 @@ function maxSubarray(arr) {
 	for(var i = 0; i < arr.length; i++){
 		if( arr[i] < 0){ count++;}
 		if(count === arr.length){
+			//the "biggest" negative will always be the largest negative numbers
 			return "ALL NEGS";
 		}
-		console.log(i);
-		console.log('this is array value', arr[i]);
+		// console.log(i);
+		// console.log('this is array value', arr[i]);
 		previous = Math.max(0, previous + arr[i]);
-		console.log('this is prev', previous);
+		// console.log('this is prev', previous);
 		maxSoFar = Math.max(maxSoFar, previous);
-		console.log('this is max', maxSoFar);
+		// console.log('this is max', maxSoFar);
 }
 	return maxSoFar;
 }
