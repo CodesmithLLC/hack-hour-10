@@ -8,7 +8,22 @@
  */
 
 function maxSubarray(arr) {
-
+  if (!arr.length) return 0;
+  let sum = 0;
+  const possibles = [];
+  while (arr[arr.length-1] <= 0 || arr[0] <= 0){
+    if (arr[arr.length-1] <= 0) arr.pop();
+    if (arr[0] <= 0) arr.shift();
+  }
+  let i = 0;
+  while (i < arr.length){
+    possibles.push(arr.slice(i).reduce((a,b)=> a + b ));
+    i++
+  }
+  console.log(Math.max.apply(null,possibles));
+  return Math.max.apply(null, possibles)
 }
 
+
+maxSubarray([15,20,-5,10]);
 module.exports = maxSubarray;

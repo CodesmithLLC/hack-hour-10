@@ -11,7 +11,7 @@
 
 
 function mergeRanges(array) {
-
+  
 }
 mergeRanges([[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]])
 module.exports = mergeRanges;
