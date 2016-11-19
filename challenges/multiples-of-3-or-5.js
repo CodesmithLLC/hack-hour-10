@@ -1,5 +1,4 @@
 
-
 function sumMultiples3Or5Below1000() {
   var threes = (Math.floor((1000 - 1) / 3) * Math.floor((1000 - 1) / 3) + Math.floor((1000 - 1) / 3)) / 2 * 3;
   var fives = (Math.floor((1000 - 1) / 5) * Math.floor((1000 - 1) / 5) + Math.floor((1000 - 1) / 5)) / 2 * 5;
@@ -23,3 +22,4 @@ var objectToExport={
 }
 
 module.exports = objectToExport;
+
