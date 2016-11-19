@@ -1,3 +1,4 @@
+'use strict';
 // list all the natural numbers below 10 that are ultiples of 3 or 5 we get 3 ,5, 6, an d 9. the sum of these ultipels i 23
 
 // write a function that will fnind the sum of all the multiples of 3 or 5 below 1000 and return that sum
@@ -17,5 +18,7 @@ function sumMultiplesXOrYBelowZ(x,y,z) {
 }
 
 
-module.exports = { sumMultiplesXOrYBelowZ, sumMultiples3Or5Below1000 };
-
+const objectToExport = {
+  sumMultiples3Or5Below1000,
+  sumMultiplesXOrYBelowZ,
+};
