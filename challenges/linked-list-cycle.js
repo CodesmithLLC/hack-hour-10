@@ -33,11 +33,11 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
-  const visited = [];
+  const visited = {};
   let currNode = head;
   while (currNode) {
-    if (visited.includes(currNode.value)) return true;
-    visited.push(currNode.value);
+    if (visited[currNode.value] === currNode.next) return true;
+    visited[currNode.value] = currNode.next;
     currNode = currNode.next;
   }
   return false;
