@@ -14,7 +14,6 @@
  */
 
 function mergeArrays(arr1, arr2) {
-<<<<<<< HEAD
   if (!arr1) return arr2;
   if (!arr2) return arr1;
   if (!arr1 && !arr2) return [];
