@@ -33,7 +33,63 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
+  if (head.constructor !== Node || head.next === null || head.next.next === null) {
+    return false;
+  }
 
+  let firstNode = head.next;
+  let curNode = head.next.next;
+
+  while (curNode.next !== null) {
+    if (firstNode === curNode) {
+      return true;
+    }
+    else { curNode = curNode.next; }
+  }
+  return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}
+
+/*
+
+Solution #1: O(n) time, O(n) space; no mutation of original nodes
+
+function hasCycle(head) {
+let nodesArr = [];
+let curNode = head;
+
+while (curNode.next !== null) {
+  if (nodesArr.includes(curNode)) {
+    return true;
+  }
+  else {
+    nodesArr.push(curNode);
+    curNode = curNode.next;
+  }
+}
+return false;
+}
+
+*/
+
+/* Solution #2: O(n) time, O(1) space; no mutation of original nodes
+
+function hasCycle(head) {
+  if (head.constructor !== Node || head.next === null || head.next.next === null) {
+    return false;
+  }
+
+  let firstNode = head.next;
+  let curNode = head.next.next;
+
+  while (curNode.next !== null) {
+    if (firstNode === curNode) {
+      return true;
+    }
+    else { curNode = curNode.next; }
+  }
+  return false;
+}
+
+*/
