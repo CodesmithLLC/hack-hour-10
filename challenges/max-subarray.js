@@ -23,6 +23,8 @@ function maxSubarray(arr) {
     possibles.push(arr.slice(i).reduce((a, b) => a + b));
     i += 1
   }
+  console.log(Math.max.apply(null, possibles) || Math.max.apply(null, arr));
   return Math.max.apply(null, possibles) || Math.max.apply(null, arr);
 }
+maxSubarray([-1,-2,100,-3,-4])
 module.exports = maxSubarray;
