@@ -28,7 +28,7 @@
 
 function balancedParens(input){
     var left = [];
-
+//there is nothing here
     for (var i = 0; i < input.length; i++) {
         if (input[i] == '[' || input[i] == '(' || input[i] == '{') {
             left.unshift(input[i]);

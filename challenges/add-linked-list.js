@@ -25,34 +25,15 @@ var test1 = createll(Node, 1);
 var test2 = createll(Node, 1);
 //
 function addLinkedList(l1, l2) {
-  var node1 = l1;
-  var node2 = l2;
-  var sumll = new Node();
-  var hold = sumll;
-  var carryover = 0;
-  console.log(JSON.stringify(node1))
-  console.log(JSON.stringify(node2));
-  while(node1 && node2) {
-    var value = node1.value + node2.value;
-    var valused = value % 10;
-    hold.value = valused + carryover;
-    hold.next = new Node();
-    hold = hold.next;
-    node1 = node1.next;
-    node2 = node2.next;
-    carryover = Math.floor(value / 10);
+  var nu = new Node();
+  function add(newNode, first, second, carryover) {
+    if(!first && !second && !carryover) return null;
+    var sum = carryover;
+    if(l1) sum += l1.value;
+    if(l2) sum += l2.value;
+    newNode.next = new Node(sum % 10);
+    add(newNode.next, first.next ? first.next: null, second.next ? second.next: null, Math.floor(sum / 10))
   }
-
-  if(node1) {
-    hold.value = node1.value + carryover;
-    hold.next = node1.next
-  }
-  else {
-    hold.value = node2.value + carryover
-    hold.next = node2.next;
-  }
-  if(!node1 && !node2 && carryover) hold.next = new Node(carryover);
-  return sumll
 }
 console.log('this is result', JSON.stringify(addLinkedList(test1, test2)))
 module.exports = {Node: Node, addLinkedList: addLinkedList};

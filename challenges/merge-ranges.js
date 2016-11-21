@@ -13,6 +13,7 @@
 function mergeRanges(array) {
 	if(array.length === 0) return array;
 	if(array === undefined) return undefined
+	console.log([].concat.apply( [] ,array))
 	var sorted = array.sort((a, b) => a[0] - b[0])
 	var nu = [];
 	for(var i = 0, holder = null, compare; i < sorted.length - 1; i++) {
@@ -32,4 +33,5 @@ function mergeRanges(array) {
 	return nu
 
 }
+mergeRanges([[[1,2]], [3, 4]])
 module.exports = mergeRanges;
