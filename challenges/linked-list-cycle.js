@@ -33,6 +33,7 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
+  if(!head) return false;
   var hare = head;
   var tortoise = head;
   while(hare.next) {
