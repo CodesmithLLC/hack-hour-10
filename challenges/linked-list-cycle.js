@@ -43,5 +43,7 @@ function hasCycle(head) {
     current = current.next;
   }
 
+  return false;
+
 }
 module.exports = {Node: Node, hasCycle: hasCycle}
