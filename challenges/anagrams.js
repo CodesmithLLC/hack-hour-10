@@ -14,6 +14,7 @@
 
 // Heap's algorithm
 function anagrams(string) { 
+  if (!string.length) return '';
   let arr = Array.from(string);
   const permutations = [];
 
