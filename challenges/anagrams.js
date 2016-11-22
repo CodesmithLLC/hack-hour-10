@@ -13,7 +13,7 @@
   */
 
 function anagrams(string) {
-  if(string === '') return [];
+  if(string === '') return [''];
   var results = [];
   function find(n, arr) {
     if(n === 1) {
