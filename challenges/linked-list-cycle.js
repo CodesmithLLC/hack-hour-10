@@ -46,4 +46,8 @@ function hasCycle(head) {
   return false;
 
 }
+
+// Attempt with tortoise & hare solution
+
+
 module.exports = {Node: Node, hasCycle: hasCycle}
