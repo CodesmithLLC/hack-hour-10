@@ -13,6 +13,8 @@
   */
 
 function anagrams(string) {
+  if (!string) return '';
+  
   const results = [];
 
   function permute(arr, stringAccum) {
@@ -35,12 +37,6 @@ function anagrams(string) {
   return permute(string.split('')); // call permute() with the array-ified input string
   
 }
-
-console.log(anagrams('abc'));
-let arr = [1, 2, 3];
-let yo = arr.splice(1, 1);
-console.log(arr);
-console.log(yo);
 
 module.exports = anagrams;
 
