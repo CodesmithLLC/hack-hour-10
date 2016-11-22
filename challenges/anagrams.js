@@ -13,6 +13,7 @@
   */
 
 function anagrams(string) {
+  if(string === '') return [];
   var results = [];
   function find(n, arr) {
     if(n === 1) {
@@ -44,6 +45,5 @@ function anagrams(string) {
   return Object.keys(objRes);
 }
 
-console.log(anagrams('aac'));
 
 module.exports = anagrams;
