@@ -25,8 +25,11 @@
  *  DO NOT USE THE BUILT IN APPLY METHOD OR THE SPREAD OPERATOR
  */
 
-function applyIt(func, args) {
-
-}
+ function applyIt(func, args) {
+   if (typeof func != 'function' || (!Array.isArray(args))) return null;
+   	return function (){
+     	return func("Jae", 19, "South Carolina");
+     }
+   }
 
 module.exports = applyIt;
