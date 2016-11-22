@@ -37,8 +37,12 @@ function anagrams(string) {
   }
 
   generate(arr.length);
-  return permutations;
-}   
+
+  // Erase dupes
+  let objStorage = {};
+  permutations.forEach(perm => objStorage[perm] = 1);
+  return Object.keys(objStorage);
+}
 
 // Brute force solution
 // function anagrams(string) {
@@ -59,6 +63,7 @@ function anagrams(string) {
 //   return result;
 // }
 
-console.log(anagrams('abc'));
+// console.log(anagrams('abc'));
+// console.log(anagrams('aac'));
 
 module.exports = anagrams;
