@@ -25,7 +25,6 @@ function anagrams(string) {
     }
     return memo;
   }
-  return ranagrams('abc');
+  return ranagrams(string);
 }
-
 module.exports = anagrams;
