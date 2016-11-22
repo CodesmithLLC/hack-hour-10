@@ -13,10 +13,10 @@
   */
 
 function anagrams(string) {
-  var result = [];
+  var results = [];
   function find(n, arr) {
     if(n === 1) {
-      result.push(arr.join(''));
+      results.push(arr.join(''));
       return;
     }
     else {
@@ -37,9 +37,13 @@ function anagrams(string) {
     }
   }
   find(string.length, string.split(''));
-  return result;
+  var objRes = {};
+  for(let i = 0; i < results.length; i++) {
+    objRes[results[i]] = 1;
+  }
+  return Object.keys(objRes);
 }
 
-console.log(anagrams('abc'));
+console.log(anagrams('aac'));
 
 module.exports = anagrams;
