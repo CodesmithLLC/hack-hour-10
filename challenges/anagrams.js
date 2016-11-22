@@ -39,7 +39,7 @@ function anagrams(string) {
   generate(arr.length);
 
   // Erase dupes
-  let objStorage = {};
+  const objStorage = {};
   permutations.forEach(perm => objStorage[perm] = 1);
   return Object.keys(objStorage);
 }
