@@ -13,7 +13,20 @@
 
 
 function deleteDups(head) {
-
+  if(!head || !head.next) return;
+  while(head){
+    let prev;
+    let run = head;
+    while(run){
+      if(prev && prev.value === run.value) {
+       prev.next = run.next;
+       run = run.next;
+       continue;
+      }
+      prev = run = run.next;
+    }
+    head = head.next;
+  }
 }
 
 module.exports = deleteDups;
