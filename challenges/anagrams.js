@@ -13,7 +13,20 @@
   */
 
 function anagrams(string) {
-
+  let result = [];
+  let num = string.length;
+  let counter = 0;
+  
+  function recurser(perm, string, counter) {
+    if (counter === num) {
+      return result.push(perm);
+    }
+    for (let i = 0; i < string.length; i++) {
+      recurser(perm+string[i], string.slice(0,i)+string.slice(i+1), counter+1);
+    }
+  }
+  recurser('', string, counter);
+  return result;
 }
 
 module.exports = anagrams;
