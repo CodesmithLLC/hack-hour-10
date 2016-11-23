@@ -1,3 +1,5 @@
+'use strict'
+
 /**
  * Write a function to reverse an array in place
  *
@@ -12,7 +14,21 @@
  */
 
 function reverseInPlace(array) {
+    if (!array || array.length === 0) return [];
 
+    for (let i = 0; i < Math.floor(array.length/2); i++) {
+        let front = array[i]
+        let back = array[array.length-1-i]
+
+        array[array.length-1-i] = front;
+        array[i] = back;
+    }
+
+    return array;
 }
+
+console.log(reverseInPlace());
+
+
 
 module.exports = reverseInPlace;
