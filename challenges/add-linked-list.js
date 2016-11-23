@@ -15,7 +15,6 @@ function Node(val) {
 
 function addLinkedList(l1, l2) {
   // Worry about floating point numbers?
-  // This can be refactored so that it takes a dynamic list
 
   // Gather the integers into a string of number
   let node, int1 = '', int2 = '';
@@ -42,13 +41,23 @@ function addLinkedList(l1, l2) {
   const str_sum = sum.toString();
 
   // Create a node representation of the number
-  const linkedNodes = new Node(str_sum[str_sum.length - 1]);
+  const origin = linkedNodes = new Node(str_sum[str_sum.length - 1]);
 
-  for (let i = str_sum.length - 2; i >= 0; i--) {
-    linedNodes = linkedNodes.next = new Node(str_sum[i]);
-  }
+  console.log(origin);
+  // for (let i = str_sum.length - 2; i >= 0; i--) {
+  //   linedNodes = linkedNodes.next = new Node(str_sum[i]);
+  // }
 
-  return linkedNodes;
+  // return origin;
 }
+
+const n = new Node(1);
+n.next = new Node(2);
+n.next.next = new Node(3);
+
+const n2 = new Node(3);
+n2.next = new Node(4);
+
+console.log(addLinkedList(n, n2));
 
 module.exports = { Node: Node, addLinkedList: addLinkedList };

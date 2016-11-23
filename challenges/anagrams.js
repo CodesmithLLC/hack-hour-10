@@ -13,7 +13,32 @@
   */
 
 function anagrams(string) {
+  function pluck(subset, idx) {
+    const char = subset[idx];
 
+    let newStr = '';
+    for (let i = 0; i < subset.length; i++) {
+      if (i === idx) continue;
+      newStr += subset[i];
+    }
+
+    return { char, newStr }; 
+  }
+
+  function _anagrams(subset, anagram='') {
+    if (subset.length < 1) anagramsStore.push(anagram);
+
+    for (let i = 0; i < subset.length; i++) {
+      const { char, newStr } = pluck(subset, i);
+      _anagrams(newStr, anagram + char);
+    }
+  }
+
+  const anagramsStore = [];
+  _anagrams(string);
+  return anagramsStore;
 }
+
+console.log(anagrams('cat'))
 
 module.exports = anagrams;
