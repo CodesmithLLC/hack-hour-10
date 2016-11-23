@@ -8,26 +8,34 @@
 
 
 function countTwos(num) {
-  let length = num.toString();
+  let numStr = num.toString();
   let sum = 0, placer = '', j = 1;
-  for( let i = length.length - 1; i >= 0; i --) {
+  for( let i = numStr.length - 1; i >= 0; i--) {
+    console.log(j===2, sum);
     if(j < 3) {
     	if( j === 2) {
-    		sum += Number(length[i]);
-    		if(Number(length[i]) > 1) sum += 1;
-    	 	if(Number(length[i + 1]) > 1) sum += 1;
-    	 	if(length[i-1])sum += Number(length[i - 1] * j + placer);
+    		sum += Number(numStr[i]);
+    		if(Number(numStr[i]) > 1) sum += 1;
+    	 	if(Number(numStr[i + 1]) > 1) sum += 1;
+    	 	if(numStr[i-1])sum += Number(numStr[i - 1] * j + placer);
     	}
     	j++;
     	placer += '0';
     	continue;
     }
-    if(length[i] > 1) sum += Number(1 + placer);
-    if(length[i - 1]) sum += Number(length[i - 1] * j + placer);
+    if(numStr[i] > 1) sum += Number(1 + placer);
+    if(numStr[i - 1]) sum += Number(numStr[i - 1] * j + placer);
     j++;
     placer += '0';
   }
   return sum;
 }
-
-module.exports = countTwos;
+let sum = 0, count = 0;
+while (sum < 101){
+ sum++;
+ sum.toString().split('').forEach(ele =>{
+   if (ele == '2') count++;
+ }) 
+}
+console.log(count);
+//module.exports = countTwos;

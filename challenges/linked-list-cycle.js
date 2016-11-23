@@ -33,11 +33,11 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
-  let arr = [];
+  let set = new Set();
   while(head){
-    let val = head.value;
-    if(arr.includes(val)) return true;
-    arr.push(val);
+    let b = set.size;
+    set.add(head);
+    if(set.size === b) return true;
     head = head.next;
   }
   return false;
