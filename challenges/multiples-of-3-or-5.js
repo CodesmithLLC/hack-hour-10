@@ -10,13 +10,22 @@ function sumMultiples3Or5Below1000() {
 }
 
 function sumMultiplesXOrYBelowZ(x,y,z) {
+  // edge case 1: x === y
   if (x === y) return x * ((Math.floor((z - 1) / x) * (Math.floor((z - 1) / x) + 1)) / 2);
+  // edge case 2: x is a multiple of y (or y is a multiple of x) d
+  let min = x < y ? x : y;
+  let max = x > y ? x : y;
+  if ((max % min) === 0) {
+    return min * ((Math.floor((z - 1) / min) * (Math.floor((z - 1) / min) + 1)) / 2)
+  }
+
   return x * ((Math.floor((z - 1) / x) * (Math.floor((z - 1) / x) + 1)) / 2) +
   y * ((Math.floor((z - 1) / y) * (Math.floor((z - 1) / y) + 1)) / 2) -
   x * y * Math.floor((z-1) / (x * y)) * 
   (Math.floor((z-1) / (x * y)) + 1) / 2
 }
 
+console.log(sumMultiplesXOrYBelowZ(3, 5, 1000));
 
 const objectToExport = {
   sumMultiples3Or5Below1000,
