@@ -12,8 +12,17 @@
 
 
 
-function deleteDups(head) {
-
+function deleteDups(head, look = head ? head : null, look2 = look ? look : null) {
+    do {
+        while (look2 && look2.next) {
+            console.log(look.value, look2.next.value)
+            if (look.value === look2.next.value) look2.next = look2.next.next
+            look2 = look2.next
+        }
+        look = look.next
+        look2 = look ? look: null
+    } while (look);
+    return head
 }
 
 module.exports = deleteDups;
