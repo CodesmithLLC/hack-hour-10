@@ -1,8 +1,3 @@
-//write a function deleteDups that removes duplicates from an unsorted linked list
-// 1->2->3->3
-//delete dups (head) -> 1 -2 -3
-
-// extra how would you solve this problem if temporary buffer not allowed
 
 function Node(val) {
   this.value = val;
