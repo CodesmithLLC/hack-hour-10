@@ -19,7 +19,7 @@ function maxSubarray(arr) {
 		if( arr[i] < 0){ count++;}
 		if(count === arr.length){
 			//the "biggest" negative will always be the largest negative numbers
-			return "ALL NEGS";
+			return Math.max.apply(null, arr);
 		}
 		// console.log(i);
 		// console.log('this is array value', arr[i]);
