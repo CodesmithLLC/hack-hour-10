@@ -32,8 +32,21 @@ var Node = function(value) {
   this.next = null;
 }
 
-function hasCycle(head) {
+function hasCycle(node) {
+  // Sneakily try to JSON.stringify each node and if there is a TypeError
+  // with the message "Converting circular structure to JSON", then we know
+  // there is a circular reference
+  if (!node) return false;
+  
+  try {
+    JSON.stringify(node);
+  } catch (e) {
+    if (e.message === 'Converting circular structure to JSON') {
+      return true;
+    }
+  }
 
+  return hasCycle(node.next);
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}
