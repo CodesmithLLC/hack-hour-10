@@ -13,7 +13,15 @@
   */
 
 function anagrams(string) {
-
+  let obj = {};
+  helper('', string);
+  return Object.keys(obj);
+  function helper(word, letrs){
+    if(letrs.length === 0) return obj[word] = '';
+    for (let i = 0; i < letrs.length; i++){
+      helper(word + letrs[i], letrs.slice(0,i) + letrs.slice(i + 1));
+    }
+  }
 }
 
 module.exports = anagrams;
