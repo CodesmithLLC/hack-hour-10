@@ -7,6 +7,7 @@
  *
  */
 
+//  WORK WITH NEGATIVE NUMBERS
 function maxSubarray(array) {
   var currentMax = 0;
   var max = 0;
