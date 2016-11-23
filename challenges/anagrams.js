@@ -13,7 +13,6 @@
   */
 
 function anagrams(string) {
-  if (!string) return []
   const results = []
   function recurse(str1, str2) {
     if (!str2.length) results.push(str1)
@@ -26,4 +25,3 @@ function anagrams(string) {
 }
 
 module.exports = anagrams;
-
