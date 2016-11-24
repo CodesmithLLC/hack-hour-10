@@ -27,7 +27,7 @@ function addLinkedList(l1, l2) {
     l1values.push(l1current.value);
     l1current = l1current.next;
   }
-  
+    
   while (l2current) {
     l2values.push(l2current.value);
     l2current = l2current.next;
