@@ -11,9 +11,25 @@
  */
 
 
-
 function deleteDups(head) {
+    function dothis(node) { 
+        if (node === null) return null;
+        else {
+            var value = node.value
+            for (var current = node; current.next != null; current = current.next) { 
+                var next = current.next
+                if (next.value === value) {
+                    current.next = next.next
+                } 
+            }
+            dothis(node.next);
+        }
+    }
 
+    dothis(head);
+    return head;
 }
+
+
 
 module.exports = deleteDups;
