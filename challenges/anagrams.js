@@ -14,8 +14,8 @@
 
 function anagrams(string) {
   const recurse = (staticSubString, dynamicSubString) => {
-    console.log('staticSubString: ', staticSubString, ' dynamicSubString: ', dynamicSubString);
-    console.log('---------------');
+    // console.log('staticSubString: ', staticSubString, ' dynamicSubString: ', dynamicSubString);
+    // console.log('---------------');
     // base case: we have reached a leaf on the tree of receursions,
     // and the dynamic part of the string is empty
     if (!dynamicSubString.length) return staticSubString;
@@ -28,10 +28,10 @@ function anagrams(string) {
         recurse(staticSubString.concat(dynamicSubString[i]), dynamicSubString.slice(0, i).concat(dynamicSubString.slice(i + 1, dynamicSubString.length)))
       );
     }
-    console.log('ngrams assembled: ', ngrams);
+    // console.log('ngrams assembled: ', ngrams);
     return ngrams;
   }
   return recurse('', string);
 }
-console.log(anagrams('ahmad kanawi'));
+// console.log(anagrams('ahmad kanawi'));
 module.exports = anagrams;
