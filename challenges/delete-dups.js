@@ -16,11 +16,13 @@ function deleteDups(head) {
         if (node === null) return null;
         else {
             var value = node.value
-            for (var current = node; current.next != null; current = current.next) { 
-                var next = current.next
-                if (next.value === value) {
-                    current.next = next.next
-                } 
+            for (var current = node.next, prev = node; current != null; current = current.next) { 
+                if (current.value === value) {
+                    prev.next = current.next
+                }
+                else { 
+                    prev = prev.next
+                }
             }
             dothis(node.next);
         }
@@ -29,7 +31,6 @@ function deleteDups(head) {
     dothis(head);
     return head;
 }
-
 
 
 module.exports = deleteDups;
