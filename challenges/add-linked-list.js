@@ -11,7 +11,7 @@ function addLinkedList(l1, l2) {
   while (l2 = l2.next)
   const n = Array.from((+s1 + +s2).toString()).reverse()
   n.forEach((digit, idx) => n[idx] = new Node(+digit))
-  n.forEach((node, idx) => node.next = n[idx + 1])
+  n.forEach((node, idx) => node.next = n[idx + 1] ? n[idx + 1] : null)
   return n[0]
 }
 
