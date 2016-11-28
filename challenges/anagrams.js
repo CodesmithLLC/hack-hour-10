@@ -31,7 +31,24 @@ function anagrams(string) {
     // console.log('ngrams assembled: ', ngrams);
     return ngrams;
   }
-  return recurse('', string);
+  const result = recurse('', string);
+  if (!result.length) return [''];
+  const deDupedResult = result.reduce((uniqueGrams, gram) => {
+    if (uniqueGrams.includes(gram)) return uniqueGrams;
+    return uniqueGrams.concat(gram);
+  }, []);
+  return deDupedResult;
 }
-// console.log(anagrams('ahmad kanawi'));
+
+// Write output to file
+// const fs = require('fs');
+// let string = process.argv[2];
+// console.log('Gramming string: ', string);
+// fs.writeFile(`grams-of-${string}.txt`, JSON.stringify(anagrams(string), null, 2), (err) => {
+//   if (err) throw err;
+//   console.log(`Done! File written: grams-of-${string}.txt`);
+// });
+
+// console.log(anagrams(string));
+
 module.exports = anagrams;
