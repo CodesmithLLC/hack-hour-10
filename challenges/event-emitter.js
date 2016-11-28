@@ -22,15 +22,28 @@
  */
 
 function EventEmitter() {
-
+  this.listeners = {};
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-
+  this.listeners[funcName] = func;
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-
+  if (Object.keys(this.listeners).includes(funcName)) {
+    this.listeners[funcName](...args);
+  }
 };
 
 module.exports = EventEmitter;
+
+// Testing follows
+// var instance = new EventEmitter();
+// var counter = 0;
+// instance.on('add', function (x) {
+//   counter += x;
+// });
+// instance.trigger('add', 5);
+// console.log(counter);
+// instance.trigger('add', 2);
+// console.log(counter);
