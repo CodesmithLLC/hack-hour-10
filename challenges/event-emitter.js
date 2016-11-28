@@ -35,13 +35,13 @@ EventEmitter.prototype.trigger = function(funcName, ...args) {
 
 module.exports = EventEmitter;
 
-var instance = new EventEmitter();
-var counter = 0;
-instance.on('increment', function() {
-  counter++;
-});
-console.log('Counter should be 0 ', counter);
-instance.trigger('increment');
-console.log('Counter should be 1 ', counter);
-instance.trigger('increment');
-console.log('Counter should be 2 ', counter);
+// var instance = new EventEmitter();
+// var counter = 0;
+// instance.on('increment', function() {
+//   counter++;
+// });
+// console.log('Counter should be 0 ', counter);
+// instance.trigger('increment');
+// console.log('Counter should be 1 ', counter);
+// instance.trigger('increment');
+// console.log('Counter should be 2 ', counter);
