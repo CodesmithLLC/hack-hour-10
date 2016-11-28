@@ -38,3 +38,5 @@ EventEmitter.prototype.trigger = function(funcName, ...args) {
   let funcList = this.functions[funcName];
   funcList.forEach((func) => func(...args));
 };
+
+module.exports = EventEmitter;
