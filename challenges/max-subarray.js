@@ -8,7 +8,13 @@
  */
 
 function maxSubarray(arr) {
-
+	let max;
+	max = arr.reduce((item, acc) => {
+		return item + acc;
+	})
+	return max;
 }
 
 module.exports = maxSubarray;
+
+console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5]))

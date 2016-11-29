@@ -25,4 +25,5 @@ binary.left = new BinaryTree(2);
 binary.right = new BinaryTree(6);
 binary.left.right = new BinaryTree(4);
 
+
 console.log(binary);

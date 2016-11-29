@@ -26,6 +26,3 @@ function bestProfit(stock_prices_yesterday) {
 }
 
 module.exports = bestProfit;
-
-
-console.log({'1':2332, '2':324, '3':343}.reverse());
