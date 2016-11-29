@@ -10,7 +10,13 @@ findInOrderedSet(nums, 2);  -> false
  */
 
 function findInOrderedSet(arr, target) {
-  return arr.includes(target);
+  let midIndex = Math.floor(arr.length / 2);
+  let temp = arr;
+  let midVal = arr[midIndex];
+  if (target === midVal) return true;
+
+  target < midVal ? temp = temp.slice(0, midIndex) : temp = temp.slice(midIndex);
+  return arr.length === 1 ? false :  findInOrderedSet(temp, target);
 }
 
 module.exports = findInOrderedSet;
