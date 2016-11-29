@@ -11,8 +11,8 @@ findInOrderedSet(nums, 2);  -> false
 
 
 function findInOrderedSet(arr, target) {
-
-}
+  return arr.includes(target); //could also make a function to start checking from the mid of the array
+}                               //similar to a merge sort for searching
 
 
 module.exports = findInOrderedSet;
