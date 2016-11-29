@@ -36,7 +36,6 @@ function hasCycle(head) {
   let current = head;
   const cache = {};
   while (current) {
-    console.log(current);
     if (cache[current.value]) return true;
     cache[current.value] = current.value;
     current = current.next;
