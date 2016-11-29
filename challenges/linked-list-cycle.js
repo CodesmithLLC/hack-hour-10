@@ -56,7 +56,7 @@ return false;
  var node4 = node3.next = new Node('4');
  var node5 = node4.next = new Node('5');
  hasCycle(node1); // => false
- node5.next = node2;
- hasCycle(node1); // => true
+ // node5.next = node2;
+ // hasCycle(node1); // => true
 
 module.exports = {Node: Node, hasCycle: hasCycle}
