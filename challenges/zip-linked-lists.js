@@ -36,21 +36,21 @@ function zip(l1, l2) {
 
 module.exports = {Node: Node, zip: zip};
 
-var a = new Node('A');
-var b = new Node('B');
-var c = new Node('C');
-var d = new Node('D');
-a.next = b;
-b.next = c;
-c.next = d;
-
-
-var A = new Node('a');
-var B = new Node('b');
-var C = new Node('c');
-var D = new Node('d');
-A.next = B;
-B.next = C;
-C.next = D;
-
-console.log(zip(a, A));
+// var a = new Node('A');
+// var b = new Node('B');
+// var c = new Node('C');
+// var d = new Node('D');
+// a.next = b;
+// b.next = c;
+// c.next = d;
+//
+//
+// var A = new Node('a');
+// var B = new Node('b');
+// var C = new Node('c');
+// var D = new Node('d');
+// A.next = B;
+// B.next = C;
+// C.next = D;
+//
+// console.log(zip(a, A));
