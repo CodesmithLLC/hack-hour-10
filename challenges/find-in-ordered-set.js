@@ -18,13 +18,13 @@ function findInOrderedSet(arr, target) {
 	const half = Math.floor(arr.length / 2);
 	if (arr[half] === target) return true;
 	if (arr.length === 1) return false;
-	if (arr[half] > target) return findInOrderedSet(arr.slice(0, half), target);
 	if (arr[half] < target) return findInOrderedSet(arr.slice(half + 1), target);
+	if (arr[half] > target) return findInOrderedSet(arr.slice(0, half), target);
 }
 
 
 module.exports = findInOrderedSet;
 
-var nums = [1, 4, 6, 7, 9, 17, 45]
-console.log(findInOrderedSet(nums, 4));
-console.log(findInOrderedSet(nums, 2));
+// var nums = [1, 4, 6, 7, 9, 17, 45]
+// console.log(findInOrderedSet(nums, 4));
+// console.log(findInOrderedSet(nums, 2));
