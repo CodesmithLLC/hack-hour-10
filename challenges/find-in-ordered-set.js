@@ -21,6 +21,5 @@ function findInOrderedSet(arr, target) {
   return  bisectionSearch(0, arr.length - 1);
 }
 
-var nums = [1, 4, 6, 7, 9, 17, 45]
 
 module.exports = findInOrderedSet;
