@@ -43,6 +43,9 @@ console.log(rotateGrid(sampleGrid, 3));
 
 function rotateGrid(grid, n) {
 	let newGrid = [];
+	for (let i = 0; i < grid.length; i++) {
+
+	}
 
 }
 
