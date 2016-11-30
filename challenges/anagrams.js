@@ -13,7 +13,7 @@
   */
 
 function anagrams(string) {
-  if (!string.length) return [];
+  if (!string.length) return [''];
   if (string.length === 1) return string;
   const result = [];
 
@@ -25,8 +25,13 @@ function anagrams(string) {
     }
     string = string.substr(1, string.length - 1) + start;
   }
+    
+  const cache = {};
+  for (let i = 0; i < result.length; i++) {
+    cache[result[i]] = 1;
+  }
 
-  return result;  
+  return Object.keys(cache);  
 }
 
 // var result = anagrams('abc');
