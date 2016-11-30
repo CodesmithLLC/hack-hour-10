@@ -21,7 +21,6 @@ function findInOrderedSet(arr, target) {
     // console.log('not found');
     return false;
   }
-
   if(target < arr[middleIndex]){
     // console.log(`recurse ${arr.slice(0,middleIndex)}`)
     return findInOrderedSet(arr.slice(0,middleIndex), target);
