@@ -12,35 +12,38 @@ findInOrderedSet(nums, 2);  -> false
 
 // REFACTOR
 
-function findInOrderedSet(arr, target) {
+// function findInOrderedSet(arr, target) {
 
-  let HOLD_MID,
-    upper = arr.length-1,
-    lower = 0;
+//   let HOLD_MID,
+//     upper = arr.length - 1,
+//     lower = 0;
 
-  function recurse(midpoint) {
-    let newMid;
+//   function recurse(midpoint) {
+//     let newMid;
 
-    if (target === arr[midpoint]) return true;
-    if (midpoint === HOLD_MID) return false;
-    
-    HOLD_MID = midpoint;
-    
-    if (target < arr[midpoint]) {
-      newMid = Math.floor((midpoint - lower) / 2);
-      upper = midpoint;
-      return recurse(newMid);
-    }
-    if (target > arr[midpoint]) {
-      newMid = Math.floor((upper - midpoint) / 2);
-      lower = midpoint;
-      return recurse(newMid);
-    }
-  }
+//     if (target === arr[midpoint]) return true;
+//     if (midpoint === HOLD_MID) return false;
 
-  return recurse(Math.floor(arr.length / 2));
+//     HOLD_MID = midpoint;
+
+//     if (target < arr[midpoint]) {
+//       newMid = Math.floor((midpoint - lower) / 2);
+//       upper = midpoint;
+//       return recurse(newMid);
+//     }
+//     if (target > arr[midpoint]) {
+//       newMid = Math.floor((upper - midpoint) / 2);
+//       lower = midpoint;
+//       return recurse(newMid);
+//     }
+//   }
+
+//   return recurse(Math.floor(arr.length / 2));
+// }
+
+const findInOrderedSet1 = (arr, target, mid = Math.floor(arr.length / 2)) => {
+  return target === arr[mid] ? true : mid === 0 ? false : target > arr[mid] ? findInOrderedSet2(arr.slice(mid), target) : findInOrderedSet2(arr.slice(0, mid), target);
 }
-
 
 
 module.exports = findInOrderedSet;
