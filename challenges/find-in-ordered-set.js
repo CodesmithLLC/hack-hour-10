@@ -10,6 +10,8 @@ findInOrderedSet(nums, 2);  -> false
  */
 
 
+// REFACTOR
+
 function findInOrderedSet(arr, target) {
 
   let HOLD_MID,
@@ -39,10 +41,6 @@ function findInOrderedSet(arr, target) {
   return recurse(Math.floor(arr.length / 2));
 }
 
-
-var nums = [1, 4, 6, 7, 9, 17, 45]
-
-console.log(findInOrderedSet(nums, 2));
 
 
 module.exports = findInOrderedSet;
