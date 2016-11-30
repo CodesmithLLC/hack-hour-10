@@ -42,7 +42,7 @@ findInOrderedSet(nums, 2);  -> false
 // }
 
 const findInOrderedSet = (arr, target, mid = Math.floor(arr.length / 2)) => {
-  return target === arr[mid] ? true : mid === 0 ? false : target > arr[mid] ? findInOrderedSet2(arr.slice(mid), target) : findInOrderedSet2(arr.slice(0, mid), target);
+  return target === arr[mid] ? true : mid === 0 ? false : target > arr[mid] ? findInOrderedSet(arr.slice(mid), target) : findInOrderedSet(arr.slice(0, mid), target);
 }
 
 
