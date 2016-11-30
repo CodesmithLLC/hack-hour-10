@@ -1,3 +1,4 @@
+"use strict"
 /**
  * Write a function that takes an integer and the head of a singly linked list,
  * and returns the VALUE kth to last node in the list.
@@ -22,7 +23,28 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
-
+  const store = [];
+  function updateLen (node) {
+    store.push(node);
+    if (node.next === null) { return 1};
+    
+    return 1 + updateLen(node.next);
+  }
+  let lenByRecursion = updateLen(head);
+  return store[lenByRecursion - k].value;
 }
+
+//  var a = new Node('A');
+//  var b = new Node('B');
+//  var c = new Node('C');
+//  var d = new Node('D');
+//  var e = new Node('E');
+ 
+//  a.next = b;
+//  b.next = c;
+//  c.next = d;
+//  d.next = e;
+
+//  console.log(kthToLastNode(2, a));
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

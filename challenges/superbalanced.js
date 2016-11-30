@@ -13,8 +13,27 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function superbalanced(tree) {
+function superbalanced(tree) {}
 
-}
 
-module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
+const t1 = new BinaryTree(10);
+const t2 = new BinaryTree(5);
+const t3 = new BinaryTree(15);
+const t4 = new BinaryTree(3);
+const t5 = new BinaryTree(7);
+const t6 = new BinaryTree(13);
+const t7 = new BinaryTree(17);
+
+t1.left = t2;
+t1.right = t3;
+t2.left = t4;
+t2.right = t5;
+t3.left = t6;
+t3.right = t7;
+
+console.log(superbalanced(t1));
+
+module.exports = {
+  BinaryTree: BinaryTree,
+  superbalanced: superbalanced
+};

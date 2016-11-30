@@ -14,7 +14,49 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
+  let head;
+  let tail;
 
+  function helper(a, b, carryOver) {
+    if (a === null || b === null) {
+      return head;
+    }
+    let newValue = a.value + b.value + carryOver;
+    newValueCarryOver = 0;
+    if (newValue > 9) {
+      newValueCarryOver = newValue - 9;
+      newValue = 0;
+    }
+    const newNode = new Node(newValue);
+    if (head === undefined) {
+      head = newNode;
+      tail = newNode
+    } else {
+      tail.next = newNode;
+      tail = newNode;
+    }
+    return helper(a.next, b.next, newValueCarryOver);
+  }
+  return helper(l1, l2, 0);
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+// const l1_a = new Node(3);
+// const l1_b = new Node(1);
+// const l1_c = new Node(5);
+
+// const l2_a = new Node(5);
+// const l2_b = new Node(9);
+// const l2_c = new Node(2);
+
+// l1_a.next = l1_b;
+// l1_b.next = l1_c;
+
+// l2_a.next = l2_b;
+// l2_b.next = l2_c;
+
+// console.log(addLinkedList(l1_a, l2_a));
+
+module.exports = {
+  Node: Node,
+  addLinkedList: addLinkedList
+};
