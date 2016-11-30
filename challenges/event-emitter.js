@@ -27,13 +27,10 @@ function EventEmitter() {
 
 EventEmitter.prototype.on = function(eventName, func) {
   // add event name as key on this.store: concat or create new array if not exist
-  if (!this.store[eventName]) {
-    this.store[eventName] = [func];
-  } else {
-    this.store[eventName].push(func);
-  }
-  // this.store[eventName] === true ? this.store[eventName].push(func) : this.store[eventName] = [func];
-  return this.store;
+  // if (!this.store[eventName]) this.store[eventName] = [];
+  // this.store[eventName].push(func);
+
+  this.store[eventName] ? this.store[eventName].push(func) : this.store[eventName] = [func];
 };
 
 EventEmitter.prototype.trigger = function(eventName, ...args) {
