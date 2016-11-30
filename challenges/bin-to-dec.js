@@ -14,7 +14,23 @@
  */
 
 function binToDec(binary) {
-
+  let total = 0
+  for (let i = 0; i < binary.length; i++) {
+    total = total * 2 + Number(binary[i]);
+  }
+  return total;
 }
+
+function decToBin(dec) {
+  let bin = [];
+  while(dec >= 1) {
+    let rem = dec % 2;
+    bin.unshift(rem);
+    dec = Math.floor(dec / 2);
+  }
+  return bin.join("");
+}
+
+
 
 module.exports = binToDec;
