@@ -41,7 +41,7 @@ findInOrderedSet(nums, 2);  -> false
 //   return recurse(Math.floor(arr.length / 2));
 // }
 
-const findInOrderedSet1 = (arr, target, mid = Math.floor(arr.length / 2)) => {
+const findInOrderedSet = (arr, target, mid = Math.floor(arr.length / 2)) => {
   return target === arr[mid] ? true : mid === 0 ? false : target > arr[mid] ? findInOrderedSet2(arr.slice(mid), target) : findInOrderedSet2(arr.slice(0, mid), target);
 }
 
