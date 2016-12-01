@@ -10,7 +10,7 @@
  *
  */
 function uniqueNumber(array) {
-  Object.keys(a.reduce((acc, cur) => {
+  return Object.keys(a.reduce((acc, cur) => {
     if (acc[cur]) delete acc[cur];
     else acc[cur] = 1;
     return acc;
