@@ -9,8 +9,53 @@
  * Complete the challenge in O(1) space
  *
  */
-function uniqueNumber(array) {
 
+// // O(n) time
+// function uniqueNumber(array) {
+//   if (array.length === 1) return array[0];
+//   if (array.length === 2) return undefined;
+//   let cache = {};
+//   let temp;
+//   let unique;
+
+//   for (let i = 0; i < array.length; i++) {
+//     temp = array[i];
+//     if (cache[temp]) {
+//       cache[temp]++;
+//     } else {
+//       cache[temp] = 1;
+//       unique = temp;
+//     }
+//   }
+
+//   for (let prop in cache) {
+//     if (cache[prop] === 1) unique = prop;
+//   }
+
+//   return unique;
+// }
+
+// O(n) time functional style
+function uniqueNumber(array) {
+  if (array.length === 1) return array[0];
+  if (array.length === 2) return undefined;
+  let unique;
+
+  const cache = array.reduce((all, item) => {
+    if (all[item]) all[item]++;
+    else all[item] = 1;
+    if (all[item] === 1) unique = item;
+    return all;
+  }, {});
+
+  for (let prop in cache) {
+    if (cache[prop] === 1) unique = prop;
+  }
+
+  return unique;
 }
+
+
+// console.log(uniqueNumber([1, 2, 1, 3, 3])); //-> 2
 
 module.exports = uniqueNumber;
