@@ -10,7 +10,44 @@
  *
  */
 function uniqueNumber(array) {
-
+  if (array.constructor !== Array) { throw new Error('Input must be an array.'); }
+  return array.reduce((p, c) => p ^ c);
 }
 
 module.exports = uniqueNumber;
+
+// Solution #1: O(n) time and O(n) space
+
+// function uniqueNumber(array) {
+//   if (array.constructor !== Array) { throw new Error('Input must be an array.'); }
+//   const storage = {};
+//   for (let i = 0; i < array.length; i++) {
+//     storage[array[i]] ? delete storage[array[i]] : storage[array[i]] = true;
+//   }
+//   return Object.keys(storage)[0];
+// }
+
+// Solution #2: O(n^2) time? and O(1) space
+
+// function uniqueNumber(array) {
+//   if (array.constructor !== Array) { throw new Error('Input must be an array.'); }
+//   let uniqVal = false;
+//   array = array.sort((a, b) => a - b);
+
+//   for (let i = 0; i < array.length; i++) {
+//     if (!uniqVal) {
+//       uniqVal = array[i];
+//     }
+//     else if (uniqVal === array[i]) {
+//       uniqVal = false;
+//     }
+//   }
+//   return uniqVal;
+// }
+
+// Solution #3: O(n) time and O(1) space
+
+// function uniqueNumber(array) {
+//   if (array.constructor !== Array) { throw new Error('Input must be an array.'); }
+//   return array.reduce((p, c) => p ^ c);
+// }
