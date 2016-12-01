@@ -9,8 +9,28 @@
  * Complete the challenge in O(1) space
  *
  */
-function uniqueNumber(array) {
 
+// BONUS
+function uniqueNumber(array) {
+  return array.reduce((sum, next) => sum^next);
+}
+
+function uniqueNumber2(array) {
+  // Cache how many times each number appears
+  const cache = {};
+  array.forEach(number => {
+    if (!cache[number]) cache[number] = 0;
+    cache[number]++;
+  });
+
+  // Find the number that only appears once in cache
+  let uniqNum;
+  for (const num in cache) {
+    const freq = cache[num];
+    if (freq === 1) uniqNum = num;
+  }
+
+  return uniqNum;
 }
 
 module.exports = uniqueNumber;
