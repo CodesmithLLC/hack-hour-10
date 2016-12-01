@@ -16,30 +16,32 @@ function Node(value) {
 }
 
 function deleteDups(head) {
-  let valuesSeen = {}
-  let prev = curr = head;
+  let check = {}
+    , current = head;
 
-  valuesSeen[curr.value] = true;
-
-  while (curr.next) {
-    if (valuesSeen[curr.next.value]) prev.next = curr.next.next;
-    else if()
-  }
-
-}
-
-let curr = head;
-let prev;
-
-while (current && current.next) {
-  prev = curr
-  while (prev.next) {
-    if (curr.value === prev.next.value) {
-      prev.next = prev.next.next;
-    } else {
-      prev = prev.next;
+  while (current.next) {
+    if (!check[current.next.value]) check[current.next.value] = true;
+    else {
+      current.next = current.next.next;
+      continue;
     }
+    current = current.next;
   }
+  return head;
 }
+
+// let curr = head;
+// let prev;
+
+// while (current && current.next) {
+//   prev = curr
+//   while (prev.next) {
+//     if (curr.value === prev.next.value) {
+//       prev.next = prev.next.next;
+//     } else {
+//       prev = prev.next;
+//     }
+//   }
+// }
 
 module.exports = deleteDups;
