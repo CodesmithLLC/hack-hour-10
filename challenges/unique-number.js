@@ -10,24 +10,16 @@
  *
  */
 function uniqueNumber(array) {
+  let temp = array[0];
+  array.shift();
+  let idx = array.indexOf(temp);
 
-  let storage = {};
-
-  array.forEach((el) => {
-    if (storage[el]) {
-      storage[el]++;
-    } else {
-      storage[el] = 1;
-    }
-  })
-
-  for (let key in storage) {
-    if (storage[key] === 1) {
-      return key;
-    }
+  if (idx === -1) {
+    return temp;
+  } else {
+    array.splice(idx, 1);
+    return uniqueNumber(array);
   }
 }
-
-console.log(uniqueNumber([1,2,1,3,3]));
 
 module.exports = uniqueNumber;
