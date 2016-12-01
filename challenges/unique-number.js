@@ -10,7 +10,14 @@
  *
  */
 function uniqueNumber(array) {
-
+  const store = {};
+  array.forEach((item) => {
+    if (store[item] === undefined) store[item] = 1
+    else store[item] = store[item] += 1;
+});
+  for (let key in store) {
+    if (store[key] === 1) return key;
+  }
 }
 
 module.exports = uniqueNumber;
