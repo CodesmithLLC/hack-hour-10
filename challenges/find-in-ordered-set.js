@@ -10,7 +10,7 @@ findInOrderedSet(nums, 2);  -> false
  */
 
 
-// REFACTOR
+// REFACTOR WITHOUT SLICE
 
 // function findInOrderedSet(arr, target) {
 
