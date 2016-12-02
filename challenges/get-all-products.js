@@ -11,12 +11,11 @@
 
 function getAllProducts(array) {
   var hold = [];
+  if(array[0] === undefined) return [0]
   array.forEach((val, i) => { 
     var temp = array.slice(0, i).concat(array.slice(i + 1));
-    console.log(temp)
     hold.push(temp.reduce((a, b) => a * b))
   })
   return hold;
 }
-
 module.exports = getAllProducts;
