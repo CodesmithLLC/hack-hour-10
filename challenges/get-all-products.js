@@ -27,7 +27,7 @@ function getAllProducts(array) {
 
 	for(var key in holdingObject){
 		resultArray.push(holdingObject[key].reduce( (accum, curr, index) => {
-			console.log(curr, 'this is curr');
+			// console.log(curr, 'this is curr');
 			if(curr !== undefined){
 				return accum * curr;
 			} else {
@@ -39,9 +39,9 @@ function getAllProducts(array) {
 	return resultArray;
 }
 
-// module.exports = getAllProducts;
+module.exports = getAllProducts;
 //
-console.log(getAllProducts([1, 7, 3, 4])); //->  [84, 12, 28, 21]
+// console.log(getAllProducts([1, 7, 3, 4])); //->  [84, 12, 28, 21]
 
 //  [7*3*4, 1*3*4, 1*7*4, 1*7*3]
 
