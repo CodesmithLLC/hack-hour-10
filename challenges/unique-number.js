@@ -10,7 +10,18 @@
  *
  */
 function uniqueNumber(array) {
+  let cache = {};
+  
+  array.forEach((num) => {
+    if (!cache[num]) cache[num] = 1;
+    else cache[num]++;
+  });
 
+  for (let num in cache) {
+    if (cache[num] === 1) return Number(num);
+  }
+  return false;
 }
+
 
 module.exports = uniqueNumber;
