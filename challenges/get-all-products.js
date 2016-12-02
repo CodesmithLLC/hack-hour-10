@@ -10,13 +10,13 @@
  */
 
 function getAllProducts(array, answers = []) {
-  if (!array.length) return [];
+  if (!array.length) return [0];
   let newArr = array;
   let first = newArr.shift();
   answers.push(newArr.reduce( (prev,curr) => prev * curr));
   newArr.push(first)
-  if (answers.length < array.length) getAllProducts(newArr, answers);
-  return answers;
+  if (answers.length < array.length) return getAllProducts(newArr, answers);
+  else return answers;
 }
-getAllProducts([1,7,3,4]);
+console.log(getAllProducts([1,7,3,4]));
 module.exports = getAllProducts;
