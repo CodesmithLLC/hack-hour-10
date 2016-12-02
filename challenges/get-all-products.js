@@ -10,7 +10,7 @@
  */
 
 function getAllProducts(array) {
-    return !array.length ? 0 : array.reduce((a, c, i, s) => { return a.concat(s.slice(0, i).concat(s.slice(i + 1)).reduce((a, c) => a * c)) }, [] )
+    return array.reduce((a, c, i, s) => { return a.concat(s.slice(0, i).concat(s.slice(i + 1)).reduce((a, c) => a * c)) }, [0] )
 }
 
 module.exports = getAllProducts;
