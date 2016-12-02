@@ -11,10 +11,20 @@
 
 function getAllProducts(array) {
 
-  return array.map((el, i) => {
+  let products = array.map((el, i) => {
     let newArr = array.slice(0,i).concat(array.slice(i+1));
     return newArr.reduce((acc, cur) => acc * cur);
   })
+
+  let result = [];
+
+  products.forEach((el) => {
+    if (result.indexOf(el) === -1) {
+      result.push(el);
+    }
+  })
+
+  return result;
 }
 
 module.exports = getAllProducts;
