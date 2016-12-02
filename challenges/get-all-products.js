@@ -10,21 +10,24 @@
  */
 
 function getAllProducts(array) {
-  let tempArr = [];
-  const resultArr = [];
+  // if (array.length === 0) return [0];
+  // let tempArr = [];
+  // const resultArr = [];
 
-  array.forEach((item, i) => {
-    tempArr = array.slice(0, i).concat(array.slice(i + 1));
-    resultArr.push(tempArr.reduce((all, item) => all * item));
-  });
+  // array.forEach((item, i) => {
+  //   tempArr = array.slice(0, i).concat(array.slice(i + 1));
+  //   resultArr.push(tempArr.reduce((all, item) => all * item));
+  // });
 
-  return resultArr;
+  // return resultArr;
 
-  // return array.reduce((all, item, i) => {
-  //   let tempArr = array.slice(0, i).concat(array.slice(i + 1));
-  //   all = tempArr.reduce((all, item) => all * item);
-  //   return all;
-  // }, []);
+  // One big reduce function:
+  if (array.length === 0) return [0];
+  return array.reduce((all, item, i) => {
+    let tempArr = array.slice(0, i).concat(array.slice(i + 1));
+    all = all.concat(tempArr.reduce((all, item) => all * item));
+    return all;
+  }, []);
 
 }
 
