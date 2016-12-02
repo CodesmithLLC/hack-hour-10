@@ -10,7 +10,13 @@
  */
 
 function getAllProducts(array) {
-
+  var hold = [];
+  array.forEach((val, i) => { 
+    var temp = array.slice(0, i).concat(array.slice(i + 1));
+    console.log(temp)
+    hold.push(temp.reduce((a, b) => a * b))
+  })
+  return hold;
 }
 
 module.exports = getAllProducts;
