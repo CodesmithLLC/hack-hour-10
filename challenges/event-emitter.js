@@ -25,25 +25,30 @@ function EventEmitter() {
   this.listeners = {};
 }
 
-EventEmitter.prototype.on = function(funcName, func) {
-  this.listeners[funcName] = func;
+EventEmitter.prototype.on = function(eventName, func) {
+  if (this.listeners[eventName]) this.listeners[eventName].push(func);
+  else this.listeners[eventName] = [func];
 };
 
-EventEmitter.prototype.trigger = function(funcName, ...args) {
-  if (Object.keys(this.listeners).includes(funcName)) {
-    this.listeners[funcName](...args);
+EventEmitter.prototype.trigger = function(eventName, ...args) {
+  if (Object.keys(this.listeners).includes(eventName)) {
+    this.listeners[eventName].forEach(func => func(...args));
   }
 };
 
 module.exports = EventEmitter;
 
 // Testing follows
-// var instance = new EventEmitter();
-// var counter = 0;
+// const instance = new EventEmitter();
+// let counterA = 0;
+// let counterB = 0;
 // instance.on('add', function (x) {
-//   counter += x;
+//   counterA += x;
 // });
+// instance.on('add', function(x) {
+//   counterB += x;
+// })
 // instance.trigger('add', 5);
-// console.log(counter);
+// console.log(counterA, counterB);
 // instance.trigger('add', 2);
-// console.log(counter);
+// console.log(counterA, counterB);
