@@ -6,20 +6,31 @@
  * this is done via:
  * [7*3*4, 1*3*4, 1*7*4, 1*7*3]
  *
- * do not use division, becuase zero might be in the array and you cannot divide by zero
  */
 
 function getAllProducts(array) {
-  if (!array.length) return [];
+  let zero = 0;
+  array.forEach(value => {
+    if (value === 0) zero++;
+  });
   const products = [];
-  for (let i = 0; i < array.length; i++) {
+  if (zero > 1) return new Array(array.length).fill(0);
+  if (zero > 0) {
+    const zeroIdx = array.indexOf(0);
     let product = 1;
-    for (let j = 0; j < array.length; j++) {
-      if (i !== j) product *= array[j];
-    }
-    products.push(product);
+    array.forEach(value => {
+      if (value !== 0) product *= value;
+    });
+    const products = new Array(array.length).fill(0);
+    products[zeroIdx] = product;
+    return products;
   }
+  let product = 1;
+  array.forEach(value => product *= value);
+  array.forEach(value => products.push(product / value));
   return products;
 }
 
 module.exports = getAllProducts;
+
+console.log(getAllProducts([1, 7, 3, 0]));
