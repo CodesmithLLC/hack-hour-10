@@ -8,6 +8,13 @@
  *
  */
 
+// class Node{
+//   constructor(val) {
+//     this.value = val;
+//     this.next = null;
+//   }
+// }
+
 function Node(val) {
   this.value = val;
   this.next = null;
@@ -17,4 +24,4 @@ function addLinkedList(l1, l2) {
 
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+module.exports = {Node, addLinkedList};

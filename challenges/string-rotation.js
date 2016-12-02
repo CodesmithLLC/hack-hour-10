@@ -15,26 +15,26 @@ function isSubstring(s1, s2) {
   return s1.indexOf(s2) >= 0;
 }
 
+// function stringRotation(s1, s2) {
+//   for (let i = 0; i < s2.length; i++) {
+//     if (s2[i] === s1[0]) {
+//       let s3 = s2.slice(i, s2.length).concat(s2.slice(0,i));
+//       if (s3 === s1) return true;
+//     }
+//   }
+//   return false;
+// }
+
 function stringRotation(s1, s2) {
-  if (!s1 || !s2) return false;
-  let start;
-  let second = "";
-  for (let i = 0; i < s2.length; i++) {
-    if (s1[0] === s2[i]) start = i;
-  }
-  for (let i = start; i < s2.length; i++) {
-    second += s2[i];
-  }
-  for (let i = 0; i < start; i++) {
-    second += s2[i];
-  }
-  return (isSubstring(s1, second) && s1 === second);
+  if (s2.length !== s1.length) return false;
+  const s3 = s2 + s2;
+  return (isSubstring(s3, s1))
 }
 
 
-module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
+module.exports = {isSubstring, stringRotation};
 
-//
+// 
 // console.log(stringRotation("hello", "hello"));
 // console.log(stringRotation("hello", "llohe"))
 // console.log(stringRotation("hello", "he"))
