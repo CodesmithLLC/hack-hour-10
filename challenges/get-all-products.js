@@ -10,7 +10,35 @@
  */
 
 function getAllProducts(array) {
+  if (array.constructor !== Array) { throw new Error ('Input must be a valid array.'); }
+  const output = [];
+  let temp = JSON.parse(JSON.stringify(array));
+  let product = 1;
 
+  for (let i = 0; i < array.length; i++) {
+    temp.splice(i, 1);
+    product = temp.reduce((p, c) => p * c);
+    output.push(product);
+    temp = JSON.parse(JSON.stringify(array));
+  }
+  return output;
 }
 
 module.exports = getAllProducts;
+
+// Solution #1:
+
+// function getAllProducts(array) {
+//   if (array.constructor !== Array) { throw new Error ('Input must be a valid array.'); }
+//   const output = [];
+//   let temp = JSON.parse(JSON.stringify(array));
+//   let product = 1;
+
+//   for (let i = 0; i < array.length; i++) {
+//     temp.splice(i, 1);
+//     product = temp.reduce((p, c) => p * c);
+//     output.push(product);
+//     temp = JSON.parse(JSON.stringify(array));
+//   }
+//   return output;
+// }
