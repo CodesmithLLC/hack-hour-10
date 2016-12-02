@@ -10,7 +10,23 @@
  */
 
 function getAllProducts(array) {
+  const products = new Set();
+  
+  array.forEach((num1, i) => {
+    array.forEach((num2) => {
+      const product = array.reduce((product, next, curIdx) => {
+        if (curIdx === i) return product;
+        return product * next;
+      });
 
+      products.add(product);
+    });
+  });
+
+  return Array.from(products);
 }
+
+console.log(getAllProducts([1,7,3,4]));
+
 
 module.exports = getAllProducts;
