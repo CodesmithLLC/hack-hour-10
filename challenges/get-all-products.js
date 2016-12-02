@@ -11,6 +11,7 @@
 
 function getAllProducts(array, answers = []) {
   if (!array.length) return [0];
+  if (array.length === 1) return array;
   let newArr = array;
   let first = newArr.shift();
   answers.push(newArr.reduce( (prev,curr) => prev * curr));
@@ -18,5 +19,5 @@ function getAllProducts(array, answers = []) {
   if (answers.length < array.length) return getAllProducts(newArr, answers);
   else return answers;
 }
-console.log(getAllProducts([1,7,3,4]));
+console.log(getAllProducts([1,2,3]));
 module.exports = getAllProducts;
