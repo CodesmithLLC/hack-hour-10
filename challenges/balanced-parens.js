@@ -24,20 +24,29 @@
  *
  */
 
+
 function balancedParens(input){
-  let converted = input.replace(/[ a-zA-Z]/g, "");
-  let second = "";
-  let first = "";
-  for (let i = converted.length - 1; i > Math.floor(converted.length / 2); i--) {
-    second += converted[i];
+  const matches = {
+    '[':']',
+    '{':'}',
+    '(':')'
+  };
+  const brackets = [];
+  for (let i = 0; i < input.length; i++) {
+    let char = input[i];
+    if (char in matches) {
+      brackets.push(char);
+    } else if (char === ']' || char === ')' || char === '}'){
+      if (matches[brackets.pop()] !== char){
+        return false;
+      }
+    }
   }
-  for (let i = 0; i < Math.floor(converted.length / 2); i++) {
-    first += converted[i];
-  }
-  console.log(first, second);
-  // retrun (first === second);
+  return !brackets.length;
 }
 
-module.exports = balancedParens;
 
-balancedParens("('[](){}')");
+
+module.exports = balancedParens;
+// 
+// console.log(balancedParens("('[](){}')"));

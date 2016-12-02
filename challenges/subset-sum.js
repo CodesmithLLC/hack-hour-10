@@ -8,17 +8,12 @@
  * subsetSum([8, -2, 1, -3], 6) -> true, 8 + 1 + (-3) = 6
  */
 
+
 function subsetSum(array, target) {
-  for (let i = 0; i < array.length; i++) {
-    for (let j = i + 1; j < array.length; j++) {
-      if (array[i] + array[j] === target) {
-        return true;
-      }
-    }
-  }
-  return false;
+  if (!target) return true;
+  if (!array.length) return false;
+  return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
 }
 
-module.exports = subsetSum;
 
-console.log(subsetSum([3, 7, 4, 2], ))
+module.exports = subsetSum;
