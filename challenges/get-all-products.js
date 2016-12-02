@@ -10,7 +10,7 @@
  */
 
 function getAllProducts(array) {
-
+    return array.reduce((a, c, i, s) => { return a.concat(s.slice(0, i).concat(s.slice(i + 1)).reduce((a, c) => a * c)) }, [] )
 }
 
 module.exports = getAllProducts;
