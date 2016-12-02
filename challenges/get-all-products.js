@@ -10,7 +10,7 @@
  */
 
 function getAllProducts(array, answers = []) {
-  if (!array.length) return [];
+  if (!array.length) return [0];
   let newArr = array;
   let first = newArr.shift();
   answers.push(newArr.reduce( (prev,curr) => prev * curr));
