@@ -32,5 +32,3 @@ function getAllProducts(array) {
 }
 
 module.exports = getAllProducts;
-
-console.log(getAllProducts([1, 7, 3, 0]));
