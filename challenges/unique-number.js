@@ -10,7 +10,17 @@
  *
  */
 function uniqueNumber(array) {
-
+ return array.reduce((a, b) => a ^ b)
+//   var store = {}
+//   for (var i = 0; i < array.length; i++) { 
+//     if (!store[array[i]]) store[array[i]] = 1
+//     else ++store[array[i]]
+//   }
+//   for (var keys in store) {
+//     if(store[keys] === 1) return keys 
+//   }
+//  // return null
+//   return array.sort((a, b) => a - b).reduce(())
 }
 
 module.exports = uniqueNumber;
