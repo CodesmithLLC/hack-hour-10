@@ -2,9 +2,19 @@
 
 // https://en.wikipedia.org/wiki/Insertion_sort
 
-
-
+// Using array destructuring to swap! Too op...
 function insertionSort(array) {
+  for (let i = 1; i < array.length; i++) {
+    for (let j = i; j >= 1; j--) {
+      if (current >= previous) break;
+      [array[j - 1], array[j]] = [array[j], array[j - 1]];
+    }
+  }
+
+  return array;
+}
+
+function insertionSort2(array) {
   // Pointer at current element
   // Next pointer and next element relative to current
   // Compare current and next pointers
