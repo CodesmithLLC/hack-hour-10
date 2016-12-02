@@ -10,7 +10,7 @@
  */
 
 function getAllProducts(array) {
-  if(array[0] === undefined) return;
+  if(array[0] === undefined) return [0];
   var results = [];
   for(let i = 0; i < array.length; i++) {
     let curArr = [];
