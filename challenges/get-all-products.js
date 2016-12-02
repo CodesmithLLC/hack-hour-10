@@ -1,4 +1,5 @@
 function getAllProducts(array) {
+  if (!array.length) return [0];
   let zero = 0;
   array.forEach(value => {
     if (value === 0) zero++;
