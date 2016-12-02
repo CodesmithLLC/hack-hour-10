@@ -10,6 +10,7 @@
  */
 
 function getAllProducts(array) {
+  // if (array.length === 0) return [0];
   // let tempArr = [];
   // const resultArr = [];
 
@@ -21,6 +22,7 @@ function getAllProducts(array) {
   // return resultArr;
 
   // One big reduce function:
+  if (array.length === 0) return [0];
   return array.reduce((all, item, i) => {
     let tempArr = array.slice(0, i).concat(array.slice(i + 1));
     all = all.concat(tempArr.reduce((all, item) => all * item));
