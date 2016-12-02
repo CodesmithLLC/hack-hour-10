@@ -12,7 +12,7 @@
 function getAllProducts(array) {
 
   // Edge cases
-  if (!Array.isArray(array) || array.length < 2) return undefined;
+  if (!Array.isArray(array) || array.length < 2) return [0];
 
   // Reduce multiples all values except map's current term
   return array.map((num, index) => {
@@ -23,17 +23,17 @@ function getAllProducts(array) {
   });
 }
 
-const arr1 = [3];
-const arr2 = [4, 5];
-const arr3 = [6, 8, 1];
-const arr4 = [3, 2, 4, 1];
-const arr5 = [0, 1, 2, 4];
+// const arr1 = [3];
+// const arr2 = [4, 5];
+// const arr3 = [6, 8, 1];
+// const arr4 = [3, 2, 4, 1];
+// const arr5 = [0, 1, 2, 4];
 
-console.log(getAllProducts(arr1)); // undefined
-console.log(getAllProducts(arr2)); // [5, 4]
-console.log(getAllProducts(arr3)); // [8, 6, 48]
-console.log(getAllProducts(arr4)); // [8, 12, 6, 24]
-console.log(getAllProducts(arr5)); // [8, 0, 0, 0]
+// console.log(getAllProducts(arr1)); // undefined
+// console.log(getAllProducts(arr2)); // [5, 4]
+// console.log(getAllProducts(arr3)); // [8, 6, 48]
+// console.log(getAllProducts(arr4)); // [8, 12, 6, 24]
+// console.log(getAllProducts(arr5)); // [8, 0, 0, 0]
 
 module.exports = getAllProducts;
 
