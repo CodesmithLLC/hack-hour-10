@@ -18,12 +18,13 @@ Adds a node to the end of the list
  */
 LinkedList.prototype.add = function(val) {
   const newNode = new Node(val);
-  if (!head) this.head = this.tail = newNode;
+  if (!this.head) this.head = this.tail = newNode;
   else {
     this.tail.next = newNode;
     newNode.prev = this.tail;
     this.tail = newNode;
   }
+  return true;
 };
 
 /*
@@ -41,10 +42,18 @@ LinkedList.prototype.remove = function(val) {
     currNode = currNode.next;
     if (currNode.val === val) {
       prevNode.next = currNode.next;
-      currNode.next = prevNode;
+      currNode.next.prev = prevNode;
       return currNode;
     }
   }
 };
 
 module.exports = LinkedList;
+
+let ll = new LinkedList();
+ll.add(1);
+ll.add(2);
+ll.add(3);
+console.log(ll);
+ll.remove(2);
+console.log(ll);
