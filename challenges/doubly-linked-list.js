@@ -56,11 +56,3 @@ LinkedList.prototype.remove = function(val) {
 };
 
 module.exports = LinkedList;
-
-let ll = new LinkedList();
-ll.add(1);
-ll.add(2);
-ll.add(3);
-console.log(ll);
-ll.remove(3);
-console.log(ll);
