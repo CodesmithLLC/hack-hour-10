@@ -15,9 +15,7 @@ function getAllProducts(array) {
 
 // const getALlProducts2 = (array) => {
 //   let product = array.reduce((a, c) => a * c);
-//   array.map((num, i) => {
-  
-//   });
+//   array.map((num, i) => {});
 // }
 
 // console.log(getAllProducts([1, 7, 3, 4]));
