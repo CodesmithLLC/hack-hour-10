@@ -40,8 +40,10 @@ LinkedList.prototype.remove = function (val) {
   }
   console.log(current.val, 'this is the value to remove')
   if (current.val === val) {
-    current.next = current.next.next;
-    current = current.prev;
+    console.log('here man', current.val, val);
+    (!current.prev) ? this.head = current.next : current = current.prev;
+    (!current.next) ? this.tail = current.prev : current.next = current.next.next;
+
   }
   console.log(current);
 };
@@ -51,6 +53,6 @@ ll.add(1);
 ll.add(2);
 ll.add(3);
 console.log(ll);
-ll.remove(1);
+ll.remove(3);
 console.log(ll);
 module.exports = LinkedList;
