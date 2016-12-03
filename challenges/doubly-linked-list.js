@@ -33,12 +33,17 @@ Removes the first node with the inputted value
  */
 LinkedList.prototype.remove = function (val) {
   let current = this.head;
-  while (current.next && current.value !== val) {
+  console.log(this.head.val,'this should be the head', val);
+  while (current.next && current.val !== val) {
+    console.log(current,'current');
     current = current.next;
   }
-  if (current.value === val) {
+  console.log(current.val, 'this is the value to remove')
+  if (current.val === val) {
     current.next = current.next.next;
+    current = current.prev;
   }
+  console.log(current);
 };
 
 let ll = new LinkedList();
