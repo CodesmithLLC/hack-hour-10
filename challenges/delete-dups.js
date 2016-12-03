@@ -20,10 +20,10 @@ function deleteDups(head) {
   while (currNode) {
     // if the value at the current Node has already been seen, delete it from
     // the linked list
-    console.log('Seenvals: ', seenVals, 'Current Value: ', currNode.value);
+    // console.log('Seenvals: ', seenVals, 'Current Value: ', currNode.value);
     if (seenVals.includes(currNode.value)) {
       if (!currNode.next) {
-        console.log('Deleting last node! ', lastNode);
+        // console.log('Deleting last node! ', lastNode);
         lastNode.next = null;
         return head;
       }
@@ -42,13 +42,16 @@ function Node(value) {
   this.value = value;
   this.next = null;
 }
-const ourHead = new Node(0);
-ourHead.next = new Node(1);
-ourHead.next.next = new Node(1);
-ourHead.next.next.next = new Node(2);
-ourHead.next.next.next.next = new Node(2);
-ourHead.next.next.next.next = new Node(2);
-
-console.log(deleteDups(ourHead));
 
 module.exports = deleteDups;
+
+// testing
+//
+// const ourHead = new Node(0);
+// ourHead.next = new Node(1);
+// ourHead.next.next = new Node(1);
+// ourHead.next.next.next = new Node(2);
+// ourHead.next.next.next.next = new Node(2);
+// ourHead.next.next.next.next = new Node(2);
+//
+// console.log(deleteDups(ourHead));
