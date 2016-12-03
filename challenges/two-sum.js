@@ -19,14 +19,3 @@ function twoSum(array, target) {
 }
 
 module.exports = twoSum;
-
-/**
- * Tests for twoSum
- */
-function twoSumTest() {
-  const array = [1, 2, 3, 4, 5];
-  console.log(twoSum(array, 9), 'should be true');
-  console.log(twoSum(array, 12), 'should be false');
-}
-
-// twoSumTest();
