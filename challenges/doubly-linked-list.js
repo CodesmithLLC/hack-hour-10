@@ -47,21 +47,3 @@ LinkedList.prototype.remove = function (val) {
 };
 
 module.exports = LinkedList;
-
-const l = new LinkedList()
-l.add(0)
-l.add(1)
-l.add(3)
-l.add(2)
-l.add(3)
-l.add(3)
-l.add(4)
-l.remove(3)
-function print(l) {
-    let cur = l.head
-    while (cur) {
-        console.log(cur.val)
-        cur = cur.next
-    }
-}
-print(l)
