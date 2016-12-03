@@ -37,10 +37,14 @@ LinkedList.prototype.remove = function(val) {
   } else {
     cur = this.head;
     while(cur) {
-      if(cur.val === val) {
+      if(cur === this.tail && cur.val === val) {
+        cur.prev.next = cur.next;
+        this.tail = cur.prev;
+        return;
+      } else if(cur.val === val) {
         cur.next.prev = cur.prev;
         cur.prev.next = cur.next;
-        return cur;
+        return;
       }
       cur = cur.next;
     }
@@ -50,8 +54,8 @@ LinkedList.prototype.remove = function(val) {
 
 // var myList = new LinkedList();
 // console.log(myList);
-// myList.add(1).add(2).add(3).add(4);
-// myList.remove(3)
+// myList.add(1).add(1).add(3).add(4);
+// myList.remove(4);
 
 // console.log(myList);
 
