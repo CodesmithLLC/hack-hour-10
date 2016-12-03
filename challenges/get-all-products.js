@@ -17,7 +17,7 @@ function getAllProducts(array) {
       return acc * cur;
     }, 1));
   }
-  return result;
+  return Array.from(new Set(result));
 }
 
 module.exports = getAllProducts;
