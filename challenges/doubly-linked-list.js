@@ -35,12 +35,19 @@ LinkedList.prototype.remove = function(val) {
   let prevNode;
   if (currNode.val === val) {
     this.head = currNode.next;
+    if (this.head) this.head.prev = null;
+    if (!this.head) this.tail = null;
     return currNode;
   }
   while (currNode) {
     prevNode = currNode;
     currNode = currNode.next;
     if (currNode.val === val) {
+      if (currNode === this.tail) {
+        this.tail = prevNode;
+        prevNode.next = null;
+        return currNode;
+      }
       prevNode.next = currNode.next;
       currNode.next.prev = prevNode;
       return currNode;
@@ -49,11 +56,3 @@ LinkedList.prototype.remove = function(val) {
 };
 
 module.exports = LinkedList;
-
-let ll = new LinkedList();
-ll.add(1);
-ll.add(2);
-ll.add(3);
-console.log(ll);
-ll.remove(2);
-console.log(ll);
