@@ -5,35 +5,55 @@
  * ex: getProducts([1, 7, 3, 4]); ->  [84, 12, 28, 21]
  * this is done via:
  * [7*3*4, 1*3*4, 1*7*4, 1*7*3]
- *
- * do not use division, becuase zero might be in the array and you cannot divide by zero
  */
 
 function getAllProducts(array) {
 
   // Edge cases
-  if (!Array.isArray(array) || !array.length) return [0];
+  if (!array || !Array.isArray(array) || !array.length) return [0];
   if (array.length === 1) return array;
-  
-  // Reduce multiplies all values except map's current term
-  return array.map((num, index) => {
-    return array.reduce((product, num, i) => {
-      if (i !== index) product *= num;
-      return product;
+  if (array.includes(0)) {
+    const product = array.reduce((acc, num) => {
+      if (num) return acc *= num;
+      return acc;
     }, 1);
-  });
+
+    return array.map(val => {
+      if (!val) return product;
+      return 0;
+    });
+  }
+
+  // Get product for all values, then divide by each value to get all possible products.
+  const multiplyAll = array.reduce((acc, num) => acc * num);
+  return array.map(val => multiplyAll / val);
 }
 
-const arr1 = [3];
-const arr2 = [4, 5];
-const arr3 = [6, 8, 1];
-const arr4 = [3, 2, 4, 1];
-const arr5 = [0, 1, 2, 4];
+// const arr1 = [3];
+// const arr2 = [4, 5];
+// const arr3 = [6, 8, 1];
+// const arr4 = [3, 2, 4, 1];
+// const arr5 = [0, 1, 2, 4];
 
-console.log(getAllProducts(arr1)); // undefined
-console.log(getAllProducts(arr2)); // [5, 4]
-console.log(getAllProducts(arr3)); // [8, 6, 48]
-console.log(getAllProducts(arr4)); // [8, 12, 6, 24]
-console.log(getAllProducts(arr5)); // [8, 0, 0, 0]
+// console.log(getAllProducts(arr1)); // [3]
+// console.log(getAllProducts(arr2)); // [5, 4]
+// console.log(getAllProducts(arr3)); // [8, 6, 48]
+// console.log(getAllProducts(arr4)); // [8, 12, 6, 24]
+// console.log(getAllProducts(arr5)); // [8, 0, 0, 0]
 
 module.exports = getAllProducts;
+
+// function getAllProducts(array) {
+
+//   // Edge cases
+//   if (!Array.isArray(array) || !array.length) return [0];
+//   if (array.length === 1) return array;
+
+//   // Reduce multiplies all values except map's current term
+//   return array.map((num, index) => {
+//     return array.reduce((product, num, i) => {
+//       if (i !== index) product *= num;
+//       return product;
+//     }, 1);
+//   });
+// }
