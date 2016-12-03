@@ -60,15 +60,15 @@ LinkedList.prototype.remove = function(val) {
 
 // node5.prev = node4.next;
 
-let ll = new LinkedList();
-ll.add(1);
-ll.add(2);
-ll.add(3);
-ll.add(4);
-ll.add(5);
-console.log(ll);
+// let ll = new LinkedList();
+// ll.add(1);
+// ll.add(2);
+// ll.add(3);
+// ll.add(4);
+// ll.add(5);
+// console.log(ll);
 
-ll.remove(4);
-console.log(ll);
+// ll.remove(4);
+// console.log(ll);
 
 module.exports = LinkedList;
