@@ -13,13 +13,14 @@ function getAllProducts(array) {
   if (!array || !Array.isArray(array) || !array.length) return [0];
   if (array.length === 1) return array;
   if (array.includes(0)) {
-    const product = array.reduce((acc, num) => {
-      if (num) return acc *= num;
+    array[array.indexOf(0)] = 'ZeroToHero';
+    const product = array.reduce((acc, val) => {
+      if (Number.isInteger(val)) return acc *= val;
       return acc;
     }, 1);
 
     return array.map(val => {
-      if (!val) return product;
+      if (!Number.isInteger(val)) return product;
       return 0;
     });
   }
@@ -33,13 +34,13 @@ function getAllProducts(array) {
 // const arr2 = [4, 5];
 // const arr3 = [6, 8, 1];
 // const arr4 = [3, 2, 4, 1];
-// const arr5 = [0, 1, 2, 4];
+// const arr5 = [0, 1, 0, 4];
 
 // console.log(getAllProducts(arr1)); // [3]
 // console.log(getAllProducts(arr2)); // [5, 4]
 // console.log(getAllProducts(arr3)); // [8, 6, 48]
 // console.log(getAllProducts(arr4)); // [8, 12, 6, 24]
-// console.log(getAllProducts(arr5)); // [8, 0, 0, 0]
+// console.log(getAllProducts(arr5)); // [0, 0, 0, 0]
 
 module.exports = getAllProducts;
 
