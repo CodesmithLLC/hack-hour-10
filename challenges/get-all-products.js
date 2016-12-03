@@ -9,8 +9,9 @@
  * do not use division, becuase zero might be in the array and you cannot divide by zero
  */
 
-function getAllProducts(array) {
-  const prodArray = array.reduce((result, item, index, array) => {
+function getAllProducts(inputArray) {
+  if (!inputArray.length) return [0];
+  const prodArray = inputArray.reduce((result, item, index, array) => {
     const arrayWithOneLessItem = array.slice();
     arrayWithOneLessItem.splice(index, 1);
     result.push(arrayWithOneLessItem.reduce((a, b) => a * b));
@@ -22,4 +23,4 @@ function getAllProducts(array) {
 module.exports = getAllProducts;
 
 // testing
-// console.log(getAllProducts([1, 7, 3, 4, 12, 16, 19, 23, 27]));
+// console.log(getAllProducts([1, 7, 3, 4]));
