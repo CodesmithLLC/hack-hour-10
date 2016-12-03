@@ -10,7 +10,19 @@
  */
 
 function getAllProducts(array) {
-    return !array.length ? [0] : array.reduce((a, c, i, s) => { return a.concat(s.slice(0, i).concat(s.slice(i + 1)).reduce((a, c) => a * c)) }, [] )
+    if (!array.length) return [0]
+    const zeroes = array.reduce((a, c) => { return c === 0 ? ++a : a }, 0)
+    switch (zeroes) {
+        case 0:
+            const prodAllnoZeroes = array.reduce((a, c) => a * c)
+            return array.map(e => prodAllnoZeroes / e)
+        case 1:
+            const prodAllOneZero = array.reduce((a, c) => c === 0 ? a : a * c)
+            console.log(prodAllOneZero)
+            return [prodAllOneZero]
+        default:
+            return [0]
+    }
 }
 
 module.exports = getAllProducts;
