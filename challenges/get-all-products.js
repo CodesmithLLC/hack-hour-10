@@ -10,7 +10,16 @@
  */
 
 function getAllProducts(array) {
-
+  const prodArray = array.reduce((result, item, index, array) => {
+    const arrayWithOneLessItem = array.slice();
+    arrayWithOneLessItem.splice(index, 1);
+    result.push(arrayWithOneLessItem.reduce((a, b) => a * b));
+    return result;
+  }, []);
+  return prodArray;
 }
 
 module.exports = getAllProducts;
+
+// testing
+// console.log(getAllProducts([1, 7, 3, 4, 12, 16, 19, 23, 27]));
