@@ -32,6 +32,6 @@ function getAllProducts(array) {
   // }, []);
 }
 
-console.log(getAllProducts([1, 7, 3, 4])); // ->  [84, 12, 28, 21]
+// console.log(getAllProducts([1, 7, 3, 4])); // ->  [84, 12, 28, 21]
 
 module.exports = getAllProducts;
