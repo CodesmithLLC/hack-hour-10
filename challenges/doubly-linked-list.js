@@ -18,8 +18,9 @@ Adds a node to the end of the list
  */
 LinkedList.prototype.add = function (val) {
   let new_node = new Node(val),
-    current = this.head;
-  
+    current = this.head,
+    remove;
+
   // if you're adding the very first node:
   if (!this.head && !this.tail) {
     this.tail = this.head = new_node;
@@ -29,7 +30,7 @@ LinkedList.prototype.add = function (val) {
     while (current.next) {
       current = current.next;
     } // current is now the last node in the LL
-    
+
     // set references
     this.tail = current.next = new_node;
     new_node.prev = current;
@@ -42,34 +43,34 @@ LinkedList.prototype.add = function (val) {
 /*
 Removes the first node with the inputted value
  */
-LinkedList.prototype.remove = function(val) {
-  let current = this.head,
-    next,
-    remove;
+LinkedList.prototype.remove = function (val) {
+  let current = this.head;
+  let new_next;
 
-  // if the target happens to be on the first (head) node: 
+  // if the first node is the target;
   if (this.head.val === val) {
-    next = current.next;
-    if (next) next.prev = null;
-    current.next = null;
-
+    this.head = new_next = current.next;
+    new_next.prev = current.next = null;
     return current;
   }
 
-  // else, traverse and stop at the node BEFORE the target node 
   while (current.next && current.next.val !== val) {
     current = current.next;
-  } // current is now the node BEFORE the target node
+  } // traverse; arrive at one node prior to the target
 
-  if (!current.next) return false; // if you're on the tail, you didn't encounter the target
+  if (!current.next) return false; // if current.next is null, you've reached the end w/o encountering the target;
 
-  remove = current.next; // removed node to return  
-  next = current.next.next; // reference to the new next
-  current.next = next;
-  if (next) next.prev = current;
-  
+  remove = current.next;
+  new_next = current.next.next;
+  current.next = new_next;
+  if (!new_next) { this.tail = current; }
+  else { new_next.prev = current; }
+
   return remove;
 };
+
+
+
 
 
 module.exports = LinkedList;
