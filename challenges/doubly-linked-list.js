@@ -18,16 +18,13 @@ function Node(val) {
 Adds a node to the end of the list
  */
 LinkedList.prototype.add = function(val) {
-  let node = new Node(val)    //  create a new Node with the input value
+  let node = new Node(val)
 
-  if (!this.head) {
-    this.head = node;
+  if (!this.head) this.head = this.tail = node;
+  else {
+    this.tail.next = node;
+    node.prev = this.tail;
     this.tail = node;
-  } else {
-    current = this.tail;        //  set a variable for the 'old tail'
-    current.next = node;        //  set the old tail's 'next' to the new value
-    node.prev = current;        //  set the new tail's 'prev' to the old tail
-    this.tail = node;           //  set the new tail to the new value
   }
 
   return true;
@@ -37,18 +34,29 @@ LinkedList.prototype.add = function(val) {
 Removes the first node with the inputted value
  */
 LinkedList.prototype.remove = function(val) {
-  let current = this.head;
-  let previous;
+  if (this.head.val === val) {
+    this.head = this.head.next;
+    this.head.prev = null;
+  } else {
+    let current = this.head;
+    while (current) {
+      if (current.val === val && current === this.tail) {
 
-  while (current.val !== val) {
-    previous = current;
-    current = current.next;
+        // reassign this.tail
+        current.prev.next = current.next;
+        this.tail = current.prev;
+        return current;
+      } else if (current.val === val) {
+
+        // remove the link in between the nodes
+        current.next.prev = current.prev;
+        current.prev.next = current.next;
+        return current;
+      }
+      current = current.next;
+    }
+    return undefined;
   }
-
-  previous.next = current.next;
-  current.next.prev = previous;
-
-  return current;
 };
 
 // // TESTS:
@@ -72,16 +80,15 @@ LinkedList.prototype.remove = function(val) {
 // ll.remove(2);
 // console.log(ll);
 
-// // TESTS v2:
+// TESTS v2:
 // let ll = new LinkedList();
 // ll.add(1);
 // ll.add(2);
 // ll.add(3);
 // ll.add(4);
 // ll.add(5);
+// console.log(ll.remove(5));
 // console.log(ll);
 
-// ll.remove(4);
-// console.log(ll);
 
 module.exports = LinkedList;

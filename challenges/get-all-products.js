@@ -10,25 +10,26 @@
  */
 
 function getAllProducts(array) {
-  // if (array.length === 0) return [0];
-  // let tempArr = [];
-  // const resultArr = [];
+  // Looping style:
+  if (!array || !Array.isArray(array) || array.length <= 1) return [0];
+  const results = [];
+  let currProd;
+  for (let i = 0; i < array.length; i++) {
+    currProd = 1;
+    for (let j = 0; j < array.length; j++) {
+      if (j !== i) currProd *= array[j];
+    }
+    results.push(currProd);
+  }
+  return results;
 
-  // array.forEach((item, i) => {
-  //   tempArr = array.slice(0, i).concat(array.slice(i + 1));
-  //   resultArr.push(tempArr.reduce((all, item) => all * item));
-  // });
-
-  // return resultArr;
-
-  // One big reduce function:
-  if (array.length === 0) return [0];
-  return array.reduce((all, item, i) => {
-    let tempArr = array.slice(0, i).concat(array.slice(i + 1));
-    all = all.concat(tempArr.reduce((all, item) => all * item));
-    return all;
-  }, []);
-
+  // // Functional style (less efficient than looping):
+  // if (!array || !Array.isArray(array) || array.length <= 1) return [0];
+  // return array.reduce((all, item, i) => {
+  //   let tempArr = array.slice(0, i).concat(array.slice(i + 1));
+  //   all = all.concat(tempArr.reduce((all, item) => all * item));
+  //   return all;
+  // }, []);
 }
 
 console.log(getAllProducts([1, 7, 3, 4])); // ->  [84, 12, 28, 21]
