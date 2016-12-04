@@ -5,7 +5,6 @@ Create a doubly linked list with an add and remove method
 function LinkedList() {
   this.head = null;
   this.tail = null;
-  this.length = 0;
 }
 
 function Node(val) {
@@ -20,7 +19,7 @@ Adds a node to the end of the list
 LinkedList.prototype.add = function(val) {
   const node = new Node(val);
   
-  if (!this.length) {
+  if (!this.head) {
     this.head = node;
     this.tail = node;
   } else {
@@ -29,7 +28,6 @@ LinkedList.prototype.add = function(val) {
     this.tail = node;
   }
 
-  ++this.length;
   return true;
 };
 
@@ -37,42 +35,32 @@ LinkedList.prototype.add = function(val) {
 Removes the first node with the inputted value
  */
 LinkedList.prototype.remove = function(val) {
-  if (!this.length) return undefined;
-  if (this.length === 1) {
-    this.head = this.tail = null;
-    this.length = 0;
-    return;
-  }
-
-  if (this.head.val === val) {
-    this.head = this.head.next;
-    this.head.prev = null;
-    --this.length;
-    return;
-  }
-
   let curr = this.head;
-  while (curr.next) {
-    if (curr.next.val === val) {
-      curr.next = curr.next.next;
+  while (curr) {
+    if (curr.val === val) {
 
-      if (curr.prev) {
-        if (curr.next) {
-          curr.next.prev = curr.prev.next;
-        } else {
-          this.tail = curr;
-        }
+      // Edge cases
+      if (curr === this.head) {
+        curr.next.prev = null;
+        this.head = curr.next;
+      } else if (curr === this.tail) {
+        curr.prev.next = null;
+        this.tail = curr.prev;
+
+        // Middle nodes
       } else {
-        curr.next.prev = this.head;
+        curr.prev.next = curr.next;
+        curr.next.prev = curr.prev;
       }
 
-      --this.length;
-      return;
+      return curr;
     }
 
     curr = curr.next;
   }
-};
+
+  return 'Value does not exist';
+}
 
 module.exports = LinkedList;
 
@@ -80,5 +68,5 @@ module.exports = LinkedList;
 // LL.add(4);
 // LL.add(3);
 // LL.add(8);
-// LL.remove(8)
+// LL.remove(4);
 // console.log(LL);
