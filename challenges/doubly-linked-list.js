@@ -45,10 +45,15 @@ LinkedList.prototype.remove = function(val) {
 			let prevlink = currentNode.prev;
 			let nextlink = currentNode.next;
 
-			currentNode.prev = currentNode.next;
-			currentNode.next = prevlink;
-			prevlink.next = null;
-			nextlink.next = null;
+			// currentNode.prev = currentNode.next;
+			// currentNode.next = prevlink;
+			// prevlink.next = null;
+			// nextlink.next = null;
+
+			currentNode.prev = null;
+			currentNode.next = null;
+			prevlink.next = nextlink;
+			nextlink.prev = prevlink;
 		}
 		currentNode = currentNode.next;
 	}
