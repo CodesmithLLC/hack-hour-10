@@ -52,11 +52,5 @@ LinkedList.prototype.remove = function(val) {
   }
 };
 
-// var myList = new LinkedList();
-// console.log(myList);
-// myList.add(1).add(1).add(3).add(4);
-// myList.remove(4);
-
-// console.log(myList);
 
 module.exports = LinkedList;

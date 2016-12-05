@@ -23,7 +23,21 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-
+  let diff = 0;
+  for(let i = 0; i < x.length; i++) {
+    let curleft = x[i] - r[i];
+    let curright = x[i] + r[i];
+    let curtop = y[i] + r[i];
+    let curbot = y[i] - r[i];
+    if(start_x > curleft && start_x < curright && (end_x < curleft || end_x > curright)) {
+      diff++;
+    } else if (start_y > curbot && start_y < curtop && (end_y < curbot || end_y > curtop)) {
+      diff++;
+    }
+  }
+  return diff;
 }
+
+
 
 module.exports = circleCountry;
