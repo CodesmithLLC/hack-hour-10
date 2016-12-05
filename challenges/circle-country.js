@@ -24,6 +24,20 @@
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
 
+    // Returns true or false depending on if distance from start to end changes whether or not you change from
+    // being less than the radius from the circle to being more thanb the radius from the circle, or vice versa.
+    const crossBorder = (xCircle, yCircle, rCircle, start_xPerson, start_yPerson, end_xPerson, end_yPerson) => {
+        const startDistance = Math.sqrt(Math.pow(xCircle - start_xPerson, 2) + Math.pow(yCircle - start_yPerson, 2))
+        const endDistance = Math.sqrt(Math.pow(xCircle - end_xPerson, 2) + Math.pow(yCircle - end_yPerson, 2))
+        return (startDistance > rCircle && rCircle > endDistance) || (startDistance < rCircle && rCircle < endDistance)
+    }
+
+    // Count number of times your distances goes from less than radius to more, or vice versa.
+    let count = 0
+    for (let i = 0; i < x.length; i++) {
+        if (crossBorder(x[i], y[i], r[i], start_x, start_y, end_x, end_y)) count++
+    }
+    return count
 }
 
 module.exports = circleCountry;
