@@ -23,7 +23,10 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-
+  let borders = 0;
+  for (let i = 0; i < x.length; i++) {
+    
+  }
 }
 
 module.exports = circleCountry;
