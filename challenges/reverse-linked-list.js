@@ -14,6 +14,33 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
+    head.OGhead = true;
+    let currNode = head;
+    let counter = 0;
+    let newHead;
+    let nextNode;
+    while (currNode) {
+        if (currNode.OGhead && currNode.next === null) currNode = null;
+        else if (currNode.next.next === null) {
+            nextNode = currNode.next
+            currNode.next = null;
+            nextNode.next = head;
+            if (counter === 0) {
+                newHead = nextNode;
+                counter++;
+            }
+            currNode = head;
+        }
+        else currNode = currNode.next;
+    }
+    return newHead;
+    if (!head.next) {
+        newHead = head.next;
+        head.next = null;
+        head.next = (reverseLinkedList())
+    }
+    
+    head.next = reverseLinkedList(head.next)
 
 }
 
