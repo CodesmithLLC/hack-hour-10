@@ -9,14 +9,22 @@
  */
 
 function subsetSum(array, target) {
-  if (!target) return true;
+
+  // if target is 0, return true
+  if (target === 0) return true;
+
+  // if array is empty, we've tried all possibilities, return false
   if (!array.length) return false;
+
+  // check if we don't take the first number
+  // check if we take the first number
+  // return true if any of them return true, false otherwise
   return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
 }
 
-// console.log(subsetSum([3, 7, 4, 2], 5));// - > true, 3 + 2 = 5
-// console.log(subsetSum([3, 34, 4, 12, 5, 12], 32));// -> true, 3 + 12 + 5 + 12 = 32
-// console.log(subsetSum([8, 2, 4, 12], 13));// -> false
-// console.log(subsetSum([8, -2, 1, -3], 6));// -> true, 8 + 1 + (-3) = 6
+console.log(subsetSum([3, 7, 4, 2], 5));// - > true, 3 + 2 = 5
+console.log(subsetSum([3, 34, 4, 12, 5, 12], 32));// -> true, 3 + 12 + 5 + 12 = 32
+console.log(subsetSum([8, 2, 4, 12], 13));// -> false
+console.log(subsetSum([8, -2, 1, -3], 6));// -> true, 8 + 1 + (-3) = 6
 
 module.exports = subsetSum;
