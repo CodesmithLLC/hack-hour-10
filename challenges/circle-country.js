@@ -23,7 +23,28 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  function checkIfInside(cx, cy, cr, tx, ty) {
+    return Math.sqrt(Math.pow(tx - cx) + Math.pow(ty - cy)) < cr;
+  }
 
+  // add one for every circle that the start point is in, but the destiation is not
+  // add one for every circle that the end point is in, but the start is not
+
+  let borderCount = 0;
+  const len = x.length;
+  let result;
+  for (let i = 0; i < len; i++) {
+
+    // XOR - false does not equal false
+    // result = !checkIfInside(x[i], y[i]. r[i], start_x, start_y) !== !checkIfInside(x[i], y[i], r[i], end_x, end_y);
+
+    // bitwise or
+    result = checkIfInside(x[i], y[i]. r[i], start_x, start_y) ^ checkIfInside(x[i], y[i], r[i], end_x, end_y);
+
+    borderCount += result;
+  }
+  return borderCount;
 }
+
 
 module.exports = circleCountry;
