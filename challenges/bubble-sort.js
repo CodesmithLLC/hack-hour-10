@@ -5,7 +5,10 @@
 
 
 function bubbleSort(array) {
+  if (arr[0] === undefined) return [];
   var length = array.length;
+  if (length === 1) return array;
+  if (array === undefined || array === null) return undefined;
   function sortHelpert(arr, cont) {
     var keepgoing = false;
     if (!cont) return arr;
