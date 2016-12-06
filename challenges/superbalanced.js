@@ -14,11 +14,17 @@ function BinaryTree(value) {
 }
 
 function height(tree) {
-  if (tree === null) {
-      return 0;
-  }
+  if (tree === null) return 0;
   return 1 + Math.max(height(tree.left), height(tree.right));
 }
+
+// // Alt version of height() function works??
+// function height(tree) {
+//   if (tree.right === null && tree.left === null) return 0;
+//   if (tree.right === null) return height(tree.left) + 1;
+//   if (tree.left === null) return height(tree.right) + 1;
+//   return Math.max(height(tree.right) + 1, height(tree.left) + 1)
+// };
 
 function superbalanced(tree) {
   if (tree === null) {
@@ -45,7 +51,9 @@ function superbalanced(tree) {
 // tree3.left = tree6;
 // tree3.right = tree7;
 
-// console.log(tree);
+// console.log(height(tree));
+
 // console.log(superbalanced(tree));
+// console.log(tree);
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};

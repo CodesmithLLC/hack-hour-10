@@ -11,8 +11,8 @@ function BinaryTree(val) {
     this.right = null;
 }
 
+//  Using depth-first search
 function validBST(root) {
-  //  Using depth-first search
   let stack = [root];
   
   while (stack.length !== 0) {
@@ -28,8 +28,10 @@ function validBST(root) {
   }
 
   return true;
+}
 
-//   //  Using breadth-first search
+// //  Using breadth-first search
+// function validBST(root) {
 //   let queue = [root];
 
 //   while(queue.length !== 0) {
@@ -45,8 +47,9 @@ function validBST(root) {
 //   }
   
 //   return true;
-}
+// }
 
+// // TESTS:
 // let tree = new BinaryTree(11);
 // let tree2 = new BinaryTree(7);
 // let tree3 = new BinaryTree(15);

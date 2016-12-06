@@ -5,7 +5,7 @@ Create a doubly linked list with an add and remove method
 function LinkedList() {
   this.head = null;
   this.tail = null;
-  // this.length = 0;
+  this.length = 0;
 }
 
 function Node(val) {
@@ -27,6 +27,7 @@ LinkedList.prototype.add = function(val) {
     this.tail = node;
   }
 
+  this.length++;
   return true;
 };
 
@@ -45,12 +46,14 @@ LinkedList.prototype.remove = function(val) {
         // reassign this.tail
         current.prev.next = current.next;
         this.tail = current.prev;
+        this.length--;
         return current;
       } else if (current.val === val) {
 
         // remove the link in between the nodes
         current.next.prev = current.prev;
         current.prev.next = current.next;
+        this.length--;
         return current;
       }
       current = current.next;
@@ -80,14 +83,15 @@ LinkedList.prototype.remove = function(val) {
 // ll.remove(2);
 // console.log(ll);
 
-// TESTS v2:
+// // TESTS v2:
 // let ll = new LinkedList();
 // ll.add(1);
 // ll.add(2);
 // ll.add(3);
 // ll.add(4);
 // ll.add(5);
-// console.log(ll.remove(5));
+// console.log(ll.remove(3));
+// console.log(ll.remove(2));
 // console.log(ll);
 
 
