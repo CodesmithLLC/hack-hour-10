@@ -32,18 +32,24 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
     const yVal = y[i];
     const rVal = r[i];
     if (pointInCircle(xVal, yVal, rVal, start_x, start_y)) {
-      startInCircles.push('x' + xVal + 'y' + yVal + 'r' + rVal)
+      startInCircles.push('x' + xVal + 'y' + yVal + 'r' + rVal);
     }
     if (pointInCircle(x[i], y[i], r[i], end_x, end_y)) {
-      
+      endInCircles.push('x' + xVal + 'y' + yVal + 'r' + rVal);      
     }
   }
   // Do any of their circles overlap/shared?
-  
+  const sharedRegions = startInCircles.filter((v) => {
+    return endInCircles.indexOf(v) >=0;
+  });
+  console.log(startInCircles);
+  console.log(endInCircles);
+  console.log(sharedRegions);
+  return startInCircles.length + endInCircles.length - sharedRegions.length;
 }
 
 function pointInCircle (x, y, r, p_x, p_y) {
-  pointDistanceFromCenter = Math.sqrt((p_x - x)^2 + (p_y - y)^2);
+  const d = Math.sqrt((p_x - x)^2 + (p_y - y)^2);
   return d <= r;
 }
 
@@ -51,6 +57,6 @@ const x = [1,1,1,100,100,100];
 const y = [10, 10, 10, 10, 10, 10];
 const r = [1, 2, 3, 1, 2, 3];
 
-circleCountry(x, y, r, 1, 10, 100, 10);
+console.log(circleCountry(x, y, r, 1, 10, 100, 10));
 
 module.exports = circleCountry;
