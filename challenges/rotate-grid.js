@@ -17,18 +17,21 @@
  */
 
 function rotateGrid(grid, n) {
-  let length = grid[0].length;
+  let newGrid = [];
 
-  for (let i = 0; i < length - 1; i++) {
-    for (let j = 0; j < length - 1; j++) {
-      let temp = grid[i][j];
-      grid[i][j] = grid[i][length - 1 - j];
-      grid[length - 1 - j][i] = grid[length - 1 - j][length - 1 - i];
+  for (let i = 0; i < n; i++) {
+    let newRow = [];
 
-
+    // start from last old array, push into new array
+    for (let j = n - 1; j >= 0; j--) {
+      newRow.push(grid[j][i]);
     }
+
+    // push new array into new nested array
+    newGrid.push(newRow);
   }
-  return grid;
+
+  return newGrid;
 }
 
 const sampleGrid = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
