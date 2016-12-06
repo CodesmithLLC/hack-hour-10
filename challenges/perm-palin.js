@@ -10,31 +10,19 @@
  */
 
 function permPalin(str) {
-	if (str.length === 1) return true;
-	let obj = {};
+	const letters = {};
+	let count = 0;
 	for (let i = 0; i < str.length; i++) {
-		if (!obj[str[i]]) {
-			obj[str[i]] = 1;
-		} else {
-			obj[str[i]]++;
-		}
+		letters[str[i]] = ++letters[str[i]] || 1;
 	}
-	let arr1 = [];
-	let arr2 = [];
-	for (let key in obj) {
-		if (obj[key] === 1) {
-			arr1.push(obj[key]);
-			delete obj[key];
-		} else {
-			arr2.push(obj[key]);
-		}
+	for (key in letters) {
+		if (key === " ") continue;
+		if (letters[key]%2===1){count++}
 	}
-	const bool = !!array2.reduce(function(a, b){ return (a === b) ? a : NaN; })
-	console.log(arr1.length)
-	console.log(bool);
-	//(arr1.length === 1 && bool);
+	if (count > 1) return false;
+	return true;
 }
 
 module.exports = permPalin;
 
-permPalin('abcab');
+console.log(permPalin('abcab'));
