@@ -5,11 +5,8 @@ function bubbleSort(array) {
     array[two] = temp;
   }
 
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 1; j < array.length; j++) {
-      if (array[j - 1] > array[j]) swap(j - 1, j);
-    }
-  }
+  for (let i = 0; i < array.length; i++) for (let j = 1; j < array.length; j++) if (array[j - 1] > array[j]) swap(j - 1, j);
+  return array;
 }
 
 module.exports = bubbleSort;
