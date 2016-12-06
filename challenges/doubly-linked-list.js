@@ -36,16 +36,44 @@ LinkedList.prototype.remove = function(val) {
   if (current.val === val) {
     current.next.prev = null;
     this.head = current.next;
-    delete current
+    return;
   }
-  while(!current.next){
+  let prevNode;
+  while(current){
     if(current.val === val) {
-      current.prev = current.next;
-      current.next.prev = current.prev;
-      delete current;
+      if (current.next === null) {
+        prevNode.next = null;
+        this.tail = prevNode;
+        return;
+      }
+      prevNode.next = current.next;
+      current.next.prev = prevNode;
     }
+    prevNode = current;
     current = current.next;
   }
 };
 
 module.exports = LinkedList;
+
+// let list = new LinkedList();
+// console.log(list);
+// list.add(1);
+// list.add(2);
+// list.add(3);
+// list.remove(3);
+// console.log(list);
+//
+
+//
+// function stairs(n) {
+//   if (n < 0) {
+//     return 0;
+//   } else if (n === 0) {
+//     return 1;
+//   } else {
+//     return stairs(n - 3) + stairs(n - 2) + stairs(n - 1);
+//   }
+// }
+//
+// console.log(stairs(4));
