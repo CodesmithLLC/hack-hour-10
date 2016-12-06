@@ -22,8 +22,66 @@
  *
  */
 
-function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+function xcircleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  let {minX, maxX, minY, maxY} = getMinsMaxes(x,y,r);
+  function tytusCheckPath(x, y, r, curr_x, curr_y, end_x, end_y){
+    //check if he is in a new county
+    //if he is, remove that county and recurse
+    // else recurse
+    if(x < minX || x > minX || y < minY || y > maxY){
+      return 0;
+    }else{
+      for(let i = 0; i < x.length; ++i){
 
+      }
+    }
+  }
 }
 
+function getMinsMaxes(x,y,r){
+  return {
+    maxX : x.reduce((acc, curr) => {
+      return Math.max(acc, curr+r);
+    }, -Infinity),
+    minX : x.reduce((acc, curr) => {
+      return Math.min(acc, curr-r);
+    }, Infinity),
+    maxY : y.reduce((acc, curr) => {
+      return Math.max(acc, curr+r);
+    }, -Infinity),
+    minY : y.reduce((acc, curr) => {
+      return Math.min(acc,curr-r)
+    }, Infinity)
+  }
+}
+
+
+function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  let counties = [];
+  return x.reduce((acc, curr, idx) => {
+    let currResult = (inCounty(start_x, start_y, x[idx], y[idx], r[idx]) ? 1 : 0);
+      //console.log(`first reduce result: ${currResult}`);
+    if(currResult){
+      //console.log(`first reduce in a county: ${currResult}`);
+      counties.push([x[idx],y[idx],r[idx]]);
+    }
+    return acc + currResult;
+  }, 0) + x.reduce((acc, curr, idx) => {
+    return acc + (inCounty(end_x, end_y, x[idx], y[idx], r[idx]) && !alreadySeen(x[idx],y[idx],r[idx], counties) ? 1 : 0);
+  }, 0);
+}
+function inCounty(x, y, countyX, countyY, countyR){
+  //console.log(`incounty: ${Math.pow(x-countyX), 2 } + ${Math.pow(y-countyY,2)} < ${countyR}`)
+  return countyR > Math.sqrt(Math.pow(x-countyX, 2) + Math.pow(y-countyY,2));
+}
+function alreadySeen(x,y,r, counties){
+  return counties.reduce((acc,curr) =>{
+    if(curr[0] === x, curr[1] === y, curr[2] === r){
+      return true;
+    }
+    return acc;
+  }, false);
+}
+
+// console.log(circleCountry([0,0,20,22], [0,0,20,22], [2,3,1,4], 0,0,20,20));
 module.exports = circleCountry;
