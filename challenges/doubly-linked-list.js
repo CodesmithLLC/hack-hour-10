@@ -18,6 +18,7 @@ Adds a node to the end of the list
  */
 LinkedList.prototype.add = function(val) {
   let node = this.head;
+
   if (!this.head) this.head = this.tail = new Node(val);
   else {
     while (node.next) {
@@ -26,7 +27,6 @@ LinkedList.prototype.add = function(val) {
     node.next = this.tail = new Node(val);
     node.next.prev = node;
   }
-  
   return true;
 };
 
@@ -37,7 +37,9 @@ LinkedList.prototype.remove = function(val) {
   let node = this.head;
   while (node) {
     if (node.val === val) {
-      node.prev.next = node.next;
+      if(node.prev) {
+        node.prev.next = node.next;
+      }
       node.next.prev = node.prev;
       return node;
     }
@@ -46,3 +48,11 @@ LinkedList.prototype.remove = function(val) {
 };
 
 module.exports = LinkedList;
+
+var list = new LinkedList();
+list.add(3);
+list.add(5);
+list.add(2);
+list.remove(3);
+
+console.log(list);
