@@ -23,7 +23,17 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-
+  let arr = [];
+  function inCircle(x, y, r, x_point, y_point) {
+    for (let i = 0; i < x.length; i++) {
+      if (Math.sqrt((Math.pow((x_point - x[i]), 2)) + (Math.pow((y_point - y[i]), 2))) < r[i] && arr.indexOf(i) === -1) {
+        arr.push(i);
+      }
+    }
+  }
+  inCircle(x, y, r, start_x, start_y);
+  inCircle(x, y, r, end_x, end_y);
+  return arr.length;
 }
 
 module.exports = circleCountry;
