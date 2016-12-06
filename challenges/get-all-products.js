@@ -37,7 +37,6 @@ const getAllProducts = (array) => {
   }
 
   return output;
-
 }
 
 
