@@ -21,9 +21,39 @@
  *    - no circle borders intersect/touch (but they can be nested)
  *
  */
-
+function districtsEncompassingPoint(x, y, r, pointX, pointY) {
+  const districts = [];
+  x.forEach((xCoord, index) => {
+    const distanceFromCircleCenter = Math.sqrt(Math.pow(pointX - x[index], 2)
+      + Math.pow(pointY - y[index], 2));
+    if (distanceFromCircleCenter < r[index]) districts.push(index);
+  });
+  return districts;
+}
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-
+  const startDistricts = districtsEncompassingPoint(x, y, r, start_x, start_y);
+  const endDistricts = districtsEncompassingPoint(x, y, r, end_x, end_y);
+  // console.log(`start ${start_x}, ${start_y} is within districts ${startDistricts}`);
+  // console.log(`end ${end_x}, ${end_y} is within districts ${endDistricts}`);
+  const allDistricts = [];
+  startDistricts.forEach(district => {
+    if (!endDistricts.includes(district)) allDistricts.push(district);
+  });
+  endDistricts.forEach(district => {
+    if (!startDistricts.includes(district)) allDistricts.push(district);
+  });
+  // console.log('unique borders crossed: ', allDistricts);
+  return allDistricts.length;
 }
 
 module.exports = circleCountry;
+
+// testing
+//
+// const x = [50, 50, 40, 60];
+// const y = [50, 40, 40, 40];
+// const r = [50, 30, 5, 5];
+//
+// console.log(circleCountry(x, y, r, 50, 90, 40, 40));
+// console.log(circleCountry(x, y, r, 50, 90, 60, 40));
+// console.log(circleCountry(x, y, r, 50, 90, 50, 50));
