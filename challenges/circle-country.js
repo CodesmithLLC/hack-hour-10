@@ -20,6 +20,7 @@
  *    - (start_x, start_y) and (end_x, end_y) will never lie on a circle's border
  *    - no circle borders intersect/touch (but they can be nested)
  *
+ * 
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
@@ -30,13 +31,13 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
 
   for (let i = 0; i < x.length; i++) {
     if ((start_x < x[i] + r[i] && start_x > x[i] - r[i]) && (start_y < y[i] + r[i] && start_y > y[i] - r[i])) {
-      if (!(end_x < x[i] + r[i] && end_x > x[i] - r[i]) && !(end_y < y[i] + r[i] && end_y > y[i] - r[i])) {
+      if (!(end_x < x[i] + r[i] && end_x > x[i] - r[i]) || !(end_y < y[i] + r[i] && end_y > y[i] - r[i])) {
         counter++;
       }
     }
 
     if ((end_x < x[i] + r[i] && end_x > x[i] - r[i]) && (end_y < y[i] + r[i] && end_y > y[i] - r[i])) {
-      if (!(start_x < x[i] + r[i] && start_x > x[i] - r[i]) && !(start_y < y[i] + r[i] && start_y > y[i] - r[i])) {
+      if (!(start_x < x[i] + r[i] && start_x > x[i] - r[i]) || !(start_y < y[i] + r[i] && start_y > y[i] - r[i])) {
         counter++;
       }
     }
