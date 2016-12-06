@@ -22,8 +22,24 @@
  *
  */
 
-function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+//area = pi*r*r
+//distance = sqrt((x2-x1)^2+(y2-y1)^2)
 
+function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  tyusDist = distance(start_x, start_y, end_x, end_y);
+  areas = [];
+
+  for (let i = 0; i < r.length; i++) {
+    areas.push(Math.round(Math.PI * r[i] * r[i]));
+  }
+
+  console.log(`tyusDist: ${tyusDist}\n   areas: [ ${areas} ]`);
 }
+
+function distance(start_x, start_y, end_x, end_y) {
+  return Math.sqrt(Math.pow(end_x - start_x, 2) + Math.pow(end_y - start_y, 2));
+}
+
+circleCountry([0, 0], [0, 0], [2, 3], 0, 0, 4, 0);
 
 module.exports = circleCountry;
