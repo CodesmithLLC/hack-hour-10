@@ -23,42 +23,28 @@
  *
  *
  */
-
 function balancedParens(input) {
- 
-  let inputArr = input.split(""); 
-
-  function checkParens(inputArr, typeLeft, typeRight) {
-
-  let left = inputArr.indexOf(typeLeft);
-  let right = inputArr.indexOf(typeRight);
-  
-    if (left !== -1) {
-      if (right === -1 ) {
-        return false;
-      } else {
-        inputArr.splice(left,1);
-        right = inputArr.indexOf(typeRight);
-        inputArr.splice(right,1);
+  const stack = [];
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === '(' || input[i] === '[' || input[i] === '{') {
+      stack.push(input[i]);
+    }
+    if (input[i] === ')' || input[i] === ']' || input[i] === '}') {
+      if (stack.length === 0) return false;
+      const popped = stack.pop();
+      if (popped.charCodeAt(0) + 2 !== input[i].charCodeAt(0)) {
+        if (popped.charCodeAt(0) + 1 !== input[i].charCodeAt(0)) {
+          return false;
+        }
       }
     }
-    inputArr = inputArr.join("");
   }
- 
-  if (inputArr.indexOf("(") != -1) {
-      return checkParens(inputArr, "(", ")");
-   }
+  if (stack.length === 0) {
+    return true;
+  }
 
-  if (inputArr.indexOf("[") != -1) {
-      return checkParens(inputArr, "[", "]");
-   }
-  
-   if (inputArr.indexOf("{") != -1) {
-      return checkParens(inputArr, "{", "}");
-   }
-  
-   return true;
-  
+  return false;
 }
+
 
 module.exports = balancedParens;

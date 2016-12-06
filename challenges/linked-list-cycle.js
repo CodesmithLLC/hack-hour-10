@@ -34,18 +34,17 @@ var Node = function(value) {
 
 function hasCycle(head) {
 
-  let temp = head;
-  const storage = [];
+  let tortoise = head;
+  let hare = head.next;
 
-  while (temp.next != null) {
-    let node = temp.next;
-    if (storage.includes(node)) {
-      return true;
-    }
-    storage.push(temp);
-    temp = temp.next;
+  while (tortoise != hare) {
+    if (hare === null || tortoise === null) return false
+    hare = hare.next.next;
+    tortoise = tortoise.next;
   }
-  return false;
+
+  return true;
 }
+
 
 module.exports = {Node: Node, hasCycle: hasCycle}
