@@ -22,8 +22,20 @@
  *
  */
 
-function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
 
+// x + y =
+function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+	const crossBorder = (xCircle, yCircle, rCircle, start_xPerson, start_yPerson, end_xPerson, end_yPerson) => {
+		const startDistance = Math.sqrt(Math.pow(xCircle - start_xPerson, 2) + Math.pow(yCircle - start_yPerson, 2));
+		const endDistance = Math.sqrt(Math.pow(xCircle - end_xPerson, 2) + Math.pow(yCircle - end_yPerson, 2));
+		return (startDistance > rCircle && rCircle > endDistance) || (startDistance < rCircle && rCircle < endDistance);
+	}
+
+	let count = 0;
+	for (let i = 0; i < r.length; i++) {
+		if (crossBorder(x[i], y[i], r[i], start_x, start_y, end_x, end_y)) count++;
+	}
+	return count;
 }
 
 module.exports = circleCountry;
