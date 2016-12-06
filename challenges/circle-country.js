@@ -23,17 +23,12 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  console.log(x, y, r, start_x, start_y, end_x, end_y);
   let diff = 0;
   for(let i = 0; i < x.length; i++) {
-    let curleft = x[i] - r[i];
-    let curright = x[i] + r[i];
-    let curtop = y[i] + r[i];
-    let curbot = y[i] - r[i];
-    if(start_x > curleft && start_x < curright && (end_x < curleft || end_x > curright)) {
-      diff++;
-    } else if (start_y > curbot && start_y < curtop && (end_y < curbot || end_y > curtop)) {
-      diff++;
-    }
+    let start = Math.sqrt(Math.pow((x[i] - start_x), 2) + Math.pow((y[i] - start_y), 2));
+    let end = Math.sqrt(Math.pow((x[i] - end_x), 2) + Math.pow((y[i] - end_y), 2));
+    if((start > r[i] && end < r[i]) || (start < r[i] && end > r[i])) diff++;
   }
   return diff;
 }
