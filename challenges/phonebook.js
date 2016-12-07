@@ -20,7 +20,7 @@
 
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
-  let result = makePhoneBookObject(jazbook).name;
+  let result = makePhoneBookObject(jazbook)[name];
   return  result === undefined ? false : result;
 }
 
