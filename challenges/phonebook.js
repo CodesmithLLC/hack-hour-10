@@ -1,5 +1,5 @@
 /**
-* You are given an array of arrays.  The subarrays are first names and phone numbers.
+* You are given an array of arrays. The subarrays are first names and phone numbers.
 *
 * Example:
 *   jazbook = [
@@ -20,12 +20,12 @@
 
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
-
+  return makePhoneBookObject(jazbook)[name];
 }
 
 // return an object literal representing the jazbook
-function makePhoneBookObject(jazbook){
-
+function makePhoneBookObject(jazbook) {
+  return jazbook.reduce((obj, entry) => { obj[entry[0]] = entry[1]; return obj }, {});
 }
 
 const objectToExport = {
