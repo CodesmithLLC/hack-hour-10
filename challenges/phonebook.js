@@ -20,12 +20,28 @@
 
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
-
+  var store = makePhoneBookObject(jazbook);
+  var nuName = name.toUpperCase()
+ return store[nuName] || false;
 }
 
 // return an object literal representing the jazbook
-function makePhoneBookObject(jazbook){
-
+function makePhoneBookObject(jazbook) {
+  var store = {};
+  function divider(book, str) {
+    var length = book.length;
+    if (length > 1) {
+      divider(book.slice(0, length / 2), str);
+      divider(book.slice(length / 2), str);
+    }
+    else {
+      var entry = book[0];
+      var name = entry[0].toUpperCase();
+      str[name] = entry[1];
+    }
+  }
+  divider(jazbook, store);
+  return store;
 }
 
 const objectToExport = {
