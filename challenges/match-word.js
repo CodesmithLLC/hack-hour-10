@@ -7,6 +7,51 @@
 // matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw');  -> true
 // matchWord('');  -> true
 
+function matchWord1(str) {
+  let stack = [];
+
+  let result = false;
+
+  strArr = str.replace(/[^a-z]/gi, ' ').split(' ');
+  
+  for (let i in strArr) {
+    if (strArr[i] !== '' && stack.includes(strArr[i]) === false) {
+      stack.push(strArr[i].split("").reverse().join(""));
+      result = false;
+    }
+    else if (strArr[i] !== '' && strArr[i] === stack.pop()) {
+      result = true;
+    }
+  }
+  return result;
+}
+
+console.log(matchWord1('%%$@$while  try ! yrt  for if_fi rof #*#  elihw'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function matchWord(str) {
   if (str === '') return true;
 
@@ -21,6 +66,7 @@ function matchWord(str) {
   for (let i = 0; i < strArr.length; i++) {
     if (strArr[i] !== '' && stack.includes(strArr[i]) === false) {
       stack.push(strArr[i].split("").reverse().join(""));
+      result = false;
     }
     
     else if (strArr[i] !== '' && strArr[i] === stack.pop()) {

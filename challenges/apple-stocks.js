@@ -12,6 +12,47 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
+function bestProfit1(stock_prices_yesterday) {
+  let maxDiff = 0;
+  let min = stock_prices_yesterday[0];
+
+  for (let i = 1; i < stock_prices_yesterday.length; i++) {
+    let diff = stock_prices_yesterday[i] - min;
+    console.log(diff);
+    if (diff > maxDiff) maxDiff = diff;
+    console.log(maxDiff);
+    if (stock_prices_yesterday[i] < min) min = stock_prices_yesterday[i];
+    console.log(min);
+  }
+  return maxDiff;
+}
+let stockPrices = [100, 1123, 4500, 50, 4234511, 23423, 2342, 11412];
+
+console.log(bestProfit1(stockPrices));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function bestProfit(stock_prices_yesterday) {
   if (!Array.isArray(stock_prices_yesterday)) { return 0 };
   for (let i = 0; i < stock_prices_yesterday.length; i++) {

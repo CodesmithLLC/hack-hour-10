@@ -14,7 +14,39 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
+  let currL1 = l1;
+  let currL2 = l2;
+  let nodeTotal = 0; 
+  let tempSumOver = null;
+  let result = new Node(null);
 
+  
+  while (currL1 || currL2 || tempSumOver) {
+    if (result.value) let currResultNode = new Node();
+    if (tempSumOver) nodeTotal += tempSumOver;  
+    if (currL1) nodeTotal += currL1.value;
+    if (currL2) nodeTotal += currL2.value;
+
+    if (nodeTotal > 9) {
+      result.value = nodeTotal.toString().split("").pop();
+      tempSumOver = Number(nodeTotal.toString().split("").splice(0, this.length - 1).join(""));
+    }
+    else if (nodeTotal < -9) {
+      result.value = nodeTotal.toString().split("").pop() * -1;
+      tempSumOver = Number(nodeTotal.toString().split("").splice(0, this.length - 1).join(""));
+    }
+    else {
+      result.value = nodeTotal;
+      tempSumOver = null;
+    }
+
+    currL1 = currL1.next;
+    currL2 = currL2.next;
+    
+    nodeTotal = 0;
+  }
+
+  return l1;
 }
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};

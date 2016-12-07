@@ -11,7 +11,8 @@
 
 function permPalin(str) {
   if (str === str.split("").reverse().join("")) return true;
-
+  
+  for ()
 }
 
 module.exports = permPalin;

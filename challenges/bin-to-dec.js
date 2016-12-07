@@ -13,6 +13,43 @@
  * Write a function that converts a binary number to decimal (then maybe hexadecimal)
  */
 
+function binToDec1(bin) {
+  let result = 0;
+  bin = bin.split("").reverse().join("");
+  for (let i = 0; i < bin.length; i++) {
+    if (bin[i] == 1) {
+      result += Math.pow(2, i);
+    }
+  }
+  return result;
+}
+
+// console.log(binToDec1('11'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function binToDec(binary) {
   let decimal = 0;
   binary = binary.split("").reverse().join("");
