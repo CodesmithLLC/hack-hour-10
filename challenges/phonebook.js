@@ -23,7 +23,7 @@
 function findName(jazbook, name) {
   for(let i = 0; i < jazbook; ++i){
     if(jazbook[i][0] === name){
-      return jazbook[i][0];
+      return jazbook[i][1];
     }
   }
   return false;
