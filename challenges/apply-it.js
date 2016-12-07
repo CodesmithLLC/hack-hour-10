@@ -26,7 +26,31 @@
  */
 
 function applyIt(func, args) {
+  let funcStr = "func(";
+  for (let i in args) {
+    funcStr += `args[${i}],`;
+  }
 
+  funcStr = funcStr.replace(/,$/, ');');
+
+  return function () {
+    return eval(funcStr);
+  }
 }
+
+// var jasmine = function (name, age) {
+
+//   if(!age){
+//     return "We don't know how old " + name + " is!";
+//   }
+ 
+//   else{
+//     return name + " is " + age + " years old!";
+//   }
+// };
+
+// var jmoney = applyIt(jasmine, ['Jasmine', 10])
+
+// console.log(jmoney());
 
 module.exports = applyIt;

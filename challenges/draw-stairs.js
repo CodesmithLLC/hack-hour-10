@@ -13,6 +13,36 @@
 
 */
 
+
+function drawStairs1(num) {
+  for (let i = 0; i < num; i++) {
+    console.log(" ".repeat(num - 1 - i) + "*".repeat(i + 1));
+  }
+}
+// console.log(drawStairs1(30));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function drawStairs(n) {
   if (typeof n !== 'number' || !Number.isInteger(n) || n < 1 || n > 100) return "invalid input";
   for (let i = 1; i <= n; i++) {

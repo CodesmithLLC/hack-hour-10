@@ -13,19 +13,26 @@
 * jazbooks are not always sorted...
 *
 * Develop a function that takes in a jazbook and a name, searches through the jazbook and
-* returns the persons phone number. If the person does not exists, return false.
+* returns the persons phone number. If the person does not exist, return false.
 *
 * How efficient can you make this?
 */
 
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
-
+  for (let i in jazbook) {
+    if (jazbook[i][0] === name) {
+      return jazbook[i][1];
+    }
+  }
 }
 
 // return an object literal representing the jazbook
 function makePhoneBookObject(jazbook){
-
+  let jazbookObj = {};
+  for (let i in jazbook) {
+    jazbookObj[jazbook[i][0]] = jazbook[i][1];
+  }
 }
 
 const objectToExport = {

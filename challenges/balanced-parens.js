@@ -24,6 +24,43 @@
  *
  */
 
+function balancedParens1(input) {
+  let stack = [];
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === '[' || input[i] === '{' ||input[i] === '(') stack.push(input[i]);
+    let last = stack[stack.length - 1];
+    
+    if (input[i] === ']' && last !== '[') return false;
+    else if (input[i] === ']' && last === '[') stack.pop();
+
+    if (input[i] === '}' && last !== '{') return false;
+    else if (input[i] === '}' && last === '{') stack.pop();
+
+    if (input[i] === ')' && last !== '(') return false;
+    else if (input[i] === ')' && last === '(') stack.pop();
+  }
+  if (stack.length !== 0) return false;
+
+  return true;
+}
+
+// console.log(balancedParens1('[({})]'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function balancedParens(input){
   let parensArr = [];
   for (let i = 0; i < input.length; i++) {
