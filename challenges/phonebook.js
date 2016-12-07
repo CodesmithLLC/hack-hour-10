@@ -20,7 +20,7 @@
 
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
-  return makePhoneBookObject(jazbook)[name];
+  return makePhoneBookObject(jazbook)[name] ? makePhoneBookObject(jazbook)[name] : false;
 }
 
 // return an object literal representing the jazbook
