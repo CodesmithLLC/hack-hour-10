@@ -20,7 +20,7 @@
 
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
-  for (let i = 0; i < jazbook; i++) {
+  for (let i = 0; i < jazbook.length; i++) {
     if (jazbook[i][0] === name) return jazbook[i][1];
   }
   return false;
@@ -50,5 +50,6 @@ const objectToExport = {
      ['jasmine','1800-974-4539'],
   ];
   // console.log(makePhoneBookObject(jazbook));
+  console.log(findName(jazbook, 'jae'));
 
 module.exports = objectToExport;
