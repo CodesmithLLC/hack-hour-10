@@ -34,7 +34,6 @@ var Node = function(value) {
 
 function hasCycle(head) {
   let current = head;
-
   while (current) {
     let current2 = current.next;
     while (current2) {
@@ -49,6 +48,22 @@ function hasCycle(head) {
   return false;
 }
 
+
+// // Tortoise and the hare version
+// function hasCycle(head) {
+//   if (!head || !head.next) return false;
+//   let turtle = head;
+//   let rabbit = turtle.next;
+//   while (rabbit.next.next) {
+//     if (turtle === rabbit) return true;
+//     turtle = turtle.next;
+//     rabbit = rabbit.next.next;
+//   }
+
+//   return false;
+// }
+
+// //  TESTS:
 // var node1 = new Node('1');
 // var node2 = node1.next = new Node('2');
 // var node3 = node2.next = new Node('3');
