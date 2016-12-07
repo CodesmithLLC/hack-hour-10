@@ -20,12 +20,17 @@
 
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
-
+  let cache = makePhoneBookObject(jazbook);
+  if (cache[name]) return cache[name];
+  else return false;
 }
 
 // return an object literal representing the jazbook
 function makePhoneBookObject(jazbook){
-
+  return jazbook.reduce((acc, curr) => {
+    acc[curr[0]] = curr[1];
+    return acc;
+  }, {})
 }
 
 const objectToExport = {
