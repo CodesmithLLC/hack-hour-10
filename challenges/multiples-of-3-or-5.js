@@ -7,18 +7,30 @@
 
 function sumMultiples3Or5Below1000() {
   let sum = 0;
-
-  return sum;
+  let i = 2;
+	while ( i++, i < 1000) {
+		sum += i % 3 && i % 5 ? 0 : i;
+	}
+	return sum;
 }
 
-
-// extension make it dynamic function that takes input x,y,z
+// extension make it a dynamic function that takes input x,y,z
 // and returns the sum of multiples of x and y below z
 function sumMultiplesXOrYBelowZ(x, y, z) {
   let sum = 0;
 
+  let i = 2;
+  // console.log(i);
+  while (i++, i < z){
+  	console.log('this is sum', sum);
+  	sum += i % x && i % y ? 0 : i;
+  	console.log('this is i AFTER', i)
+  	console.log('this is SUM', sum);
+  }
   return sum;
 }
+
+console.log(sumMultiplesXOrYBelowZ(3,5,15));
 
 const objectToExport = {
   sumMultiples3Or5Below1000,
