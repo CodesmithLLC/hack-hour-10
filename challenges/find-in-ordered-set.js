@@ -11,7 +11,24 @@ findInOrderedSet(nums, 2);  -> false
 
 
 function findInOrderedSet(arr, target) {
-
+  let midItem;
+  let midIndex;
+  let clone = [...arr];
+  
+  while(clone.length) {
+    midIndex = Math.floor(clone.length / 2)
+    midItem = clone[midIndex];
+    
+    if (midItem === target) {
+      return true;
+    } else if (midItem > target) {
+      clone = clone.slice(0, midIndex);
+    } else {
+      clone = clone.slice(midIndex + 1, clone.length);
+    }
+  }
+  
+  return false;
 }
 
 

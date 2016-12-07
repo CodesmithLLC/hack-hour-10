@@ -14,7 +14,20 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
-
+  const levels = [];
+  const traverseNodes = (node, level, tracker) => {
+    if (!node.right && !node.left) {
+      levels.push(level);
+      return;
+    }
+    
+    if (node.left) { traverseNodes(node.left, level + 1); }
+    
+    if (node.right) { traverseNodes(node.right, level + 1); }
+  }
+  
+  traverseNodes(tree, 0);
+  return Math.max(...levels) - Math.min(...levels) < 2; 
 }
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
