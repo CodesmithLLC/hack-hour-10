@@ -31,7 +31,7 @@ function findName(jazbook, name) {
 
 // return an object literal representing the jazbook
 function makePhoneBookObject(jazbook){
-  jazbook.reduce((acc, curr) => {
+  return jazbook.reduce((acc, curr) => {
     acc[curr[0]] = curr[1];
     return acc;
   }, {});
