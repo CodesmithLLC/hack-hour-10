@@ -50,13 +50,15 @@ LinkedList.prototype.remove = function(val) {
 			// prevlink.next = null;
 			// nextlink.next = null;
 
-			currentNode.prev = null;
-			currentNode.next = null;
-			prevlink.next = nextlink;
-			nextlink.prev = prevlink;
+///TRY # 2
+			// currentNode.prev = null;
+			// currentNode.next = null;
+			// prevlink.next = nextlink;
+			// nextlink.prev = prevlink;
 		}
 		currentNode = currentNode.next;
 	}
+
 };
 
 module.exports = LinkedList;
