@@ -28,11 +28,9 @@ function findName(jazbook, name) {
 
 // return an object literal representing the jazbook
 function makePhoneBookObject(jazbook) {
-  let newBook = {};
-  jazbook.forEach(ele => {
-    newBook[ele[0]] = ele[1];
-  }
-  return newBook;
+  return jazbook.reduce((acc, ele) => {
+    return acc[ele[0]] = ele[1];
+  },{});
 }
 
 const objectToExport = {
