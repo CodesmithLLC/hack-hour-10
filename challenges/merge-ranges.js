@@ -11,7 +11,16 @@
 
 
 function mergeRanges(array) {
-
+	let sorted = array.sort((a,b) => a[0] - b[0]);
+	for (let i = 0; i < sorted.length; i++) {
+		if (sorted[i][1] >= sorted[i+1][0]) {
+			if (sorted[i][1] < sorted[i+1][1]) {
+				sorted[i][1] = sorted[i+1][1];
+			}
+			sorted.splice(i+1,1);
+		}
+	}
+	return sorted;
 }
 
 module.exports = mergeRanges;
