@@ -25,9 +25,13 @@ function findName(jazbook, name) {
 }
 
 // return an object literal representing the jazbook
-function makePhoneBookObject(jazbook) { return jazbook.reduce((a, c) => { a[c[0]] = c[1]; return a }, {}) }
+function makePhoneBookObject(jazbook) {
+  return jazbook.reduce((a, c) => { a[c[0]] = c[1]; return a }, {})
+}
 
 const objectToExport = {
     findName,
     makePhoneBookObject,
 };
+
+module.exports = objectToExport;
