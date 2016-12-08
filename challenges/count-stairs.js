@@ -3,9 +3,7 @@
  */
 
 function countStairs(n) {
-  if(n < 1) return 0;
-  let find = n => n < 0 ? 0 : n === 0 ? 1 : find(n-1) + find(n-2);
-  return find(n);
+  return n < 0 ? 0 : n === 0 ? 1 : countStairs(n-1) + countStairs(n-2);
 }
 
 module.exports = countStairs;
