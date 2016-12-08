@@ -3,6 +3,7 @@
  */
 
 function countStairs(n) {
+  if (n <= 0) { return 0; }
   let possiblePaths = 1;
   for (let i = n - 1; i * 2 >= n; i--) {
     possiblePaths += i;
