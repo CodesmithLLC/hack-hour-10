@@ -3,7 +3,16 @@
  */
 
 function countStairs(n) {
-
+  let steps = [2,1];
+  let result = 0;
+  function recurser(n) {
+    if (n === 0) return result++;
+    for (let i = 0; i < steps.length; i++) {
+      if (n - steps[i] >= 0) recurser(n - steps[i]);
+    }
+  }
+  recurser(n);
+  return result;
 }
 
 module.exports = countStairs;
