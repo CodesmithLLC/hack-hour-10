@@ -3,7 +3,19 @@
  */
 
 function countStairs(n) {
-
+  var count = 0;
+  var holder = [];
+  for (let i = 0; i <= n; i++) { 
+    if (Number.isInteger(((n - i) / 2)) && ((n - i) / 2) !== 0) { 
+      holder.push(((n - i) / 2) + i)
+    }
+  }
+  return holder.reduce((a, b) => {
+    var toreturn = 1;
+    for (var i = b; i > 0; --i) { 
+      toreturn *= i;
+    }
+    return a + toreturn;
+  }, 0);
 }
-
 module.exports = countStairs;
