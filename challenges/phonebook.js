@@ -28,8 +28,8 @@ function sortJazbook(jazbook) {
 
 function binarySearchNameLookup(jazbook, name) {
   const binarySearch = (start, end) => {
-    if (start > end) return false;
-    const mid = Math.floor((start + end) / 2);
+    if (start >= end) return false;
+    const mid = Math.floor((start + end + 1) / 2);
     if (jazbook[mid][0] === name) return jazbook[mid][1];
     if (jazbook[mid][0] > name) return binarySearch(start, mid);
     else return binarySearch(mid + 1, end);
