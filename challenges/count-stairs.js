@@ -3,7 +3,16 @@
  */
 
 function countStairs(n) {
-
+  if (n < 1) return 0;
+  return 1 + countStairs(n - 1) + countStairs(n - 2);
 }
+
+// console.log(countStairs(1)); // => 1
+// console.log(countStairs(2)); // => 2
+// console.log(countStairs(3)); // => 4
+// console.log(countStairs(4)); // => 
+// console.log(countStairs(5)); // => 
+
+// Notes: Fibonacci, binary tree height, countStairs algos all recurse similarly
 
 module.exports = countStairs;
