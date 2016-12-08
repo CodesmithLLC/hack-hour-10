@@ -28,5 +28,8 @@
     "type": "git",
     "url": "git+https://github.com/CodesmithLLC/hack-hour-10.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.19.0"
+  }
 }
