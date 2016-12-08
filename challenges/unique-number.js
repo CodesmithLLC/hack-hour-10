@@ -1,21 +1,14 @@
 /**
- * Given an array of IDs, which contains many duplicate (there are two) integers and one unique integer,
- * find the unqiue integer.
+ * Given an array of duplicates and one unique number,
+ * return the unique number.
  *
- * uniqueNumber([1,2,1,3,3]); -> 2
+ * O(n) time and O(1) space
  *
- * BONUS:
- * Complete the challenge in O(n) time
- * Complete the challenge in O(1) space
- *
+ * @param {Array} array
+ * @return {number}
  */
 function uniqueNumber(array) {
-  const store = {};
-  for (let i = 0; i < array.length; i++) {
-    if (!store[array[i]]) store[array[i]] = 1;
-    else delete store[array[i]];
-  }
-  return Object.keys(store)[0];
+  return array.reduce((bits, currNum) => bits ^ currNum, 0);
 }
 
 module.exports = uniqueNumber;
