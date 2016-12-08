@@ -3,7 +3,11 @@
  */
 
 function countStairs(n) {
-
+  let possiblePaths = 1;
+  for (let i = n - 1; i * 2 >= n; i--) {
+    possiblePaths += i;
+  }
+return possiblePaths;
 }
 
 module.exports = countStairs;
