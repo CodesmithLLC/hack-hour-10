@@ -12,11 +12,23 @@
  *
  * Constraints and Notes:
  *
- * 	 - x and y will contain the same number of elements
- * 	 
+ *    - x and y will contain the same number of elements
+ *
  */
 
-function newIntersections(x, y){
+function newIntersections(x, y) {
+  if (x.length < 3) return 0;
+  
+  let counter = 0;
+  x.forEach((x, i) => {
+    x.forEach((x2, i2) => {
+      if (i !== i2) {
+        if (x === x2) {
+
+        }
+      }
+    })
+  });
 
 }
 
