@@ -17,7 +17,13 @@
  */
 
 function newIntersections(x, y){
-
+  var coordinates = {};
+  
+  x.forEach((xcoordinate) => {
+    coordinates[xcoordinate] = y;
+  });
+  
+  
 }
 
 module.exports = newIntersections;
