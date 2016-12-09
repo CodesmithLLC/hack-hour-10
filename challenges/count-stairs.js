@@ -4,21 +4,30 @@
 
 function countStairs(n) {
   if (n === 1) return 1;
-  if (n === 0) return 0;
+  if (n === 0) return 1;
   var count = 0;
   var holder = [];
   for (let i = 0; i <= n; i++) { 
     console.log(((n - i) / 2))
     if (Number.isInteger(((n - i) / 2)) && ((n - i) / 2) !== 0) { 
-      holder.push(((n - i) / 2) + i)
+      holder.push([((n - i) / 2) + i, (n - i) / 2, i])
     }
   }
   return holder.reduce((a, b) => {
-    var toreturn = 1;
-    for (var i = b; i > 0; --i) { 
-      toreturn *= i;
+    var toreturnN = 1;
+    var toreturnN1 = 1;
+    var toreturnN2 = 1;
+    for (var i = b[0]; i > 0; --i) { 
+      toreturnN *= i;
     }
-    return a + toreturn;
+    for (var j = b[1]; j > 0; --j) { 
+      toreturnN1 *= j;
+    }
+    for (var p = b[2]; p > 0; --p) { 
+      toreturnN2 *= p;
+    }
+    return a + (toreturnN / (toreturnN1 * toreturnN2));
   }, 1);
 }
+
 module.exports = countStairs;
