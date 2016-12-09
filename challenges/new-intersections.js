@@ -38,7 +38,7 @@ function newIntersections(x, y) {
     }
   }
   for (let xx = minX; xx <= maxX; xx++) {
-    for (let yy = maxX; yy >= minY; yy--) {
+    for (let yy = maxY; yy >= minY; yy--) {
       delete allPoints[`${xx},${yy}`]
       if (`${xx},${yy}` in oldPoints) break
     }
