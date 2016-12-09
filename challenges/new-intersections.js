@@ -16,8 +16,28 @@
  * 	 
  */
 
-function newIntersections(x, y){
-
+function newIntersections(x, y) {
+  let len = x.length;
+  const xx = {};
+  const yy = {};
+  let xPairs = 0;
+  let yPairs = 0;
+  let newPoints = 0;
+  x.forEach(xCoord => {
+    if (!(xCoord in xx)) xx[xCoord] = 1;
+    else xx[xCoord] += 1;
+  })
+  y.forEach(yCoord => {
+    if (!(yCoord in yy)) yy[yCoord] = 1;
+    else yy[yCoord] += 1;
+  })
+  Object.keys(xx).forEach(x => {
+    if (xx[x] > 1) xPairs += (x - 1);
+  })
+  Object.keys(yy).forEach(y => {
+    if (yy[y] > 1) yPairs += (y - 1);
+  })
+  return xPairs * yPairs;
 }
 
 module.exports = newIntersections;
