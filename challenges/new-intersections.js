@@ -17,6 +17,8 @@
  */
 
 function newIntersections(x, y) {
+  const xSorted = x.sorted()
+  const ySorted = y.sorted()
   const minX = Math.min(...x)
   const maxX = Math.max(...x)
   const minY = Math.min(...y)
@@ -25,32 +27,32 @@ function newIntersections(x, y) {
   const allPoints = {}
   // Filling in objects
   x.forEach((c, i) => oldPoints[`${c},${y[i]}`] = true)
-  for (let xx = minX; xx <= maxX; xx++) {
-    for (let yy = minY; yy <= maxY; yy++) {
+  for (let xx = 0; xx < xSorted.length; xx++) {
+    for (let yy = 0; yy < ySorted.length; yy++) {
       allPoints[`${xx},${yy}`] = true
     }
   }
   // Deleting
-  for (let xx = minX; xx <= maxX; xx++) {
-    for (let yy = minY; yy <= maxY; yy++) {
+  for (let xx = 0; xx < xSorted.length; xx++) {
+    for (let yy = 0; yy < ySorted.length; yy++) {
       delete allPoints[`${xx},${yy}`]
       if (`${xx},${yy}` in oldPoints) break
     }
   }
-  for (let xx = minX; xx <= maxX; xx++) {
-    for (let yy = maxY; yy >= minY; yy--) {
+  for (let xx = 0; xx < xSorted.length; xx++) {
+    for (let yy = ySorted.length - 1; yy >= 0; yy--) {
       delete allPoints[`${xx},${yy}`]
       if (`${xx},${yy}` in oldPoints) break
     }
   }
-  for (let yy = minY; yy <= maxY; yy++) {
-    for (let xx = minX; xx <= maxX; xx++) {
+  for (let yy = 0; yy < ySorted.length; yy++) {
+    for (let xx = 0; xx < xSorted.length; xx++) {
       delete allPoints[`${xx},${yy}`]
       if (`${xx},${yy}` in oldPoints) break
     }
   }
-  for (let yy = minY; yy <= maxY; yy++) {
-    for (let xx = maxX; xx >= minX; xx--) {
+  for (let yy = 0; yy < ySorted.length; yy++) {
+    for (let xx = xSorted.length - 1; xx >= 0; xx--) {
       delete allPoints[`${xx},${yy}`]
       if (`${xx},${yy}` in oldPoints) break
     }
