@@ -3,7 +3,7 @@
  */
 
 function countStairs(n) {
-  let count = 0;
+  let count = 1;
   function counter(input){
     if(input > 1) count++, counter(input - 2);
     if(input > 0) counter(input - 1);
