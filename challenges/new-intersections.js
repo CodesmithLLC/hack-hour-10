@@ -26,11 +26,11 @@ function newIntersections(x, y){
     if (y[i] < smallestY || smallestY === undefined) smallestY = y[i]
     if (y[i] > greatestY || greatestY === undefined) greatestY = y[i]
   }
-  const differenceX = (greatestX - smallestX) - x.length - 1;
-  const differenceY = (greatestY - smallestY) - y.length - 1;
+  const differenceX = (greatestX - smallestX);
+  const differenceY = (greatestY - smallestY);
 
   return differenceX + differenceY;
 }
 
-console.log(newIntersections([1,2,5,8,9,20,5,7,], [10,20,50,40,9,20,15,7,]))
+console.log(newIntersections([1,0,1,0], [-1,0,0,1]))
 module.exports = newIntersections;
