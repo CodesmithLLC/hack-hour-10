@@ -17,44 +17,50 @@
  */
 
 function newIntersections(x, y) {
-  const xSorted = x.sort()
-  const ySorted = y.sort()
+  let decimal = true
+  while (decimal) {
+    x = x.map(e => e * 10)
+    y = y.map(e => e * 10)
+    if (!x.some(e => e % 1 !== 0) && !y.some(e => e % 1 !== 0)) decimal = false
+  }
+  const minX = Math.min(...x)
+  const maxX = Math.max(...x)
+  const minY = Math.min(...y)
+  const maxY = Math.max(...y)
   const oldPoints = {}
   const allPoints = {}
   // Filling in objects
   x.forEach((c, i) => oldPoints[`${c},${y[i]}`] = true)
-  for (let xx = 0; xx < xSorted.length; xx++) {
-    for (let yy = 0; yy < ySorted.length; yy++) {
-      allPoints[`${xSorted[xx]},${ySorted[yy]}`] = true
+  for (let xx = minX; xx <= maxX; xx++) {
+    for (let yy = minY; yy <= maxY; yy++) {
+      allPoints[`${xx},${yy}`] = true
     }
   }
   // Deleting
-  for (let xx = 0; xx < xSorted.length; xx++) {
-    for (let yy = 0; yy < ySorted.length; yy++) {
-      delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
-      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
+  for (let xx = minX; xx <= maxX; xx++) {
+    for (let yy = minY; yy <= maxY; yy++) {
+      delete allPoints[`${xx},${yy}`]
+      if (`${xx},${yy}` in oldPoints) break
     }
   }
-  for (let xx = 0; xx < xSorted.length; xx++) {
-    for (let yy = ySorted.length - 1; yy >= 0; yy--) {
-      delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
-      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
+  for (let xx = minX; xx <= maxX; xx++) {
+    for (let yy = maxY; yy >= minY; yy--) {
+      delete allPoints[`${xx},${yy}`]
+      if (`${xx},${yy}` in oldPoints) break
     }
   }
-  for (let yy = 0; yy < ySorted.length; yy++) {
-    for (let xx = 0; xx < xSorted.length; xx++) {
-      delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
-      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
+  for (let yy = minY; yy <= maxY; yy++) {
+    for (let xx = minX; xx <= maxX; xx++) {
+      delete allPoints[`${xx},${yy}`]
+      if (`${xx},${yy}` in oldPoints) break
     }
   }
-  for (let yy = 0; yy < ySorted.length; yy++) {
-    for (let xx = xSorted.length - 1; xx >= 0; xx--) {
-      delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
-      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
+  for (let yy = minY; yy <= maxY; yy++) {
+    for (let xx = maxX; xx >= minX; xx--) {
+      delete allPoints[`${xx},${yy}`]
+      if (`${xx},${yy}` in oldPoints) break
     }
   }
   // Return number of points left
   return Object.keys(allPoints).length
 }
-
-module.exports = newIntersections;
