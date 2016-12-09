@@ -17,7 +17,26 @@
  */
 
 function newIntersections(x, y){
+  let verticalLines = {};
+  let horizontalLines = {};
+  let length = x.length;
+  let totalNew = 0;
 
+  for (let i = 0; i < length-1; ++i) {
+    for (let j = i + 1; j < length; ++j) {
+      if (x[i] === x[j]) {
+        horizontalLines[x[i]] =  [y[i], y[j]].sort();
+      }
+      if (y[i] === y[j]) {
+        verticalLines[y[i]] = true;
+      }
+    }
+  }
+  for (let key in horizontalLines) {
+    for (let i = horizontalLines[key][0] + 1; i < horizontalLines[key][1]; ++i){
+      if (verticalLines[i]) ++totalNew;
+    }
+  }
 }
 
 module.exports = newIntersections;
