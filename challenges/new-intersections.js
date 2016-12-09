@@ -16,8 +16,17 @@
  * 	 
  */
 
-function newIntersections(x, y){
-
+function newIntersections(x, y) {
+  const obj = {}
+  x.forEach((c, i) => obj[`${c},${y[i]}`] = true)
+  return x.reduce((a, c, i, s) => {
+    return obj[`${c + 1},${y[i]}`] === undefined &&
+      obj[`${c + 2},${y[i]}`] === true &&
+      obj[`${c + 1},${y[i] + 1}`] === true &&
+      obj[`${c + 1},${y[i] - 1}`] === true
+      ? ++a
+      : a
+  }, 0)
 }
 
 module.exports = newIntersections;
