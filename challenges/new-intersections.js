@@ -17,16 +17,46 @@
  */
 
 function newIntersections(x, y) {
-  const obj = {}
-  x.forEach((c, i) => obj[`${c},${y[i]}`] = true)
-  return x.reduce((a, c, i, s) => {
-    return obj[`${c + 1},${y[i]}`] === undefined &&
-      obj[`${c + 2},${y[i]}`] === true &&
-      obj[`${c + 1},${y[i] + 1}`] === true &&
-      obj[`${c + 1},${y[i] - 1}`] === true
-      ? ++a
-      : a
-  }, 0)
+  const minX = Math.min(...x)
+  const maxX = Math.max(...x)
+  const minY = Math.min(...y)
+  const maxY = Math.max(...y)
+  const oldPoints = {}
+  const allPoints = {}
+  // Filling in objects
+  x.forEach((c, i) => oldPoints[`${c},${y[i]}`] = true)
+  for (let xx = minX; xx <= maxX; xx++) {
+    for (let yy = minY; yy <= maxY; yy++) {
+      allPoints[`${xx},${yy}`] = true
+    }
+  }
+  // Deleting
+  for (let xx = minX; xx <= maxX; xx++) {
+    for (let yy = minY; yy <= maxY; yy++) {
+      delete allPoints[`${xx},${yy}`]
+      if (`${xx},${yy}` in oldPoints) break
+    }
+  }
+  for (let xx = minX; xx <= maxX; xx++) {
+    for (let yy = maxX; yy >= minY; yy--) {
+      delete allPoints[`${xx},${yy}`]
+      if (`${xx},${yy}` in oldPoints) break
+    }
+  }
+  for (let yy = minY; yy <= maxY; yy++) {
+    for (let xx = minX; xx <= maxX; xx++) {
+      delete allPoints[`${xx},${yy}`]
+      if (`${xx},${yy}` in oldPoints) break
+    }
+  }
+  for (let yy = minY; yy <= maxY; yy++) {
+    for (let xx = maxX; xx >= minX; xx--) {
+      delete allPoints[`${xx},${yy}`]
+      if (`${xx},${yy}` in oldPoints) break
+    }
+  }
+  // Return number of points left
+  return Object.keys(allPoints).length
 }
 
 module.exports = newIntersections;
