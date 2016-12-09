@@ -36,25 +36,25 @@ function newIntersections(x, y) {
   for (let xx = 0; xx < xSorted.length; xx++) {
     for (let yy = 0; yy < ySorted.length; yy++) {
       delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
-      if (`${xx},${yy}` in oldPoints) break
+      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
     }
   }
   for (let xx = 0; xx < xSorted.length; xx++) {
     for (let yy = ySorted.length - 1; yy >= 0; yy--) {
       delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
-      if (`${xx},${yy}` in oldPoints) break
+      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
     }
   }
   for (let yy = 0; yy < ySorted.length; yy++) {
     for (let xx = 0; xx < xSorted.length; xx++) {
       delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
-      if (`${xx},${yy}` in oldPoints) break
+      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
     }
   }
   for (let yy = 0; yy < ySorted.length; yy++) {
     for (let xx = xSorted.length - 1; xx >= 0; xx--) {
       delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
-      if (`${xx},${yy}` in oldPoints) break
+      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
     }
   }
   // Return number of points left
