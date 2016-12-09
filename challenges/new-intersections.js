@@ -17,12 +17,8 @@
  */
 
 function newIntersections(x, y) {
-  const xSorted = x.sorted()
-  const ySorted = y.sorted()
-  const minX = Math.min(...x)
-  const maxX = Math.max(...x)
-  const minY = Math.min(...y)
-  const maxY = Math.max(...y)
+  const xSorted = x.sort()
+  const ySorted = y.sort()
   const oldPoints = {}
   const allPoints = {}
   // Filling in objects
