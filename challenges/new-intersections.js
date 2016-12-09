@@ -29,32 +29,32 @@ function newIntersections(x, y) {
   x.forEach((c, i) => oldPoints[`${c},${y[i]}`] = true)
   for (let xx = 0; xx < xSorted.length; xx++) {
     for (let yy = 0; yy < ySorted.length; yy++) {
-      allPoints[`${xx},${yy}`] = true
+      allPoints[`${xSorted[xx]},${ySorted[yy]}`] = true
     }
   }
   // Deleting
   for (let xx = 0; xx < xSorted.length; xx++) {
     for (let yy = 0; yy < ySorted.length; yy++) {
-      delete allPoints[`${xx},${yy}`]
-      if (`${xx},${yy}` in oldPoints) break
+      delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
+      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
     }
   }
   for (let xx = 0; xx < xSorted.length; xx++) {
     for (let yy = ySorted.length - 1; yy >= 0; yy--) {
-      delete allPoints[`${xx},${yy}`]
-      if (`${xx},${yy}` in oldPoints) break
+      delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
+      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
     }
   }
   for (let yy = 0; yy < ySorted.length; yy++) {
     for (let xx = 0; xx < xSorted.length; xx++) {
-      delete allPoints[`${xx},${yy}`]
-      if (`${xx},${yy}` in oldPoints) break
+      delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
+      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
     }
   }
   for (let yy = 0; yy < ySorted.length; yy++) {
     for (let xx = xSorted.length - 1; xx >= 0; xx--) {
-      delete allPoints[`${xx},${yy}`]
-      if (`${xx},${yy}` in oldPoints) break
+      delete allPoints[`${xSorted[xx]},${ySorted[yy]}`]
+      if (`${xSorted[xx]},${ySorted[yy]}` in oldPoints) break
     }
   }
   // Return number of points left
