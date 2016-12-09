@@ -64,3 +64,5 @@ function newIntersections(x, y) {
   // Return number of points left
   return Object.keys(allPoints).length
 }
+
+module.exports = newIntersections;
