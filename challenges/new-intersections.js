@@ -16,8 +16,36 @@
  * 	 
  */
 
-function newIntersections(x, y){
+// should fail where old points exist at intersection
+function newIntersections(x, y) {
+  const length = x.length;
+  if (length < 4) return 0;
+  let xPairs = 0;
+  let yPairs = 0;
 
+  const xTable = x.reduce((table, num) => {
+    table[num] ? table[num]++ : table[num] = 1;
+    return table;
+  }, {});
+
+  const yTable = y.reduce((table, num) => {
+    table[num] ? table[num]++ : table[num] = 1;
+    return table;
+  }, {});
+
+  Object.keys(xTable).forEach(num => {
+    if (xTable[num] > 1) xPairs++;
+  });
+
+  Object.keys(yTable).forEach(num => {
+    if (yTable[num] > 1) yPairs++;
+  });
+
+  return xPairs * yPairs;
 }
 
 module.exports = newIntersections;
+
+const x1 = [-6, -3, 0, 0, 1, 2, 2];
+const y1 = [1, 6, -5, 3, 1, 6, 8];
+console.log(newIntersections(x1, y1));
