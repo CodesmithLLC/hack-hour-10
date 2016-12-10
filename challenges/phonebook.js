@@ -28,24 +28,38 @@ function findName(jazbook, name) {
 }
 
 // return an object literal representing the jazbook
-function makePhoneBookObject(jazbook){
-  return jazbook.reduce((all, item) => {
+function Jazbook(jazbook){
+  this.phonebook = jazbook.reduce((all, item) => {
     all[item[0]] = item[1];
     return all;
   }, {});
 }
 
-// // TESTS:
-// jazbook = [
-//     ['alex','301-844-3421'],
-//     ['jae','301-844-1211'],
-//     ['david','301-844-0978'],
-//     ['travis','301-844-8505'],
-//     ['jasmine','1800-974-4539'],
-// ];
+Jazbook.prototype.add = function(name, number) {
+  this.phonebook[name] = number;
+}
 
-// console.log(findName(jazbook, 'travis')); // => 301-844-8505
-// console.log(makePhoneBookObject(jazbook));
+Jazbook.prototype.lookup = function(name) {
+  return this.phonebook[name];
+}
+
+Jazbook.prototype.remove = function(name) {
+  delete this.phonebook[name];
+}
+
+// TESTS:
+jazbook = [
+    ['alex','301-844-3421'],
+    ['jae','301-844-1211'],
+    ['david','301-844-0978'],
+    ['travis','301-844-8505'],
+    ['jasmine','1800-974-4539'],
+];
+
+console.log(findName(jazbook, 'travis')); // => 301-844-8505
+let newJaz = new Jazbook(jazbook);
+Jazbook.add('Chet', '323-490-4410');
+console.log(newJaz);
 
 const objectToExport = {
   findName,

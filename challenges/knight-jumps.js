@@ -11,7 +11,13 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  const x = parseInt(str.split('')[1]);
+  const y = parseInt(str.split('')[3]);
+
 
 }
+
+const str = "(4 5)"
+knightjumps(str);
 
 module.exports = knightjumps;
