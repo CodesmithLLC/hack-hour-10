@@ -11,7 +11,27 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+  const x = +str[1];
+  const y = +str[3];
+  
+  if ((x < 1 || x > 8) ||
+    (y < 1 || y > 8)) { return 0; }
+  
+  const board = [
+    [x - 2, y - 1],
+    [x - 2, y + 1],
+    [x - 1, y - 2],
+    [x - 1, y + 2],
+    [x + 1, y - 2],
+    [x + 2, y - 1],
+    [x + 2, y + 1],
+    [x + 1, y + 2]
+  ];
+  
+  return board.reduce((possibilities, cur) => {
+    return (cur[0] > 0 && cur[0] < 9 &&
+    cur[1] > 0 && cur[1] < 9) ? possibilities + 1: possibilities;
+  }, 0);
 }
 
 module.exports = knightjumps;
