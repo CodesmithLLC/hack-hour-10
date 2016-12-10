@@ -17,6 +17,7 @@
  */
 
 function newIntersections(x, y){
+  console.log(x, y);
   let xs = {}, ys = {}, points = x.length;
   if(points < 4) return 0;
   for(let i = 0; i < points; i++) {
@@ -50,21 +51,23 @@ function newIntersections(x, y){
      }
    }
  }
- results.filter( (ele) => {
+ results = results.filter( (ele) => {
    for(let i = 0; i < points; i++) {
-     if(ele.x === x[i] && ele.y === y[i]) {
+     if(Number(ele.x) === x[i] && Number(ele.y) === y[i]) {
        return false;
      }
    }
    return true;
  })
 
-
  return results.length;
 }
 
-// let myX = [1, 2, 2, 3, 3, 4, 4];
-// let myY = [3, 2, 5, 1, 4, 2, 3];
+// let myX = [1, 2, 2, 2, 3, 3, 4, 4];
+// let myY = [3, 2, 3, 5, 1, 4, 2, 3];
+
+// let myX = [1, 1, 3, 3];
+// let myY = [1, 3, 5, 6];
 
 // console.log(newIntersections(myX, myY));
 
