@@ -1,3 +1,4 @@
+"use strict"
 /**
  * Write a function to reverse an array in place
  *
@@ -12,7 +13,28 @@
  */
 
 function reverseInPlace(array) {
-
+  if(Array.isArray(array) === false) { return undefined; };
+  if(array.length === 0) {return []};
+  let placePosition = array.length;
+  for (let i = array.length - 1; i >= 0; i--) {
+    array[placePosition] = array[i];
+    placePosition++;
+  }
+  let grabPosition = array.length / 2;
+  for (let i = 0; i < array.length; i++) { 
+    array[i] = array[grabPosition];
+      grabPosition++;
+  }
+  var popCount = array.length / 2;
+  while (popCount > 0) {
+    array.pop();
+    popCount--;
+  }
+  return array;
 }
+// console.log(reverseInPlace([1,2,3]));
+// console.log(reverseInPlace([1,2,3,4,5,6]));
+// console.log(reverseInPlace([]));
+// console.log(reverseInPlace('Non array'));
 
 module.exports = reverseInPlace;

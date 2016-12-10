@@ -17,7 +17,29 @@
  */
 
 function rotateGrid(grid, n) {
-
+  if (typeof n !== 'number');
+  if (!Array.isArray(grid) || grid.length < 1 || grid.length !== n || grid[0].length !== n) {
+    return undefined;
+  }
+  // Coordinate build out
+  const newGrid = [];
+  for (let i = 0; i < n; i++) {
+    newGrid.push([]);
+  }
+  for (let row=0; row < n; row++) {
+    for (let column = 0; column < n; column++) {
+      newGrid[column].unshift(grid[row][column]);
+    }
+  }
+  return newGrid;
 }
+
+// const testArr = [[1, 2, 3, 6],
+// [4, 5, 6, 7],
+// [7, 8, 9, 10],
+// [7, 8, 9, 10]
+// ];
+
+// console.log(rotateGrid(testArr, 4));
 
 module.exports = rotateGrid;
