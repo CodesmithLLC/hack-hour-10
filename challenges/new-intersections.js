@@ -17,7 +17,6 @@
  */
 
 function newIntersections(x, y){
-  console.log(x, y);
   let xs = {}, ys = {}, points = x.length;
   if(points < 4) return 0;
   for(let i = 0; i < points; i++) {
@@ -26,7 +25,6 @@ function newIntersections(x, y){
     if(ys[y[i]] === undefined) ys[y[i]] = 1;
     else ys[y[i]] += 1;
   }
-  // console.log(xs, ys)
 
  let xseg = {}, yseg = {};
 
@@ -46,7 +44,7 @@ function newIntersections(x, y){
  let results = [];
  for(let xval in xseg) {
    for(let yval in yseg) {
-     if(Number(xval) < yseg[yval].max && Number(xval) > yseg[yval].min) {
+     if(Number(xval) < yseg[yval].max && Number(xval) > yseg[yval].min && Number(yval) < xseg[xval].max && Number(yval) > xseg[xval].min) {
        results.push({'x': xval, 'y': yval});
      }
    }
@@ -59,15 +57,17 @@ function newIntersections(x, y){
    }
    return true;
  })
-
+//  console.log('x segments', xseg);
+//  console.log('y segments', yseg);
+//  console.log(results);
  return results.length;
 }
 
 // let myX = [1, 2, 2, 2, 3, 3, 4, 4];
 // let myY = [3, 2, 3, 5, 1, 4, 2, 3];
 
-// let myX = [1, 1, 3, 3];
-// let myY = [1, 3, 5, 6];
+// let myX = [1, 3, 2, 2];
+// let myY = [2, 2, 1, 0];
 
 // console.log(newIntersections(myX, myY));
 
