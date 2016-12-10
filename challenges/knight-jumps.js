@@ -11,7 +11,17 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+  const [x, y] = [parseInt(str[1]), parseInt(str[3])];
+  let numMoves = 8;
+  if (x + 1 > 8 || y + 2 > 8) numMoves -= 1;
+  if (x + 2 > 8 || y + 1 > 8) numMoves -= 1;
+  if (x + 2 > 8 || y - 1 < 1) numMoves -= 1;
+  if (x + 1 > 8 || y - 2 < 1) numMoves -= 1;
+  if (x - 1 < 1 || y - 2 < 1) numMoves -= 1;
+  if (x - 2 < 1 || y - 1 < 1) numMoves -= 1;
+  if (x - 2 < 1 || y + 1 > 8) numMoves -= 1;
+  if (x - 1 < 1 || y + 2 > 8) numMoves -= 1;
+  return numMoves;
 }
 
 module.exports = knightjumps;
