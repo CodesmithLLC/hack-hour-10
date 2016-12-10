@@ -59,17 +59,17 @@ function newIntersections(x, y){
    }
    return true;
  })
- 
+
  return results.length;
 }
 
-let myX = [1, 2, 2, 2, 3, 3, 4, 4];
-let myY = [3, 2, 3, 5, 1, 4, 2, 3];
+// let myX = [1, 2, 2, 2, 3, 3, 4, 4];
+// let myY = [3, 2, 3, 5, 1, 4, 2, 3];
 
 // let myX = [1, 1, 3, 3];
 // let myY = [1, 3, 5, 6];
 
-console.log(newIntersections(myX, myY));
+// console.log(newIntersections(myX, myY));
 
 
 
