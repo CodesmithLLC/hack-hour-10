@@ -2,6 +2,8 @@
  * a function to calculate how many different ways you can go up the flight of stairs.
  */
 
+// TODO - refactor with recursion
+
 function countStairs(n) {
   const perms = [[]];
   const possibleTwos = Math.floor(n/2);
