@@ -35,27 +35,31 @@ LinkedList.prototype.add = function(val) {
 Removes the first node with the inputted value
  */
 LinkedList.prototype.remove = function(val) {
+
+  // reassign this.head
   if (this.head.val === val) {
     this.head = this.head.next;
     this.head.prev = null;
+
   } else {
     let current = this.head;
     while (current) {
-      if (current.val === val && current === this.tail) {
 
-        // reassign this.tail
+      // reassign this.tail
+      if (current.val === val && current === this.tail) {
         current.prev.next = current.next;
         this.tail = current.prev;
         this.length--;
         return current;
-      } else if (current.val === val) {
 
-        // remove the link in between the nodes
+      // remove the link in between the nodes
+      } else if (current.val === val) {
         current.next.prev = current.prev;
         current.prev.next = current.next;
         this.length--;
         return current;
       }
+      
       current = current.next;
     }
     return undefined;
