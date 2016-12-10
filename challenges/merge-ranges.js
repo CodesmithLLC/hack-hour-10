@@ -11,7 +11,22 @@
 
 
 function mergeRanges(array) {
-
+  return array.sort((a,b) => {return a[0] - b[0];}).reduce((acc, curr, idx) => {
+    let accLast = acc[acc.length-1];
+    // console.log(idx);
+    // console.log(`acc: ${acc.length} :: ${acc}`);
+    // console.log(acc);
+    // console.log(`curr ${curr}`);
+    if(acc.length === 0 || curr[0] > accLast[1]){ // push case curr range > accLast range
+      // console.log(`first: ${[...acc, curr]}`)
+      return [...acc, curr]
+    }else if(curr[0] <= accLast[1]){ // curr range inclusively within accLast range || curr[1] > accLast[1]
+      accLast[1] = Math.max(curr[1], accLast[1]);
+      // console.log(`second: ${acc}`);
+      return acc;
+    }
+    // should not reach this point because curr[0] > accLast[1] and curr[0] <= accLast[1] are compliments
+  }, []);
 }
 
 module.exports = mergeRanges;
