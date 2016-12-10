@@ -13,11 +13,18 @@
 function knightjumps(str) {
   const x = parseInt(str.split('')[1]);
   const y = parseInt(str.split('')[3]);
-
-
+  if (x === 1 || x === 8) return 2;
+  if (x === 2 || x === 7) {
+    if (y >= 3) return 4;
+    return 3;
+  }
+  if (x >= 3 && x <= 6) {
+    if (y >= 3) return 8;
+    return 4;
+  }
 }
 
-const str = "(4 5)"
-knightjumps(str);
+// const str = "(8 8)"
+// console.log(knightjumps(str));
 
 module.exports = knightjumps;
