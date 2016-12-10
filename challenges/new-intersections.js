@@ -19,16 +19,6 @@
 function newIntersections(x, y){
   const dupsX = determineDuplicates(x);
   const dupsY = determineDuplicates(y);
-  console.log(dupsX, dupsY);
-
-  for (let i = 0; i < x.length; ++i) {
-    const cur = x[i];
-    console.log(cur);
-    if (dupsX.indexOf(cur) !== -1) {
-      
-    }
-  }
-
 }
 
 function determineDuplicates(arr) {
