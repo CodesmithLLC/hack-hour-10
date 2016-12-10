@@ -11,7 +11,25 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  let spaces = 0;
+  let x = Number(str.match(/\d/g)[0]);
+  let y = Number(str.match(/\d/g)[1]);
+  console.log('x', x, 'y', y);
 
+  if(x - 2 > 0 && y - 1 > 0) spaces++;
+  if(x - 2 > 0 && y + 1 < 9) spaces++;
+  if(x - 1 > 0 && y - 2 > 0) spaces++;
+  if(x - 1 > 0 && y + 2 < 9) spaces++;
+  if(x + 1 < 9 && y - 2 > 0) spaces++;
+  if(x + 1 < 9 && y + 2 < 9) spaces++;
+  if(x + 2 < 9 && y - 1 > 0) spaces++;
+  if(x + 2 < 9 && y + 1 < 9) spaces++;
+
+  return spaces;
 }
+
+// let mySpace = "(1 1)";
+
+// console.log(knightjumps(mySpace));
 
 module.exports = knightjumps;
