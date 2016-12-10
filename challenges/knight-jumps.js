@@ -10,8 +10,62 @@
 //  example input:
 // var str = "(4 5)"
 
-function knightjumps(str) {
+// Brute force method! Check all possible moves. O(1) space; O(n) time
 
+function knightjumps(str) {
+  const x = Number(str[0]);
+  const y = Number(str[2]);
+  let potentialMoves = 0;
+
+  // Check if move two squares up and one square left is possible
+
+  if (x - 1 > 0 && y + 2 > 0) {
+    potentialMoves += 1;
+  }
+
+  // Check if move two squares up and one squares right is possible
+
+  if (x + 1 < 9 && y + 2 > 0) {
+    potentialMoves += 1;
+  }
+
+  // Check if move one square up and twos squares left is possible
+
+  if (x - 2 > 0 && y + 1 > 0) {
+    potentialMoves += 1;
+  }
+
+  // Check if move one square up and twos squares right is possible
+
+  if (x + 2 < 9 && y + 1 > 0) {
+    potentialMoves += 1;
+  }
+
+  // Check if move two squares down and one square left is possible
+
+  if (x - 1 > 0 && y - 2 < 9) {
+    potentialMoves += 1;
+  }
+
+  // Check if move two squares down and one square right is possible
+
+  if (x + 1 < 9 && y - 2 < 9) {
+    potentialMoves += 1;
+  }
+
+  // Check if move one square down and twos squares left is possible
+
+  if (x - 2 > 0 && y - 1 < 9) {
+    potentialMoves += 1;
+  }
+
+  // Check if move one square down and twos squares right is possible
+
+  if (x + 2 < 9 && y - 1 < 9) {
+    potentialMoves += 1;
+  }
+
+  return potentialMoves;
 }
 
 module.exports = knightjumps;
