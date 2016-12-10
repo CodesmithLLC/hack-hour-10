@@ -11,7 +11,26 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+  let coord = str.slice(1, str.length - 1);
+  coord = coord.split(' ');
+  coord = coord.map((a) => parseInt(a));
+  let count = 0;
+  if (isNaN(coord[0]) || isNaN(coord[1])) return undefined;
+  if (coord[0] < 1 || coord[0] > 8 || coord[1] < 1 || coord[1] > 8) return count;
+  function finder(x, y, once) { 
+    if (x >= 1 && x <= 8 && y >= 1 && y <= 8 && !once)++count;
+    else if (once) {
+      finder(x + 2, y + 1, false);
+      finder(x + 2, y - 1, false);
+      finder(x - 2, y + 1, false);
+      finder(x - 2, y - 1, false);
+      finder(x + 1, y + 2, false);
+      finder(x - 1, y + 2, false);
+      finder(x + 1, y - 2, false);
+      finder(x - 1, y - 2, false);
+     }
+  }
+  finder(...coord, true);
+  return count;
 }
-
 module.exports = knightjumps;
