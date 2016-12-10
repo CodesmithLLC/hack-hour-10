@@ -17,11 +17,7 @@
  */
 
 function newIntersections(x, y){
-  console.log('x array', x);
-  console.log('y array', y);
-  let xs = {};
-  let ys = {};
-  let points = x.length;
+  let xs = {}, ys = {}, points = x.length;
   if(points < 4) return 0;
   for(let i = 0; i < points; i++) {
     if(xs[x[i]] === undefined) xs[x[i]] = 1;
@@ -29,25 +25,48 @@ function newIntersections(x, y){
     if(ys[y[i]] === undefined) ys[y[i]] = 1;
     else ys[y[i]] += 1;
   }
-  console.log(xs, ys)
+  // console.log(xs, ys)
 
-  let xcount = 0;
-  let ycount = 0;
-  for(let coord in xs) {
-    if(xs[coord] > 1) xcount++;
-  }
-  for(let coord in ys) {
-    if(ys[coord] > 1) ycount++;
-  }
+ let xseg = {}, yseg = {};
 
-  console.log(xcount * ycount);
-  return xcount * ycount;
+ for(let i = 0; i < points; i++) {
+   if(xs[x[i]] > 1 && xseg[x[i]] === undefined) xseg[x[i]] = {max: -Infinity, min: Infinity};
+   if(xs[x[i]] > 1) {
+     if(xseg[x[i]].max < y[i]) xseg[x[i]].max = y[i];
+     if(xseg[x[i]].min > y[i]) xseg[x[i]].min = y[i]; 
+   }
+
+   if(ys[y[i]] > 1 && yseg[y[i]] === undefined) yseg[y[i]] = {max: -Infinity, min: Infinity};
+   if(ys[y[i]] > 1) {
+     if(yseg[y[i]].max < x[i]) yseg[y[i]].max = x[i];
+     if(yseg[y[i]].min > x[i]) yseg[y[i]].min = x[i]; 
+   }
+ }
+ let results = [];
+ for(let xval in xseg) {
+   for(let yval in yseg) {
+     if(Number(xval) < yseg[yval].max && Number(xval) > yseg[yval].min) {
+       results.push({'x': xval, 'y': yval});
+     }
+   }
+ }
+ results.filter( (ele) => {
+   for(let i = 0; i < points; i++) {
+     if(ele.x === x[i] && ele.y === y[i]) {
+       return false;
+     }
+   }
+   return true;
+ })
+
+
+ return results.length;
 }
 
 // let myX = [1, 2, 2, 3, 3, 4, 4];
 // let myY = [3, 2, 5, 1, 4, 2, 3];
 
-// newIntersections(myX, myY);
+// console.log(newIntersections(myX, myY));
 
 
 
