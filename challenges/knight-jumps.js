@@ -24,7 +24,6 @@ function knightjumps(str) {
       if (Math.abs(vectors[x]) !== Math.abs(vectors[y])) moves.push({ x: vectors[x], y: vectors[y] })
   const where = moves.map(coords => { return { x: coords.x + xCoord, y: coords.y + yCoord } })
   const legal = where.filter(coords => onBoard(coords.x, coords.y))
-  console.log(legal)
   return legal.length
 }
 
