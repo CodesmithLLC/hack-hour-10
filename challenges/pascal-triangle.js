@@ -33,7 +33,30 @@
 */
 
 function pascalTriangle(numRows) {
+  if (isNaN(numRows)) { throw new Error('Input must be a number.') }
+  if (numRows === 0) { return []; }
+  const answer = [[1]];
+  let temp = [];
+  let count = 1;
 
+  while (count < numRows) {
+    let lastRow = answer[answer.length - 1];
+    for (let i = 0; i <= count; i++) {
+      if (i === 0) {
+        temp[i] = 1;
+      }
+      else if (i === count) {
+        temp[i] = 1;
+      }
+      else {
+        temp[i] = lastRow[i] + lastRow[i - 1];
+      }
+    }
+  answer.push(temp);
+  temp = [];
+  count += 1;
+  }
+  return answer;
 }
 
 module.exports = pascalTriangle;
