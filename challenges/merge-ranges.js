@@ -10,10 +10,8 @@
  */
 
 function mergeRanges(array) {
-  console.log('original array: ', array);
   array = array.sort((a, b) => a[0] - b[0]);
-  console.log('sorted array: ', array);
-  console.log('-----------------');
+
   const result = [];
   for (let i = 0; i < array.length; i++) {
     const curr = array[i];
@@ -30,19 +28,19 @@ function mergeRanges(array) {
       }
     }
     result.push(curr);
-    console.log('new array: ', result);
-    console.log('-----------------');
   }
   return result;
-
-  // // Thai solution
-  // return array
-  // .sort((a, b) => { return a[0] > b[0] })
-  // .reduce((a, c, i, s) => { return a[a.length - 1][1] < c[0] ? a.concat([c]): a.slice(0,-1).concat([[a[a.length - 1][0], a[a.length - 1][1] < c[1] ? c[1] : a[a.length - 1][1]]]) }, [array[0]])
 }
 
-const times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]];
+// // Thai solution
+// function mergeRanges(array) {
+//   return array
+//     .sort((a, b) => { return a[0] > b[0] })
+//     .reduce((a, c, i, s) => { return a[a.length - 1][1] < c[0] ? a.concat([c]): a.slice(0,-1).concat([[a[a.length - 1][0], a[a.length - 1][1] < c[1] ? c[1] : a[a.length - 1][1]]]) }, [array[0]])
+// }
 
-console.log(mergeRanges(times));
+// // TESTS:
+// const times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]];
+// console.log(mergeRanges(times));
 
 module.exports = mergeRanges;
