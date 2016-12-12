@@ -33,7 +33,18 @@
 */
 
 function pascalTriangle(numRows) {
-
+  const memo = {}
+  function recurse(n) {
+    if (n in memo) return memo[n]
+    if (n === 1) return [[1]]
+    const lastOne = pascalTriangle(n - 1)
+    let thisOne = lastOne[lastOne.length - 1]
+    thisOne = thisOne.reduce((a, c, i, s) => a.concat(i === s.length - 1 ? 1 : c + s[i + 1]), [1])
+    lastOne.push(thisOne)
+    return memo[n] = lastOne
+  }
+  return recurse(numRows)
 }
 
 module.exports = pascalTriangle;
+å
