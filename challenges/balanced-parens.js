@@ -24,8 +24,34 @@
  *
  */
 
-function balancedParens(input){
+function balancedParens(input) {
+  let stack = []
+  for (let i = 0; i < input.length; i++) {
+    switch (input[i]) {
+      case '(':
+        stack.push(')'); break;
+      case ')':
+        let x = stack.pop();
+        if (x !== ')' || x === undefined) return false;
+        break;
+      case '[':
+        stack.push(']');
+        break;
+      case ']':
+        let y = stack.pop();
+        if (y !== ']' || y === undefined) return false;
+        break;
+      case '{':
+        stack.push('}'); break;
+      case '}':
+        let z = stack.pop();
+        if (z !== '}' || z === undefined) return false;
+        break;
+    }
+  }
+  return (stack.length === 0);
 
 }
+
 
 module.exports = balancedParens;

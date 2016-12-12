@@ -1,24 +1,31 @@
 'use strict';
-// If we list all the natural numbers below 10 that are multiples of 3 or 5,
-// we get 3, 5, 6 and 9. The sum of these multiples is 23.
+// list all the natural numbers below 10 that are ultiples of 3 or 5 we get 3 ,5, 6, an d 9. the sum of these ultipels i 23
 
-// write a function that will find the sum of all the multiples of 3 or 5
-// below 1000 and return that sum.
+// write a function that will fnind the sum of all the multiples of 3 or 5 below 1000 and return that sum
+
+// extension make it dynamic funcition that takes input x y z and returns th esum of multipels of x and y below x
 
 function sumMultiples3Or5Below1000() {
-  let sum = 0;
-
-  return sum;
+  return sumMultiplesXOrYBelowZ(3, 5, 1000);
 }
 
+function sumMultiplesXOrYBelowZ(x,y,z) {
+  // edge case 1: x === y
+  if (x === y) return x * ((Math.floor((z - 1) / x) * (Math.floor((z - 1) / x) + 1)) / 2);
+  // edge case 2: x is a multiple of y (or y is a multiple of x) d
+  let min = x < y ? x : y;
+  let max = x > y ? x : y;
+  if ((max % min) === 0) {
+    return min * ((Math.floor((z - 1) / min) * (Math.floor((z - 1) / min) + 1)) / 2)
+  }
 
-// extension make it dynamic function that takes input x,y,z
-// and returns the sum of multiples of x and y below z
-function sumMultiplesXOrYBelowZ(x, y, z) {
-  let sum = 0;
-
-  return sum;
+  return x * ((Math.floor((z - 1) / x) * (Math.floor((z - 1) / x) + 1)) / 2) +
+  y * ((Math.floor((z - 1) / y) * (Math.floor((z - 1) / y) + 1)) / 2) -
+  x * y * Math.floor((z-1) / (x * y)) * 
+  (Math.floor((z-1) / (x * y)) + 1) / 2
 }
+
+console.log(sumMultiplesXOrYBelowZ(3, 5, 1000));
 
 const objectToExport = {
   sumMultiples3Or5Below1000,

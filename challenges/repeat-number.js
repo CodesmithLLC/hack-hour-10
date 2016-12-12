@@ -10,8 +10,17 @@
  *
  */
 
-function repeatNumbers(array) {
+function factorial(num) {
+  return num > 1 ? num * factorial(num - 1) : 1;
+}
 
+function repeatNumbers(array) {
+  let max = -Infinity;
+  const product = array.reduce((accum, curr) => {
+    if (curr > max) max = curr;
+    return accum * curr;
+  })
+  return product / factorial(max);
 }
 
 module.exports = repeatNumbers;
