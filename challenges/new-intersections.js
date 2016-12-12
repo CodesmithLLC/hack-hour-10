@@ -17,6 +17,31 @@
  */
 
 function newIntersections(x, y){
+  let sharedXs = x.reduce((acc, curr, idx) => {
+    if(acc[curr] === undefined){
+      acc[curr] = [idx];
+      return acc;
+    }
+    acc[curr].push(curr);
+  }, {});
+  console.log(`sharedXs ${sharedXs}`);
+
+  let sharedYs = x.reduce((acc, curr, idx) => {
+    if(acc[curr] === undefined){
+      acc[curr] = [idx];
+      return acc;
+    }
+    acc[curr].push(curr);
+  }, {});
+  console.log(`sharedYs ${sharedYs}`);
+
+  Object.keys(sharedXs).forEach(curr => {
+    if(sharedXs[curr].length < 1){
+      delete(sharedXs[curr]);
+    }
+  });
+  console.log(`filtered sharedXs ${sharedXs}`);
+
 
 }
 
