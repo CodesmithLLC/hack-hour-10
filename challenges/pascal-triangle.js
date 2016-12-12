@@ -36,7 +36,7 @@
 function pascalTriangle(numRows) {
   const pascal = [[1]];
   if (numRows === 1) return pascal;
-  for (let i = 1; i <= numRows; i++) {
+  for (let i = 1; i < numRows; i++) {
     const newRow = [];
     for (let j = 0; j <= i; j++) {
       const prevRow = pascal[i - 1];
