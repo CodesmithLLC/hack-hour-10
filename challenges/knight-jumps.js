@@ -11,7 +11,22 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+  const moves = [
+    [-2,-1],
+    [-2,1],
+    [-1,-2],
+    [-1,2],
+    [1,-2],
+    [1,2],
+    [2,-1],
+    [2,1]
+  ]
+  let init = str.replace(/\D+/g, '').split('').map(num => Number(num));
+  return moves.map(move => {
+    return [(move[0] + init[0]), (move[1] + init[1])];
+  });
 }
 
 module.exports = knightjumps;
+var str = "(4 5)"
+console.log(knightjumps(str));

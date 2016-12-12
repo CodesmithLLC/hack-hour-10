@@ -16,8 +16,10 @@
  * 	 
  */
 
-function newIntersections(x, y){
-
+function newIntersections(x, y) {
+  if (x.length < 4 || y.length < 4) return 0;
+  let matches = {x: [], y: []};
+  
 }
 
 module.exports = newIntersections;
