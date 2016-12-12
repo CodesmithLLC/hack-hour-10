@@ -21,6 +21,7 @@
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
 	return makePhoneBookObject(jazbook)[name] || false;
+
 	// let objtofindName = makePhoneBookObject(jazbook);
 	// for ( let key in objtofindName) {
 	// 	if ( key === name ) {
