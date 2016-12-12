@@ -33,7 +33,23 @@
 */
 
 function pascalTriangle(numRows) {
+  const pascal = [[1]];
 
+  if (numRows < 1) return [];
+  
+  // Need to reference the previous array
+  for (let i = 1; i < numRows; i++) {
+    const previousRow = pascal[i - 1];
+    const newRow = [];
+    for (let j = 0; j < previousRow.length + 1; j++) {
+      const current = previousRow[j] || 0;
+      const previous = previousRow[j - 1] || 0;
+      newRow.push(current + previous);
+    }
+    pascal.push(newRow);
+  }
+
+  return pascal;
 }
 
 module.exports = pascalTriangle;
