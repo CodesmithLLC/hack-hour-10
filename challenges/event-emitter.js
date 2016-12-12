@@ -26,20 +26,16 @@ function EventEmitter() {
 }
 
 EventEmitter.prototype.on = function(eventName, func) {
-  // add event name as key on this.store: concat or create new array if not exist
-  // if (!this.store[eventName]) this.store[eventName] = [];
-  // this.store[eventName].push(func);
-
   this.store[eventName] ? this.store[eventName].push(func) : this.store[eventName] = [func];
 };
 
 EventEmitter.prototype.trigger = function(eventName, ...args) {
   if (!this.store[eventName]) throw new Error('unrecognized event');
-
   this.store[eventName].forEach(func => {
     func(...args);
   });
 };
+
 
 // // TESTS:
 // const instance = new EventEmitter();
