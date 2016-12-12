@@ -33,6 +33,7 @@
 */
 
 function pascalTriangle(numRows) {
+  console.log(`pascalTriangle: ${numRows}`);
   if(numRows <= 2){
     return numRows === 0 ? [] : numRows === 1 ? [[1]] : [[1], [1]]; 
   }
@@ -44,6 +45,7 @@ function pascalTriangle(numRows) {
     }
     results.push([1,...currResult, 1]);
   }
+
   return results;
 }
 

@@ -24,7 +24,7 @@ function newIntersections(x, y){
     }
     acc[curr].push(curr);
   }, {});
-  console.log(`sharedXs ${sharedXs}`);
+  //console.log(`sharedXs ${sharedXs}`);
 
   let sharedYs = x.reduce((acc, curr, idx) => {
     if(acc[curr] === undefined){
@@ -33,14 +33,14 @@ function newIntersections(x, y){
     }
     acc[curr].push(curr);
   }, {});
-  console.log(`sharedYs ${sharedYs}`);
+  //console.log(`sharedYs ${sharedYs}`);
 
   Object.keys(sharedXs).forEach(curr => {
     if(sharedXs[curr].length < 1){
       delete(sharedXs[curr]);
     }
   });
-  console.log(`filtered sharedXs ${sharedXs}`);
+  //console.log(`filtered sharedXs ${sharedXs}`);
 
 
 }
