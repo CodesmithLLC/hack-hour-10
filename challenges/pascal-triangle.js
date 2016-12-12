@@ -33,7 +33,32 @@
 */
 
 function pascalTriangle(numRows) {
+  function factorial(num) {
+    if (num === 0) return 1;
+    return num * factorial(num - 1);
+  }
 
+  const results = [];
+
+  function generatePascal(rowNumber) {
+    if (rowNumber < 0) return;
+    let k = 0;
+    const row = [];
+    while (rowNumber >= k) {
+      const numerator = factorial(rowNumber);
+      const denominator = factorial(rowNumber - k) * factorial(k);
+      row.push(numerator / denominator);
+      k += 1;
+    }
+
+    results.push(row);
+    generatePascal(rowNumber - 1);
+  }
+
+  generatePascal(numRows - 1);
+  return results.reverse();
 }
+
+// console.log(pascalTriangle(6));
 
 module.exports = pascalTriangle;
