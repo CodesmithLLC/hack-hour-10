@@ -10,8 +10,39 @@ findInOrderedSet(nums, 2);  -> false
  */
 
 
-function findInOrderedSet(arr, target) {
+// REFACTOR WITHOUT SLICE
 
+// function findInOrderedSet(arr, target) {
+
+//   let HOLD_MID,
+//     upper = arr.length - 1,
+//     lower = 0;
+
+//   function recurse(midpoint) {
+//     let newMid;
+
+//     if (target === arr[midpoint]) return true;
+//     if (midpoint === HOLD_MID) return false;
+
+//     HOLD_MID = midpoint;
+
+//     if (target < arr[midpoint]) {
+//       newMid = Math.floor((midpoint - lower) / 2);
+//       upper = midpoint;
+//       return recurse(newMid);
+//     }
+//     if (target > arr[midpoint]) {
+//       newMid = Math.floor((upper - midpoint) / 2);
+//       lower = midpoint;
+//       return recurse(newMid);
+//     }
+//   }
+
+//   return recurse(Math.floor(arr.length / 2));
+// }
+
+const findInOrderedSet = (arr, target, mid = Math.floor(arr.length / 2)) => {
+  return target === arr[mid] ? true : mid === 0 ? false : target > arr[mid] ? findInOrderedSet(arr.slice(mid), target) : findInOrderedSet(arr.slice(0, mid), target);
 }
 
 

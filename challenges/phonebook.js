@@ -19,18 +19,34 @@
 */
 
 //  return the number associated with the name in the jazbook
-function findName(jazbook, name) {
+// const findName = (jazbook, name) => jazbook.reduce((a, c) => name === c[0] ? c[1] : a, false);
 
+const findName = (jazbook, name) => {
+  return makePhoneBookObject(jazbook)[name] ? makePhoneBookObject(jazbook)[name] : false
 }
 
 // return an object literal representing the jazbook
-function makePhoneBookObject(jazbook){
-
+const makePhoneBookObject = (jazbook) => {
+  return jazbook.reduce((a, c) => {
+    a[c[0]] = c[1];
+    return a;
+  }, {});
 }
+
 
 const objectToExport = {
   findName,
   makePhoneBookObject,
 };
+
+let jazbook = [
+  ['alex', '301-844-3421'],
+  ['jae', '301-844-1211'],
+  ['david', '301-844-0978'],
+  ['travis', '301-844-8505'],
+  ['jasmine', '1800-974-4539'],
+];
+
+console.log(makePhoneBookObject(jazbook));
 
 module.exports = objectToExport;

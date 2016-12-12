@@ -11,7 +11,16 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  let count = 8;
+  let x = Number(str[1]), y = Number(str[3]);
 
+  if (y === 2 || y === 6) count -= 2;
+  else if (y === 1 || y === 7) count -= 4;
+  if (x === 2 || x === 6) count -= 2;
+  else if (x === 1 || x === 7) count -= 4;
+
+  return count;
 }
 
+console.log(knightjumps('(2 2)'));
 module.exports = knightjumps;

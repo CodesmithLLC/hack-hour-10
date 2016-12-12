@@ -16,8 +16,44 @@
  * 	 
  */
 
-function newIntersections(x, y){
+const newIntersections = (x, y) => {
+  let candidates = {};
+  let toCompare = [];
+  let count = 0;
+  let length = x.length;
 
+  for (let i = 0; i < length; i++) {
+    let rightIndex = x.lastIndexOf(x[i])
+    if (i !== rightIndex) {
+      candidates[x[i]] = [Math.min(y[i], y[rightIndex]), Math.max(y[i], y[rightIndex])];
+    }
+  }
+
+  for (let i = 0; i < length; i++) {
+    let rightIndex = y.lastIndexOf(y[i]);
+    if (i !== rightIndex && !toCompare.includes(y[i])) {
+      toCompare.push(y[i]);
+    }
+  }
+
+  toCompare.forEach(num => {
+    for (let key in candidates) {
+      if (num > candidates[key][0] && num < candidates[key][1]) {
+        count++;
+      }
+    }
+  })  
+  
+
+  
+
+
+  return count;
 }
+
+const x = [1, 3, 3, 6, 1, 6, 2, -4];
+const y = [3, 5, 1, 3, 1, 1, 4, 4];
+
+console.log(newIntersections(x, y));
 
 module.exports = newIntersections;

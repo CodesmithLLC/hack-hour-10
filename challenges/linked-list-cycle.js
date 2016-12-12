@@ -33,7 +33,21 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
+  let cache = {};
+  let current = head;
+
+  while (current) {
+    if (!current.next) return false;
+    if (cache[current.value]) return true;
+    cache[current.value] = true;
+    current = current.next;
+  }
+
+  return false;
 
 }
+
+// Attempt with tortoise & hare solution
+
 
 module.exports = {Node: Node, hasCycle: hasCycle}

@@ -14,7 +14,10 @@
  */
 
 function binToDec(binary) {
-
+  return [...binary].reverse().reduce(function (total, curr, ind) {
+    return curr === '1' ? total + Math.pow(2, ind) : total;
+  }, 0);
 }
+
 
 module.exports = binToDec;

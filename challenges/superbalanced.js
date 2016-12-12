@@ -15,6 +15,21 @@ function BinaryTree(value) {
 
 function superbalanced(tree) {
 
+  function countNodes(tree) {
+    if (!tree) return 0;
+    if (!tree.left && !tree.right) return 1;
+    return 1 + countNodes(tree.left) + countNodes(tree.right);
+  }  
+
+  return Math.abs(countNodes(tree.left) - countNodes(tree.right)) <= 1;
 }
+
+
+// let bst = new BinaryTree('a');
+// bst.left = new BinaryTree('b');
+// bst.right = new BinaryTree('c');
+// bst.right.right = new BinaryTree('d');
+// bst.right.left = new BinaryTree('e');
+// bst.left.left = new BinaryTree('f');
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};

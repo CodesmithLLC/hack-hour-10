@@ -20,6 +20,7 @@
     "expect.js": "^0.3.1",
     "mocha": "^2.2.5",
     "mocha-email-reporter": "1.0.2",
+    "razorframe": "^1.0.2",
     "request": "^2.65.0",
     "sendgrid": "^3.0.8"
   },
@@ -27,5 +28,8 @@
     "type": "git",
     "url": "git+https://github.com/CodesmithLLC/hack-hour-10.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.19.0"
+  }
 }
