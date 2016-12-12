@@ -33,9 +33,10 @@
 */
 
 function pascalTriangle(numRows) {
+  const memo = {};
   function factorial(num) {
     if (num === 0) return 1;
-    return num * factorial(num - 1);
+    return num in memo ? memo[num] : memo[num] = num * factorial(num - 1);
   }
 
   const results = [];
@@ -59,6 +60,6 @@ function pascalTriangle(numRows) {
   return results.reverse();
 }
 
-// console.log(pascalTriangle(6));
+// console.log(pascalTriangle(600));
 
 module.exports = pascalTriangle;
