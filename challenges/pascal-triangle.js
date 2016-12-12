@@ -47,4 +47,4 @@ function pascalTriangle(numRows) {
 }
 
 module.exports = pascalTriangle;
-å
+
