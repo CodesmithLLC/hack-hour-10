@@ -4,6 +4,7 @@
 
 function countStairs(n) {
   let cache = [];
+  
   const recurse = (n, string) => {
     if (n === 0 && !cache.includes(string)) return cache.push(string);
     if (n - 2 >= 0) recurse(n - 2, string + '2');
