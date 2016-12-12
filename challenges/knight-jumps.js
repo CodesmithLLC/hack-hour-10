@@ -14,7 +14,6 @@ function knightjumps(str) {
   let spaces = 0;
   let x = Number(str.match(/\d/g)[0]);
   let y = Number(str.match(/\d/g)[1]);
-  console.log('x', x, 'y', y);
 
   if(x - 2 > 0 && y - 1 > 0) spaces++;
   if(x - 2 > 0 && y + 1 < 9) spaces++;
