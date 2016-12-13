@@ -32,12 +32,6 @@
   ]
 */
 
-function pascalTriangle(numRows) {
-  console.log(numRows)
-  if (numRows === 1) return [[1]]
-  const lastOne = pascalTriangle(numRows - 1)
-  lastOne.push(lastOne[lastOne.length - 1].reduce((a, c, i, s) => a.concat(i === s.length - 1 ? 1 : c + s[i + 1]), [1]))
-  return lastOne
-}
+function pascalTriangle(numRows) { return numRows === 1 ? [[1]] : pascalTriangle(numRows - 1).push(pascalTriangle(numRows - 1)[pascalTriangle(numRows - 1).length - 1].reduce((a, c, i, s) => a.concat(i === s.length - 1 ? 1 : c + s[i + 1]), [1])) }
 
 module.exports = pascalTriangle;
