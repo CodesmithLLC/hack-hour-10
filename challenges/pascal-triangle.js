@@ -35,10 +35,12 @@
 function pascalTriangle(numRows) {
   if (numRows === 0) return [];
   const results = [[1]];
-  for (let i = 1; i <= numRows; i++) {
+  for (let i = 1; i < numRows; i++) {
     const row = [1];
     for (let j = 1; j < i; j++) {
       const lastRow = results[results.length - 1];
+
+      // Main logic combining values from previous row at same index and one before
       row.push(lastRow[j] + lastRow[j - 1]);
     }
 
@@ -49,7 +51,7 @@ function pascalTriangle(numRows) {
   return results;
 }
 
-// console.log(pascalTriangle(6));
+console.log(pascalTriangle(6));
 
 module.exports = pascalTriangle;
 
