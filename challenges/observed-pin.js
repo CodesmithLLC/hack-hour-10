@@ -43,8 +43,26 @@ expectations = {
 
 
 function getPINs(observed) {
-
+  const selfAndAdjacent = (num) => {
+    const touching = {
+      0: [8],
+      1: [2, 4],
+      2: [1, 3, 5],
+      3: [2, 6],
+      4: [1, 5, 7],
+      5: [2, 4, 6, 8],
+      6: [3, 5, 9],
+      7: [4, 8],
+      8: [5, 7, 9, 0],
+      9: [6, 8]
+    }
+    return [num].concat(touching[num])
+  }
+  return observed.length === 1
+    ? selfAndAdjacent(Number(observed[0]))
+    : selfAndAdjacent(Number(observed[0])).reduce((a, c, i, s) => {
+      return a.concat(getPINs(observed.slice(1)).map(ans => c.toString().concat(ans.toString())))
+    }, []).filter((e, i, s) => i === s.indexOf(e))
 }
-
 
 module.exports = getPINs
