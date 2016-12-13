@@ -7,9 +7,9 @@
  * @param {number} n
  * @return {Array[]}
  */
-function pascalTriangle(numRows) {
+function pascalTriangle(n) {
   const t = []
-  for (let i = 0; i < numRows; i++) {
+  for (let i = 0; i < n; i++) {
     const row = []
     for (let j = 0; j <= i; j++)
       (j === 0 || j === i) ?
