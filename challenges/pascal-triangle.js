@@ -1,37 +1,12 @@
-/*
-  Construct Pascal's Triangle up to n levels deep, starting from n = 1. Each row
-  is represented as an array of numbers.
-
-  https://en.wikipedia.org/wiki/Pascal%27s_triangle
-
-  e.g.
-  pascalTriangle(1):
-  [[1]]
-
-  pascalTriangle(2):
-  [
-    [1],
-    [1, 1]
-  ]
-
-  pascalTriangle(3) :
-  [
-    [1],
-    [1,1],
-    [1,2,1]
-  ]
-
-  pascalTriangle(6) :
-  [
-    [1],
-    [1,1],
-    [1,2,1],
-    [1,3,3,1],
-    [1,4,6,4,1],
-    [1,5,10,10,5,1]
-  ]
-*/
-
+/**
+ * Construct Pascal's Triangle up to n rows deep, where
+ * each row is represented by an array of numbers.
+ *
+ * O(n^2) time and space complexity
+ *
+ * @param {number} n
+ * @return {Array[]}
+ */
 function pascalTriangle(numRows) {
   const t = []
   for (let i = 0; i < numRows; i++) {
