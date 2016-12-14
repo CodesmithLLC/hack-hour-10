@@ -17,7 +17,22 @@
 //                     16 ]
 
 function fizzbuzz(num) {
-
+	'use strict';
+	let retStr = "";
+	for(let i = 1; i <= num; ++i){
+		if(i % 3 === 0 && i % 5 === 0){
+			retStr += "fizzbuzz\n";
+		}else if (i % 5 === 0){
+			retStr += "buzz\n";
+		}else if (i % 3 === 0){
+			retStr += "fizz\n"
+		}
+		else{
+			retStr += i + "\n";
+		}
+	}
+	console.log(retStr);
+	return retStr.trim();
 }
 
 module.exports = fizzbuzz;

@@ -10,7 +10,12 @@
  */
 
 function getAllProducts(array) {
-
+  if(!array) return [0];
+  return array.map((val, idx, arr) => {
+    return array.reduce((acc, curr, rdx, arr) =>{
+      return acc * (idx === rdx ? 1 : curr);
+    })
+  });
 }
 
 module.exports = getAllProducts;
