@@ -10,7 +10,21 @@
 */
 
 function solveKnapsack(items, weightAvailable) {
-
+  let max = -Infinity;
+  let length = items.length; 
+  if (length === 1) return items[0].value;
+  function findMax(items, sum, totalwieght, index) { 
+    if (sum > max && totalwieght <= weightAvailable) max = sum;
+    if (index > length) return null;
+    else if (index < length) {
+      findMax(items, sum + items[index].value, totalwieght +  items[index].weight, index + 1);
+      findMax(items, sum, totalwieght ,index + 1);
+    }
+  }
+  findMax(items, 0, 0, 0);
+  return max;
 };
+
+
 
 module.exports = solveKnapsack;
