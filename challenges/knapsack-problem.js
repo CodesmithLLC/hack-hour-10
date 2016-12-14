@@ -1,16 +1,19 @@
-/*
-  You have a knapsack with a weight limit.
-  You are presented with an array of objects, each with its own weight and value.
-  Find the maximum value you can fit into your knapsack.
-
-  e.g.
-  items = [{weight: 1, value : 3}, {weight: 2, value : 4}, {weight: 3, value : 5}];
-  solveKnapsack(items, 3); // returns 7 (from items[0] and items[1])
-  solveKnapsack(items, 5); // returns 9 (from items[1] and items[2])
-*/
-
-function solveKnapsack(items, weightAvailable) {
-
-};
+/**
+ * Given a knapsack with a weight limit, determine the
+ * maximum value of items you can fit into the knapsack
+ * based on an array of items with weight, value pairs
+ *
+ * @param {Array} items
+ * @param {number} weight
+ * @return {number}
+ */
+function solveKnapsack(items, weight) {
+  function maxKnap(items, weight, value = 0) {
+    if (weight < 0) return -Infinity
+    if (!items.length || weight === 0) return value
+    return Math.max(maxKnap(items.slice(1), weight - items[0].weight, value + items[0].value), maxKnap(items.slice(1), weight, value))
+  }
+  return maxKnap(items, weight)
+}
 
 module.exports = solveKnapsack;
