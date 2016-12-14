@@ -18,4 +18,3 @@ function solveKnapsack(items, weightAvailable, valueSoFar = 0) {
 };
 
 module.exports = solveKnapsack;
-
