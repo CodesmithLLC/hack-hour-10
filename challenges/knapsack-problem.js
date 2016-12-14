@@ -10,7 +10,21 @@
 */
 
 function solveKnapsack(items, weightAvailable) {
+  if (!items) return 0;
+  let total = 0;
+  let value = 0;
+  items.sort(function (a, b) {
+      return b.value - a.value
+  });
 
+  items.reduce( (prev,curr) => {
+    total += curr.weight;
+    return (total <= weightAvailable) ? value += curr.value : value;
+  },{});
+  return value
 };
 
+let items = [{weight: 1, value : 100}, {weight: 2, value : 2}, {weight: 3, value : 5}];
+
+console.log(solveKnapsack(items,5))
 module.exports = solveKnapsack;
