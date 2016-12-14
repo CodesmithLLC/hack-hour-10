@@ -13,15 +13,23 @@
 // 5 4 1 
 // take max of combinations with 5 and those without 5
 
-function solveKnapsack(items, weightAvailable) {
-  if (!items) return 0;
-  if (!items.length || weightAvailable <= 0) return 0;
-  const sortedItems = items.slice().sort((a, b) => b.value - a.value)
+function solveKnapsackProblem(sortedItems, weightAvailable) {
+  if (!sortedItems) return 0;
+  if (!sortedItems.length || weightAvailable <= 0) return 0;
   if (sortedItems.length === 1 && sortedItems[0].weight <= weightAvailable) return sortedItems[0].value;
+  if (sortedItems[0].weight > weightAvailable) return 0;
   const value  = sortedItems[0].value;
   const newWeight = weightAvailable - sortedItems[0].weight;
   return Math.max(value + solveKnapsack(sortedItems.slice(1), newWeight), solveKnapsack(sortedItems.slice(1), weightAvailable));
-};
+}
+function solveKnapsack(items, weightAvailable) {
+  const sortedItems = items.slice().sort((a, b) => b.value - a.value)
+  return solveKnapsackProblem(sortedItems, weightAvailable)
+}
+
+// const items = [{weight: 1, value : 15}, {weight: 2, value : 4}, {weight: 3, value : 5}];
+// console.log(solveKnapsack(items, 3)); // returns 7 (from items[0] and items[1])
+// console.log(solveKnapsack(items, 5)); // returns 9 (from items[1] and items[2])
 
 
 module.exports = solveKnapsack;
