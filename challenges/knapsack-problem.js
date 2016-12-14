@@ -9,8 +9,19 @@
   solveKnapsack(items, 5); // returns 9 (from items[1] and items[2])
 */
 
-function solveKnapsack(items, weightAvailable) {
+// sort by value
+// 5 4 1 
+// take max of combinations with 5 and those without 5
 
+function solveKnapsack(items, weightAvailable) {
+  if (!items) return 0;
+  if (!items.length || weightAvailable <= 0) return 0;
+  const sortedItems = items.slice().sort((a, b) => b.value - a.value)
+  if (sortedItems.length === 1 && sortedItems[0].weight <= weightAvailable) return sortedItems[0].value;
+  const value  = sortedItems[0].value;
+  const newWeight = weightAvailable - sortedItems[0].weight;
+  return Math.max(value + solveKnapsack(sortedItems.slice(1), newWeight), solveKnapsack(sortedItems.slice(1), weightAvailable));
 };
+
 
 module.exports = solveKnapsack;
