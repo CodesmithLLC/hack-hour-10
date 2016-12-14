@@ -29,7 +29,7 @@ of all variations for an observed PIN with a length of 1 to 8 digits. We could n
 But please note that all PINs, the observed one and also the results, must be strings, because of 
 potentially leading '0's. Don't worry about the order of the array.
 
-Detective, we count on you!
+Detective, we're counting on you!
 
 expectations = {
   "8": ["5", "7", "8", "9", "0"],
@@ -39,12 +39,22 @@ expectations = {
 
 */
 
-
-
-
 function getPINs(observed) {
+  const adjacentDigits = {
+    '1': ['1', '2', '4'],
+    '2': ['1', '2', '3', '5'],
+    '3': ['2', '3', '6'],
+    '4': ['1', '4', '5', '7'],
+    '5': ['2', '4', '5', '6', '8'],
+    '6': ['3', '5', '6', '9'],
+    '7': ['4', '7', '8'],
+    '8': ['5', '7', '8', '9', '0'],
+    '9': ['6', '8', '9'],
+    '0': ['8', '0']
+  }
 
+  return observed.length === 1 ? adjacentDigits[observed] : adjacentDigits[observed[0]].reduce((acc, digit) => acc.concat(getPINs(observed.slice(1)).map(num => digit + num)), []).filter((pin, index, thisArray) => index === thisArray.indexOf(pin));
 }
 
-
+// console.log(getPINs('1369'));
 module.exports = getPINs
