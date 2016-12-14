@@ -43,7 +43,7 @@ expectations = {
 
 
 function getPINs(observed) {
-
+  const adjacent = []
 }
 
 
