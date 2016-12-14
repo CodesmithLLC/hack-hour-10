@@ -10,7 +10,14 @@
 */
 
 function solveKnapsack(items, weightAvailable) {
+  if (!items || items.length <= 0 || weightAvailable <= 0) return 0;
 
+  items = items.sort((a, b) => b.value - a.value)
+
+  if (items.length === 1 && items[0].weight <= weightAvailable) return items[0].value;
+  let newWeightAvailable = weightAvailable - items[0].weight;
+
+  return Math.max(items[0].value + solveKnapsack(items.slice(1), newWeightAvailable), solveKnapsack(items.slice(1), weightAvailable));
 };
 
 module.exports = solveKnapsack;
