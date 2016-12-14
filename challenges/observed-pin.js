@@ -43,8 +43,42 @@ expectations = {
 
 
 function getPINs(observed) {
+  const numPad = [
+    ['1', '2', '3'],
+    ['4', '5', '6'],
+    ['7', '8', '9'],
+    ['', '0', '']
+  ]
+  let poss = [];
+  let result = [];
 
+  for (let i = 0; i < observed.length; i++) {
+    let adjacent = '';
+    for (let k = 0; k < numPad.length; k++) {
+      if (numPad[k].indexOf(observed[i]) > -1) {
+        let index = numPad[k].indexOf(observed[i]);
+        if (k > 0) adjacent += numPad[k-1][index];
+        if (index > 0)adjacent += numPad[k][index-1];
+        adjacent += numPad[k][index];
+        if (index < 2)adjacent += numPad[k][index+1];
+        if (k < 2) adjacent += numPad[k+1][index];
+      }
+    }
+    poss.push(adjacent);
+  }
+  
+  function recurser(poss, str) {
+    if (!poss.length) {
+      result.push(str);
+      return;
+    } else {
+    for (let i = 0; i < poss[0].length; i++) {
+      recurser(poss.slice(1), str + poss[0][i]);
+    }
+    }
+  }
+  recurser(poss, '');
+  return result;
 }
-
 
 module.exports = getPINs

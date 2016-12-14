@@ -10,7 +10,24 @@
 */
 
 function solveKnapsack(items, weightAvailable) {
+  let max = -Infinity;
+  let weight = weightAvailable;
+  let value = 0;
+  function recurser(items, weight, value) {
+    if (weight === 0 || !items.length) {
+      if (value > max) max = value;
+      return;
+    } else {
+      for (let i = 0; i < items.length; i++) {
+        if (weight - items[i].weight >= 0) {
+          recurser(items.slice(0,i).concat(items.slice(i+1)), weight - items[i].weight, value + items[i].value);
+        }
+      }
+    }
+  }
 
+  recurser(items, weight, value);
+  return max;
 };
 
 module.exports = solveKnapsack;
