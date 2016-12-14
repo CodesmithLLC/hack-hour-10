@@ -57,6 +57,21 @@ function createVerticals(arrayX, arrayY) {
     return verticals;
 }
 
+function createHorizontals(arrayX, arrayY) {
+    var horizontals = {};
+
+    // count() counts the number of times each key appears in the array
+    var counts = count(arrayY);
+    for (var c in counts) {
+        for (var i in arrayY) {
+            if (arrayY[i] == c) {
+                horizontals[c] = (horizontals[c] || []).concat(arrayY[i]);
+            }
+        }
+    }
+    return horizontals;
+}
+
 // take the value of all the keys in lines and replaces it with [min, max]
 function rangify(lines) {
     for (var key in lines) {

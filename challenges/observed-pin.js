@@ -43,8 +43,88 @@ expectations = {
 
 
 function getPINs(observed) {
+  observedArr = observed
+    .split('')
+    .reduce((all, item) => {
+      all.push(parseInt(item));
+      return all;
+    }, [])
+    .reduce((all, item) => {
+      let subArr = [];
+      if (item === 1) {
+        subArr.push(1);
+        subArr.push(2);
+        subArr.push(4);
+      }
+      if (item === 2) {
+        subArr.push(1);
+        subArr.push(2);
+        subArr.push(3);
+        subArr.push(5);
+      }
+      if (item === 3) {
+        subArr.push(2);
+        subArr.push(3);
+        subArr.push(6);
+      }
+      if (item === 4) {
+        subArr.push(1);
+        subArr.push(4);
+        subArr.push(5);
+        subArr.push(7);
+      }
+      if (item === 5) {
+        subArr.push(2);
+        subArr.push(4);
+        subArr.push(5);
+        subArr.push(6);
+        subArr.push(9);
+      }
+      if (item === 6) {
+        subArr.push(3);
+        subArr.push(5);
+        subArr.push(6);
+        subArr.push(9);
+      }
+      if (item === 7) {
+        subArr.push(4);
+        subArr.push(7);
+        subArr.push(8);
+      }
+      if (item === 8) {
+        subArr.push(5);
+        subArr.push(7);
+        subArr.push(8);
+        subArr.push(9);
+        subArr.push(0);
+      }
+      if (item === 9) {
+        subArr.push(6);
+        subArr.push(8);
+        subArr.push(9);
+      }
+      if (item === 0) {
+        subArr.push(8);
+        subArr.push(0);
+      }
+      all.push(subArr);
+      return all;
+    }, []);
 
+  const lengthPIN = observedArr.length;
+  let returnArr = [];
+  for (let i = 0; i < lengthPIN; ++i) {
+    let possible = '';
+    possible += observedArr[i];
+    for (let j = 0; j < lengthPIN - i; ++j) {
+      possible += observedArr[i][j];
+    }
+    returnArr.push(possible);
+  }
+
+  return returnArr;
 }
 
+console.log(getPINs('1234'));
 
 module.exports = getPINs
