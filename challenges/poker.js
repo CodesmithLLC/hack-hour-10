@@ -35,7 +35,6 @@ function type(hand) {
     else return b - a;
   });
   cards = cards.map( (ele) => Number(ele));
-  // console.log('in the type function',cards);
   let result;
   if(hand[cards[0]] === 4) result = {type: 7, high: cards};
   else if(hand[cards[0]] === 3 && hand[cards[1]] === 2) result = {type: 6, high: cards};
@@ -43,7 +42,7 @@ function type(hand) {
   else if(hand[cards[0]] === 3) result = {type: 4, high: cards};
   else if(hand[cards[0]] === 2 && hand[cards[1]] === 2) result = {type: 3, high: cards};
   else if(hand[cards[0]] === 2) result = {type: 2, high: cards};
-  else result = {type: 2, high: cards};
+  else result = {type: 1, high: cards};
   return result;
 
 }
@@ -60,7 +59,7 @@ function poker(hand1, hand2) {
   if(!res1) res1 = type(h1);
   if(!res2) res2 = type(h2);
 
-  console.log(res1, res2);
+  // console.log(res1, res2);
 
   if(res1.type > res2.type) return "Player 1 wins";
   else if(res2.type > res1.type) return "Player 2 wins";
@@ -72,6 +71,17 @@ function poker(hand1, hand2) {
     return "Draw";
   }
 }
+
+// let hand1 = [ 3, 5, 5, 5, 2 ], hand2 = [ 4, 6, 7, 8, 8 ];
+// let hand1 = [ 2, 4, 5, 9, 14 ], hand2 = [ 2, 4, 5, 9, 10 ];
+// let hand1 = [ 2, 2, 11, 13, 14 ], hand2 = [ 14, 13, 12, 11, 4 ];
+// let hand1 = [ 2, 3, 13, 13, 13 ], hand2 = [ 4, 14, 5, 14, 7 ];
+// let hand1 = [ 3, 5, 3, 5, 2 ], hand2 = [ 5, 2, 3, 3, 5 ];
+// let hand1 = [ 3, 4, 5, 6, 7 ], hand2 = [ 3, 4, 5, 6, 7 ];
+// let hand1 = [ 10, 11, 11, 10, 11 ], hand2 = [ 5, 7, 7, 7, 7 ];
+// let hand1 = [ 2, 2, 3, 3, 4 ], hand2 = [ 2, 2, 3, 3, 12 ];
+
+// console.log(poker(hand1, hand2));
 
 
 module.exports = poker;
