@@ -19,11 +19,11 @@
 */
 
 function poker(hand1, hand2) {
-console.log(hand1, hand2)
-  // Function to return object with SCORE and IMPORTANTCARD.
+  console.log(hand1, hand2)
+  // Function to return object with SCORE, HIGHMATCHEDCARD, and TIEBREAKER.
   const assignScore = (hand) => {
     const counts = {}
-    let highestCount = 0, importantCard = 0, totalUnique = 0, values = []
+    let highestCount = 0, highMatchedCard = 0, totalUnique = 0, tiebreaker = 0, values = []
     hand.forEach(card => {
       values.push(card)
       if (counts[card] !== undefined) counts[card]++
@@ -31,10 +31,10 @@ console.log(hand1, hand2)
         counts[card] = 1
         totalUnique++
       }
-      if (counts[card] === highestCount) importantCard = Math.max(importantCard, card)
+      if (counts[card] === highestCount) highMatchedCard = Math.max(highMatchedCard, card)
       if (counts[card] > highestCount) {
         highestCount = counts[card]
-        importantCard = card
+        highMatchedCard = card
       }
     })
     // Sort array of card values.
@@ -45,31 +45,50 @@ console.log(hand1, hand2)
         // Check for straight. If not, then it is just "high card."
         if (values[4] - values[0] === 4) score = 5
         else score = 1
+        tiebreaker = highMatchedCard
         break
       case 2:
         // Check for 1 pair or 2 pair
-        if (totalUnique === 3) score = 3
-        else score = 2
+        if (totalUnique === 3) {
+          score = 3
+          for (let card in counts) if (counts[card] === 1) tiebreaker = card
+        }
+        else {
+          score = 2
+          for (let card in counts) if (counts[card] === 1) tiebreaker = Math.max(tiebreaker, card)
+        }
         break
       case 3:
         // Check if it is a full house. If not, it is just three of a kind.
-        if (totalUnique === 2) score = 6
-        else score = 4
+        if (totalUnique === 2) {
+          score = 6
+          tiebreaker = highMatchedCard
+        }
+        else {
+          score = 4
+          for (let card in counts) if (counts[card] === 1) tiebreaker = Math.max(tiebreaker, card)
+        }
         break
       case 4:
         // Four of a kind.
         score = 7
+        for (let card in counts) if (counts[card] === 1) tiebreaker = card
         break
     }
-    return { score, importantCard }
+    tiebreaker = Number(tiebreaker)
+    return { score, highMatchedCard, tiebreaker }
   }
   const player1 = assignScore(hand1), player2 = assignScore(hand2)
   if (player1.score > player2.score) return "Player 1 wins"
   if (player1.score < player2.score) return "Player 2 wins"
   if (player1.score === player2.score) {
-    if (player1.importantCard > player2.importantCard) return "Player 1 wins"
-    if (player1.importantCard < player2.importantCard) return "Player 2 wins"
-    if (player1.importantCard === player2.importantCard) return "Draw"
+    if (player1.highMatchedCard > player2.highMatchedCard) return "Player 1 wins"
+    if (player1.highMatchedCard < player2.highMatchedCard) return "Player 2 wins"
+    if (player1.highMatchedCard === player2.highMatchedCard) {
+      if (player1.tiebreaker > player2.tiebreaker) return "Player 1 wins"
+      if (player1.tiebreaker < player2.tiebreaker) return "Player 2 wins"
+      if (player1.tiebreaker === player2.tiebreaker) return "Draw"
+    }
   }
 }
 
