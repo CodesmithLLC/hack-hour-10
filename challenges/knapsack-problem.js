@@ -10,7 +10,39 @@
 */
 
 function solveKnapsack(items, weightAvailable) {
+  let knapsack = {
+    items: [],
+    value: 0,
+    weight: 0,
+  };
+  
+  for (let i = 0; i < items.length; i++) {
+    const storage = {
+      items: [items[i]],
+      weight: items[i].weight,
+      value: items[i].value,
+    };
 
+    for (let j = i + 1; j < items.length; j++) {
+      let { value, weight } = storage;
+
+      value += items[j].value;
+      weight += items[j].weight;
+
+      if (checkIfNewMax(value, weight, weightAvailable, knapsack)) {
+        knapsack = storage;
+        storage.items.push(items[j]);
+        storage.value = value;
+        storage.weight = weight;
+      }
+    }
+  }
+
+  return knapsack.value;
 };
+
+function checkIfNewMax(newVal, newWeight, weightAvailable, knapsack) {
+  return newWeight <= weightAvailable && newVal > knapsack.value;
+}
 
 module.exports = solveKnapsack;
