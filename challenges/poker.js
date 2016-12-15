@@ -19,7 +19,6 @@
 */
 
 function poker(hand1, hand2) {
-  console.log(hand1, hand2)
   // Function to return object with SCORE, HIGHMATCHEDCARD, and TIEBREAKER.
   const assignScore = (hand) => {
     const counts = {}
