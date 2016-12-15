@@ -17,7 +17,77 @@
  */
 
 function newIntersections(x, y){
+    // O(2n^2)
+  var verticals = createVerticals(x, y);
+  var horizontals = createHorizontals(x, y);
 
+  // O(2n)
+  rangify(verticals);
+  rangify(horizontals);
+
+  var count = 0;
+
+  // O(n^2)
+  for (var y in horizontals) {
+      var xRange = horizontals[y];
+
+      for (var x in verticals) {
+      var yRange = verticals[x];
+        // keep count of those that are bounded on all 4 sides
+        if (x > xRange[0] && x < xRange[1] && y > yRange[0] && y < yRange[1]) {
+    count++;
+        }
+      }
+  }
+  return count;
 }
+
+// rangify
+// take the value of all the keys in lines and replaces it with [min, max]
+
+function rangify(lines) {
+    for (var key in lines) {
+        lines[key] = [Math.min.apply(this,lines[key]),
+                      Math.max.apply(this,lines[key])];
+    }
+};
+
+// O(n)
+
+// createVerticals
+
+function createVerticals(arrayX, arrayY) {
+  var verticals = {};
+
+  // count() counts the number of times each key appears in the array
+  var counts = count(arrayX);
+  for (var c in counts) {
+      for (var i in arrayX) {
+          if (arrayX[i] == c) {
+              verticals[c] = (verticals[c] || []).concat(arrayY[i]);
+          }
+      }
+  }
+  return verticals;
+}
+
+// O(n^2)
+
+function createHorizontals(arrayX, arrayY) {
+  var horizontals = {};
+
+  // count() counts the number of times each key appears in the array
+  var counts = count(arrayY);
+  for (var c in counts) {
+      for (var i in arrayY) {
+          if (arrayY[i] == c) {
+              horizontals[c] = (horizontals[c] || []).concat(arrayX[i]);
+          }
+      }
+  }
+  return horizontals;
+}
+
+// console.log(newIntersections([1, 0, -1, 0], [0, 1, 0, -1]));
 
 module.exports = newIntersections;
