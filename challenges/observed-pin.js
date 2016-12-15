@@ -39,90 +39,78 @@ expectations = {
 
 */
 
+// // ITERATIVE SOLUTION
+// function getPINs(observed) {
+//   const pad = {
+//     "1": ['1', '2', '4'],
+//     "2": ['1', '2', '3', '5'],
+//     "3": ['2', '3', '6'],
+//     "4": ['1', '4', '5', '7'],
+//     "5": ['2', '4', '5', '6', '8'],
+//     "6": ['3', '5', '6', '9'],
+//     "7": ['4', '7', '8'],
+//     "8": ['5', '7', '8', '9', '0'],
+//     "9": ['6', '8', '9'],
+//     "0": ['8', '0'],
+//   };
 
+//   // all possible combinations that we will return
+//   let possibilities = [''];
 
+//   // do until string is empty
+//   while (observed) {
+//     let adjacents = pad[observed[0]];
+//     let newPossibles = [];
+//     // for every number that a digit could have actually been
+//     for (let i = 0; i < adjacents.length; i++) {
 
+//       // we want to add this digit to end of every possible beginning
+//       for (let j = 0; j < possibilities.length; j++) {
+//         newPossibles.push(possibilities[j] + adjacents[i]);
+//       } 
+//     }
+//     // replace (update) old possibilities with new ones
+//     possibilities = newPossibles;
+//     // remove digit we just processed from observed
+//     observed = observed.slice(1);
+//   }
+//   return possibilities;
+// }
+
+// RECURSIVE SOLUTION
 function getPINs(observed) {
-  observedArr = observed
-    .split('')
-    .reduce((all, item) => {
-      all.push(parseInt(item));
-      return all;
-    }, [])
-    .reduce((all, item) => {
-      let subArr = [];
-      if (item === 1) {
-        subArr.push(1);
-        subArr.push(2);
-        subArr.push(4);
-      }
-      if (item === 2) {
-        subArr.push(1);
-        subArr.push(2);
-        subArr.push(3);
-        subArr.push(5);
-      }
-      if (item === 3) {
-        subArr.push(2);
-        subArr.push(3);
-        subArr.push(6);
-      }
-      if (item === 4) {
-        subArr.push(1);
-        subArr.push(4);
-        subArr.push(5);
-        subArr.push(7);
-      }
-      if (item === 5) {
-        subArr.push(2);
-        subArr.push(4);
-        subArr.push(5);
-        subArr.push(6);
-        subArr.push(9);
-      }
-      if (item === 6) {
-        subArr.push(3);
-        subArr.push(5);
-        subArr.push(6);
-        subArr.push(9);
-      }
-      if (item === 7) {
-        subArr.push(4);
-        subArr.push(7);
-        subArr.push(8);
-      }
-      if (item === 8) {
-        subArr.push(5);
-        subArr.push(7);
-        subArr.push(8);
-        subArr.push(9);
-        subArr.push(0);
-      }
-      if (item === 9) {
-        subArr.push(6);
-        subArr.push(8);
-        subArr.push(9);
-      }
-      if (item === 0) {
-        subArr.push(8);
-        subArr.push(0);
-      }
-      all.push(subArr);
-      return all;
-    }, []);
+  const pad = {
+    "1": ['1', '2', '4'],
+    "2": ['1', '2', '3', '5'],
+    "3": ['2', '3', '6'],
+    "4": ['1', '4', '5', '7'],
+    "5": ['2', '4', '5', '6', '8'],
+    "6": ['3', '5', '6', '9'],
+    "7": ['4', '7', '8'],
+    "8": ['5', '7', '8', '9', '0'],
+    "9": ['6', '8', '9'],
+    "0": ['8', '0'],
+  };
 
-  const lengthPIN = observedArr.length;
-  let returnArr = [];
-  for (let i = 0; i < lengthPIN; ++i) {
-    let possible = '';
-    possible += observedArr[i];
-    for (let j = 0; j < lengthPIN - i; ++j) {
-      possible += observedArr[i][j];
-    }
-    returnArr.push(possible);
-  }
+  // form array of arrays of possibilities for each observed digit
+  let optionsArray = observed.split('').map(function(digit){
+    return pad[digit];
+  });
+  
+  let final = [];
 
-  return returnArr;
+  // recurse through each subarray to form all possibilities
+  // adding each digit from the next array to a new combo
+  (function formCombos(array, combo){
+
+    // base case --> combo/path has reached length of observed pin
+    if(combo.length === optionsArray.length) return final.push(combo);
+    array.forEach(function(digit){
+      return formCombos(optionsArray[combo.length + 1], combo + digit);
+    })
+  })(optionsArray[0], '');
+
+  return final;
 }
 
 console.log(getPINs('1234'));
