@@ -19,7 +19,7 @@
 */
 
 function poker(hand1, hand2) {
-
+  return "I will return to this problem"
 }
 
 module.exports = poker;
