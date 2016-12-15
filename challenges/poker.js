@@ -19,7 +19,55 @@
 */
 
 function poker(hand1, hand2) {
+  hand1 = hand1.sort((a, b) => a - b)
+  hand2 = hand2.sort((a, b) => a - b)
 
+  const obj1 = {}
+  hand1.forEach(card => {
+    if (!obj1[card]) obj1[card] = 1
+    else obj1[card] += 1
+  })
+
+  function fourKind(obj) {
+    return +Object.keys(obj).filter(card => obj[card] === 4)
+  }
+
+  function fullHouse(obj) {
+    const three = +Object.keys(obj).filter(card => obj[card] === 3)
+    const two = +Object.keys(obj).filter(card => obj[card] === 2)
+    return three && two ? three : 0
+  }
+
+  function straight(hand) {
+    for (let i = 1; i < 5; i++) {
+      if (hand[i - 1] !== hand[i] - 1) return 0
+    }
+    return hand[4]
+  }
+
+  function threeKind(obj) {
+    return +Object.keys(obj).filter(card => obj[card] === 3)
+  }
+  
+  function twoPair(obj) {
+    return Object.keys(obj).filter(card => obj[card] === 2).length === 2
+  }
+  
+  function onePair(obj) {
+    return Object.keys(obj).filter(card => obj[card] === 2).length === 1
+  }
+
+  function highCard(hand) {
+    return hand[4]
+  }
+}
+
+function drawHand() {
+  const hand = []
+  for (let i = 0; i < 5; i++)
+    hand.push(Math.floor(Math.random() * 13 + 2))
+  return hand
 }
 
 module.exports = poker;
+console.log(poker([1, 1, 2, 2, 3], [1, 2, 3, 4, 5]));
