@@ -19,18 +19,9 @@
 */
 
 function poker(hand1, hand2) {
-
+console.log(hand1, hand2)
   // Function to return object with SCORE and IMPORTANTCARD.
   const assignScore = (hand) => {
-    const scores = {
-      fourOfAKind: 7,
-      fullhouse: 6,
-      straight: 5,
-      threeOfAKind: 4,
-      twoPair: 3,
-      onePair: 2,
-      highCard: 1
-    }
     const counts = {}
     let highestCount = 0, importantCard = 0, totalUnique = 0, values = []
     hand.forEach(card => {
@@ -72,12 +63,13 @@ function poker(hand1, hand2) {
     }
     return { score, importantCard }
   }
-  if (assignScore(hand1).score > assignScore(hand2).score) return "Player 1 wins"
-  if (assignScore(hand1).score < assignScore(hand2).score) return "Player 2 wins"
-  if (assignScore(hand1).score === assignScore(hand2).score) {
-    if (assignScore(hand1).importantCard > assignScore(hand2).importantCard) return "Player 1 wins"
-    if (assignScore(hand1).importantCard < assignScore(hand2).importantCard) return "Player 2 wins"
-    if (assignScore(hand1).importantCard === assignScore(hand2).importantCard) return "Draw"
+  const player1 = assignScore(hand1), player2 = assignScore(hand2)
+  if (player1.score > player2.score) return "Player 1 wins"
+  if (player1.score < player2.score) return "Player 2 wins"
+  if (player1.score === player2.score) {
+    if (player1.importantCard > player2.importantCard) return "Player 1 wins"
+    if (player1.importantCard < player2.importantCard) return "Player 2 wins"
+    if (player1.importantCard === player2.importantCard) return "Draw"
   }
 }
 
