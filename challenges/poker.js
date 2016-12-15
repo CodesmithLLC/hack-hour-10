@@ -48,6 +48,7 @@ function type(hand) {
 }
 
 function poker(hand1, hand2) {
+  console.log(hand1, hand2);
   let h1 = hand1.sort( (a, b) => b - a);
   let h2 = hand2.sort( (a, b) => b - a);
   let res1, res2;
