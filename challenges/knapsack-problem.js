@@ -15,24 +15,37 @@ console.log(solveKnapsack(items, 3)); // returns 7 (from items[0] and items[1])
 console.log(solveKnapsack(items, 5)); // returns 9 (from items[1] and items[2])
 
 
-function solveKnapsack(items, weightAvailable) {
-  // edge cases
-  if (items.length === 0 || weightAvailable === 0) return 0;
+// function solveKnapsack(items, weightAvailable) {
+//   // edge cases
+//   if (items.length === 0 || weightAvailable === 0) return 0;
 
-  // if first item is too heavy to fit, disregard it and consider other items
-  if (items[0].weight > weightAvailable) {
-    return solveKnapsack(items.slice(1), weightAvailable);
-  }
+//   // if first item is too heavy to fit, disregard it and consider other items
+//   if (items[0].weight > weightAvailable) {
+//     return solveKnapsack(items.slice(1), weightAvailable);
+//   }
 
-  //if first item does fit
-  else {
-    var left = items.slice(1);
-    var takeItem = items[0].value + solveKnapsack(left, weightAvailable - items[0].weight);
-    var leaveItem = solveKnapsack(left, weightAvailable);
+//   //if first item does fit
+//   else {
+//     var left = items.slice(1);
+//     var takeItem = items[0].value + solveKnapsack(left, weightAvailable - items[0].weight);
+//     var leaveItem = solveKnapsack(left, weightAvailable);
 
-    return (takeItem > leaveItem) ? takeItem : leaveItem;
-  }
+//     return (takeItem > leaveItem) ? takeItem : leaveItem;
+//   }
 
+// };
+
+
+
+function solveKnapsack(items, weightAvailable, valueSoFar = 0) {
+  if (weightAvailable < 0) return -Infinity;
+
+  if (items.length === 0 || weightAvailable === 0) return valueSoFar;
+
+  return Math.max(
+    solveKnapsack(items.slice(1), weightAvailable, valueSoFar), 
+    solveKnapsack(items.slice(1), weightAvailable - items[0].weight, valueSoFar + items[0].value)
+  );
 };
 
 module.exports = solveKnapsack;
