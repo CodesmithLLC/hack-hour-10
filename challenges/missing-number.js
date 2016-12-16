@@ -27,8 +27,16 @@ Challange:
 */
 function missingNum(arr) {
   if (!arr.length) return 1;
-  return arr.reduce((sum, num, index) => sum + num - index) - 1;
+  let highest = 0;
+  const total = arr.reduce((sum, num, index) => {
+    if (num > highest) highest = num;
+    return sum + num - index - 1;
+  });
+
+  return highest - total + 1;
 }
 
-// console.log(missingNum([1, 3, 2, 4, 5, 7]));
+// console.log(missingNum([1, 3]));
+// console.log(missingNum([1, 5, 4, 3, 6]));
+// console.log(missingNum([1, 3, 2, 4, 5, 7, 8, 9, 11, 10]));
 module.exports = missingNum;
