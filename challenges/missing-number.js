@@ -25,7 +25,10 @@ Challange:
   ** cannot use additional storage, variables are okay not any TYPE of object
   ** keep in mind time complexity
 */
-function missingNum(Array) {
+function missingNum(arr) {
+  if (!arr.length) return 1;
+  return arr.reduce((sum, num, index) => sum + num - index) - 1;
 }
 
+// console.log(missingNum([1, 3, 2, 4, 5, 7]));
 module.exports = missingNum;
