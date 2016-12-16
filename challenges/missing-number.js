@@ -25,14 +25,20 @@ Challange:
   ** cannot use additional storage, variables are okay not any TYPE of object
   ** keep in mind time complexity
 */
+
+
 function missingNum(array) {
   const store = {};
   array.forEach((item) => {
     store[item] = item;
   });
-  array.forEach((item) => {
-    if (store[item + 1] === undefined) return item + 1;
-  })
+  for (let item = 0; item < array.length; item += 1){
+    look = item + 1
+    if (store[look] === undefined){
+       return look
+     }
+  }
   }
 
+missingNum([1,2,3,4,5,7,8,9])
 module.exports = missingNum;
