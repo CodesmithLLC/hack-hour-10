@@ -27,12 +27,10 @@ Challange:
 */
 function missingNum(array) {
   let rangeSum = 0, sum = 0
-  for (let i = 1; i <= array.length + 1; i++) {
+  for (let i = 1; i <= array.length + 1; i++)
     rangeSum += i
-  }
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++)
     sum += array[i]
-  }
   return rangeSum - sum
 }
 
