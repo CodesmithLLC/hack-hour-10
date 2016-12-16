@@ -83,7 +83,7 @@ function poker(hand1, hand2) {
     if (dups1[2] < dups2[2]) return 'Player 2 wins';
     if (dups1[1] > dups2[1]) return 'Player 1 wins';
     if (dups1[1] < dups2[1]) return 'Player 2 wins';
-    return 'Tie';
+    return 'Draw';
   }
 
   return checkWins(hand1, hand2);
