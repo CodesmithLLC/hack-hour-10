@@ -19,7 +19,16 @@
 */
 
 function poker(hand1, hand2) {
+  let cache1 = {};
+  let cache2 = {};
 
+  for (let i = 0; i < 5; ++i) {
+    !cache1[hand1[i]] ? cache1[hand1[i]] = 1 : cache1[hand1[i]]++;
+    !cache2[hand2[i]] ? cache2[hand2[i]] = 1 : cache2[hand2[i]]++;
+  }
+  
 }
+
+poker([3,5,5,5,2], [4,6,7,8,8])
 
 module.exports = poker;

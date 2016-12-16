@@ -9,7 +9,7 @@
   solveKnapsack(items, 5); // returns 9 (from items[1] and items[2])
 */
 
-function solveKnapsack(items, weightAvailable) {
+function solveKnapsack2(items, weightAvailable) {
   let maxVal;
 
   const recurse = (array, newWeight) => {
@@ -33,3 +33,32 @@ console.log(solveKnapsack(items));
 
 
 module.exports = solveKnapsack;
+
+
+const solveKnapsack = (items, weightAvailable, valueSoFar = 0) => {
+  // 2 cases: 1 includes changing value and weight.  Other does not.
+  
+  if (weightAvailable < 0) {
+    // do something
+    // items exceed available weight
+    return -Infinity;
+  }
+
+  // if (weightAvailable === 0) {
+  //   // do something
+  //   // successful base case - you've filled up your bag
+
+  // }
+
+  // if (!items.length) {
+  //   // do something
+  //   // successfull base case - all the items don't amount to your weight limit
+  // }
+
+  if (!items.length || weightAvailable === 0) {
+    // do something
+  }
+
+  solveKnasack(items.slice(1), weightAvailable)  
+  solveKnasack(items.slice(1), )  
+}
