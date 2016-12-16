@@ -48,7 +48,7 @@ function poker(hand1, hand2) {
         }
       }
     }
-    console.log('here');
+    console.log('git ');
     if (count === 2) return 'pair'
     if (count === 3) return 'three of a kind'
     if (count === 4) return 'four of a kind'

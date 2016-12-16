@@ -16,12 +16,17 @@ function solveKnapsack(items, weightAvailable) {
   items.sort(function (a, b) {
       return b.value - a.value
   });
-
+  console.log(items);
   items.reduce( (prev,curr) => {
     total += curr.weight;
-    return (total <= weightAvailable) ? value += curr.value : value;
+    if (total <= weightAvailable) {
+      value += curr.value
+    }
+    else total -= curr.weight;
   },{});
   return value
 };
 
+let items = [{weight: 2, value : 900}, {weight: 2, value : 900}, {weight: 4, value: 1000}, {weight: 3, value : 11}];
+console.log(solveKnapsack(items,4))
 module.exports = solveKnapsack;
