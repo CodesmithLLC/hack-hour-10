@@ -26,6 +26,7 @@ Challange:
   ** keep in mind time complexity
 */
 function missingNum(array) {
+  if(array.length < 500) console.log(array);
   let max = -Infinity;
   let total = 0;
   array.forEach( (ele) => {
