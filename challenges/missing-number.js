@@ -28,6 +28,7 @@ Challange:
 
 
 function missingNum(array) {
+  if (array.indexOf(0) === -1) return 0
   const store = {};
   array.forEach((item) => {
     store[item] = item;
@@ -40,5 +41,5 @@ function missingNum(array) {
   }
   }
 
-missingNum([1,2,3,4,5,7,8,9])
+console.log(missingNum([1,2,3,4,5,7,8,9]))
 module.exports = missingNum;
