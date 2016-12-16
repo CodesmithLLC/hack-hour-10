@@ -25,7 +25,13 @@ Challange:
   ** cannot use additional storage, variables are okay not any TYPE of object
   ** keep in mind time complexity
 */
-function missingNum(Array) {
+function missingNum(array) {
+  let idxSum = 0, sum = 0
+  array.forEach((num, idx) => {
+    idxSum += idx
+    sum += num
+  })
+  return sum - idxSum - 1
 }
 
 module.exports = missingNum;
