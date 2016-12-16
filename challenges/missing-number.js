@@ -25,7 +25,21 @@ Challange:
   ** cannot use additional storage, variables are okay not any TYPE of object
   ** keep in mind time complexity
 */
-function missingNum(Array) {
+
+// Solution #1: O(n) time; O(1) space
+
+function missingNum(arr) {
+  const actualSum = arr.reduce((p, c) => p + c);
+  const len = arr.length;
+  let expectedSum = 0;
+
+  for (let i = 1; i <= len + 1; i += 1) {
+    expectedSum += i;
+  }
+
+return expectedSum - actualSum;
 }
+
+// console.log(missingNum([1,4,3,2,6,5,8,9]))
 
 module.exports = missingNum;
