@@ -25,7 +25,14 @@ Challange:
   ** cannot use additional storage, variables are okay not any TYPE of object
   ** keep in mind time complexity
 */
-function missingNum(Array) {
+function missingNum(array) {
+  let max = -Infinity;
+  let total = 0;
+  array.forEach( (ele) => {
+    if(ele > max) max = ele;
+    total += ele;
+  });
+  return ( max * (1 + max) / 2 ) - total;
 }
 
 module.exports = missingNum;
