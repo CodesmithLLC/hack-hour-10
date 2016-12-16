@@ -50,58 +50,74 @@ function calculateHand(handObj, cards, handCombo) {
       handCombo[card] = 3; // three of a kind
     }
     else if (handObj[card] === 2) {
-      handCombo[card] = 1; // one pair
+      handCombo[card] ? handCombo[card] += 1 : handCombo[card] = 1; // one or two pair
+    }
+    else if (handObj[card] === 1) {
+      handCombo[card] = 0;
     }
   });
 
+  let cardSum = cards.reduce((p, c) => p + c);
+  let highCard = Math.max(...hand1UniqCards);
+  
   if (!Object.keys(handObj).length) {
-    let cardSum = cards.reduce((p, c) => p + c);
-    let highCard = Math.max(...hand1UniqCards);
-    if (cardSum % 5 === 0) {
-      handCombo[highCard] = 3.5; // straight
-    }
-    else { handCombo[highCard] = 0; }
+    handCombo[highCard] = 0;
+  }
+
+  if (Object.keys(handObj).length === 5 && cardSum % 5 === 0) {
+    handCombo[highCard] = 3.5; // straight
   }
 }
 
 function calculateWinner(hand1, hand2) {
-  const hand1Cards = Object.keys(hand1);
-  const hand2Cards = Object.keys(hand2);
-  const highCard1 = Math.max(...hand1Cards);
-  const highCard2 = Math.max(...hand2Cards);
+  const handCards1 = Object.keys(hand1);
+  const handCards2 = Object.keys(hand2);
+  const highCard1 = Math.max(...handCards1);
+  const highCard2 = Math.max(...handCards2);
   let score1 = 0;
   let score2 = 0;
 
-  hand1Cards.forEach(card => {
+  handCards1.forEach(card => {
     score1 += hand1[card];
   }) 
 
-  hand2Cards.forEach(card => {
+  handCards2.forEach(card => {
     score2 += hand2[card];
   }) 
 
-  if (hand1Cards.length === 1 && hand2Cards.length === 1) {
-    if (score1 < score2) {
+  if (score1 < score2) {
+    return "Player 2 wins";
+  }
+  else if (score1 > score2) { 
+    return "Player 1 wins";
+  }
+  else if (score1 === score2) {
+    if (highCard1 < highCard2) {
       return "Player 2 wins";
     }
-    else if (score1 > score2) { 
+    else if (highCard1 > highCard2) {
       return "Player 1 wins";
     }
-    else if (score1 === score2) {
-      if (highCard1 < highCard2) {
+
+    // Need to account for games in which both players have the same combination and first high card
+
+    else if (highCard1 === highCard2) {
+      const secondHighCard1 = Math.max(...handCards1.filter(card => card != highCard1));
+      const secondHighCard2 = Math.max(...handCards2.filter(card => card != highCard2));
+      if (secondHighCard1 < secondHighCard2) {
         return "Player 2 wins";
       }
-      else if (highCard1 > highCard2) {
+      else if (secondHighCard1 > secondHighCard2) {
         return "Player 1 wins";
       }
-      else { return 'Draw'; }
-    }
+    } 
+    else { return 'Draw'; }
   }
 
 }
 
 }
 
-// console.log(poker([3,2,2,2,2], [2,2,2,2,8]));
+console.log(poker([14,14,14,14,2], [14,14,14,14,3]));
 
-module.exports = poker;
+// module.exports = poker;
