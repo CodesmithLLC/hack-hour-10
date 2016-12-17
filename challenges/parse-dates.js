@@ -40,7 +40,20 @@
 // - if any part of the date string is missing then you can consider it an invalid date
 
 function parseDates(str) {
+  const month = str.match(/(jan | feb | mar | apr | may | jun | jul | aug | sep | oct | nov | dec)/i)[0]
   
+  let time = str.match(/\d+:\d+\s?(am|pm)/i)[0]
+  const day = str.match(/(\d+)\w+/)[1]
+  const year = str.match(/\d{4}/)[0]
+  
+  if (/pm/i.test(time)) {
+    const hour = +str.match(/(\d+):/)[1] + 12;
+    const min = str.match(/:\d+/)[0] + ':00';
+    time = hour + min;
+  }
+  
+  const input = `${month}${day} ${year} ${time}`
+  return new Date(input);
 }
 
 module.exports = parseDates;
