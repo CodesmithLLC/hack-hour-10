@@ -40,7 +40,136 @@
 // - if any part of the date string is missing then you can consider it an invalid date
 
 function parseDates(str) {
-  
+  // Fail fast if possible
+  const timeStr = str.slice(-8).trim()
+  if (timeStr.length !== 7 && timeStr.length !== 8) return new Date()
+  if (timeStr.slice(-3, -2) !== ' ') return new Date()
+  const amPM = timeStr.slice(-2)
+  if (amPM !== 'AM' && amPM !== 'PM') return new Date()
+  const colonIndex = timeStr.indexOf(':')
+  if (colonIndex !== 1 && colonIndex !== 2) return new Date()
+  let hour = Number(timeStr.slice(0, colonIndex))
+  hour = amPM !== 'AM' ? hour : hour + 12
+  const minute = Number(timeStr.slice(colonIndex + 1, colonIndex + 3))
+  if (isNaN(hour)) return new Date()
+  if (isNaN(minute)) return new Date()
+
+  // Acceptable day strings
+  const days = {
+    Monday: 0,
+    Tuesday: 1,
+    Wednesday: 2,
+    Thursday: 3,
+    Friday: 4,
+    Saturday: 5,
+    Sunday: 6
+  }
+
+  // Acceptable month strings
+  const months = {
+    Jan: 0,
+    Feb: 1,
+    Mar: 2,
+    Apr: 3,
+    May: 4,
+    Jun: 5,
+    Jul: 6,
+    Aug: 7,
+    Sep: 8,
+    Oct: 9,
+    Nov: 10,
+    Dec: 11
+  }
+
+  // Days in month
+  const dayCount = {
+    Jan: 31,
+    Feb: 28,
+    Mar: 31,
+    Apr: 30,
+    May: 31,
+    Jun: 30,
+    Jul: 31,
+    Aug: 30,
+    Sep: 30,
+    Oct: 31,
+    Nov: 30,
+    Dec: 31
+  }
+
+  // Returns previous month
+  const lastMonth = (mon) => {
+    return mon === 'Jan'
+      ? 'Dec'
+      : month === 'Feb'
+        ? 'Jan'
+        : month === 'Mar'
+          ? 'Feb'
+          : month === 'Apr'
+            ? 'Mar'
+            : month === 'May'
+              ? 'Apr'
+              : month === 'Jun'
+                ? 'May'
+                : month === 'Jul'
+                  ? 'Jun'
+                  : month === 'Aug'
+                    ? 'Jul'
+                    : month === 'Sep'
+                      ? 'Aug'
+                      : month === 'Oct'
+                        ? 'Sep'
+                        : month === 'Nov'
+                          ? 'Oct'
+                          : 'Nov'
+  }
+
+  // Detect string format
+  let format = ''
+  const dayOrMonthStr = str.slice(0, -timeStr.length).trim()
+
+  // Today
+  if (dayOrMonthStr === 'Today') format = 'today'
+  // Day
+  else if (days[dayOrMonthStr] !== undefined) format = 'fullDay'
+  // Month
+  else {
+    const maybeMonth = dayOrMonthStr.slice(0, 3)
+    if (months[dayOrMonthStr.slice(0, 3)] === undefined) return new Date()
+    const maybeDay = dayOrMonthStr.slice(3).trim()
+    if (maybeDay.slice(-2) !== 'st' &&
+      maybeDay.slice(-2) !== 'nd' &&
+      maybeDay.slice(-2) !== 'rd' &&
+      maybeDay.slice(-2) !== 'th') return new Date()
+    format = 'month'
+  }
+
+  // Code below should only run on valid format
+  let dayNum, month
+  const nowStr = new Date().toString()
+  switch (format) {
+    case 'today':
+      dayNum = Number(nowStr.slice(8, 10))
+      month = nowStr.slice(4, 7)
+      return new Date(2016, months[month], dayNum, hour - 8, minute).toUTCString()
+    case 'fullDay':
+      let todayNum
+      for (let day in days) if (day.indexOf(nowStr.slice(0, 3)) === 0) todayNum = days[day]
+      const difference = todayNum - days[dayOrMonthStr]
+      dayNum = Number(nowStr.slice(8, 10)) - difference
+      month = nowStr.slice(4, 7)
+      if (dayNum > 7) dayNum = dayNum - 7
+      else {
+        dayNum = dayCount[month] + dayNum - 7
+        month = lastMonth(month)
+      }
+      return new Date(2016, months[month], dayNum, hour - 8, minute).toUTCString()
+    case 'month':
+      dayNum = Number(str.slice(4, 6))
+      month = str.slice(0, 3)
+      return new Date(2016, months[month], dayNum, hour - 8, minute).toUTCString()
+    default: return new Date()
+  }
 }
 
 module.exports = parseDates;
