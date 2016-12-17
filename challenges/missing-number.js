@@ -25,18 +25,35 @@ Challange:
   ** cannot use additional storage, variables are okay not any TYPE of object
   ** keep in mind time complexity
 */
-function missingNum(arr) {
-  if (!arr.length) return 1;
-  let highest = 0;
-  const total = arr.reduce((sum, num, index) => {
-    if (num > highest) highest = num;
-    return sum + num - index - 1;
-  });
 
-  return highest - total + 1;
+function missingNum(arr) {
+
+  // Represents last value for arithmetic sum formula
+  const rangeLength = arr.length + 1;
+
+  // Employ arithmetic sequence sum formula
+  const rangeSum = rangeLength * (1 + rangeLength) / 2;
+
+  // Add all values in array
+  const arraySum = arr.reduce((sum, num) => sum + num, 0);
+
+  // Difference represents missing number!
+  return rangeSum - arraySum;
 }
 
-// console.log(missingNum([1, 3]));
-// console.log(missingNum([1, 5, 4, 3, 6]));
-// console.log(missingNum([1, 3, 2, 4, 5, 7, 8, 9, 11, 10]));
+// NOTE: Does not work if highest value is missing
+// function missingNum(arr) {
+//   if (!arr.length) return 1;
+//   let highest = 0;
+//   const total = arr.reduce((sum, num, index) => {
+//     if (num > highest) highest = num;
+//     return sum + num - (index + 1);
+//   }, 0);
+
+//   return highest - total;
+// }
+
+// console.log(missingNum([1, 2, 3, 4])); // 5
+// console.log(missingNum([1, 5, 4, 3, 6])); //2
+// console.log(missingNum([1, 3, 2, 4, 5, 7, 8, 9, 11, 10])); // 6
 module.exports = missingNum;
