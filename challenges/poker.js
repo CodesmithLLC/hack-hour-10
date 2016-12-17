@@ -19,82 +19,80 @@
 */
 
 function poker(hand1, hand2) {
-  let hand1Max = 0;
-  let hand1MaxCount = 0;
-  let hand1Max2 = 0;
-  let hand1MaxCount2 = 0;
-  let hand2Max = 0;
-  let hand2MaxCount = 0;
-  let hand2Max2 = 0;
-  let hand2MaxCount2 = 0;
-  const hand1Obj = hand1
-    .sort((a, b) => b - a)
-    .reduce((all, item) => {
-      all[item] ? all[item]++ : all[item] = 1;
-      if (item > hand1Max) hand1Max = item;
-      if (all[item] > hand1MaxCount) hand1MaxCount = all[item];
-      if (all[item] < hand1MaxCount && all[item] > hand1MaxCount2) {
-        hand1MaxCount2 = all[item];
-        hand1Max2 = item;
-      }
-      return all;
-  }, {});
-  const hand2Obj = hand2
-    .sort((a, b) => b - a)
-    .reduce((all, item) => {
-      all[item] ? all[item]++ : all[item] = 1;
-      if (item > hand2Max) hand2Max = item;
-      if (all[item] > hand2MaxCount) hand2MaxCount = all[item];
-      if (all[item] < hand2MaxCount && all[item] > hand2MaxCount2) {
-        hand2MaxCount2 = all[item];
-        hand2Max2 = item;
-      }
-      return all;
-  }, {});
-  console.log(hand1Obj);
-  console.log(hand1MaxCount);
-  console.log(hand1Max);
-  console.log(hand1MaxCount2);
-  console.log(hand1Max2);
-  console.log(hand2Obj);
-  console.log(hand2MaxCount);
-  console.log(hand2Max);
-  console.log(hand2MaxCount2);
-  console.log(hand2Max2);
+  if( !hand1 || !hand2 ) return undefined;
+  if( hand1.length !== 5 || hand2.length !== 5 ) return undefined;
 
-  if (hand1MaxCount > hand2MaxCount) {
-    return 'Player 1 wins';
-  }
-  if (hand2MaxCount > hand1MaxCount) {
-    return 'Player 2 wins';
-  }
-  if (hand1MaxCount === hand2MaxCount) {
-    if (hand1MaxCount2 > hand2MaxCount2) {
-      return 'Player 1 wins';
-    }
-    if (hand2MaxCount2 > hand1MaxCount2) {
-      return 'Player 1 wins';
-    }
-  }
+  const handRanks = {
+    empty: 0,
+    pair: 1,
+    twoPair: 2,
+    threeKind: 3,
+    straight: 4,
+    fullHouse: 5,
+    fourKind: 6
+  };
 
+  let player1 = emptyHand();
+  fillHand(hand1, player1);
+  let player2 = emptyHand();
+  fillHand(hand2, player2);
+
+  const player1Hand = playerToHand(player1);
+  const player2Hand = playerToHand(player2);
+
+  const player1Rank = handRanker(handRanks, player1Hand, hand1);
+  const player2Rank = handRanker(handRanks, player2Hand, hand2);
+
+  if (player1Rank > player2Rank) return 'Player 1 wins';
+  if (player1Rank < player2Rank) return 'Player 2 wins';
+  if (player1Rank === player2Rank) {
+    return Math.max.apply(0, hand1) > Math.max.apply(0, hand2) ? 'Player 1 wins' : Math.max.apply(0, hand1) === Math.max.apply(0, hand2) ? 'Draw' : 'Player 2 wins';
+  }
 }
 
-console.log(poker([3,5,5,5,2], [4,6,7,8,8])); //-> "Player 1 wins"
+// returns object with keys from 2 to 14 representing all cards, all with values of 0
+function emptyHand() {
+  let obj = {};
+  for ( let i = 2; i <= 14; i++) {
+    obj[i] = 0;
+  }
+  return obj;
+}
 
-// const cards = {
-//   2: [ 2, 15, 28, 41 ],
-//   3: [ 3, 16, 29, 42 ],
-//   4: [ 4, 17, 30, 43 ],
-//   5: [ 5, 18, 31, 44 ],
-//   6: [ 6, 19, 32, 45 ],
-//   7: [ 7, 20, 33, 46 ],
-//   8: [ 8, 21, 34, 47 ],
-//   9: [ 9, 22, 35, 48 ],
-//   10: [ 10, 23, 36, 49 ],
-//   11: [ 11, 24, 37, 50 ],
-//   12: [ 12, 25, 38, 51 ],
-//   13: [ 13, 26, 39, 52 ],
-//   14: [ 14, 27, 40, 53 ]
-// };
+// create object with all cards and number of cards
+function fillHand(hand, player) {
+  hand.forEach(function(elem) {
+    player[elem] += 1;
+  });
+}
+
+function playerToHand(hand) {
+  let arr = [];
+  for ( let card in hand ) {
+    if( hand[card] !== 0 ) arr.push( hand[card] );
+  }
+  arr.sort(function( a, b ){ return a < b } )
+  return arr;
+}
+
+function handRanker(possibleHands, playerHand, originalArray) {
+  if( playerHand[0] === 4 ) return possibleHands.fourKind;
+  if( playerHand[0] === 3 ) {
+    return playerHand[1] === 2 ? possibleHands.fullHouse : possibleHands.threeKind
+  }
+  if ( playerHand[0] === 2 ) {
+    return playerHand[1] === 2 ? possibleHands.twoPair : possibleHands.pair;
+  }
+  originalArray.sort( function( a, b ) { return a > b });
+  for (var i = 0; i < originalArray.length - 1; i++ ) {
+    if(originalArray[i + 1] - originalArray[i] !== 1) return possibleHands.empty;
+  }
+
+  return possibleHands.straight;
+}
+
+
+console.log(poker([2,3,4,5,6], [4,2,3,3,3])); //-> "Player 1 wins"
+
 
 module.exports = poker;
