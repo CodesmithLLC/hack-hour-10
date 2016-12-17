@@ -27,7 +27,7 @@ Challange:
 */
 var missingNum = (array) => ( (array.length + 1) * (1 + array.length + 1) / 2 ) - array.reduce( (acc, cur) => acc + cur);
 
-// let myArray = [ 6, 10, 7, 2, 4, 1, 11, 3, 9, 5 ];
+// let myArray = [1, 2, 4];
 // console.log(missingNum(myArray));
 
 module.exports = missingNum;
