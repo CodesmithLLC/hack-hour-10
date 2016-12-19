@@ -12,8 +12,36 @@
 
 // if there are no common numbers or strings return the string "Nothing in Common!"
 
-function commonElements(array1, array2, array3, array4){
-
+function commonElements(...args) {
+  let length = args.length;
+  let reduced = {};
+  function findCommon(all, reduced, index2) { 
+    if (index2 >= length) return reduced;
+    else { 
+      var check = {};
+      all[index2].forEach((val) => { 
+        if (!check[val] && !reduced[val]) {
+          check[val] = true;
+          reduced[val] = 1;
+        } else if (!check[val] && reduced[val]) {
+          check[val] = true;
+          ++reduced[val];
+        }
+      })
+      findCommon(all, reduced, index2 + 1)
+    }
+  }
+  findCommon(args, reduced, 0);
+  let toreturn = [];
+  for (var keys in reduced) { 
+    if (reduced[keys] == 4) {
+      if (isNaN(Number(keys))) toreturn.push(keys);
+      else toreturn.push(Number(keys));
+    }
+  }
+  return toreturn;
 }
+
+
 
 module.exports = commonElements;
