@@ -40,7 +40,44 @@
 // - if any part of the date string is missing then you can consider it an invalid date
 
 function parseDates(str) {
-  
+  console.log(str);
+  const months = {
+    'Jan': 0,
+    'Feb': 1,
+    'Mar': 2,
+    'Apr': 3,
+    'May': 4,
+    'June': 5,
+    'July': 6,
+    'Aug': 7,
+    'Sep': 8,
+    'Oct': 9,
+    'Nov': 10,
+    'Dec': 11
+  };
+
+  const monthStr = str.slice(0, 4).trim();
+  const monthNum = Number(months[monthStr]);
+  const date = Number(str.split(' ')[1].slice(0, 2).split('').filter(char => Number.isInteger(Number(char))).join(''));
+  const timeSplit = str.split(':');
+  let hour = Number(timeSplit[0].slice(timeSplit[0].length - 2, timeSplit[0].length));
+  const minutes = Number(timeSplit[1].slice(0, 2));
+  const meridian = timeSplit[1].slice(3, 5);
+
+  if (meridian === 'PM' && hour !== 12) hour = hour + 12;
+  if (meridian === 'AM' && hour === 12) hour = 0;
+
+  return new Date(2016, monthNum, date, hour, minutes);
 }
+
+// console.log(parseDates('Thursday 12:37 PM'));
+// console.log(parseDates('Nov 19th 1:12 PM').toGMTString());
+// console.log(parseDates('Nov 19th 1:12 PM').toUTCString());
+// console.log(parseDates('Nov 19th 1:12 PM').toISOString());
+// console.log(parseDates('Nov 19th 1:12 PM').toLocaleString());
+// console.log(parseDates('Nov 19th 1:12 PM').toTimeString());
+// console.log(parseDates('Nov 19th 1:12 PM').toLocaleDateString());
+// console.log(parseDates('Nov 19th 1:12 PM').toLocaleTimeString());
+// console.log(parseDates('Nov 19th 1:12 PM').valueOf());
 
 module.exports = parseDates;
