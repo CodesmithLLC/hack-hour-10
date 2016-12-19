@@ -13,24 +13,28 @@
 // if there are no common numbers or strings return the string "Nothing in Common!"
 
 function commonElements(array1, array2, array3, array4) {
-  function filterArr(arr) {
-    for (let i = 0; i < arr.length; i++) {
-      lastIdx = arr.lastIndexOf(arr[i])
-      while (lastIdx !== i) {
-        arr.splice(lastIdx, 1)
-        lastIdx = arr.lastIndexOf(arr[i])
-      }
-    }
-    return arr
-  }
+  console.log('Array 1', array1)
+  console.log('Array 2', array2)
+  console.log('Array 3', array3)
+  console.log('Array 4', array4)
+  // function filterArr(arr) {
+  //   for (let i = 0; i < arr.length; i++) {
+  //     lastIdx = arr.lastIndexOf(arr[i])
+  //     while (lastIdx !== i) {
+  //       arr.splice(lastIdx, 1)
+  //       lastIdx = arr.lastIndexOf(arr[i])
+  //     }
+  //   }
+  //   return arr
+  // }
 
-  const cache = []
-  for (let i = 0; i < array1.length; i++) {
-    const ele = array1[i]
-    if (array2.includes(ele) && array3.includes(ele) && array4.includes(ele)) cache.push(ele)
-  }
-  filterArr(cache)
-  return cache.length ? cache : 'Nothing in Common!'
+  // const cache = []
+  // for (let i = 0; i < array1.length; i++) {
+  //   const ele = array1[i]
+  //   if (array2.includes(ele) && array3.includes(ele) && array4.includes(ele)) cache.push(ele)
+  // }
+  // filterArr(cache)
+  // return cache.length ? cache : 'Nothing in Common!'
 }
 
 module.exports = commonElements;
