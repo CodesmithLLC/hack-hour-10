@@ -21,8 +21,8 @@ function commonElements(array1, array2, array3, array4) {
     return acc
   }, {})
   const result = []
-  for (let e in freq) if (freq[e] === 4) result.push(e)
-  return result.map(e => isNaN(e) ? e : Number(e))
+  for (let e in freq) if (freq[e] === arguments.length) result.push(e)
+  return result.length ? result.map(e => isNaN(e) ? e : Number(e)) : "Nothing in Common!"
 }
 
 module.exports = commonElements;
