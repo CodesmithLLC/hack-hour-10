@@ -26,6 +26,8 @@ Challange:
   ** keep in mind time complexity
 */
 function missingNum(Array) {
+  const len = Array.length;
+  
 }
 
 module.exports = missingNum;
