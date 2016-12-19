@@ -14,38 +14,29 @@
 
 function commonElements(array1, array2, array3, array4){
   console.log('array1\n', array1)
-  console.log('array1\n', array2)
-  console.log('array1\n', array3)
-  console.log('array1\n', array4)
+  console.log('array2\n', array2)
+  console.log('array3\n', array3)
+  console.log('array4\n', array4)
   let total = {};
   for(let i = 0; i < array1.length; i++) {
     if(typeof array1[i] === 'number') total['&&&' + array1[i]] = 1;
     else total[array1[i]] = 1;
   }
-  let results = {};
-  for(let i = 0; i < array2.length; i++) {
-    if(typeof array2[i] === 'number') results['&&&' + array2[i]] = 1;
-    else results[array2[i]] = 1;
+  for(let j = 1; j < arguments.length; j++) {
+    let results = {};
+    let array = arguments[j];
+    for(let i = 0; i < array.length; i++) {
+      if(typeof array[i] === 'number') {
+        results['&&&' + array[i]] = 1;
+        console.log(typeof array[i]);
+      } else {
+        results[array[i]] = 1;
+      }
+    }
+    Object.keys(results).forEach( (ele) => {
+      if(total[ele]) total[ele]++;
+    });
   }
-  Object.keys(results).forEach( (ele) => {
-    if(total[ele]) total[ele]++;
-  });
-  results = {};
-  for(let i = 0; i < array3.length; i++) {
-    if(typeof array3[i] === 'number') results['&&&' + array3[i]] = 1;
-    else results[array3[i]] = 1;
-  }
-  Object.keys(results).forEach( (ele) => {
-    if(total[ele]) total[ele]++;
-  });
-  results = {};
-  for(let i = 0; i < array4.length; i++) {
-    if(typeof array4[i] === 'number') results['&&&' + array4[i]] = 1;
-    else results[array4[i]] = 1;
-  }
-  Object.keys(results).forEach( (ele) => {
-    if(total[ele]) total[ele]++;
-  });
 
   let final = [];
   for(let key in total) {
@@ -64,6 +55,11 @@ function commonElements(array1, array2, array3, array4){
 // var array2  = [15,9,9,'ferret',9,26,12,12,'dog'];
 // var array3 = [23,12,12,77,'ferret',9,88,100,'dog'];
 // var array4 = ['ferret',12,12,45,9,66,77,78,2000];
+
+// var array1 = [3,3, 'dog', 'dog'];
+// var array2  = [3,3, 'dog', 'dog'];
+// var array3 = [3,3, 'dog', 'dog'];
+// var array4 = [3,3, 'dog', 'dog'];
 
 // console.log(commonElements(array1, array2, array3, array4));
 
