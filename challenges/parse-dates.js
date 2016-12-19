@@ -40,6 +40,7 @@
 // - if any part of the date string is missing then you can consider it an invalid date
 
 function parseDates(str) {
+  console.log(str);
   if(str.slice(-2) !== 'AM' && str.slice(-2) !== 'PM') return new Date();
   const date = str.split(' ');
   if(date.length < 3 || date.length > 4) return new Date();
@@ -78,7 +79,7 @@ function parseDates(str) {
   if(!weekday[date[0]]) return new Date();
   else day = weekday[date[0]];
   
-  return new Date(year, month, day, hour, minute);
+  return new Date(Date.UTC(year, month, day, hour, minute));
 
 }
 
@@ -89,7 +90,7 @@ function parseDates(str) {
 // Friday 7:04 PM
 // Today 2:01 PM
 
-// let myDate = 'Today 7:01 PM'
+// let myDate = 'Thursday 12:37 PM'
 // console.log(parseDates(myDate));
 
 //new Date(year,month,date[,hour,minute,second,millisecond ])
