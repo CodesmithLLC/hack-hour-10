@@ -12,8 +12,33 @@
 
 // if there are no common numbers or strings return the string "Nothing in Common!"
 
-function commonElements(array1, array2, array3, array4){
+// // TESTS:
+// const array1 = [1,4,6,7,'ferret',12,12,99,2000,'dog','dog',99,1000];
+// const array2  = [15,9,9,'ferret',9,26,12,12,'dog'];
+// const array3 = [23,12,12,77,'ferret',9,88,100,'dog'];
+// const array4 = ['ferret',12,12,45,9,66,77,78,2000];
+// console.log(commonElements(array1, array2, array3, array4));
 
+
+function commonElements(array1, array2, array3, array4) {
+  const commonEls = [];
+  array1 = array1.filter((item, i) => array1.indexOf(item) === i);
+  array2 = array2.filter((item, i) => array2.indexOf(item) === i);
+  array3 = array3.filter((item, i) => array3.indexOf(item) === i);
+  array4 = array4.filter((item, i) => array4.indexOf(item) === i);
+  arrays = [array1, array2, array3, array4].sort((a, b) => a.length - b.length);
+  
+  arrays[0].forEach(item => {
+    if (arrays[1].includes(item) && !commonEls.includes(item)) {
+      if (arrays[2].includes(item)) {
+        if (arrays[3].includes(item)) {
+          commonEls.push(item);
+        }
+      }
+    }
+  });
+
+  return commonEls.length === 0 ? "Nothing in Common!" : commonEls;
 }
 
 module.exports = commonElements;
