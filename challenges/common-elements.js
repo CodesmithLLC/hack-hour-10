@@ -13,6 +13,12 @@
 // if there are no common numbers or strings return the string "Nothing in Common!"
 
 function commonElements(array1, array2, array3, array4){
+  console.log(`commonElements called ==============`);
+  console.log(array1);
+  console.log(array2);
+  console.log(array3);
+  console.log(array4);
+  
   let common = array1.reduce((acc, curr) => {
     if(array2.includes(curr) && !acc.includes(curr)){
       acc.push(curr);
@@ -31,7 +37,8 @@ function commonElements(array1, array2, array3, array4){
   }, []);
   return common.length === 0 ? "Nothing in Common!" : common;
 }
-
+console.log(`common..........`);
+console.log(common);
 // console.log(commonElements([1], [2],[3],[4]));
 
 module.exports = commonElements;
