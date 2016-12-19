@@ -10,10 +10,14 @@
 */
 
 function solveKnapsack(items, weightAvailable) {
+  let weight = weightAvailable;
   let ans;
 
   for(let i = 0; i < items.length; i++){
-    if(weightAvailable - items[i].value >= 0) ans += items[i].value;
+    if(weight - items[i].value >= 0) {
+      weight - items[i].value;
+      ans += items[i].value;
+    }
     else ans = 0;
   }
 return ans;
