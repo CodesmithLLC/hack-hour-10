@@ -10,9 +10,6 @@
 */
 
 
-let items = [{ weight: 1, value: 3 }, { weight: 5, value: 2 }, { weight: 2, value: 4 }, { weight: 3, value: 5 }];
-
-
 const solveKnapsack = (items, weightAvailable, value = 0) => {
   let newWeight, newValue;
 
