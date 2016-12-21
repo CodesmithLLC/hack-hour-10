@@ -17,9 +17,16 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
-
+  function recurser(arr, perm) {
+    if (!arr.length) {
+      callback(perm);
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        recurser(arr.slice(0,i).concat(arr.slice(i+1)), perm.concat(arr[i]));
+      }
+    }
+  }
+  recurser(arr, []);
 }
-
-
 
 module.exports = eachPermutation;
