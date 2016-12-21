@@ -17,9 +17,19 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
-
+  // create array of all permutations
+  return permutations.forEach(item => callback(item));
 }
 
-
+// TESTS:
+// eachPermutation([1, 2, 3], function(perm) {
+//   console.log(perm)
+// });
+// [ 1, 2, 3 ]
+// [ 1, 3, 2 ]
+// [ 2, 1, 3 ]
+// [ 2, 3, 1 ]
+// [ 3, 1, 2 ]
+// [ 3, 2, 1 ]
 
 module.exports = eachPermutation;
