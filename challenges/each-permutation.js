@@ -17,9 +17,24 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
-
+  function permute(staticArr, dynamicArr) {
+    if (!dynamicArr.length) {
+      callback(staticArr);
+      return;
+    }
+    for (let i = 0; i < dynamicArr.length; i++) {
+      permute(staticArr.concat(dynamicArr[i]),
+      dynamicArr
+        .slice(0, i)
+        .concat(dynamicArr
+          .slice(i + 1)));
+    }
+    return;
+  }
+  permute([], arr);
 }
 
-
-
 module.exports = eachPermutation;
+
+// testing
+// eachPermutation([1, 2, 3], (perm) => console.log('found', perm));

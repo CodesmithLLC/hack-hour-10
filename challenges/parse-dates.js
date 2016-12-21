@@ -40,7 +40,14 @@
 // - if any part of the date string is missing then you can consider it an invalid date
 
 function parseDates(str) {
-  
+  const dateParts = str.split(' ');
+  let dateObj = new Date();
+  if (dateParts.length === 3) {
+    [day, time, ampm] = dateParts;
+    if (day === 'Today')
+  } else if (dateParts.length === 4 {
+    [month, date, time, ampm] = dateParts];
+  }
 }
 
 module.exports = parseDates;

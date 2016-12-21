@@ -18,8 +18,33 @@
 * Example: poker([3,5,5,5,2], [4,6,7,8,8]) -> "Player 1 wins"
 */
 
-function poker(hand1, hand2) {
+function filterToSets(arr) {
+  return arr.filter((num) => {
+    return arr.indexOf(num) !== arr.lastIndexOf(num);
+  });
+}
 
+function sum(arr) {
+  return reduce((sum, num) => sum + num);
+}
+
+function poker(hand1, hand2) {
+  let winner;
+  const matchedHand1 = filterToSets(hand1);
+  const matchedHand2 = filterToSets(hand2);
+  // 4 oak
+  if ((matchedHand1.length) === 4 && (sum(matchedHand1) / 4 === matchedHand1[0])) winner = '1';
+  if ((matchedHand1.length) === 4 && (sum(matchedHand1) / 4 === matchedHand1[0])) winner = '1';
+  // full house
+  // straight
+  // 3 oak
+  // 2 pair
+  // 1 pair
+  // high card
 }
 
 module.exports = poker;
+console.log(filterToSets([1, 2, 3, 4, 4]));
+console.log(filterToSets([1, 2, 2, 4, 4]));
+console.log(filterToSets([1, 2, 2, 2, 4]));
+console.log(filterToSets([1, 2, 3, 5, 4]));
