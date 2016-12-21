@@ -15,20 +15,16 @@
 function commonElements(array1, array2, array3, array4){
   let obj = {};
   let result = [];
-  [array1, array2, array3, array4].forEach((arr, ind) => {
+  [...arguments].forEach((arr, ind) => {
     arr.forEach(ele => {
-      if(obj[ele] % 2 === 0 || obj[ele] % 3 === 0 || obj[ele] % 5 === 0) return;
-      if(ind === 0) obj[ele] ? obj[ele] *= 1 : obj[ele] = 1;
-      if(ind === 1) obj[ele] ? obj[ele] *= 2 : ele;
-      if(ind === 2) obj[ele] ? obj[ele] *= 3 : ele;
-      if(ind === 3) obj[ele] ? obj[ele] *= 5 : ele;
+      if(obj[ele]) obj[ele][ind] = 1;
+      else obj[ele] = {}, obj[ele][4] = ele, obj[ele][ind] = 1;
     });
   });
   Object.keys(obj).forEach(key => {
-    console.log(obj);
-    if(obj[key] % 2 === 0 && obj[key] % 3 === 0 && obj[key] % 5 === 0) result.push(key)
+    if(obj[key][0] && obj[key][1] && obj[key][2] && obj[key][3]) result.push(obj[key][4]);
   })
   return result;
 }
-console.log(commonElements(array1, array2, array3, array4));
-//module.exports = commonElements;
+
+module.exports = commonElements;
