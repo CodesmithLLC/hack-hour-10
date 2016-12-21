@@ -22,10 +22,10 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 
-function swap(array, pos1, pos2) {
-  var temp = array[pos1];
-  array[pos1] = array[pos2];
-  array[pos2] = temp;
+function swap(array, firstPosition, secondPosition) {
+  var temp = array[firstPosition];
+  array[firstPosition] = array[secondPosition];
+  array[secondPosition] = temp;
 }
 
 function eachPermutation (array, callback, n = array.length) {
