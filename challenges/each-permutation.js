@@ -17,9 +17,11 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
-
+  // not trying to take credit for this elegant perm algorithm: (i know how it works tho)
+  const result = arr.reduce(function permute(res, item, key, arr) {
+    return res.concat(arr.length > 1 && arr.slice(0, key).concat(arr.slice(key + 1)).reduce(permute, []).map(function(perm) { return [item].concat(perm); }) || item);
+  }, []);
+  result.forEach((perm) => callback(perm));
 }
-
-
 
 module.exports = eachPermutation;
