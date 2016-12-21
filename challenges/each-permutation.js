@@ -28,22 +28,22 @@ function swap(array, firstPosition, secondPosition) {
   array[secondPosition] = temp;
 }
 
-function eachPermutation (array, callback, n = array.length) {
+function eachPermutation (array, callback, length = array.length) {
 	// let numberofcombinations = array.reduce( (accum, curr) => {
 	// 	return accum * curr;
 	// },1);
 	// console.log(numberofcombinations);
-  if (n === 1) {
+  if (length === 1) {
     callback(array);
   } else {
-    for (var i = 1; i <= n; i++) {
-      eachPermutation(array, callback, n - 1);
-      if (n % 2) {
+    for (var i = 1; i <= length; i++) {
+      eachPermutation(array, callback, length - 1);
+      if (length % 2) {
         var j = 1;
       } else {
         j = i;
       }
-      swap(array, j - 1, n - 1);
+      swap(array, j - 1, length - 1);
     }
   }
 }
