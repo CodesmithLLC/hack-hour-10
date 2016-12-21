@@ -14,20 +14,15 @@
 
 function commonElements(array1, array2, array3, array4){
 	let resultsArray = [];
-
 	let args = [...arguments];
 	let lengthsofthearrays = [];
-	//if any of the arrays have length of 0 --> nothing in common
+
 	lengthsofthearrays.push(array1.length, array2.length, array3.length, array4.length);
 	if(lengthsofthearrays.includes(0)) return "Nothing in Common!";
-	let longestarraylength = Math.max(...lengthsofthearrays);
-	let index = lengthsofthearrays.indexOf(longestarraylength)
-	let thelongestarray = args[index];
-	let argswithlongestpoppedoff = args.splice(index, 1);
 
-	//take the longest array, the number of args is now 3;
-	//start with the first item in that array and check whether that value is in every one of the other arrays. if yes, push that value into your results array
-	//
+	let shortestarraylength = Math.min(...lengthsofthearrays);
+	let index = lengthsofthearrays.indexOf(shortestarraylength)
+	let thelongestarray = args[index];
 
 	for( var i = 0 ; i < thelongestarray.length; i++) {
 		let checkingthisvalue = thelongestarray[i];
@@ -41,14 +36,14 @@ function commonElements(array1, array2, array3, array4){
 	return resultsArray;
 }
 
-  var array2  = [15,9,9,'ferret',9,26,12,12,'dog'];
-  var array1 = [1,4,6,7,'ferret',12,12,99,2000,'dog','dog',99,1000];
-  var array3 = [23,12,12,77,'ferret',9,88,100,'dog'];
-  var array4 = ['ferret',12,12,45,9,66,77,78,2000];
+  // var array2  = [15,9,9,'ferret',9,26,12,12,'dog'];
+  // var array1 = [1,4,6,7,'ferret',12,12,99,2000,'dog','dog',99,1000];
+  // var array3 = [23,12,12,77,'ferret',9,88,100,'dog'];
+  // var array4 = ['ferret',12,12,45,9,66,77,78,2000];
 
 
-// console.log(commonElements(array1, array2, array3, array4));
+console.log(commonElements(array1, array2, array3, array4));
 // your output would be [ 12, 'ferret']
 
 
-module.exports = commonElements;
+// module.exports = commonElements;
