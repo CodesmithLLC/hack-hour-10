@@ -30,9 +30,7 @@ function eachPermutation(arr, callback) {
       helper(newArr, accum.concat(item));
     }
   }
-
   helper(arr);
-
   perms.forEach(el => callback(el));
 }
 
