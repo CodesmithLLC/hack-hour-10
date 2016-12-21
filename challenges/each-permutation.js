@@ -29,17 +29,21 @@ function swap(array, pos1, pos2) {
 }
 
 function eachPermutation (array, callback, n = array.length) {
+	// let numberofcombinations = array.reduce( (accum, curr) => {
+	// 	return accum * curr;
+	// },1);
+	// console.log(numberofcombinations);
   if (n === 1) {
     callback(array);
   } else {
-    for (var i = 1; i <= n; i += 1) {
+    for (var i = 1; i <= n; i++) {
       eachPermutation(array, callback, n - 1);
       if (n % 2) {
         var j = 1;
       } else {
-        var j = i;
+        j = i;
       }
-      swap(array, j - 1, n - 1); // -1 to account for javascript zero-indexing
+      swap(array, j - 1, n - 1);
     }
   }
 }
