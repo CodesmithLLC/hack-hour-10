@@ -16,10 +16,26 @@ eachPermutation([1, 2, 3], function(perm) {
 [ 3, 2, 1 ]
 */
 
-function eachPermutation(arr, callback) {
-
+function removeElement(arr, index) {
+  const newArray = arr.slice();
+  newArray.splice(index, 1);
+  return newArray;
 }
 
+function eachPermutation(arr, callback) {
+  function getPermutations(arr) {
+    if (arr.length === 1) return [arr[0]];
+    const perms = [];
+    for (let i = 0; i < arr.length; i++) {
+      const remainderPerms = getPermutations(removeElement(arr, i));
+      for (let j = 0; j < remainderPerms.length; j++) {
+        perms.push([arr[i]].concat(remainderPerms[j]))
+      }
+    }
+    return perms;
+  }
+  getPermutations(arr).forEach(perm => { callback(perm) });
+}
 
 
 module.exports = eachPermutation;
