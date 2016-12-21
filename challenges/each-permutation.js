@@ -17,9 +17,44 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
+  let count = 1;
+  let length = arr.length;
+  for (let i = length; i > 0; --i) { 
+    count *= i;
+  }
+  let startingIndex = length;
+  function helper(array, callback, counter) { 
+    if (counter === 1) return null;
+    else {
+      //callback(array);
+      for (var i = 0; i < counter; i++) { 
+        helper(array, callback, counter - 1);
+        console.log('array ::::::     ', array)
+        if (!(i % 2)) {
+          var copyeven = array;
+          var store = copyeven[counter - 1];
+          copyeven[counter - 1] = copyeven[i];
+          copyeven[i] = store;
+          array = copyeven;
+          console.log('copy even :::::  ', array);
+        }
+        else { 
+          var copyodd = array;
+          var storage = copyodd[counter - 1];
+          copyodd[counter - 1] = copyodd[0];
+          copyodd[0] = storage; 
+          array = copyodd;
+          console.log('odd ::::: ', copyodd);
+        }
+      }
+     helper(array, callback, counter - 1);
+    }
+  }
+
+  helper(arr, callback, startingIndex);
 
 }
 
-
+eachPermutation([1, 2, 3], null);
 
 module.exports = eachPermutation;
