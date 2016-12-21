@@ -41,9 +41,9 @@ expectations = {
 
 
 
-
+//  1|2|4|5, 3|2|5|6, !0, 4|5|7|8|0
 function getPINs(observed) {
-
+  
 }
 
 
