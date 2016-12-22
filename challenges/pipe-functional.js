@@ -17,8 +17,8 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
-  return !letters ? 'H' : letters + 'H';
+function H(letters = "") {
+  return letters + 'H';
 }
 
 // OR
@@ -41,16 +41,16 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
-  return !letters ? 'e' : letters + 'e';
+function e(letters = "") {
+  return letters + 'e';
 }
 
-function l(letters) {
-  return !letters ? 'l' : letters + 'l';
+function l(letters = "") {
+  return letters + 'l';
 }
 
-function o(letters) {
-  return !letters ? 'o' : letters + 'o';
+function o(letters = "") {
+  return letters + 'o';
 }
 
 // const e = (letters) =>;
@@ -74,7 +74,7 @@ function o(letters) {
  */
 
 function pipe(functions) {
-  return start => functions.forEach(func => start = func(start))
+  return (start) => functions.forEach(func => start = func(start))
 }
 
 // OR
@@ -122,7 +122,7 @@ function pipe(functions) {
  */
 
 function letterGenerator(letter) {
-  return letters => letters ? letter + letters : letter
+  return (letters) => letters ? letter + letters : letter
 
 }
 
