@@ -19,27 +19,29 @@ eachPermutation([1, 2, 3], function(perm) {
 function eachPermutation(arr, callback) {
   if(arr.length < 2) callback(arr);
 
-  function find(n, arr) {
-    if(n === 1) {
-      callback(arr);
-      return;
-    } else {
-      for(let i = 0; i < n-1; i++) {
-        find(n - 1, arr);
-        if(n % 2 === 0) {
-          let temp = arr[i];
-          arr[i] = arr[n-1];
-          arr[n-1] = temp;
-        } else {
-          var temp = arr[0];
-          arr[0] = arr[n-1];
-          arr[n-1] = temp;
-        }
-      }
-      find(n - 1, arr);
-    }
-  }
-  find(arr.length, arr)
+  
+
+  // function find(n, arr) {
+  //   if(n === 1) {
+  //     callback(arr);
+  //     return;
+  //   } else {
+  //     for(let i = 0; i < n-1; i++) {
+  //       find(n - 1, arr);
+  //       if(n % 2 === 0) {
+  //         let temp = arr[i];
+  //         arr[i] = arr[n-1];
+  //         arr[n-1] = temp;
+  //       } else {
+  //         var temp = arr[0];
+  //         arr[0] = arr[n-1];
+  //         arr[n-1] = temp;
+  //       }
+  //     }
+  //     find(n - 1, arr);
+  //   }
+  // }
+  // find(arr.length, arr)
 }
 
 

@@ -17,19 +17,13 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
+// function H(letters) {
 
-}
+// }
 
 // OR
 
-// const H = (letters) =>;
-
-
-
-
-
-
+const H = (letters = '') => letters + 'H';
 
 /*
  * PART 2
@@ -41,25 +35,21 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
+// function e(letters) {
 
-}
+// }
 
-function l(letters) {
+// function l(letters) {
 
-}
+// }
 
-function o(letters) {
+// function o(letters) {
 
-}
+// }
 
-// const e = (letters) =>;
-// const l = (letters) =>;
-// const o = (letters) =>;
-
-
-
-
+const e = (letters = '') => letters + 'e';
+const l = (letters = '') => letters + 'l';
+const o = (letters = '') => letters + 'o';
 
 /*
  * PART 3 PIPE
@@ -74,17 +64,13 @@ function o(letters) {
  * ello('J'); // -> 'Jello'
  */
 
-function pipe(functions) {
+// function pipe(functions) {
 
-}
+// }
 
 // OR
 
-// const pipe = (functions) =>;
-
-
-
-
+const pipe = (functions) =>  (startVal) => functions.reduce( (acc, cur) => cur(acc), startVal);
 
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
@@ -122,14 +108,39 @@ function pipe(functions) {
  * helloWorld(); // -> 'Hello, World!'
  */
 
-function letterGenerator(letter) {
+// function letterGenerator(letter) {
 
-}
+// }
 
 // OR
 
-// const letterGenerator = (letter) =>;
+const letterGenerator = (letter) => (string = '') => string + letter;
 
+// const H = letterGenerator('H');
+// const i = letterGenerator('i');
+// console.log(H(i())); // -> 'Hi';
+// const Hello = pipe([
+//   letterGenerator('H'),
+//   letterGenerator('e'),
+//   letterGenerator('l'),
+//   letterGenerator('l'),
+//   letterGenerator('o'),
+// ]);
+// const World = pipe([
+//   letterGenerator('W'),
+//   letterGenerator('o'),
+//   letterGenerator('r'),
+//   letterGenerator('l'),
+//   letterGenerator('d'),
+// ]);
+// const helloWorld = pipe([
+//   Hello,
+//   letterGenerator(','),
+//   letterGenerator(' '),
+//   World,
+//   letterGenerator('!'),
+// ]);
+// console.log(helloWorld()); // -> 'Hello, World!'
 
 
 const objectToExport = {
