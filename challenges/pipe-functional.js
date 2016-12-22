@@ -23,7 +23,7 @@
 
 // OR
 
-const H = (letters = '') => letters + 'H';
+const H = (letters = '') => 'H' + letters;
 
 /*
  * PART 2
@@ -47,9 +47,9 @@ const H = (letters = '') => letters + 'H';
 
 // }
 
-const e = (letters = '') => letters + 'e';
-const l = (letters = '') => letters + 'l';
-const o = (letters = '') => letters + 'o';
+const e = (letters = '') => 'e' + letters;
+const l = (letters = '') => 'l' + letters;
+const o = (letters = '') => 'o' + letters;
 
 /*
  * PART 3 PIPE
@@ -140,7 +140,7 @@ const letterGenerator = (letter) => (string = '') => string + letter;
 //   World,
 //   letterGenerator('!'),
 // ]);
-// console.log(helloWorld()); // -> 'Hello, World!'
+// console.log(letterGenerator('a')); // -> 'Hello, World!'
 
 
 const objectToExport = {
