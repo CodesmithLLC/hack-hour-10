@@ -15,7 +15,7 @@
 function commonElements(array1, array2, array3, array4){
   if (!Array.isArray(array1) || !Array.isArray(array2) || !Array.isArray(array3) || !Array.isArray(array4)) { throw new Error ('All inputs must be arrays.') }
   const cache = {};
-  populateCache([array1, array2, array3, array4]);
+  populateCache([...arguments]);
   return calculateElems(cache).length ? calculateElems(cache) : 'Nothing in Common!';
 
   function populateCache(arrays) {

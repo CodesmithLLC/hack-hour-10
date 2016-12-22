@@ -24,3 +24,27 @@ function repeatNumbers(array) {
 }
 
 module.exports = repeatNumbers;
+
+
+// // O(n) time, O(1) space
+// function repeatNumbers(array) {
+//   var expected = ( ( array.length - 1 ) * array.length ) / 2;
+//   var actual = 0;
+  
+//   for (var i = 0; i < array.length; i ++) {
+//       actual += array[i];
+//   }
+  
+//   return actual - expected;
+// }
+
+// // O(n) time, O(1) space
+// function repeatNumbers(array) {
+//   var result = 0;
+  
+//   for (var i = 0; i < array.length; i ++) {
+//     result = result ^ i ^ array[i];
+//   }
+  
+//   return result;
+// }

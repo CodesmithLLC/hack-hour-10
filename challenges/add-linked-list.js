@@ -56,4 +56,34 @@ while (numArr3.length) {
 return outputNode;
 }
 
+/*
+
+APPROACH #2
+
+function addLinkedList(l1, l2, carryover) {
+  if (!l1 && !l2 && !carryover) {
+    return null;
+  }
+
+  var sum = carryover || 0;
+  if (l1) {
+    sum += l1.value;
+  }
+  if (l2) {
+    sum += l2.value;
+  }
+  var result = new Node(sum % 10);
+  if (l1 || l2) {
+    var test = addLinkedList(
+      l1 ? l1.next : null,
+      l2 ? l2.next : null,
+      sum >= 10 ? 1 : 0
+    );
+    result.next = rest;
+  }
+  return result;
+}
+
+*/
+
 module.exports = {Node: Node, addLinkedList: addLinkedList};

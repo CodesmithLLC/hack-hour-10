@@ -30,3 +30,8 @@ var objectToExport = {
 };
 
 module.exports = objectToExport;
+
+// LOOK UP:
+// arithmetic sequence sum formula
+// for 1 - 10
+// sum numbers (1 - 4) * 2

@@ -21,21 +21,15 @@
  */
 
 function EventEmitter() {
-  this.storedFuncs = {};
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-  if (!this.storedFuncs[funcName]) {
-    this.storedFuncs[funcName] = [func];
-  }
-  else {
-    this.storedFuncs[funcName].push(func);
-  }
+  !this.funcName ? this.funcName = [func] : this.funcName.push(func);
 }
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-  if (this.storedFuncs[funcName]) {
-    return this.storedFuncs[funcName].forEach(f => f(...args));
+  if (this.funcName) {
+    return this.funcName.forEach(f => f(...args));
   }
   else {
     throw new Error('There is no listener for the event inputted.');

@@ -13,9 +13,11 @@ let twosCount = 0;
 
 while (overallCount <= num) {
   let arr = String(overallCount).split('');
-  let twos = arr.filter(strNum => strNum === '2').length;
+  if (arr.includes('2')) {
+    let twos = arr.filter(strNum => strNum === '2').length;
     twosCount += twos;
-    overallCount++;
+  }
+  overallCount++;
 }
 return twosCount;
 }

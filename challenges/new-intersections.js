@@ -18,17 +18,19 @@
 
 function newIntersections(x, y){
 
-  // Find the length of both matrix axes
+  // Find the dimensions of the matrix
 
-  const matrixMaxX = x.reduce((p, c) => Math.max(p, c));
-  const matrixMaxY = y.reduce((p, c) => Math.max(p, c));
+  const matrixMaxX = Math.max(...x)
+  const matrixMaxY = Math.max(...y)
+  const matrixMinX = Math.min(...x)
+  const matrixMinY = Math.min(...y)
   let newPointsCount = 0;
   let checkPointsObj = {};
 
   // Iterate through the matrix and check for potential new points by looping through both input arrays
 
-  for (let i = 1; i < matrixMaxX; i++) {
-    for (let j = 1; j < matrixMaxY; j++) {
+  for (let i = matrixMinX; i < matrixMaxX; i++) {
+    for (let j = matrixMinY; j < matrixMaxY; j++) {
 
   // Check if the matrix includes an old point to the left the potential new point
 
@@ -64,5 +66,7 @@ function newIntersections(x, y){
   }
   return newPointsCount;
 }
+
+// console.log(newIntersections([0,1,1,2], [1,0,2,1]))
 
 module.exports = newIntersections;
