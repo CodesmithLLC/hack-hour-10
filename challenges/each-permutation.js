@@ -34,7 +34,7 @@ function eachPermutation(arr, callback) {
   perms.forEach(el => callback(el));
 }
 
-
+eachPermutation([1,3,3], console.log)
 
 
 module.exports = eachPermutation;
