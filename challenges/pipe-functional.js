@@ -20,7 +20,7 @@
 function H(letters) {
   return letters !== undefined ? `H${letters}` : 'H'
 }
-
+console.log(H('ello'))
 // OR
 
 // const H = (letters) =>;
@@ -50,7 +50,7 @@ function l(letters) {
 }
 
 function o(letters) {
-  return moreLetters !== undefined ? `o${letters}` : 'o'
+  return letters !== undefined ? `o${letters}` : 'o'
 }
 
 // const e = (letters) =>;
