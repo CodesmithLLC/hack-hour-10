@@ -8,7 +8,34 @@
 
 
 function countTwos(num) {
-
+  let obj = {};
+  function memCountTwos(num){
+    let totalTwos = 0;
+    for(let i = 1; i <= num; ++i){
+      if(obj[i] !== undefined){
+        totalTwos += obj[i];
+      }else{
+        // let g = i.toString();
+        let g = i;
+        let currTwos = 0;
+        console.log(`${i} ========================`);
+        while(g > 1){
+          console.log(g)
+          if(g%10 === 2){
+            currTwos++;
+          }else else{
+            g=g/10;
+          }
+        }
+      }
+    }
+    return obj[num];
+  }
+  return memCountTwos(num);
 }
+
+console.log(countTwos(3));
+console.log(countTwos(13));
+console.log(countTwos(1000));
 
 module.exports = countTwos;

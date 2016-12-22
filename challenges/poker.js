@@ -18,6 +18,11 @@
 * Example: poker([3,5,5,5,2], [4,6,7,8,8]) -> "Player 1 wins"
 */
 
+function detectHand(hand){
+  let dupes = hand.reduce( (acc, curr) => acc[curr] = acc[curr] ? 1 : acc[curr]++, {});
+  
+}
+
 function poker(hand1, hand2) {
 
 }
