@@ -13,7 +13,15 @@
 // if there are no common numbers or strings return the string "Nothing in Common!"
 
 function commonElements(array1, array2, array3, array4){
-
+  const results = [];
+  for(var i = 0; i < array1.length; i++) {
+    if(array2.indexOf(array1[i]) !== -1 &&
+       array3.indexOf(array1[i]) !== -1 &&
+       array4.indexOf(array1[i]) !== -1) {
+      results.push(array1[i]);
+    }
+  }
+  return results;
 }
 
 module.exports = commonElements;

@@ -7,8 +7,20 @@
  *
  */
 
-function maxSubarray(arr) {
+'use strict';
 
+function maxSubarray(arr) {
+  let max = -Infinity;
+  
+  for(let i = 0; i < arr.length; i++) {
+    let total = arr[i];
+    for(let j = i + 1; j < arr.length; j++) {
+      total += arr[j];
+      if (total > max) { max = total; }
+    }
+  }
+  
+  return max;
 }
 
 module.exports = maxSubarray;

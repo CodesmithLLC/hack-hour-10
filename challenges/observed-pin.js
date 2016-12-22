@@ -39,12 +39,59 @@ expectations = {
 
 */
 
-
-
+'use strict';
 
 function getPINs(observed) {
-
+  const results = [];
+  const keypad = {
+    1: ['1', '2', '4'],
+    2: ['1', '2','3', '5'],
+    3: ['2', '3', '6'],
+    4: ['1', '4', '5', '7'],
+    5: ['2', '4', '5', '6', '8'],
+    6: ['3', '5', '6', '9'],
+    7: ['4', '7', '8'],
+    8: ['5', '7', '8', '9', '0'],
+    9: ['6', '8', '9'],
+    0: ['0','8']
+  }
+  
+  if (observed.length === 1) {
+    return keypad[observed];
+  }
+  
+  function findPin(array, accum) {
+    console.log(accum.length);
+    if (accum.length === 2) {
+      console.log('hit')
+      results.push(accum);
+      return;
+    } else {
+      for(let i = 0; i < array.length; i++) {
+        findPin(array, accum.concat(array[i]));
+      }
+    }
+    
+    return;
+  
+  }
+  
+  const validPins = [...observed].reduce((valid, cur)=> {
+    keypad[cur].forEach((num) => {
+      if(valid.indexOf(num) === -1) {
+        valid.push(num);
+      }
+    })
+    
+    return results
+  }, []);
+  
+  findPin(validPins, '');
+  return results;
 }
+
+
+getPINs('11')
 
 
 module.exports = getPINs

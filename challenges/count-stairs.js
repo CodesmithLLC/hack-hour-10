@@ -3,7 +3,27 @@
  */
 
 function countStairs(n) {
-
+  let ways = 0;
+  const steps = [1, 2];
+  
+  const findWays = (n, steps, sum) => {
+    if(n === sum) {
+      ways++;
+      return;
+    }
+    
+    if(n < sum) {
+      return;
+    }
+    
+    for(let i = 0; i < steps.length; i++) {
+      findWays(n, steps, sum + steps[i]);
+    }
+    
+  }
+  
+  findWays(n, steps, 0)
+  return ways;
 }
 
 module.exports = countStairs;

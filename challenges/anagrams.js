@@ -12,8 +12,29 @@
   * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
-function anagrams(string) {
-
+const anagrams = string => {
+  const results = [];
+  const swap = (item, ind1, ind2) => {
+    let temp = item[ind1];
+    item[ind1] = item[ind2];
+    item[ind2] = temp;
+    return item;
+  }
+  
+  const findAnagrams = (string, start) => {
+    if (start === string.length - 1) {
+      results.push(string.join(''))
+      return;
+    }
+    
+    for(var i = start; i < string.length; i++) {
+      findAnagrams(swap(string, i, start), start + 1);
+    }
+  }
+  
+  findAnagrams([...string], 0);
+  return results;
 }
+
 
 module.exports = anagrams;

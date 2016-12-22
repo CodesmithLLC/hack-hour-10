@@ -9,9 +9,19 @@
  * Do not assume the ranges are in order
  */
 
+'use strict';
 
 function mergeRanges(array) {
-
+  return array
+    .sort((a, b) => Math.min(a[0], a[1]) - Math.min(b[0], b[1]))
+    .reduce((results, cur, ind) => {
+      if (ind === 0 || results[results.length - 1][1] < cur[0]) { 
+        return results.concat([cur]); 
+      } else {
+        results[results.length - 1][1] = cur[1];
+        return results;
+      }
+    }, []);
 }
 
 module.exports = mergeRanges;

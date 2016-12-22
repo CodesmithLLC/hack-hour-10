@@ -17,9 +17,18 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
-
+  function findPerm(arr, accum) {
+    if(accum.length === arr.length) {
+      callback(accum);
+      return;
+    }
+    
+    for(var i = 0; i < arr.length; i++) {
+      findPerm(arr, accum.concat(arr[i]));
+    }
+  }
+  
+  findPerm(arr, [], 0);
 }
-
-
 
 module.exports = eachPermutation;
