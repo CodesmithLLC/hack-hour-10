@@ -1,5 +1,5 @@
 /*
- * FUNCTIONAL PROGRAMMING
+  FUNCTIONAL PROGRAMMING
  * You will not be creating any variables in this hack hour other than functions
  *
  * Not for the weak of heart. I challenge you.
@@ -17,15 +17,20 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
+// function H(letters) {
+// 	if (arguments.length === 0) {
+// 		return 'H';
+// 	} else {
+// 		return 'H' + letters;
+// 	}
+// }
 
-}
 
 // OR
 
-// const H = (letters) =>;
-
-
+const H = (letters = '') => 'H' + letters;
+// console.log(H('ello')); // -> 'Hello'
+// console.log(H()); // -> 'H'
 
 
 
@@ -41,22 +46,35 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
+// function e(letters) {
+// 	if (arguments.length === 0) {
+// 		return 'e';
+// 	} else {
+// 		return 'e' + letters;
+// 	}
+// }
+// console.log(e()); // -> 'ello'
 
-}
 
-function l(letters) {
+// function l(letters) {
+// 	if (arguments.length === 0) {
+// 		return 'l';
+// 	} else {
+// 		return 'l' + letters;
+// 	}
+// // }
 
-}
+// function o(letters) {
+// 	if (arguments.length === 0) {
+// 		return 'o';
+// 	} else {
+// 		return 'o' + letters;
+// 	}
+// }
 
-function o(letters) {
-
-}
-
-// const e = (letters) =>;
-// const l = (letters) =>;
-// const o = (letters) =>;
-
+const e = (letters = '') => 'e' + letters;
+const l = (letters = '') => 'l' + letters;
+const o = (letters = '') => 'o' + letters;
 
 
 
@@ -74,17 +92,28 @@ function o(letters) {
  * ello('J'); // -> 'Jello'
  */
 
-function pipe(functions) {
-
-}
+// function pipe(functions) {
+// 	return (start) => {
+// 		return functions.reduce( (accum, curr) => {
+// 			return curr(accum);
+// 		}, start).split('').reverse('').join('');
+// 	}
+// }
 
 // OR
 
-// const pipe = (functions) =>;
+const pipe = (functions) => (start = '') => functions.reduce( (accum, curr) => {
+	console.log(accum, 'this is accum');
+	console.log(curr, 'this is curr');
+	return accum + curr();
+}, start);
 
+// const hello = pipe([H, e, l, l, o]); // -> [function]
+// console.log(hello()); // -> 'Hello')
 
-
-
+ const ello = pipe([e, l, l, o]); // -> [function]
+ // console.log(ello());
+ // console.log(ello('J')); // -> 'Jello'
 
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
@@ -122,15 +151,39 @@ function pipe(functions) {
  * helloWorld(); // -> 'Hello, World!'
  */
 
-function letterGenerator(letter) {
+// function letterGenerator(letter) {
 
-}
+// }
 
 // OR
 
-// const letterGenerator = (letter) =>;
+const letterGenerator = (letter) => (string = '') => letter + string;
 
-
+  // const H = letterGenerator('H');
+  // const i = letterGenerator('i');
+  // console.log(H(i())); // -> 'Hi';
+  // const Hello = pipe([
+  //   letterGenerator('H'),
+  //   letterGenerator('e'),
+  //   letterGenerator('l'),
+  //   letterGenerator('l'),
+  //   letterGenerator('o'),
+  // ]);
+  // const World = pipe([
+  //   letterGenerator('W'),
+  //   letterGenerator('o'),
+  //   letterGenerator('r'),
+  //   letterGenerator('l'),
+  //   letterGenerator('d'),
+  // ]);
+  // const helloWorld = pipe([
+  //   Hello,
+  //   letterGenerator(','),
+  //   letterGenerator(' '),
+  //   World,
+  //   letterGenerator('!'),
+  // ]);
+  // console.log(helloWorld()); // -> 'Hello, World!'
 
 const objectToExport = {
   H,
