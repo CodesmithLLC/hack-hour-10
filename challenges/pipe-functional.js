@@ -18,7 +18,7 @@
  */
 
 function H(letters) {
-
+  return 'H' + (letters || '');
 }
 
 // OR
@@ -42,15 +42,15 @@ function H(letters) {
  */
 
 function e(letters) {
-
+  return 'e' + (letters || '');
 }
 
 function l(letters) {
-
+  return 'l' + (letters || '');
 }
 
 function o(letters) {
-
+  return 'o' + (letters || '')
 }
 
 // const e = (letters) =>;
@@ -75,7 +75,9 @@ function o(letters) {
  */
 
 function pipe(functions) {
-
+  return (input) => { 
+    return functions.reverse().reduce((accum, fn) => fn(accum), input);
+  };
 }
 
 // OR
@@ -123,13 +125,14 @@ function pipe(functions) {
  */
 
 function letterGenerator(letter) {
-
+  return (inpt) => {
+    return letter + (inpt || '')
+  };
 }
 
 // OR
 
 // const letterGenerator = (letter) =>;
-
 
 
 const objectToExport = {
