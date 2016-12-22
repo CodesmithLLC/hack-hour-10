@@ -17,15 +17,13 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
-
-}
+// function H(letters) {
+//   return letters === undefined ? 'H' : 'H' + letters;
+// }
 
 // OR
 
-// const H = (letters) =>;
-
-
+const H = (letters) =>  letters === undefined ? 'H' : 'H' + letters;
 
 
 
@@ -41,24 +39,21 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
+// function e(letters) {
+//   return letters === undefined ? 'e' : 'e' + letters;
+// }
 
-}
+// function l(letters) {
+//   return letters === undefined ? 'l' : 'l' + letters;
+// }
 
-function l(letters) {
+// function o(letters) {
+//   return letters === undefined ? 'o' : 'o' + letters;
+// }
 
-}
-
-function o(letters) {
-
-}
-
-// const e = (letters) =>;
-// const l = (letters) =>;
-// const o = (letters) =>;
-
-
-
+const e = (letters) => letters === undefined ? 'e' : letters + 'e';
+const l = (letters) => letters === undefined ? 'l' : letters + 'l';
+const o = (letters) => letters === undefined ? 'o' : letters + 'o';
 
 
 /*
@@ -74,17 +69,13 @@ function o(letters) {
  * ello('J'); // -> 'Jello'
  */
 
-function pipe(functions) {
-
-}
+// function pipe(functions) {
+//   return (x) => functions.reduce((value, fn) => fn(value), x);
+// }
 
 // OR
 
-// const pipe = (functions) =>;
-
-
-
-
+const pipe = (functions) => (x) => functions.reduce((value, fn) => fn(value), x);
 
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
@@ -122,15 +113,13 @@ function pipe(functions) {
  * helloWorld(); // -> 'Hello, World!'
  */
 
-function letterGenerator(letter) {
+// function letterGenerator(letter) {
 
-}
+// }
 
 // OR
 
-// const letterGenerator = (letter) =>;
-
-
+const letterGenerator = (letter) => (str) => str === undefined ? letter : str + letter;
 
 const objectToExport = {
   H,
@@ -142,3 +131,30 @@ const objectToExport = {
 };
 
 module.exports = objectToExport;
+
+
+//  const H = letterGenerator('H');
+//  const i = letterGenerator('i');
+//  console.log(H(i())); // -> 'Hi';
+//  const Hello = pipe([
+//    letterGenerator('H'),
+//    letterGenerator('e'),
+//    letterGenerator('l'),
+//    letterGenerator('l'),
+//    letterGenerator('o'),
+//  ]);
+//  const World = pipe([
+//    letterGenerator('W'),
+//    letterGenerator('o'),
+//    letterGenerator('r'),
+//    letterGenerator('l'),
+//    letterGenerator('d'),
+//  ]);
+//  const helloWorld = pipe([
+//    Hello,
+//    letterGenerator(','),
+//    letterGenerator(' '),
+//    World,
+//    letterGenerator('!'),
+//  ]);
+//  console.log(helloWorld()); 
