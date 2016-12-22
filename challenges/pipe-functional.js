@@ -17,8 +17,8 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
-
+function H(letters = '') {
+  return 'H' + letters;
 }
 
 // OR
@@ -27,7 +27,7 @@ function H(letters) {
 
 
 
-
+// console.log(H());
 
 
 
@@ -41,22 +41,23 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
-
+function e(letters = '') {
+return 'e' + letters;
 }
 
-function l(letters) {
-
+function l(letters = '') {
+return 'l' + letters;
 }
 
-function o(letters) {
-
+function o(letters = '') {
+return 'o' + letters;
 }
+
+// console.log(H(e(l(l(o())))));
 
 // const e = (letters) =>;
 // const l = (letters) =>;
 // const o = (letters) =>;
-
 
 
 
@@ -75,8 +76,13 @@ function o(letters) {
  */
 
 function pipe(functions) {
-
+  return functions.reverse().reduce((acc, curr) => {
+    return acc === undefined ? curr : (x) => curr(acc(x));
+  });
 }
+
+// const Hello = pipe([H,e,l,l,o]);
+// console.log(Hello());
 
 // OR
 
@@ -123,7 +129,7 @@ function pipe(functions) {
  */
 
 function letterGenerator(letter) {
-
+  return (x = '') => {letter + x};
 }
 
 // OR
