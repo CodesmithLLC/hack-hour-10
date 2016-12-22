@@ -18,7 +18,7 @@
  */
 
 function H(letters) {
-
+  return letters !== undefined ? `H${letters}` : 'H'
 }
 
 // OR
@@ -42,15 +42,15 @@ function H(letters) {
  */
 
 function e(letters) {
-
+  return letters !== undefined ? `e${letters}` : 'e'
 }
 
 function l(letters) {
-
+  return letters !== undefined ? `l${letters}` : 'l'
 }
 
 function o(letters) {
-
+  return moreLetters !== undefined ? `o${letters}` : 'o'
 }
 
 // const e = (letters) =>;
@@ -75,7 +75,7 @@ function o(letters) {
  */
 
 function pipe(functions) {
-
+  return (starting) => functions.reduceRight((acc, cur) => cur(acc), starting)
 }
 
 // OR
@@ -123,7 +123,7 @@ function pipe(functions) {
  */
 
 function letterGenerator(letter) {
-
+  return (moreLetters) => moreLetters !== undefined ? `${letter}${moreLetters}` : letter
 }
 
 // OR
@@ -142,3 +142,26 @@ const objectToExport = {
 };
 
 module.exports = objectToExport;
+
+const Hello = pipe([
+  letterGenerator('H'),
+  letterGenerator('e'),
+  letterGenerator('l'),
+  letterGenerator('l'),
+  letterGenerator('o'),
+]);
+const World = pipe([
+  letterGenerator('W'),
+  letterGenerator('o'),
+  letterGenerator('r'),
+  letterGenerator('l'),
+  letterGenerator('d'),
+]);
+const helloWorld = pipe([
+  Hello,
+  letterGenerator(','),
+  letterGenerator(' '),
+  World,
+  letterGenerator('!'),
+]);
+console.log(helloWorld()); // -> 'Hello, World!'
