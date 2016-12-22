@@ -17,19 +17,8 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
 
-}
-
-// OR
-
-// const H = (letters) =>;
-
-
-
-
-
-
+const H = letters => letters ? 'H' + letters : 'H'
 
 /*
  * PART 2
@@ -41,25 +30,9 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
-
-}
-
-function l(letters) {
-
-}
-
-function o(letters) {
-
-}
-
-// const e = (letters) =>;
-// const l = (letters) =>;
-// const o = (letters) =>;
-
-
-
-
+const l = letters => letters ? 'l' + letters : 'l'
+const o = letters => letters ? 'o' + letters : 'o'
+const e = letters => letters ? 'e' + letters : 'e'
 
 /*
  * PART 3 PIPE
@@ -74,17 +47,7 @@ function o(letters) {
  * ello('J'); // -> 'Jello'
  */
 
-function pipe(functions) {
-
-}
-
-// OR
-
-// const pipe = (functions) =>;
-
-
-
-
+const pipe = functions => (letters = '') => letters + functions.reduceRight((str, fn) => fn(str), '')
 
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
@@ -122,15 +85,7 @@ function pipe(functions) {
  * helloWorld(); // -> 'Hello, World!'
  */
 
-function letterGenerator(letter) {
-
-}
-
-// OR
-
-// const letterGenerator = (letter) =>;
-
-
+const letterGenerator = (letter = '') => (letters = '') => letter + letters
 
 const objectToExport = {
   H,
@@ -141,4 +96,4 @@ const objectToExport = {
   letterGenerator,
 };
 
-module.exports = objectToExport;
+module.exports = objectToExport
