@@ -17,11 +17,10 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
-
+function H(letters = '') {
+  return `H${letters}`;
 }
 
-// OR
 
 // const H = (letters) =>;
 
@@ -41,16 +40,16 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
-
+function e(letters = '') {
+return `e${letters}`
 }
 
-function l(letters) {
-
+function l(letters = '') {
+  return `l${letters}`;
 }
 
 function o(letters) {
-
+  return `o${letters}`;
 }
 
 // const e = (letters) =>;
@@ -75,7 +74,10 @@ function o(letters) {
  */
 
 function pipe(functions) {
-
+  return input => input + '' +
+    functions.reduceRight((a,c,i,s) => {
+    return c(a);
+  },'')
 }
 
 // OR
@@ -83,8 +85,8 @@ function pipe(functions) {
 // const pipe = (functions) =>;
 
 
-
-
+const test = pipe([e, l, l, o])
+console.log(test('H'));
 
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
@@ -122,7 +124,8 @@ function pipe(functions) {
  * helloWorld(); // -> 'Hello, World!'
  */
 
-function letterGenerator(letter) {
+function letterGenerator(letter = '') {
+  return input => `${letter}` + input
 
 }
 
