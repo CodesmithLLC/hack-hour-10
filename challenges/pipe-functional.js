@@ -17,18 +17,18 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
+// function H(letters) {
 
-}
+// }
 
 // OR
 
-// const H = (letters) =>;
+const H = (letters) => (!letters) ? 'H' : `H${letters}`;
 
-
-
-
-
+// // TESTS:
+// console.log(H('ello')); // -> 'Hello'
+// console.log(H()); // -> 'H'
+// console.log('--------------------');
 
 
 /*
@@ -41,24 +41,28 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
+// function e(letters) {
 
-}
+// }
 
-function l(letters) {
+// function l(letters) {
 
-}
+// }
 
-function o(letters) {
+// function o(letters) {
 
-}
+// }
 
-// const e = (letters) =>;
-// const l = (letters) =>;
-// const o = (letters) =>;
+const e = (letters) => (!letters) ? 'e' : `e${letters}`;
+const l = (letters) => (!letters) ? 'l' : `l${letters}`;
+const o = (letters) => (!letters) ? 'o' : `o${letters}`;
 
-
-
+// // TESTS:
+// console.log(e('llo')); // -> 'ello'
+// console.log(l('lo')); // -> 'llo'
+// console.log(l('o')); // -> 'lo'
+// console.log(o()); // -> 'o'
+// console.log('--------------------');
 
 
 /*
@@ -74,16 +78,29 @@ function o(letters) {
  * ello('J'); // -> 'Jello'
  */
 
-function pipe(functions) {
+// function pipe(functions) {
 
-}
+// }
 
 // OR
 
-// const pipe = (functions) =>;
+const pipe = (functions) => {
+  return function(start) {
+    let value = start;
+    functions.forEach(item => {
+      value = item(value);
+    });
+    if (typeof value === 'string') return value.split('').reverse().join('');
+    else return value;
+  };
+};
 
-
-
+// // TESTS: 
+// const hello = pipe([H, e, l, l, o]); // -> [function]
+// console.log(hello()); // -> 'Hello'
+// const ello = pipe([e, l, l, o]); // -> [function]
+// console.log(ello('J')); // -> 'Jello'
+// console.log('--------------------');
 
 
 /*
@@ -122,14 +139,44 @@ function pipe(functions) {
  * helloWorld(); // -> 'Hello, World!'
  */
 
-function letterGenerator(letter) {
+// function letterGenerator(letter) {
 
-}
+// }
 
 // OR
 
-// const letterGenerator = (letter) =>;
+const letterGenerator = (letter) => {
+  return function() {
+    return letter;
+  };
+};
 
+// // TESTS: 
+// const H = letterGenerator('H');
+// const i = letterGenerator('i');
+// console.log(H(i())); // -> 'Hi';
+// const Hello = pipe([
+//   letterGenerator('H'),
+//   letterGenerator('e'),
+//   letterGenerator('l'),
+//   letterGenerator('l'),
+//   letterGenerator('o'),
+// ]);
+// const World = pipe([
+//   letterGenerator('W'),
+//   letterGenerator('o'),
+//   letterGenerator('r'),
+//   letterGenerator('l'),
+//   letterGenerator('d'),
+// ]);
+// const helloWorld = pipe([
+//   Hello,
+//   letterGenerator(','),
+//   letterGenerator(' '),
+//   World,
+//   letterGenerator('!'),
+// ]);
+// console.log(helloWorld()); // -> 'Hello, World!'
 
 
 const objectToExport = {
