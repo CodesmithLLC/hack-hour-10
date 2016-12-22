@@ -14,7 +14,10 @@
  */
 
 function binToDec(binary) {
-
+    return (isNaN(Number(binary)) || typeof binary !== 'string') ? undefined:
+    binary.split('').reverse().reduce( (acc, cur, curInd) => acc + Math.pow(2, curInd) * cur, 0);
 }
 
 module.exports = binToDec;
+
+

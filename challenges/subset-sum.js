@@ -9,7 +9,26 @@
  */
 
 function subsetSum(array, target) {
-
+    function findSums(arr) {
+        if(arr.length < 2) {
+            return arr;
+        }
+        let mid = Math.ceil(arr.length / 2);
+        let left = findSums(arr.slice(0, mid));
+        let right = findSums(arr.slice(mid));
+        let results = [];
+        for(let i = 0; i < left.length; i++) {
+            results.push(left[i]);
+            for(let j = 0; j < right.length; j++) {
+                results.push(left[i] + right[j]);
+                results.push(right[j]);
+            }
+        }
+        return results;
+    }
+    return findSums(array).includes(target);
 }
+
+// console.log(subsetSum([8, -2, 1, -3, 0], 6));
 
 module.exports = subsetSum;

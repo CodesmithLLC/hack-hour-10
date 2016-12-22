@@ -11,7 +11,11 @@
  */
 
 function repeatNumbers(array) {
-
+  return array.reduce( (acc, cur, curInd) => acc + cur - curInd);
 }
+
+// var myNums = [1, 2, 3, 6, 4, 5, 6, 7, 8, 9, 10];
+
+// console.log(repeatNumbers(myNums));
 
 module.exports = repeatNumbers;

@@ -12,7 +12,18 @@
  */
 
 function reverseInPlace(array) {
-
+    if (!(array instanceof Array)) {
+        return 'Error: input must be an array';
+    } else {
+        let newArray = [];
+        for (let i = array.length - 1; i >= 0; i--) {
+            newArray.push(array[i]);
+        }
+        for (let i = 0; i < newArray.length; i++) {
+            array[i] = newArray[i];
+        }
+    }
 }
+
 
 module.exports = reverseInPlace;

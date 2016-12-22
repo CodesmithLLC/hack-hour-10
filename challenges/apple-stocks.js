@@ -13,7 +13,21 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-
+  if( !(stock_prices_yesterday instanceof Array) ){
+    return 0;
+  }
+  let greatestDiff = -Infinity;
+  for( let i = 0; i < stock_prices_yesterday.length; i++ ) {
+    let cur = stock_prices_yesterday[i];
+    for( let j = i; j < stock_prices_yesterday.length; j++ ) {
+      if( stock_prices_yesterday[j] - cur > greatestDiff ) {
+        greatestDiff = stock_prices_yesterday[j] - cur;
+      }
+    }
+    
+  }
+  return greatestDiff < 0 ? 0 : greatestDiff;
 }
+
 
 module.exports = bestProfit;

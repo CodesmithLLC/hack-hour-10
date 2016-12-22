@@ -17,9 +17,71 @@
 *
 * Example: poker([3,5,5,5,2], [4,6,7,8,8]) -> "Player 1 wins"
 */
+function straight(hand) {
+  for(let i = 0; i < hand.length - 1; i++) {
+    if(hand[i] - 1 !== hand[i+1]) return false;
+  } return true;
+}
 
-function poker(hand1, hand2) {
+function type(hand) {
+  hand = hand.reduce( (acc, cur) => { 
+      if(acc[cur] === undefined) acc[cur] = 1;
+      else acc[cur]++;
+      return acc;
+  }, {});
+  let cards = Object.keys(hand);
+  cards = cards.sort( (a, b) => {
+    if(hand[b] - hand[a] < 0) return hand[b] - hand[a];
+    else return b - a;
+  });
+  cards = cards.map( (ele) => Number(ele));
+  let result;
+  if(hand[cards[0]] === 4) result = {type: 7, high: cards};
+  else if(hand[cards[0]] === 3 && hand[cards[1]] === 2) result = {type: 6, high: cards};
+  else if(hand[cards[0]] === 3 && hand[cards[1]] === 2) result = {type: 6, high: cards};
+  else if(hand[cards[0]] === 3) result = {type: 4, high: cards};
+  else if(hand[cards[0]] === 2 && hand[cards[1]] === 2) result = {type: 3, high: cards};
+  else if(hand[cards[0]] === 2) result = {type: 2, high: cards};
+  else result = {type: 1, high: cards};
+  return result;
 
 }
+
+function poker(hand1, hand2) {
+  console.log(hand1, hand2);
+  let h1 = hand1.sort( (a, b) => b - a);
+  let h2 = hand2.sort( (a, b) => b - a);
+  let res1, res2;
+  let k1 = [], k2 = [];
+  if(straight(h1)) res1 = {type: 5, high: [h1[0]]};
+  if(straight(h2)) res2 = {type: 5, high: [h2[0]]};
+
+  if(!res1) res1 = type(h1);
+  if(!res2) res2 = type(h2);
+
+  // console.log(res1, res2);
+
+  if(res1.type > res2.type) return "Player 1 wins";
+  else if(res2.type > res1.type) return "Player 2 wins";
+  else {
+    for(let i = 0; i < res1.high.length; i++) {
+      if(res1.high[i] > res2.high[i]) return "Player 1 wins";
+      else if(res2.high[i] > res1.high[i]) return "Player 2 wins";
+    }
+    return "Draw";
+  }
+}
+
+// let hand1 = [ 3, 5, 5, 5, 2 ], hand2 = [ 4, 6, 7, 8, 8 ];
+// let hand1 = [ 2, 4, 5, 9, 14 ], hand2 = [ 2, 4, 5, 9, 10 ];
+// let hand1 = [ 2, 2, 11, 13, 14 ], hand2 = [ 14, 13, 12, 11, 4 ];
+// let hand1 = [ 2, 3, 13, 13, 13 ], hand2 = [ 4, 14, 5, 14, 7 ];
+// let hand1 = [ 3, 5, 3, 5, 2 ], hand2 = [ 5, 2, 3, 3, 5 ];
+// let hand1 = [ 3, 4, 5, 6, 7 ], hand2 = [ 3, 4, 5, 6, 7 ];
+// let hand1 = [ 10, 11, 11, 10, 11 ], hand2 = [ 5, 7, 7, 7, 7 ];
+// let hand1 = [ 2, 2, 3, 3, 4 ], hand2 = [ 2, 2, 3, 3, 12 ];
+
+// console.log(poker(hand1, hand2));
+
 
 module.exports = poker;

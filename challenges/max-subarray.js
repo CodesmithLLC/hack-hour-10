@@ -8,7 +8,18 @@
  */
 
 function maxSubarray(arr) {
-
+  var highest = -Infinity;
+  function find(array, count) {
+    if(array[0] === undefined || count > array.length) return false;
+    highest = array.slice(0, count).reduce((acc, cur) => acc + cur) > highest ? array.slice(0, count).reduce((acc, cur) => acc + cur) : highest;
+    return find(array.slice(1), count) || find(array, count + 1);
+  }
+  find(arr, 1);
+  return highest;
 }
+
+// var myArray = [15, 20, -5, 10];
+
+// console.log(maxSubarray(myArray));
 
 module.exports = maxSubarray;

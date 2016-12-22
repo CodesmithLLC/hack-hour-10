@@ -11,6 +11,21 @@
 
 function solveKnapsack(items, weightAvailable) {
 
+  let value = 0;
+
+  function find(items, weightAvailable, val) {
+    if(weightAvailable < 0) return 0;
+    if(weightAvailable === 0 || items.length < 1) {
+      value = val > value ? val : value;
+      return 0;
+    }
+    return find(items.slice(1), weightAvailable - items[0].weight, val + items[0].value) + find(items.slice(1), weightAvailable, val);
+  }
+  find(items, weightAvailable, 0);
+  return value;
 };
+
+
+
 
 module.exports = solveKnapsack;
