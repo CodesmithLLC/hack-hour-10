@@ -18,14 +18,19 @@
  */
 
 function H(letters) {
-
+  // return letters.length === 0 ? 'H' : `H${letters}`;
+  return letterFunction('H')(letters);
 }
 
 // OR
 
 // const H = (letters) =>;
 
-
+function letterFunction(letter) {
+  return (letters) => {
+    return typeof letters === 'string' && letters.length > 0 ?  letter + letters : letter;
+  };
+}
 
 
 
@@ -42,23 +47,23 @@ function H(letters) {
  */
 
 function e(letters) {
-
+  return letterFunction('e')(letters);
 }
 
 function l(letters) {
-
+  return letterFunction('l')(letters);
 }
 
 function o(letters) {
-
+  return letterFunction('o')(letters);
 }
 
 // const e = (letters) =>;
 // const l = (letters) =>;
 // const o = (letters) =>;
 
-
-
+// console.log(H('ello'));
+// console.log(o(' there'));
 
 
 /*
@@ -75,16 +80,20 @@ function o(letters) {
  */
 
 function pipe(functions) {
-
+  return (startVal = '') => {
+    return functions.reduce((accum, func) => accum = func(accum), startVal);
+  };
 }
 
 // OR
 
 // const pipe = (functions) =>;
 
+// const hello = pipe([H, e, l, l, o]);
+// console.log(hello());
 
-
-
+// const ello = pipe([e, l, l, o]); // -> [function]
+// console.log(ello('J')); // -> 'Jello'
 
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
@@ -123,7 +132,7 @@ function pipe(functions) {
  */
 
 function letterGenerator(letter) {
-
+  return letterFunction(letter);
 }
 
 // OR
