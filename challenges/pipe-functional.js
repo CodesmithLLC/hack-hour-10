@@ -47,7 +47,7 @@ const e = letters => letters ? 'e' + letters : 'e'
  * ello('J'); // -> 'Jello'
  */
 
-const pipe = functions => (letters = '') => letters + functions.reduceRight((str, fn) => fn(str), '')
+const pipe = functions => (letters = '') => functions.reduceRight((str, fn) => fn(str), letters)
 
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
@@ -86,6 +86,30 @@ const pipe = functions => (letters = '') => letters + functions.reduceRight((str
  */
 
 const letterGenerator = (letter = '') => (letters = '') => letter + letters
+
+
+const Hello = pipe([
+  letterGenerator('H'),
+  letterGenerator('e'),
+  letterGenerator('l'),
+  letterGenerator('l'),
+  letterGenerator('o'),
+]);
+const World = pipe([
+  letterGenerator('W'),
+  letterGenerator('o'),
+  letterGenerator('r'),
+  letterGenerator('l'),
+  letterGenerator('d'),
+]);
+const helloWorld = pipe([
+  Hello,
+  letterGenerator(','),
+  letterGenerator(' '),
+  World,
+  letterGenerator('!'),
+]);
+console.log(helloWorld()); // -> 'Hello, World!'
 
 const objectToExport = {
   H,
