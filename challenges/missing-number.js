@@ -40,6 +40,21 @@ function missingNum(arr) {
 return expectedSum - actualSum;
 }
 
+// function missingNum(arr) {
+
+//   // Represents last value for arithmetic sum formula
+//   const rangeLength = arr.length + 1;
+
+//   // Employ arithmetic sequence sum formula
+//   const rangeSum = rangeLength * (1 + rangeLength) / 2;
+
+//   // Add all values in array
+//   const arraySum = arr.reduce((total, num) => total - num, sum);
+
+//   // Difference represents missing number!
+//   return rangeSum - arraySum;
+// }
+
 // console.log(missingNum([1,4,3,2,6,5,8,9]))
 
 module.exports = missingNum;

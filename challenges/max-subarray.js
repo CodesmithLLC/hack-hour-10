@@ -7,6 +7,8 @@
  *
  */
 
+// O(n) time, O(1) space 
+
 function maxSubarray(arr) {
   let maxSum = 0;
   let tempSum = 0;

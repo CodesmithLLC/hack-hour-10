@@ -16,7 +16,7 @@ function findInOrderedSet(arr, target) {
   if (target === midVal) return true;
 
   target < midVal ? temp = temp.slice(0, midIndex) : temp = temp.slice(midIndex);
-  return arr.length === 1 ? false :  findInOrderedSet(temp, target);
+  return arr.length === 1 ? false : findInOrderedSet(temp, target);
 }
 
 module.exports = findInOrderedSet;

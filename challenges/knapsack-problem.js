@@ -25,7 +25,7 @@ function solveKnapsack(items, weightAvailable) {
     let futureValue = currentValue + backpack[0].value;
     if (futureWeight < 0) { 
       highestValue = Math.max(highestValue, currentValue); 
-      return
+      return;
     }
     helper(backpack.slice(1), futureWeight, futureValue);
     helper(backpack.slice(1), currentWeight, currentValue);
@@ -33,6 +33,6 @@ function solveKnapsack(items, weightAvailable) {
 }
 
 // var items = [{weight: 1, value : 3}, {weight: 2, value : 4}, {weight: 3, value : 5}];
-// console.log(solveKnapsack(items, 5))
+// console.log(solveKnapsack(items, 3))
 
 module.exports = solveKnapsack;

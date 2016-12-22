@@ -9,29 +9,44 @@
  * Do not assume the ranges are in order
  */
 
+function mergeRanges(array) {
+  array = array.sort((a, b) => a[0] - b[0]);
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    let curr = array[i];
+    let last = result[result.length - 1];
+    if (result.length > 0) {
+      if (curr[0] <= last[1]) {
+        if (curr[1] > last[1]) {
+          last[1] = curr[1];
+        }
+        continue;
+      }
+    }
+    result.push(curr);
+  }
+  return result;
+}
+
+/*
 
 function mergeRanges(array) {
-if (array.constructor !== Array) {
-  throw new Error('Input must be an array.');
+  array.sort((a, b) => a[0] - b[0]);
+  let i = 0;
+  while (i < array.length - 1) {
+    if (array[i][1] >= array[i + 1][0]) {
+      if (array[i][1] < array[i + 1][1]) {
+        array[i][1] = array[i + 1][1];
+      }
+      array.splice(i + 1, 1);
+      } else {
+        i++;
+      }
+    }
+  return array;
 }
 
-let sortedArr = array.sort((arr1, arr2) => {
-  return arr1[0] - arr2[0];
-})
-let temp = [];
-
-for (let i = 0; i < sortedArr.length - 1; i++) {
-  if (sortedArr[i][1] >= sortedArr[i + 1][0]) {
-    temp.push(sortedArr[i][0]);
-    temp.push(sortedArr[i + 1][1]);
-    sortedArr.splice(i, 2);
-    sortedArr.splice(i, 0, temp);
-    temp = [];
-    i--;
-  }
-}
-return sortedArr;
-}
+*/
 
 
 module.exports = mergeRanges;

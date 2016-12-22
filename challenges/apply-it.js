@@ -32,4 +32,19 @@ function applyIt(func, args) {
   }
 }
 
+/*
+
+function applyIt(func, args) {
+  var funcCall = "func(";
+  var argList = args.map(function(_, i) {
+    return `args[${i}]`;
+  });
+  funcCall += argList.join(',') + ');';
+  return function() {
+    return eval(funcCall);
+  };
+}
+
+*/
+
 module.exports = applyIt;

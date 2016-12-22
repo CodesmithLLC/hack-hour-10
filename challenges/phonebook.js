@@ -26,6 +26,9 @@
 //   ['jasmine','1800-974-4539'],
 // ];
 
+// Use memoization
+// Change jazbook to object prototype to limit memory used
+
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
   const phonebook = makePhoneBookObject(jazbook);

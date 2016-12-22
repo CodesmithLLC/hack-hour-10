@@ -42,10 +42,7 @@ function pascalTriangle(numRows) {
   while (count < numRows) {
     let lastRow = answer[answer.length - 1];
     for (let i = 0; i <= count; i++) {
-      if (i === 0) {
-        temp[i] = 1;
-      }
-      else if (i === count) {
+      if (i === 0 || i === count) {
         temp[i] = 1;
       }
       else {
@@ -59,4 +56,25 @@ function pascalTriangle(numRows) {
   return answer;
 }
 
+// console.log(pascalTriangle(6))
+
 module.exports = pascalTriangle;
+
+// Recursive solution
+
+// function pascalTriangle2(n, triangle) {
+//   if (!n || n < 1) return [];
+//   triangle = triangle || [[1]];
+
+//   if (n === 1) return triangle;
+
+// let row = [1];
+// let prevRow = triangle[triangle.length - 1];
+
+// for (let i = 1; i < prevRow.length; i++) {
+//   row.push(prevRow[i] + prevRow[i - 1]);
+// }
+// row.push(1);
+// triangle.push(row);
+// return pascalTriangle2(n - 1, triangle);
+// }

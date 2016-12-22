@@ -11,6 +11,7 @@
 
 function getAllProducts(array) {
   if (array.constructor !== Array) { throw new Error ('Input must be a valid array.'); }
+  else if (array === []) { return [0]; }
   const output = [];
   let temp = JSON.parse(JSON.stringify(array));
   let product = 1;

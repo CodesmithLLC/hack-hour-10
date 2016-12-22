@@ -18,7 +18,7 @@
  */
 
 function H(letters) {
-
+  return letters ? `H${letters}` : 'H';
 }
 
 // OR
@@ -27,7 +27,7 @@ function H(letters) {
 
 
 
-
+// console.log(H('ello'));
 
 
 
@@ -42,24 +42,25 @@ function H(letters) {
  */
 
 function e(letters) {
-
+  return letters ? `e${letters}` : 'e';  
 }
 
 function l(letters) {
-
+  return letters ? `l${letters}` : 'l';
 }
 
 function o(letters) {
-
+  return letters ? `o${letters}` : 'o';
 }
 
 // const e = (letters) =>;
 // const l = (letters) =>;
 // const o = (letters) =>;
 
-
-
-
+// console.log(e('llo'));
+// console.log(l('lo'));
+// console.log(l('o'));
+// console.log(o());
 
 /*
  * PART 3 PIPE
@@ -75,15 +76,22 @@ function o(letters) {
  */
 
 function pipe(functions) {
-
+  return (val) => {
+    return functions.reduce((p, c) => {
+      return c(p);
+    }, val).split('').reverse().join('');
+  }
 }
 
 // OR
 
 // const pipe = (functions) =>;
 
+// const hello = pipe([H, e, l, l, o])
+// console.log(hello())
 
-
+// const ello = pipe([e, l, l, o])
+// console.log(ello('J'));
 
 
 /*
@@ -123,14 +131,18 @@ function pipe(functions) {
  */
 
 function letterGenerator(letter) {
-
+  return (letters) => {
+    return letters ? `${letter}${letters}` : `${letter}`;
+  }
 }
 
 // OR
 
 // const letterGenerator = (letter) =>;
 
-
+// const h = letterGenerator('h');
+// const i = letterGenerator('i');
+// console.log(h(i())); // -> 'Hi';
 
 const objectToExport = {
   H,

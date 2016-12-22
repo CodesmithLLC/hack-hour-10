@@ -27,13 +27,15 @@
  *
  */
 
+// **Rewrite with tortoise and hare solution**
+
 var Node = function(value) {
   this.value = value;
   this.next = null;
 }
 
 function hasCycle(head) {
-  if (head.constructor !== Node || head.next === null || head.next.next === null) {
+  if (head.constructor !== Node || head === null || head.next === null || head.next.next === null) {
     return false;
   }
 
