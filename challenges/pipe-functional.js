@@ -2,7 +2,7 @@
  * FUNCTIONAL PROGRAMMING
  * You will not be creating any variables in this hack hour other than functions
  *
- * Not for the weak of heart. I challenge you.
+ * Not for the feint of heart. I challenge you.
  * Every single one of these functions can be written in one line :)
  */
 
@@ -17,19 +17,10 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
+const H = (letters = '') => 'H' + letters;
 
-}
-
-// OR
-
-// const H = (letters) =>;
-
-
-
-
-
-
+// console.log(H());
+// console.log(H('ello'));
 
 /*
  * PART 2
@@ -41,25 +32,9 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
-
-}
-
-function l(letters) {
-
-}
-
-function o(letters) {
-
-}
-
-// const e = (letters) =>;
-// const l = (letters) =>;
-// const o = (letters) =>;
-
-
-
-
+const e = (letters = '') => 'e' + letters;
+const l = (letters = '') => 'l' + letters;
+const o = (letters = '') => 'o' + letters;
 
 /*
  * PART 3 PIPE
@@ -74,63 +49,63 @@ function o(letters) {
  * ello('J'); // -> 'Jello'
  */
 
-function pipe(functions) {
+// function pipe(functions) {
+//   return (start = '') => {
+//     const end = functions.reduce((acc, func) => {
+//       return acc + func();
+//     }, '');
+//     return start + end;
+//   }
+// }
 
-}
-
-// OR
-
-// const pipe = (functions) =>;
-
-
-
-
+const pipe = (functions) => (start = '') => start + functions.reduce((word, func) => word + func(), '');
+// console.log(pipe([e, l, l, o])());
+// console.log(pipe([e, l, l, o])('J'))
 
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
  * Imagine if you had to create all strings in this manner.
  * You would have to create a function for every single possible character.
- * How can we abstract that out into a function
+ * How can we abstract that out into a function?
  * Create a function letterGenerator
  * It will abstract out the functionality of those earlier defined letter functions
  * It is going to return functions with the same functionality as your previous letter functions
  * These functions will create the letter based on the input to the outer function
- * const H = letterGenerator('H');
- * const i = letterGenerator('i');
- * console.log(H(i())); // -> 'Hi';
- * const Hello = pipe([
- *   letterGenerator('H'),
- *   letterGenerator('e'),
- *   letterGenerator('l'),
- *   letterGenerator('l'),
- *   letterGenerator('o'),
- * ]);
- * const World = pipe([
- *   letterGenerator('W'),
- *   letterGenerator('o'),
- *   letterGenerator('r'),
- *   letterGenerator('l'),
- *   letterGenerator('d'),
- * ]);
- * const helloWorld = pipe([
- *   Hello,
- *   letterGenerator(','),
- *   letterGenerator(' '),
- *   World,
- *   letterGenerator('!'),
- * ]);
- * helloWorld(); // -> 'Hello, World!'
- */
+*/
 
-function letterGenerator(letter) {
+// function letterGenerator(letter) {
+//   return (word = '') => letter + word;
+// }
 
-}
+const letterGenerator = (letter) => (word = '') => letter + word;
+// console.log(letterGenerator('i')());
 
-// OR
-
-// const letterGenerator = (letter) =>;
-
-
+// const f = letterGenerator('f');
+// const i = letterGenerator('i');
+// console.log(f(i())); // -> 'fi';
+// const Hello = pipe([
+//   letterGenerator('H'),
+//   letterGenerator('e'),
+//   letterGenerator('l'),
+//   letterGenerator('l'),
+//   letterGenerator('o'),
+// ]);
+// console.log(Hello());
+// const World = pipe([
+//   letterGenerator('W'),
+//   letterGenerator('o'),
+//   letterGenerator('r'),
+//   letterGenerator('l'),
+//   letterGenerator('d'),
+// ]);
+// const helloWorld = pipe([
+//   Hello,
+//   letterGenerator(','),
+//   letterGenerator(' '),
+//   World,
+//   letterGenerator('!'),
+// ]);
+// console.log(helloWorld()); // -> 'Hello, World!'
 
 const objectToExport = {
   H,
