@@ -58,7 +58,7 @@ const o = (letters = '') => 'o' + letters;
 //   }
 // }
 
-const pipe = (functions) => (start = '') => start + functions.reduce((word, func) => word + func(), '');
+const pipe = (functions) => (start = '') => functions.reduce((word, func) => word + func(), start);
 // console.log(pipe([e, l, l, o])());
 // console.log(pipe([e, l, l, o])('J'))
 
