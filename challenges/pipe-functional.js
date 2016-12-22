@@ -51,9 +51,9 @@ const H = (letters) =>  letters === undefined ? 'H' : 'H' + letters;
 //   return letters === undefined ? 'o' : 'o' + letters;
 // }
 
-const e = (letters) => letters === undefined ? 'e' : letters + 'e';
-const l = (letters) => letters === undefined ? 'l' : letters + 'l';
-const o = (letters) => letters === undefined ? 'o' : letters + 'o';
+const e = (letters) => letters === undefined ? 'e' : 'e' + letters;
+const l = (letters) => letters === undefined ? 'l' : 'l' + letters;
+const o = (letters) => letters === undefined ? 'o' : 'o' + letters;
 
 
 /*
@@ -76,7 +76,8 @@ const o = (letters) => letters === undefined ? 'o' : letters + 'o';
 // OR
 
 const pipe = (functions) => (x) => functions.reduce((value, fn) => fn(value), x);
-
+// const ello = pipe([e, l, l, o]); // -> [function]
+// const hello = pipe([H, e, l, l, o]); // -> [function]
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
  * Imagine if you had to create all strings in this manner.
