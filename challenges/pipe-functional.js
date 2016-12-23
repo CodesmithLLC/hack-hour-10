@@ -86,8 +86,7 @@ const pipe = functions => x => functions.reduce((v, f) => f(v), x);
  * helloWorld(); // -> 'Hello, World!'
  */
 
-const letterGenerator = (letter) => (letters) => letters ? `${letters}letter` : letter;
-
+const letterGenerator = letter => letters => letters ? `${letters}${letter}` : letter;
 
 const objectToExport = {
   H,
@@ -107,3 +106,12 @@ module.exports = objectToExport;
 //   H,e,l,l,o
 // ]);
 // console.log(hello());
+// const Hello = pipe([
+//    letterGenerator('H'),
+//    letterGenerator('e'),
+//    letterGenerator('l'),
+//    letterGenerator('l'),
+//    letterGenerator('o'),
+//  ]);
+//  console.log(typeof letterGenerator('H'));
+//  console.log(Hello());
