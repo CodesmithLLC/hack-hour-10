@@ -16,14 +16,10 @@ eachPermutation([1, 2, 3], function(perm) {
 [ 3, 2, 1 ]
 */
 
-function eachPermutation(arr, callback = null) {
+function eachPermutation(arr, callback = null, perms = []) {
+  const permute = (a, p = []) => !a.length ? perms.push(p) : a.forEach((e, i) => permute([...a.slice(0, i), ...a.slice(i + 1)], p.concat(e)))
+  permute(arr)
+  perms.forEach(p => callback(p))
 }
-
-function permutation(arr, cache = []) {
-  if (!arr.length) return cache
-}
-
 
 module.exports = eachPermutation;
-
-console.log(permutation([1,2,3]));
