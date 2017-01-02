@@ -17,7 +17,25 @@
  */
 
 function rotateGrid(grid, n) {
+  let newGrid = [];
 
+  for (let i = 0; i < n; i++) {
+    let newRow = [];
+
+    // start from last old array, push into new array
+    for (let j = n - 1; j >= 0; j--) {
+      newRow.push(grid[j][i]);
+    }
+
+    // push new array into new nested array
+    newGrid.push(newRow);
+  }
+
+  return newGrid;
 }
+
+const sampleGrid = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
+console.log(rotateGrid(sampleGrid, 3)); // [ [7, 4, 1], [8, 5, 2], [9, 6, 3] ]
+
 
 module.exports = rotateGrid;

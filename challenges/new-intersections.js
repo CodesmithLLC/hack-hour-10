@@ -12,12 +12,73 @@
  *
  * Constraints and Notes:
  *
- * 	 - x and y will contain the same number of elements
- * 	 
+ *    - x and y will contain the same number of elements
+ *
  */
 
-function newIntersections(x, y){
+function newIntersections(xArray, yArray) {
 
+    // map relation between x and y coords
+    var verticals = createVerticals();
+    var horizontals = createHorizontals();
+
+    // leave only [min, max] as values in verticals and horizontals
+    rangify(verticals);
+    rangify(horizontals);
+
+    var count = 0;
+
+    for (var y in horizontals) {
+       var xRange = horizontals[y];
+
+       for (var x in verticals) {
+        var yRange = verticals[x];
+         // keep count of those that are bounded on all 4 sides
+         if (x > xRange[0] && x < xRange[1] && y > yRange[0] && y < yRange[1]) {
+	   count++;
+         }
+       }
+    }
+    return count;
+};
+
+function createVerticals(arrayX, arrayY) {
+    var verticals = {};
+
+    // count() counts the number of times each key appears in the array
+    var counts = count(arrayX);
+    for (var c in counts) {
+        for (var i in arrayX) {
+            if (arrayX[i] == c) {
+                verticals[c] = (verticals[c] || []).concat(arrayY[i]);
+            }
+        }
+    }
+    return verticals;
 }
+
+function createHorizontals(arrayX, arrayY) {
+    var horizontals = {};
+
+    // count() counts the number of times each key appears in the array
+    var counts = count(arrayY);
+    for (var c in counts) {
+        for (var i in arrayY) {
+            if (arrayY[i] == c) {
+                horizontals[c] = (horizontals[c] || []).concat(arrayY[i]);
+            }
+        }
+    }
+    return horizontals;
+}
+
+// take the value of all the keys in lines and replaces it with [min, max]
+function rangify(lines) {
+    for (var key in lines) {
+        lines[key] = [Math.min.apply(this,lines[key]),
+                      Math.max.apply(this,lines[key])];
+    }
+};
+
 
 module.exports = newIntersections;

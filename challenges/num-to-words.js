@@ -13,7 +13,47 @@
  */
 
 function numToWords(num) {
+  if (num === 0) return 'Zero';
+  const numPlace = ['', 'Thousand', 'Million', 'Billion', 'Trillion', 'Quadrillion'];
+  const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+  const tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  
+  num = String(num);
+  while (num.length % 3 !== 0) {
+    num = '0' + num;
+  }
 
+  let numArr = [];
+  for (let i = 0; i < num.length; i += 3) {
+    numArr.push(num.slice(i, i+3));
+  }
+  // console.log(numArr);
+  let parsed = '';
+  for (let j = 0; j < numArr.length; j++) {
+    parsed += parsePlaces(numArr[j]) + numPlace[numArr.length - 1 - j];
+  }
+  // console.log(parsed);
+  function parsePlaces(num3) {
+    let parsedString = '';
+    if (num3[0] !== '0') parsedString += ones[num3[0]] + 'Hundred';
+    parsedString += tens[num3[1]];
+    parsedString += ones[num3[2]];
+    return parsedString;
+  }
+
+  return parsed
+    .replace('TenOne', 'Eleven')
+    .replace('TenTwo', 'Twelve')
+    .replace('TenThree', 'Thirteen')
+    .replace('TenFour', 'Fourteen')
+    .replace('TenFive', 'Fifteen')
+    .replace('TenSix', 'Sixteen')
+    .replace('TenSeven', 'Seventeen')
+    .replace('TenEight', 'Eighteen')
+    .replace('TenNine', 'Nineteen');
 }
+
+// console.log(numToWords(2999))// -> 'TwoThousandNineHundredNintyNine'
+// console.log(numToWords(113))// -> 'Fifteen'
 
 module.exports = numToWords;
