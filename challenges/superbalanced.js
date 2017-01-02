@@ -20,7 +20,7 @@ function superbalanced(tree) {
   function heightbalanced(tree) {
     return Math.abs(height(tree.left) - height(tree.right)) <= 1;
   }
-  return heightbalanced(tree);
+  return heightbalanced(tree) && heightbalanced(tree.left) && heightbalanced(tree.right)
   // function bst(tree, min, max) {
   //   if (tree === null) return true;
   //   if (tree.value > min && tree.value < max
