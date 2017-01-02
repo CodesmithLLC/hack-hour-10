@@ -13,23 +13,29 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-function superbalanced(tree) {
+const superbalanced = tree => {
+  // need to return both a boolean + the length
+  // so, you made 2x helper functions to do it
 
-  function countNodes(tree) {
-    if (!tree) return 0;
-    if (!tree.left && !tree.right) return 1;
-    return 1 + countNodes(tree.left) + countNodes(tree.right);
-  }  
+  const getLength = (node, length = 0) => {
+    if (!node) return length;
+    
+    let left = getLength(node.left, length + 1);
+    let right = getLength(node.right, length + 1);
+    
+    return Math.max(left, right);
+  }
 
-  return Math.abs(countNodes(tree.left) - countNodes(tree.right)) <= 1;
+  const checkBalance = (node) => {
+    if (Math.abs(getLength(node.left) - getLength(node.right)) > 1) {
+      return false;
+    } else {
+      return true
+    }
+    return checkBalance(node.left) && checkBalance(node.right);
+  }
+
+  return checkBalance(tree);
 }
 
-
-// let bst = new BinaryTree('a');
-// bst.left = new BinaryTree('b');
-// bst.right = new BinaryTree('c');
-// bst.right.right = new BinaryTree('d');
-// bst.right.left = new BinaryTree('e');
-// bst.left.left = new BinaryTree('f');
-
-module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
+module.exports = { BinaryTree: BinaryTree, superbalanced: superbalanced };
