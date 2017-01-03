@@ -13,15 +13,13 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-  if(!stock_prices_yesterday || !Array.isArray(stock_prices_yesterday) || stock_prices_yesterday.length < 2) return 0;
+  if (!stock_prices_yesterday || !Array.isArray(stock_prices_yesterday) || stock_prices_yesterday.length < 2) return 0;
   let max = 0;
-  stock_prices_yesterday.forEach( (ele, ind, arr) => {
-    if(ind + 1 < arr.length) arr.slice(ind + 1).forEach(ele2 => {
-      let curr = ele - ele2;
-      if(curr > max) max = curr;
-    });
+  stock_prices_yesterday.forEach((val, ind, arr) => {
+    let tempMax = val - Math.min(...arr.slice(ind + 1));
+    tempMax > max ? max = tempMax : max;
   });
- return max;
+  return max > 0 ? max : 0;
 }
 
 module.exports = bestProfit;

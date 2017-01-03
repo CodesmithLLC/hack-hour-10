@@ -17,8 +17,8 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback, newArr = []) {
-  if(!arr.length) return callback(newArr);
-  else return arr.forEach( (ele, ind) => eachPermutation([...arr.slice(0, ind), ...arr.slice(ind + 1)], callback, newArr.concat(ele)));
+  if(!arr.length) callback(newArr);
+  else arr.forEach( (ele, ind) => eachPermutation([...arr.slice(0, ind), ...arr.slice(ind + 1)], callback, newArr.concat(ele)));
 }
 
 module.exports = eachPermutation;
