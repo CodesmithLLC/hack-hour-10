@@ -15,17 +15,15 @@
  *
  * BONUS: Do this in place
  */
-
+/**
+ * Given an NxN grid, rotate it clockwise
+ *
+ * @param {Array} grid
+ * @param {number} n
+ * @return {Array}
+ */
 function rotateGrid(grid, n) {
-  const newGrid = [];
-  for (let i = 0; i < n; i++) {
-    const row = [];
-    for (let j = n - 1; j >= 0; j--) {
-      row.push(grid[j][i]);
-    }
-    newGrid.push(row);
-  }
-  return newGrid;
+  
 }
 
 module.exports = rotateGrid;
