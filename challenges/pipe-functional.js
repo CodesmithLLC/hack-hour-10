@@ -5,5 +5,14 @@ const e = letters => letters ? 'e' + letters : 'e'
 const pipe = functions => (letters = '') => functions.reduceRight((str, fn) => fn(str), letters)
 const letterGenerator = (letter = '') => (letters = '') => letter + letters
 
+const objectToExport = {
+  H,
+  e,
+  l,
+  o,
+  pipe,
+  letterGenerator,
+};
+
 const objectToExport = {H,e,l,o,pipe,letterGenerator};
 module.exports = objectToExport
