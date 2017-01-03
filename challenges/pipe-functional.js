@@ -87,30 +87,6 @@ const pipe = functions => (letters = '') => functions.reduceRight((str, fn) => f
 
 const letterGenerator = (letter = '') => (letters = '') => letter + letters
 
-
-const Hello = pipe([
-  letterGenerator('H'),
-  letterGenerator('e'),
-  letterGenerator('l'),
-  letterGenerator('l'),
-  letterGenerator('o'),
-]);
-const World = pipe([
-  letterGenerator('W'),
-  letterGenerator('o'),
-  letterGenerator('r'),
-  letterGenerator('l'),
-  letterGenerator('d'),
-]);
-const helloWorld = pipe([
-  Hello,
-  letterGenerator(','),
-  letterGenerator(' '),
-  World,
-  letterGenerator('!'),
-]);
-console.log(helloWorld()); // -> 'Hello, World!'
-
 const objectToExport = {
   H,
   e,
