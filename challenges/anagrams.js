@@ -12,16 +12,16 @@
   * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
-function anagrams(string) {
-  const results = []
-  function recurse(str1, str2) {
-    if (!str2.length) results.push(str1)
-    for (let i = 0; i < str2.length; i++) {
-      recurse(str1.concat(str2[i]), str2.slice(0, i).concat(str2.slice(i + 1)))
-    }
-  }
-  recurse('', string)
-  return results.filter((e, i, s) => i === s.indexOf(e))
+function anagrams(string = '', rem = '', all = []) {
+    const unique = Object.keys(string.split('').reduce((a, c) => {
+      a[c] = true
+      return a
+    }, {})).join('')
+
+    if (!unique) all.push(rem)
+    else unique.split('').forEach((e, i) => anagrams(unique.slice(0, i).concat(unique.slice(i + 1)), rem.concat(e), all))
+
+    return all
 }
 
 module.exports = anagrams;

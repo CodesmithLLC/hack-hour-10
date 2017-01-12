@@ -36,12 +36,12 @@ function poker(hand1, hand2) {
         highMatchedCard = card
       }
     })
-    // Sort array of card values.
-    values.sort((a, b) => a > b)
+
     let score = 0
     switch (highestCount) {
       case 1:
         // Check for straight. If not, then it is just "high card."
+        values.sort((a, b) => a > b)
         if (values[4] - values[0] === 4) score = 5
         else score = 1
         tiebreaker = highMatchedCard
@@ -77,18 +77,17 @@ function poker(hand1, hand2) {
     tiebreaker = Number(tiebreaker)
     return { score, highMatchedCard, tiebreaker }
   }
-  const player1 = assignScore(hand1), player2 = assignScore(hand2)
+
+  const player1 = assignScore(hand1)
+  const player2 = assignScore(hand2)
+
   if (player1.score > player2.score) return "Player 1 wins"
   if (player1.score < player2.score) return "Player 2 wins"
-  if (player1.score === player2.score) {
-    if (player1.highMatchedCard > player2.highMatchedCard) return "Player 1 wins"
-    if (player1.highMatchedCard < player2.highMatchedCard) return "Player 2 wins"
-    if (player1.highMatchedCard === player2.highMatchedCard) {
-      if (player1.tiebreaker > player2.tiebreaker) return "Player 1 wins"
-      if (player1.tiebreaker < player2.tiebreaker) return "Player 2 wins"
-      if (player1.tiebreaker === player2.tiebreaker) return "Draw"
-    }
-  }
+  if (player1.highMatchedCard > player2.highMatchedCard) return "Player 1 wins"
+  if (player1.highMatchedCard < player2.highMatchedCard) return "Player 2 wins"
+  if (player1.tiebreaker > player2.tiebreaker) return "Player 1 wins"
+  if (player1.tiebreaker < player2.tiebreaker) return "Player 2 wins"
+  if (player1.tiebreaker === player2.tiebreaker) return "Draw"
 }
 
 module.exports = poker;

@@ -11,14 +11,13 @@
 
 function getAllProducts(array) {
     if (!array.length) return [0]
-    const zeroes = array.reduce((a, c) => { return c === 0 ? ++a : a }, 0)
+    const zeroes = array.reduce((a, c) => c === 0 ? ++a : a, 0)
     switch (zeroes) {
         case 0:
             const prodAllnoZeroes = array.reduce((a, c) => a * c)
             return array.map(e => prodAllnoZeroes / e)
         case 1:
-            const prodAllOneZero = array.reduce((a, c) => { return c === 0 ? a : a * c }, 1)
-            return [prodAllOneZero]
+            return [array.reduce((a, c) => c === 0 ? a : a * c, 1)]
         default:
             return [0]
     }

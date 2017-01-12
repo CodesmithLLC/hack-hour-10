@@ -2,10 +2,10 @@
  * a function to calculate how many different ways you can go up the flight of stairs.
  */
 
-function countStairs(n) {
-  if (n < 2) return 1
-  if (n === 2) return 2
-  return countStairs(n-1) + countStairs(n-2)
+function countStairs(n, memo = {}) {
+  if (memo[n] !== undefined) return memo[n]
+  if (n < 2) return memo[n] = 1
+  else return memo[n] = countStairs(n - 1, memo) + countStairs(n - 2, memo)
 }
 
 module.exports = countStairs;
