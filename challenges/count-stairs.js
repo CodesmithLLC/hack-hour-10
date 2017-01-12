@@ -3,10 +3,9 @@
  */
 
 function countStairs(n, memo = {}) {
+  if (memo[n] !== undefined) return memo[n]
   if (n < 2) return memo[n] = 1
-  return memo[n] = countStairs(n-1, memo) + countStairs(n-2, memo)
+  else return memo[n] = countStairs(n - 1, memo) + countStairs(n - 2, memo)
 }
 
 module.exports = countStairs;
-
-console.log(countStairs(4))
