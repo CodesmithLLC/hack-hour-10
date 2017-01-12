@@ -77,6 +77,7 @@ function poker(hand1, hand2) {
     tiebreaker = Number(tiebreaker)
     return { score, highMatchedCard, tiebreaker }
   }
+
   const player1 = assignScore(hand1)
   const player2 = assignScore(hand2)
 
