@@ -14,7 +14,7 @@
 
 function anagrams(string = '', rem = '', all = []) {
     const unique = Object.keys(string.split('').reduce((a, c) => {
-      a[c] = true;
+      a[c] = true
       return a
     }, {})).join('')
 
