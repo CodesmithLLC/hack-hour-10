@@ -42,8 +42,6 @@ function newIntersections(x, y) {
       delete allPoints[`${xx},${yy}`]
       if (`${xx},${yy}` in oldPoints) break
     }
-  }
-  for (let xx = minX; xx <= maxX; xx++) {
     for (let yy = maxY; yy >= minY; yy--) {
       delete allPoints[`${xx},${yy}`]
       if (`${xx},${yy}` in oldPoints) break
@@ -54,15 +52,13 @@ function newIntersections(x, y) {
       delete allPoints[`${xx},${yy}`]
       if (`${xx},${yy}` in oldPoints) break
     }
-  }
-  for (let yy = minY; yy <= maxY; yy++) {
     for (let xx = maxX; xx >= minX; xx--) {
       delete allPoints[`${xx},${yy}`]
       if (`${xx},${yy}` in oldPoints) break
     }
   }
   // Return number of points left
-  return Object.keys(allPoints).length
+  return Object.keys(allPoints).filter(e => oldPoints[e] === undefined).length
 }
 
 module.exports = newIntersections;
