@@ -13,7 +13,7 @@
   */
 
 function anagrams(string = '', rem = '', all = []) {
-  console.log(string)
+  console.log('INPUT', string)
     const unique = Object.keys(string.split('').reduce((a, c) => {
       a[c] = true
       return a
