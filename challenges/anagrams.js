@@ -12,9 +12,9 @@
   * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
-function anagrams(string, rem = '', all = {}) {
-    if (!string) all[rem] = true
-    else string.split('').forEach((e, i) => anagrams(string.slice(0, i).concat(string.slice(i + 1)), rem.concat(e), all))
+function anagrams(string, built = '', all = {}) {
+    if (!string) all[built] = true
+    else string.split('').forEach((char, index) => anagrams(string.slice(0, index).concat(string.slice(index + 1)), built.concat(char), all))
     return Object.keys(all)
 }
 
