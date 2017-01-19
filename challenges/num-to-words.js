@@ -84,11 +84,11 @@ function numToWords(num) {
         1000000000000: 'Trillion',
         1000000000000000: 'Quadrillion'
     }
-    let words = '';
+    let words = ''
     for (let i = 0, n = num; n > 0; i++) {
         if (n >= keyArr[i]) {
             const count = Math.floor(n / keyArr[i])
-            words = count > 1 || i <= 5
+            words = count > 1 || i < 6
                 ? words + numToWords(count) + keyObj[keyArr[i]]
                 : words + keyObj[keyArr[i]]
             n -= count * keyArr[i]
@@ -98,3 +98,12 @@ function numToWords(num) {
 }
 
 module.exports = numToWords;
+
+console.log(numToWords(0))// -> 'Zero'
+console.log(numToWords(43))// -> 'FortyThree'
+console.log(numToWords(2999))// -> 'TwoThousandNineHundredNintyNine'
+console.log(numToWords(15))// -> 'Fifteen'
+console.log(numToWords(2483579411))// -> 'TwoBillionFourHundredEightyThreeMillionFiveHundredSeventyNineThousandFourHundredEleven'
+console.log(numToWords(300525151340440))// -> 'ThreeHundredTrillionFiveHundredTwentyFiveBillionOneHundredFiftyOneMillionThreeHundredFortyThousandFourHundredForty'
+console.log(numToWords(92120000000000000))// -> 'NintyTwoQuadrillionOneHundredTwentyTrillion'
+console.log(numToWords(1000000000))
