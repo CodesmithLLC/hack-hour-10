@@ -27,7 +27,7 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
   for (let i = 0; i < r.length; i++) {
     const startDistance = Math.hypot(x[i] - start_x, y[i] - start_y)
     const endDistance = Math.hypot(x[i] - end_x, y[i] - end_y)
-    if ((startDistance > r && r > endDistance) || (startDistance < r && r < endDistance)) count++
+    if ((startDistance > r[i] && r[i] > endDistance) || (startDistance < r[i] && r[i] < endDistance)) count++
   }
   return count
 }
