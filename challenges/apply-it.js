@@ -26,15 +26,7 @@
  */
 
 function applyIt(func, args) {
-    var a = args[0];
-    if (args[1] === undefined) {
-        return () => { return func(a) }
-    }
-    else {
-        return applyIt((b) => {
-            return func(a, b)
-        }, args.slice(1));
-    }
+  return () => { return eval(`func(${args.map(e => typeof e === 'string' ? `'${e}'` : e).toString()})`) }
 }
 
 module.exports = applyIt;
