@@ -12,13 +12,10 @@
  */
 
 function isSubstring(s1, s2) {
-  if (s1 === undefined || s2 === undefined) return undefined;
-  for (let tmpArr = s1.toLowerCase().split(""), i = 0; i < s1.length; tmpArr.push(tmpArr.shift()), i++) if (tmpArr.join("") === s2.toLowerCase()) return true;
-  return false;
+  return s1.indexOf(s2) >= 0;
 }
-
 function stringRotation(s1, s2) {
-  return isSubstring(s1, s2);
+  return isSubstring(s1.concat(s1), s2)
 }
 
 module.exports = { isSubstring: isSubstring, stringRotation: stringRotation };
