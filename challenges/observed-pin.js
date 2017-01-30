@@ -43,8 +43,8 @@ expectations = {
 
 
 function getPINs(observed) {
-  const adjacent = {
-    0: ['0', '8'],
+  const adj = {
+    0: ['8', '0'],
     1: ['1', '2', '4'],
     2: ['1', '2', '3', '5'],
     3: ['2', '3', '6'],
@@ -52,15 +52,20 @@ function getPINs(observed) {
     5: ['2', '4', '5', '6', '8'],
     6: ['3', '5', '6', '9'],
     7: ['4', '7', '8'],
-    8: ['0', '5', '7', '8', '9'],
+    8: ['5', '7', '8', '9', '0'],
     9: ['6', '8', '9']
   }
-  return observed.length === 1
-    ? adjacent[observed]
-    : Object.keys(adjacent[observed[0]].reduce((a, c) => {
-      getPINs(observed.slice(1)).map(poss => c.concat(poss)).forEach(e => a[e] = true)
-      return a
-    }, {}))
+  if (observed.length === 1) return adj[observed]
+  const afterFirst = getPINs(observed.slice(1))
+  return adj[observed[0]].reduce((accum, digit) => [...accum, ...afterFirst.map(combo => digit.concat(combo))], [])
 }
 
 module.exports = getPINs
+
+expectations = {
+  "8": ["5", "7", "8", "9", "0"],
+  "11": ["11", "22", "44", "12", "21", "14", "41", "24", "42"],
+  "369": ["339", "366", "399", "658", "636", "258", "268", "669", "668", "266", "369", "398", "256", "296", "259", "368", "638", "396", "238", "356", "659", "639", "666", "359", "336", "299", "338", "696", "269", "358", "656", "698", "699", "298", "236", "239"],
+}
+// console.log(expectations[369].length)
+console.log(getPINs('555').filter((e, i, s) => i !== s.indexOf(e)))
