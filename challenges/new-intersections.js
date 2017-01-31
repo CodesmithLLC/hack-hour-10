@@ -17,48 +17,31 @@
  */
 
 function newIntersections(x, y) {
-  let decimal = true
-  while (decimal) {
-    x = x.map(e => e * 10)
-    y = y.map(e => e * 10)
-    if (!x.some(e => e % 1 !== 0) && !y.some(e => e % 1 !== 0)) decimal = false
-  }
-  const minX = Math.min(...x)
-  const maxX = Math.max(...x)
-  const minY = Math.min(...y)
-  const maxY = Math.max(...y)
-  const oldPoints = {}
-  const allPoints = {}
-  // Filling in objects
-  x.forEach((c, i) => oldPoints[`${c},${y[i]}`] = true)
-  for (let xx = minX; xx <= maxX; xx++) {
-    for (let yy = minY; yy <= maxY; yy++) {
-      allPoints[`${xx},${yy}`] = true
+  // Get all vertical lines and their max/min
+  const exes = x.reduce((accum, xCoord, index) => {
+    if (!accum[xCoord]) accum[xCoord] = { max: y[index], min: y[index] }
+    if (y[index] > accum[xCoord].max) accum[xCoord].max = y[index]
+    if (y[index] < accum[xCoord].min) accum[xCoord].min = y[index]
+    return accum
+  }, {})
+
+  // Get all horizontal lines and their max/min
+  const whys = y.reduce((accum, yCoord, index) => {
+    if (!accum[yCoord]) accum[yCoord] = { max: x[index], min: x[index] }
+    if (x[index] > accum[yCoord].max) accum[yCoord].max = x[index]
+    if (x[index] < accum[yCoord].min) accum[yCoord].min = x[index]
+    return accum
+  }, {})
+
+  // Count # of intersections
+  let intersections = 0
+  for (let xCoord in exes) {
+    for (let yCoord in whys) {
+      if (exes[xCoord].max > yCoord && yCoord > exes[xCoord].min
+        && whys[yCoord].max > xCoord && xCoord > whys[yCoord].min) intersections++
     }
   }
-  // Deleting
-  for (let xx = minX; xx <= maxX; xx++) {
-    for (let yy = minY; yy <= maxY; yy++) {
-      delete allPoints[`${xx},${yy}`]
-      if (`${xx},${yy}` in oldPoints) break
-    }
-    for (let yy = maxY; yy >= minY; yy--) {
-      delete allPoints[`${xx},${yy}`]
-      if (`${xx},${yy}` in oldPoints) break
-    }
-  }
-  for (let yy = minY; yy <= maxY; yy++) {
-    for (let xx = minX; xx <= maxX; xx++) {
-      delete allPoints[`${xx},${yy}`]
-      if (`${xx},${yy}` in oldPoints) break
-    }
-    for (let xx = maxX; xx >= minX; xx--) {
-      delete allPoints[`${xx},${yy}`]
-      if (`${xx},${yy}` in oldPoints) break
-    }
-  }
-  // Return number of points left
-  return Object.keys(allPoints).filter(e => oldPoints[e] === undefined).length
+  return intersections
 }
 
 module.exports = newIntersections;
