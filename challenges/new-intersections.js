@@ -20,16 +20,16 @@ function newIntersections(x, y) {
   // Get all vertical lines and their max/min
   const exes = x.reduce((accum, xCoord, index) => {
     if (!accum[xCoord]) accum[xCoord] = { max: y[index], min: y[index] }
-    if (y[index] > accum[xCoord].max) accum[xCoord].max = y[index]
-    if (y[index] < accum[xCoord].min) accum[xCoord].min = y[index]
+    accum[xCoord].max = Math.max(accum[xCoord].max, y[index])
+    accum[xCoord].min = Math.min(accum[xCoord].min, y[index])
     return accum
   }, {})
 
   // Get all horizontal lines and their max/min
   const whys = y.reduce((accum, yCoord, index) => {
     if (!accum[yCoord]) accum[yCoord] = { max: x[index], min: x[index] }
-    if (x[index] > accum[yCoord].max) accum[yCoord].max = x[index]
-    if (x[index] < accum[yCoord].min) accum[yCoord].min = x[index]
+    accum[yCoord].max = Math.max(accum[yCoord].max, x[index])
+    accum[yCoord].min = Math.min(accum[yCoord].min, x[index])
     return accum
   }, {})
 
