@@ -39,58 +39,37 @@ expectations = {
 
 */
 
-┌───┬───┬───┐
-│ 1 │ 2 │ 3 │
-├───┼───┼───┤
-│ 4 │ 5 │ 6 │
-├───┼───┼───┤
-│ 7 │ 8 │ 9 │
-└───┼───┼───┘
-    │ 0 │
-    └───┘
 
 function getPINs(observed) {
-	let pos = {1:3,2:4,3:3,4:4,5:5,6:4,7:3,8:5,9:3,0:2};
-	let result = [];
-	let totalLength = 1;
-	for (let i = 0; i < observed.length ; i++) {
-		totalLength *= pos[observed[i]];
-	}
-	for (let i = 0; i < totalLength; i++) {
-		result.push("");
-	}
-	function addNum(num) {
-		if (num === )
-	}
-	for (let i = 0; i < observed.length; i++) {
-		addNum(Number(observed[i]));
-	}
-	return result;
+  const pad = {
+    "1": ['1', '2', '4'],
+    "2": ['1', '2', '3', '5'],
+    "3": ['2', '3', '6'],
+    "4": ['1', '4', '5', '7'],
+    "5": ['2', '4', '5', '6', '8'],
+    "6": ['3', '5', '6', '9'],
+    "7": ['4', '7', '8'],
+    "8": ['5', '7', '8', '9', '0'],
+    "9": ['6', '8', '9'],
+    "0": ['8', '0'],
+  };
+
+  let possibilities = [""];
+  while (observed) {
+    let adjacents = pad[observed[0]];
+    let newPossibles = [];
+    for (let i = 0; i < adjacents.length; i++) {
+      for (let j = 0; j < possibilities.length; j++) {
+        newPossibles.push(possibilities[j] + adjacents[i])
+      }
+    }
+    possibilities = newPossibles;
+    observed = observed.slice(1);
+  }
+  return possibilities;
 }
 
 
 
-// function getPINs(observed) {
-// 	// let arr = [];
-// 	function adj(num) {
-// 		let arr2 = [];
-// 		let first = Number(num[0]);
-// 		console.log(typeof first)
-// 		if (first === 0) {
-// 			arr2.push("8");
-// 			return arr2;
-// 		} else if (first === 5 || first === 8) {
-// 			arr2.push(JSON.stringify(first), JSON.stringify(first - 3), JSON.stringify(first + 3), JSON.stringify(first - 1), JSON.stringify(first + 1))
-// 			return arr2;
-// 		}
-// 	}
-// 	return adj(observed);
-// 	return arr;
-// }
-//
-//
-// module.exports = getPINs
-//
-// console.log(getPINs("0"));
-// console.log(getPINs("5"));
-console.log(getPINs("82").length);
+
+module.exports = getPINs
