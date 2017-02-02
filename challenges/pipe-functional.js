@@ -18,7 +18,7 @@
  */
 
 function H(letters) {
-
+  return (letters) ? "H" + letters : "H"
 }
 
 // OR
@@ -42,15 +42,15 @@ function H(letters) {
  */
 
 function e(letters) {
-
+  return (letters) ? "e" + letters : "e"
 }
 
 function l(letters) {
-
+  return (letters) ? "l" + letters : "l"
 }
 
 function o(letters) {
-
+  return (letters) ? "o" + letters : "o"
 }
 
 // const e = (letters) =>;
@@ -75,8 +75,16 @@ function o(letters) {
  */
 
 function pipe(functions) {
-
+  // console.log([...arguments]);
+  let args = ...arguments;
+  console.log(args);
+  return (a) => {
+    args.forEach(func => func());
+  }
 }
+
+const hello = pipe([H, e, l, l, o])
+hello();
 
 // OR
 

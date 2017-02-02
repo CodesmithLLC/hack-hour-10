@@ -17,7 +17,17 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
+  // let total = 1;
+  // for (var i = 2; i <= arr.length; i++) {
+	// 	total *= i;
+	// }
+	// for (let i = 0; i < total; i++) {
+	// 	let arr = [];
+	// 	for ()
+	// 	callback(arr);
+	// }
 
+	
 }
 
 

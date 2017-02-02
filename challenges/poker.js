@@ -18,8 +18,14 @@
 * Example: poker([3,5,5,5,2], [4,6,7,8,8]) -> "Player 1 wins"
 */
 
-function poker(hand1, hand2) {
-
+function po-ker(hand1, hand2) {
+	//assuming inputs are correct
+	let hand1obj = {};
+	let hand2obj = {};
+	hand1.forEach(item => (hand1obj[item]) ? hand1obj[item]++ : hand1obj[item] = 1);
+	hand2.forEach(item => (hand2obj[item]) ? hand2obj[item]++ : hand2obj[item] = 1);
+	// function 4-of-a-kind()
 }
 
 module.exports = poker;
+po-ker();
