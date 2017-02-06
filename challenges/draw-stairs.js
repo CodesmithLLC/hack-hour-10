@@ -14,8 +14,15 @@
 */
 
 function drawStairs(n) {
-
+    for (let i = 1; i <= n; i++) {
+        let spacesString = '';
+        for (let spaces = 0; spaces < n-i; spaces++)
+            spacesString += ' ';
+        let astericksString = '';
+        for (let astericks = 0; astericks < i; astericks++)
+            astericksString += '*';
+        console.log(spacesString + astericksString);
+    }
 }
-
 
 module.exports = drawStairs;

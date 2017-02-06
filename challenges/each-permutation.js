@@ -16,10 +16,9 @@ eachPermutation([1, 2, 3], function(perm) {
 [ 3, 2, 1 ]
 */
 
-function eachPermutation(arr, callback) {
-
+function eachPermutation(arr, callback, built = [], perms = {}) {
+  if (!arr.length && !(built in perms)) perms[built] = callback(built)
+  arr.forEach((e, i) => eachPermutation([...arr.slice(0, i), ...arr.slice(i + 1)], callback, [...built, e], perms))
 }
-
-
 
 module.exports = eachPermutation;

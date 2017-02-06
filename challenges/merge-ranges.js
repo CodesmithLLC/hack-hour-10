@@ -11,7 +11,7 @@
 
 
 function mergeRanges(array) {
-
+    return array.sort((a, b) => { return a[0] > b[0] }).reduce((a, c, i, s) => { return a[a.length - 1][1] < c[0] ? a.concat([c]): a.slice(0,-1).concat([[a[a.length - 1][0], a[a.length - 1][1] < c[1] ? c[1] : a[a.length - 1][1]]]) }, [array[0]])
 }
 
 module.exports = mergeRanges;

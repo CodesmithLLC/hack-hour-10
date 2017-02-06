@@ -12,7 +12,8 @@
  */
 
 function reverseInPlace(array) {
-
+    for (let i = 0; i < array.length; array = array.splice(i,1).concat(array), i++);
+    return array;
 }
 
 module.exports = reverseInPlace;
