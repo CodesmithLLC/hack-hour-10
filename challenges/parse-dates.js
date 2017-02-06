@@ -170,7 +170,7 @@ function parseDates(str) {
   //   default: return new Date()
   // }
 
-function parseDates(str) {
+
   // INPUT: String containing date information, possibly poorly formatted
   // OUTPUT: Date object, NOT a string
   // Create store for days and months since Date object takes numerical inputs
@@ -254,7 +254,5 @@ function parseDates(str) {
   return date;
 }
 
-
-}
 
 module.exports = parseDates;
