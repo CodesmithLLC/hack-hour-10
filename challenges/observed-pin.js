@@ -56,8 +56,8 @@ function getPINs(observed) {
     9: ['6', '8', '9']
   }
   if (observed.length === 1) return adj[observed]
-  const afterFirst = getPINs(observed.slice(1))
-  return adj[observed[0]].reduce((accum, digit) => [...accum, ...afterFirst.map(combo => digit.concat(combo))], [])
+  const theRest = getPINs(observed.slice(1))
+  return adj[observed[0]].reduce((accum, num) => [...accum, ...theRest.map(pins => num.concat(pins))], [])
 }
 
 module.exports = getPINs

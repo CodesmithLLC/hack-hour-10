@@ -51,8 +51,7 @@ function parseDates(str) {
   let hour = Number(timeStr.slice(0, colonIndex))
   hour = amPM !== 'AM' ? hour : hour + 12
   const minute = Number(timeStr.slice(colonIndex + 1, colonIndex + 3))
-  if (isNaN(hour)) return new Date()
-  if (isNaN(minute)) return new Date()
+  if (isNaN(hour) || isNaN(minute)) return new Date()
 
   // Acceptable day strings
   const days = {
