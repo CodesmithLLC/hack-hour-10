@@ -254,5 +254,4 @@ function parseDates(str) {
   return date;
 }
 
-
 module.exports = parseDates;
