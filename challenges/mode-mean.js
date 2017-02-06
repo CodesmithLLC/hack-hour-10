@@ -2,13 +2,19 @@
  * Given an array of numbers, determine if the mode and mean of the array are equivalent
  *
  * Caveats:
+<<<<<<< HEAD
  *     - Math.floor the mean
  *     - If there are multiple modes, use the max of the modes
+=======
+ * 	- Math.floor the mean
+ * 	- If there are multiple modes, use the max of the modes
+>>>>>>> 3cc9072cf0284552b5c26e4ef03d47661c5a7ede
  *
  * Return true or false
  *
  */
 
+<<<<<<< HEAD
 function modemean(array) {
 	const mean = Math.floor(array.reduce((sum, curr) => sum + curr) / array.length);
 	const mode = { 'count': 0, 'value': null };
@@ -32,3 +38,11 @@ function modemean(array) {
 }
 
 module.exports = modemean;
+=======
+
+function modemean(array) {
+
+}
+
+module.exports = modemean;
+>>>>>>> 3cc9072cf0284552b5c26e4ef03d47661c5a7ede
