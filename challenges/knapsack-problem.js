@@ -9,8 +9,11 @@
   solveKnapsack(items, 5); // returns 9 (from items[1] and items[2])
 */
 
-function solveKnapsack(items, weightAvailable) {
-
+function solveKnapsack(items, weightAvailable, valueSoFar = 0) {
+  if (weightAvailable < 0) return -Infinity
+  if (items.length === 0 || weightAvailable === 0) return valueSoFar
+  return Math.max(solveKnapsack(items.slice(1), weightAvailable, valueSoFar),
+                  solveKnapsack(items.slice(1), weightAvailable - items[0].weight, valueSoFar + items[0].value))
 };
 
 module.exports = solveKnapsack;
