@@ -43,8 +43,8 @@ expectations = {
 
 
 function getPINs(observed) {
-  const adjacent = {
-    0: ['0', '8'],
+  const adj = {
+    0: ['8', '0'],
     1: ['1', '2', '4'],
     2: ['1', '2', '3', '5'],
     3: ['2', '3', '6'],
@@ -52,15 +52,12 @@ function getPINs(observed) {
     5: ['2', '4', '5', '6', '8'],
     6: ['3', '5', '6', '9'],
     7: ['4', '7', '8'],
-    8: ['0', '5', '7', '8', '9'],
+    8: ['5', '7', '8', '9', '0'],
     9: ['6', '8', '9']
   }
-  return observed.length === 1
-    ? adjacent[observed]
-    : Object.keys(adjacent[observed[0]].reduce((a, c) => {
-      getPINs(observed.slice(1)).map(poss => c.concat(poss)).forEach(e => a[e] = true)
-      return a
-    }, {}))
+  if (observed.length === 1) return adj[observed]
+  const theRest = getPINs(observed.slice(1))
+  return adj[observed[0]].reduce((accum, num) => [...accum, ...theRest.map(pins => num.concat(pins))], [])
 }
 
 module.exports = getPINs
