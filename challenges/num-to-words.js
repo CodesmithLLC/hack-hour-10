@@ -84,17 +84,20 @@ function numToWords(num) {
         1000000000000: 'Trillion',
         1000000000000000: 'Quadrillion'
     }
-    let words = ''
-    for (let i = 0, n = num; n > 0; i++) {
-        if (n >= keyArr[i]) {
-            const count = Math.floor(n / keyArr[i])
-            words = count > 1 || i < 6
-                ? words + numToWords(count) + keyObj[keyArr[i]]
-                : words + keyObj[keyArr[i]]
-            n -= count * keyArr[i]
+	let words = ''; // Word to return.
+	// Handle biggest numbers first.
+	for (let i = 0, n = num; n > 0; i++) {
+		// If remaining number is bigger/equal to number we are looking at in keyArr.
+		if (n >= keyArr[i]) {
+			// count === how many of that number in keyArr
+			const count = Math.floor(n / keyArr[i]);
+            words += count > 1 || i < 6
+                ? numToWords(count) + keyObj[keyArr[i]]
+                : keyObj[keyArr[i]]
+			n -= count * keyArr[i];
         }
     }
-    return words
+	return words;
 }
 
 module.exports = numToWords;
