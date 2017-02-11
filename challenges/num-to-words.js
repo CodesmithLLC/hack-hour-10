@@ -101,12 +101,3 @@ function numToWords(num) {
 }
 
 module.exports = numToWords;
-
-console.log(numToWords(0))// -> 'Zero'
-console.log(numToWords(43))// -> 'FortyThree'
-console.log(numToWords(2999))// -> 'TwoThousandNineHundredNintyNine'
-console.log(numToWords(15))// -> 'Fifteen'
-console.log(numToWords(2483579411))// -> 'TwoBillionFourHundredEightyThreeMillionFiveHundredSeventyNineThousandFourHundredEleven'
-console.log(numToWords(300525151340440))// -> 'ThreeHundredTrillionFiveHundredTwentyFiveBillionOneHundredFiftyOneMillionThreeHundredFortyThousandFourHundredForty'
-console.log(numToWords(92120000000000000))// -> 'NintyTwoQuadrillionOneHundredTwentyTrillion'
-console.log(numToWords(1000000000))
