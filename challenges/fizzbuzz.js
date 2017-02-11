@@ -17,7 +17,32 @@
 //                     16 ]
 
 function fizzbuzz(num) {
+const arr = [];
 
+  if (num.constructor !== Number) {
+  	return 'input must be a number';
+  }
+
+  if (num <= 0) {
+  	return 'input must be greater than 0';
+  }
+
+  for (let i = 1; i <= num; i++) {
+    arr.push(i);
+  }
+
+  return arr.map((ele) => {
+    if (ele % 3 === 0 && ele % 5 === 0) {
+      return 'fizzbuzz';
+    }
+    else if (ele % 3 === 0) {
+      return 'fizz';
+    }
+    else if (ele % 5 === 0) {
+      return 'buzz';
+    }
+    else { return ele; }
+  });
 }
 
 module.exports = fizzbuzz;
