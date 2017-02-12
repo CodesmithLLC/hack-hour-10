@@ -16,8 +16,25 @@
 //                     'fizzbuzz',
 //                     16 ]
 
-function fizzbuzz(num) {
-
+function fizzbuzz(num){
+        const arr = [];
+        for (let i = 1; i <= num; i++){
+            if (i % 15 === 0) {
+                arr.push('fizzbuzz');
+            }else if (i % 5 === 0){
+                arr.push('buzz');
+            }else if (i % 3 === 0){
+                arr.push('fizz');
+            }else{
+                arr.push(i);
+            }
+        }
+        return arr;
+    }
+function test (a){
+    if (a[14] === 'fizzbuzz') console.log(true);
+    if (a[29] === 'fizzbuzz') console.log(true);
+    if (a[5] === 'fizz') console.log(false);
 }
 
 module.exports = fizzbuzz;
