@@ -18,6 +18,37 @@
 
 function fizzbuzz(num) {
 
+const newArr = [];
+
+  if (num > 0) {
+    for (let i=1; i<=num; i++) {
+      if (i % 15 === 0) {
+        newArr.push("fizzbuzz");
+      } else if (i % 3 === 0)  {
+        newArr.push("fizz");
+      } else if (i % 5 === 0)  {
+        newArr.push("buzz");
+      } else {
+        newArr.push(i);
+      }
+    }
+  }
+
+  else if (num < 0) {
+    for (let i=1; i>=num; i--) {
+      if (i % 15 === 0) {
+        newArr.push("fizzbuzz");
+      } else if (i % 3 === 0)  {
+        newArr.push("fizz");
+      } else if (i % 5 === 0)  {
+        newArr.push("buzz");
+      } else {
+        newArr.push(i);
+      }
+    }
+  }
+
+  return newArr;
 }
 
 module.exports = fizzbuzz;
