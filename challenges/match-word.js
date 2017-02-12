@@ -8,7 +8,24 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+    for (var i = 0, currentWord = [], wordArr = [], currBool = false; i < str.length; i++) {
+        if (str[i].match(/[a-zA-Z]/)) {
+            currentWord.push(str[i]);
+            currBool = true;
+        }
+        else if (currBool) {
+            wordArr.push(currentWord.join("").toLowerCase())
+            currentWord = [];
+            currBool = false;
+        }
+    }
+    if (currentWord.filter(e => e).length > 0) wordArr.push(currentWord.join(""))
+    if (wordArr.length === 1) return false;
+    for (var j = 0; j < wordArr.length; j++) {
+        if (wordArr[j] !== wordArr[wordArr.length - 1 - j].split("").reverse().join(""))
+            return false;
+    }
+    return true;
 }
 
 module.exports = matchWord;
