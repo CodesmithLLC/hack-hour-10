@@ -12,8 +12,24 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
-function bestProfit(stock_prices_yesterday) {
-
-}
+ function bestProfit(stock_prices_yesterday) {
+    if (!stock_prices_yesterday || !Array.isArray(stock_prices_yesterday) || stock_prices_yesterday.length < 2 ) return 0;
+   const largest = Math.max.apply(null,stock_prices_yesterday);
+   const smallest = Math.min.apply(null,stock_prices_yesterday);
+   if (stock_prices_yesterday[0] === largest){
+      stock_prices_yesterday = stock_prices_yesterday.slice(1);
+      bestProfit(stock_prices_yesterday);
+   }
+   if (stock_prices_yesterday[stock_prices_yesterday.length - 1] === smallest){
+      delete stock_prices_yesterday[stock_prices_yesterday.length - 1]
+      stock_prices_yesterday.length--;
+   }
+   const newLarge = Math.max.apply(null,stock_prices_yesterday);
+   const newSmall = Math.min.apply(null,stock_prices_yesterday);
+   if (newLarge - newSmall < 0) return 0;
+   return newLarge - newSmall;
+ }
+ const prices = [10,30,3,10,40];
+ bestProfit(0);
 
 module.exports = bestProfit;
