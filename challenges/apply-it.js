@@ -26,7 +26,15 @@
  */
 
 function applyIt(func, args) {
-
+    var a = args[0];
+    if (args[1] === undefined) {
+        return () => { return func(a) }
+    }
+    else {
+        return applyIt((b) => {
+            return func(a, b)
+        }, args.slice(1));
+    }
 }
 
 module.exports = applyIt;

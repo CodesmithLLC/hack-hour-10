@@ -8,7 +8,8 @@
  */
 
 function gcd(a, b) {
-
+    for (var i = 2, j = Math.floor(b / i); a % j !== 0; i++ , j = Math.floor(b / i));
+    return j;
 }
 
 module.exports = gcd;

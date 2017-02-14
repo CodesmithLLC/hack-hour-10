@@ -8,7 +8,8 @@
 
 
 function countTwos(num) {
-
+    for (var tenPow = 1; tenPow * 10 < num; tenPow *= 10);
+    return num < 2 ? 0 : Math.floor(num / tenPow) * countTwos(tenPow) + countTwos(num % tenPow) + (Math.floor(num / tenPow) > 2 ? tenPow : Math.floor(num / tenPow) === 2 ? num % tenPow + 1 : 0);
 }
 
 module.exports = countTwos;
