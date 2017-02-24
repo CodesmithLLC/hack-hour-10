@@ -11,12 +11,22 @@
 
 
 function modemean(array) {
-    let reverseSorted = array.sort().reverse();
-    let modeMap = reverseSorted.map((e,i,arr) => {return arr.reduce((a,c) => {if (e === c) a++; return a;},0)});
-    let highestMode = Math.max(...modeMap);
-    let mode = reverseSorted[modeMap.indexOf(highestMode)];
-    let mean = array.reduce((a,c) => a+c) / array.length;
-    return mode === mean
+	let mode = -Infinity;
+	let highestCount = 0;
+	const counts = {};
+	let sum = 1;
+	for (let i = 0; i < array.length; i++) {
+		if (counts.hasOwnProperty(array[i])) counts[array[i]]++;
+		else counts[array[i]] = 1;
+		if (counts[array[i]] === highestCount && array[i] > mode) mode = array[i];
+		if (counts[array[i]] > highestCount) {
+			mode = array[i];
+			highestCount = counts[array[i]];
+		}
+		sum += array[i];
+	}
+	console.log(mode, Math.floor(sum / array.length))
+	return mode === Math.floor(sum / array.length);
 }
 
 module.exports = modemean;
