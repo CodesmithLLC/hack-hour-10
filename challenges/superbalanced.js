@@ -8,20 +8,20 @@ example: http://www.geeksforgeeks.org/wp-content/uploads/balanced_tree.GIF
  */
 
 function BinaryTree(value) {
-  this.value = value;
-  this.left = null;
-  this.right = null;
+	this.value = value;
+	this.left = null;
+	this.right = null;
 }
 
 function superbalanced(tree) {
-    if (!tree) return true
-    function getHeight(tree, height = 0) {
-      if (!tree) return 0
-      return 1 + Math.max(getHeight(tree.left), getHeight(tree.right))
-    }
-    return Math.abs(getHeight(tree.left) - getHeight(tree.right)) < 2 &&
-      superbalanced(tree.left) &&
-      superbalanced(tree.right)
+	if (!tree) return true;
+	function getHeight(tree, height = 0) {
+		if (!tree) return 0;
+		return 1 + Math.max(getHeight(tree.left), getHeight(tree.right));
+	}
+	return Math.abs(getHeight(tree.left) - getHeight(tree.right)) < 2 &&
+		superbalanced(tree.left) &&
+		superbalanced(tree.right);
 }
 
-module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
+module.exports = { BinaryTree: BinaryTree, superbalanced: superbalanced };

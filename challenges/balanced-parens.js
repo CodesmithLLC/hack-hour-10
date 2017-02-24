@@ -25,30 +25,21 @@
  */
 
 function balancedParens(input) {
-    for (var stack = [], i = 0; i < input.length; i++) {
-        switch (input[i]) {
-            case '(':
-            case '[':
-            case '{':
-                stack.push(input[i]);
-                break;
-            case ')':
-                if (stack[stack.length-1] === '(') stack.pop();
-                else return false;
-                break;
-            case ']':
-                if (stack[stack.length-1] === '[') stack.pop();
-                else return false;
-                break;
-            case '}':
-                if (stack[stack.length-1] === '{') stack.pop();
-                else return false;
-                break;
-            default:
-                break;
-        }
-    }
-    return !stack.length ? true : false;
+	const openBrackets = {
+		'(': ')',
+		'[': ']',
+		'{': '}'
+	}
+	const closeBrackets = {
+		')': '(',
+		']': '[',
+		'}': '{'
+	}
+	for (var stack = [], i = 0; i < input.length; i++) {
+		if (openBrackets.hasOwnProperty(input[i])) stack.push(input[i]);
+		if (closeBrackets.hasOwnProperty(input[i]) && stack.pop() !== closeBrackets[input[i]]) return false;
+	}
+	return !stack.length;
 }
 
 module.exports = balancedParens;
