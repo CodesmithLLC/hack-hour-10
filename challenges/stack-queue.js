@@ -4,8 +4,8 @@
 
 
 function Stack() {
-	this.storage = []
-	this.length = 0
+	this.storage = [];
+	this.length = 0;
 	this.pop = () => {
 		if (this.length) {
 			this.length--;
@@ -30,7 +30,7 @@ function Queue() {
 	this.enqueue = (val) => this.next.push(val);
 	this.dequeue = () => {
 		if (!this.last.length) while (this.next.length) this.last.push(this.next.pop());
-		return this.last.pop()
+		return this.last.pop();
 	}
 }
 
