@@ -17,14 +17,22 @@
  */
 
 function Node(val) {
-  this.value = val;
-  this.next = null;
+	this.value = val;
+	this.next = null;
 }
 
 function kthToLastNode(k, head) {
-  for (var i = 0, startNode = head, lookNode = head; i < k; lookNode = lookNode.next, i++);
-  for (; lookNode; startNode = startNode.next, lookNode = lookNode.next);
-  return startNode;
+	let front = head;
+	let back = head;
+	for (let i = 0; i < k; i++) {
+		if (!front) return null;
+		front = front.next;
+	}
+	while (front) {
+		front = front.next;
+		back = back.next;
+	}
+	return back;
 }
 
-module.exports = {Node: Node, kthToLastNode: kthToLastNode};
+module.exports = { Node: Node, kthToLastNode: kthToLastNode };
