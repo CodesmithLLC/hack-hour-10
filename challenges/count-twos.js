@@ -8,6 +8,7 @@
 
 
 function countTwos(num) {
+	// Fast fail.
 	if (num < 2) return 0;
 	for (var tenPow = 1; tenPow * 10 < num; tenPow *= 10);
 	const firstDigitOrTen = Math.floor(num / tenPow);
