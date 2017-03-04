@@ -12,7 +12,7 @@ function sumMultiples3Or5Below1000() {
 	let sum = 0;
 	nums.forEach(n => {
 		lcd *= n;
-		let mults = Math.floor(limit / n);
+		const mults = Math.floor(limit / n);
 		sum += (mults * n + n) / 2 * mults;
 	});
 	sum -= Math.floor(limit / lcd) * lcd;
@@ -28,7 +28,7 @@ function sumMultiplesXOrYBelowZ(x, y, z) {
 	let sum = 0;
 	nums.forEach(n => {
 		lcd *= n;
-		let mults = Math.floor(limit / n);
+		const mults = Math.floor(limit / n);
 		sum += (mults * n + n) / 2 * mults;
 	});
 	sum -= Math.floor(limit / lcd) * lcd;
