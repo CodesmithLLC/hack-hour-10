@@ -13,16 +13,27 @@
 // Binary XOR operator yields unique value (in decimal) after all bitwise differences are taken into account
 const uniqueNumber = array => array.reduce((acc, cur) => acc ^ cur, 0);
 
-// const arr1 = [1, 2, 3, 2, 1];
-// const arr2 = [1, 2, 1, 3, 3];
-// const arr3 = [0, 15, 7, 0, 7, 6, 6];
-// const arr4 = [3];
-// const arr5 = [1, 3, 3];
-
-// console.log(uniqueNumber(arr1)); // 3
-// console.log(uniqueNumber(arr2)); // 2
-// console.log(uniqueNumber(arr3)); // 15
-// console.log(uniqueNumber(arr4)); // 3
-// console.log(uniqueNumber(arr5)); // 1
+console.log(uniqueNumber([1, 2, 3, 2, 1]));        // 3
+console.log(uniqueNumber([1, 2, 1, 3, 3]));        // 2
+console.log(uniqueNumber([0, 15, 7, 0, 7, 6, 6])); // 15
+console.log(uniqueNumber([3]));                    // 3
+console.log(uniqueNumber([1, 3, 3]));              // 1
+console.log(uniqueNumber([0, 2, 2]));              // 0
 
 module.exports = uniqueNumber;
+
+// 1. What is bitwise XOR?
+// 2. What about 0 since we're starting check against 0?
+
+// FOR LOOP
+// function uniqueNumber(array) {
+//   // Initialize unique to zero
+//   // Loop through array
+//     // Reassign unique with bitwise XOR of unique and current element
+//   // Return unique after bitwise XOR eliminates dupes
+// }
+
+// REDUCE
+// function uniqueNumber(array) {
+
+// }
