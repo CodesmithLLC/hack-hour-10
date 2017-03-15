@@ -18,10 +18,12 @@ function getAllProducts(array) {
 			return array.map(e => prodAllnoZeroes / e);
 		case 1:
 			const prodAllExceptZero = array.reduce((a, c) => c === 0 ? a : a * c, 1);
-			return array.map(e => e === 0 ? 0 : prodAllExceptZero / e);
+			return array.map(e => e !== 0 ? 0 : prodAllExceptZero);
 		default:
 			return [0];
 	}
 }
 
 module.exports = getAllProducts;
+
+console.log(getAllProducts([5, 0, 2, 3, 4]).sort())
