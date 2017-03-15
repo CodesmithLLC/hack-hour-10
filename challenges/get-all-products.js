@@ -20,7 +20,7 @@ function getAllProducts(array) {
 			const prodAllExceptZero = array.reduce((a, c) => c === 0 ? a : a * c, 1);
 			return array.map(e => e !== 0 ? 0 : prodAllExceptZero);
 		default:
-			return [0];
+			return array.map(e => 0);
 	}
 }
 
