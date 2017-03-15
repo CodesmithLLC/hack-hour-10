@@ -39,17 +39,17 @@ LinkedList.prototype.remove = function (val) {
 				case this.head:
 					this.head = cur.next;
 					this.head.prev = null;
-					break;
+					if (cur !== this.tail) break;
 				case this.tail:
 					this.tail = cur.prev;
-					this.tail.next = null;
+					if (this.tail) this.tail.next = null;
 					break;
 				default:
 					cur.prev.next = cur.next;
 					cur.next.prev = cur.prev;
 					break;
 			}
-			return;
+			return cur;
 		}
 		cur = cur.next;
 	}
