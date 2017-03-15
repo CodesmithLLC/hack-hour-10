@@ -49,7 +49,7 @@ LinkedList.prototype.remove = function (val) {
 					cur.next.prev = cur.prev;
 					break;
 			}
-			return
+			return;
 		}
 		cur = cur.next;
 	}
