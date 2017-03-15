@@ -36,7 +36,8 @@ function romanNumeral(n) {
 
 	const romanArr = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
 
-	var romanStr = ''
+	var romanStr = '';
+
 	for (let i = 0; n; i++) {
 		while (n >= romanArr[i]) {
 			romanStr += romanObj[romanArr[i]];
