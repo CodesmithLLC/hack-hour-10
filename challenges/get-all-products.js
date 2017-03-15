@@ -25,5 +25,3 @@ function getAllProducts(array) {
 }
 
 module.exports = getAllProducts;
-
-console.log(getAllProducts([5, 0, 2, 3, 4]).sort())
