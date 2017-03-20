@@ -3,8 +3,7 @@
  */
 
 function highestProduct(array) {
-  console.log(array)
-  if (array.length < 3) return 0;
+  if (!Array.isArray(array) || !array.length < 3) return 0;
   array.sort();
   return Math.max(array[0] * array[1] * array[array.length - 1], array[array.length - 1] * array[array.length - 2] * array[array.length - 3]);
 }
