@@ -5,12 +5,13 @@
  * BONUS: Do this in place
  */
 
-function Node(val) {
+function Node(val, n = null) {
   this.value = val;
-  this.next = null;
+  this.next = n;
 }
 
 function zip(l1, l2) {
-};
+	return !l1 ? l2 : !l2 ? l1 : new Node(l1.value, zip(l2, l1.next));
+}
 
 module.exports = {Node: Node, zip: zip};

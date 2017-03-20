@@ -32,8 +32,8 @@ var Node = function(value) {
   this.next = null;
 }
 
-function hasCycle(head) {
-
+function hasCycle(head, fast = head ? head.next : null) {
+  return !fast ? false : head === fast ? true : hasCycle(head.next, fast.next ? fast.next.next : null)
 }
 
-module.exports = {Node: Node, hasCycle: hasCycle}
+module.exports = { Node: Node, hasCycle: hasCycle }

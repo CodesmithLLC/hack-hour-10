@@ -24,8 +24,22 @@
  *
  */
 
-function balancedParens(input){
-
+function balancedParens(input) {
+	const openBrackets = {
+		'(': ')',
+		'[': ']',
+		'{': '}'
+	}
+	const closeBrackets = {
+		')': '(',
+		']': '[',
+		'}': '{'
+	}
+	for (var stack = [], i = 0; i < input.length; i++) {
+		if (openBrackets.hasOwnProperty(input[i])) stack.push(input[i]);
+		if (closeBrackets.hasOwnProperty(input[i]) && stack.pop() !== closeBrackets[input[i]]) return false;
+	}
+	return !stack.length;
 }
 
 module.exports = balancedParens;

@@ -26,7 +26,7 @@
  */
 
 function applyIt(func, args) {
-
+  return () => { return eval(`func(${args.map(e => typeof e === 'string' ? `'${e}'` : e).toString()})`) }
 }
 
 module.exports = applyIt;

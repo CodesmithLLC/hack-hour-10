@@ -8,7 +8,15 @@
 
 
 function countTwos(num) {
-
+	// Fast fail.
+	if (num < 2) return 0;
+	for (var tenPow = 1; tenPow * 10 < num; tenPow *= 10);
+	const firstDigitOrTen = Math.floor(num / tenPow);
+	const afterFirstOrTen = num % tenPow;
+	let twos = firstDigitOrTen * countTwos(tenPow) + countTwos(afterFirstOrTen);
+	if (firstDigitOrTen > 2) twos += tenPow;
+	if (firstDigitOrTen === 2) twos += afterFirstOrTen + 1;
+	return twos;
 }
 
 module.exports = countTwos;

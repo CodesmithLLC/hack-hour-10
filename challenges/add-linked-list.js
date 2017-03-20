@@ -9,12 +9,37 @@
  */
 
 function Node(val) {
-  this.value = val;
-  this.next = null;
+	this.value = val;
+	this.next = null;
 }
 
-function addLinkedList(l1, l2) {
-
+function addLinkedList(l1, l2, carry = 0) {
+	if (!l1 & !l2) {
+		if (!carry) return null;
+		else return new Node(carry);
+	}
+	const total = (l1 ? l1.value : 0) + (l2 ? l2.value : 0) + carry;
+	const ones = total % 10;
+	const newCarry = total > 9 ? 1 : 0;
+	const node = new Node(ones);
+	node.next = addLinkedList(l1 ? l1.next : null, l2 ? l2.next : null, newCarry);
+	return node;
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+module.exports = { Node: Node, addLinkedList: addLinkedList };
+
+const three = new Node(9);
+three.next = one = new Node(9);
+one.next = new Node(9);
+
+const five = new Node(1);
+
+function print(ll) {
+	let curr = ll;
+	while (curr) {
+		console.log(curr.value);
+		curr = curr.next;
+	}
+}
+
+print(addLinkedList(three, five))
