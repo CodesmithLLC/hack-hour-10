@@ -11,11 +11,27 @@ function Node(val, n = null) {
 }
 
 function zip(l1, l2) {
-  return !l1
-    ? l2
-    : !l2
-      ? l1
-      : new Node(l1.value, zip(l2, l1.next));
+  // Setting pointer variables.
+  let curr1 = look1 = l1;
+  let curr2 = look2 = l2;
+
+  // Zip until we reach the end of one/both of the lists.
+  while (curr1 && curr2) {
+
+    // Moving look pointers.
+    if (look1) look1 = look1.next;
+    if (look2) look2 = look2.next;
+
+    // Zipping.
+    curr1.next = curr2;
+    if (look1) curr2.next = look1;
+
+    // Moving curr pointers.
+    [curr1, curr2] = [look1, look2];
+
+  }
+
+  return l1 ? l1 : l2;
 }
 
 module.exports = {Node: Node, zip: zip};
