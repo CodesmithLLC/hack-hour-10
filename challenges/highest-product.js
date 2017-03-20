@@ -3,13 +3,13 @@
  */
 
 function highestProduct(array, product = 1, count = 3) {
-    return !array || array.length < count
-        ? 0
-        : !count
-            ? product
-            : array.length <= count
-                ? product * array.reduce((a,c) => {return a * c})
-                : Math.max(highestProduct(array.slice(1), array[0] * product, count - 1), highestProduct(array.slice(1), product, count))
+  return !array || array.length < count
+    ? 0
+    : !count
+      ? product
+      : array.length <= count
+        ? product * array.reduce((a, c) => a * c)
+        : Math.max(highestProduct(array.slice(1), array[0] * product, count - 1), highestProduct(array.slice(1), product, count));
 }
 
 module.exports = highestProduct;
