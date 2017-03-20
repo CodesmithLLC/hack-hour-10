@@ -3,8 +3,9 @@
  */
 
 function highestProduct(array, product = 1, count = 3) {
+  if (array.length < 3) return 0;
   array.sort();
-  return Math.max(array[0] * array[1] * array[2], array[0] * array[array.length - 1] * array[array.length - 2]);
+  return Math.max(array[0] * array[1] * array[array.length - 1], array[array.length - 1] * array[array.length - 2] * array[array.length - 3]);
   // return !array || array.length < count
   //   ? 0
   //   : !count
