@@ -11,7 +11,11 @@ function Node(val, n = null) {
 }
 
 function zip(l1, l2) {
-	return !l1 ? l2 : !l2 ? l1 : new Node(l1.value, zip(l2, l1.next));
+  return !l1
+    ? l2
+    : !l2
+      ? l1
+      : new Node(l1.value, zip(l2, l1.next));
 }
 
 module.exports = {Node: Node, zip: zip};
