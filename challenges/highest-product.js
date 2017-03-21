@@ -46,5 +46,3 @@ function highestProduct(array) {
 }
 
 module.exports = highestProduct;
-
-console.log(highestProduct([-1, 2, 3]))
