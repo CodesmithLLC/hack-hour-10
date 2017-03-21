@@ -7,11 +7,13 @@ function highestProduct(array) {
   if (!Array.isArray(array) || array.length < 3) return 0;
 
   // Possible factors to be used.
-  const low = { one: 0, two: 0 };
-  const high = { one: 0, two: 0, three: 0 };
+  const low = { one: Infinity, two: Infinity };
+  const high = { one: -Infinity, two: -Infinity, three: -Infinity };
 
   // Iterate through array.
   for (let i = 0; i < array.length; i++) {
+
+    // Collect low values.
     switch (true) {
       case array[i] < low.one:
         low.two = low.one;
@@ -20,6 +22,10 @@ function highestProduct(array) {
       case array[i] < low.two:
         low.two = array[i];
         break;
+    }
+
+    // Collect high values.
+    switch (true) {
       case array[i] > high.one:
         high.three = high.two
         high.two = high.one;
@@ -40,3 +46,5 @@ function highestProduct(array) {
 }
 
 module.exports = highestProduct;
+
+console.log(highestProduct([-1, 2, 3]))
