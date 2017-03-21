@@ -38,7 +38,7 @@ LinkedList.prototype.remove = function (val) {
 			switch (cur) {
 				case this.head:
 					this.head = cur.next;
-					this.head.prev = null;
+					if (this.head) this.head.prev = null;
 					if (cur !== this.tail) break;
 				case this.tail:
 					this.tail = cur.prev;
