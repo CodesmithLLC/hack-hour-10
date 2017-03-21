@@ -31,6 +31,7 @@ function zip(l1, l2) {
 
   }
 
+  // Return first list if it exists. Or second. Or null.
   return l1 ? l1 : l2;
 }
 
