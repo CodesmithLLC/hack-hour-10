@@ -16,8 +16,7 @@ function highestProduct(array) {
     // Collect low values.
     switch (true) {
       case array[i] < low.one:
-        low.two = low.one;
-        low.one = array[i];
+        [low.one, low.two] = [array[i], low.one];
         break;
       case array[i] < low.two:
         low.two = array[i];
@@ -27,21 +26,19 @@ function highestProduct(array) {
     // Collect high values.
     switch (true) {
       case array[i] > high.one:
-        high.three = high.two
-        high.two = high.one;
-        high.one = array[i];
+        [high.one, high.two, high.three] = [array[i], high.one, high.two];
         break;
       case array[i] > high.two:
-        high.three = high.two;
-        high.two = array[i];
+        [high.two, high.three] = [array[i], high.two];
         break;
       case array[i] > high.three:
         high.three = array[i];
         break;
     }
+
   }
 
-  // Returning maximum product of either 1) all high values or 2) high.one and both low values.
+  // Return maximum product of either 1) all high values or 2) high.one and both low values.
   return Math.max(high.one * high.two * high.three, high.one * low.one * low.two);
 }
 
