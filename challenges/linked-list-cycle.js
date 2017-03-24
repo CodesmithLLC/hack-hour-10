@@ -10,7 +10,7 @@
  *    |     V
  *    G<-F<-E
  *
- * Create a function that accepts a linked list and returns true is the linked list has a cylical reference
+ * Create a function that accepts a linked list and returns true if the linked list has a cylical reference
  *
  * var node1 = new Node('1');
  * var node2 = node1.next = new Node('2');
@@ -33,7 +33,26 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
+  let slow = head;
+  let fast = head;
 
+  while (!fast !== null && fast.next !== null) {
+    slow = slow.next;
+    fast = fast.next.next;
+
+    if (slow === fast) return true;
+  }
+
+  return false;
 }
+
+// let node1 = new Node('1');
+// let node2 = node1.next = new Node('2');
+// let node3 = node2.next = new Node('3');
+// let node4 = node3.next = new Node('4');
+// let node5 = node4.next = new Node('5');
+// console.log(hasCycle(node1)); // => false
+// node5.next = node2;
+// console.log(hasCycle(node1)); // => true
 
 module.exports = {Node: Node, hasCycle: hasCycle}

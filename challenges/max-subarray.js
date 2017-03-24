@@ -8,7 +8,51 @@
  */
 
 function maxSubarray(arr) {
+  let maxSum = 0;
+  let tempSum = 0;
 
+  for (let i = 0; i < arr.length; i++) {
+    tempSum += arr[i];
+    if (tempSum < 0) tempSum = 0;
+    maxSum = Math.max(maxSum, tempSum);
+  }
+
+  return maxSum === 0 ? Math.max(...arr) : maxSum;
 }
+
+// function maxSubarray(arr) {
+
+//   // Track largest sum
+//   let largestSum = -Infinity;
+
+//   // Helper function to add all values in subarrays during loops
+//   const sum = array => array.reduce((sum, val) => sum + val);
+  
+//   // Helper function to check if current subarray has largest sum
+//   const largestSumCheck = array => {
+//     const total = sum(array);
+//     if (total > largestSum) largestSum = total;
+//   }
+
+//   // Loop through all possible subarrays comparing sums
+//   for (let i = 0; i < arr.length; i++) {
+//     const subarrays = [];
+
+//     for (let j = i; j < arr.length; j++) {
+//       subarrays.push(arr[j]);
+//       largestSumCheck(subarrays);
+//     }
+//   }
+
+//   return largestSum;
+// }
+
+// const arr1 = [1, -2, 3, 10, -4, 7, 2, -5];
+// const arr2 = [15, 20, -5, 10];
+// const arr3 = [5];
+
+// console.log(maxSubarray(arr1));
+// console.log(maxSubarray(arr2));
+// console.log(maxSubarray(arr3));
 
 module.exports = maxSubarray;

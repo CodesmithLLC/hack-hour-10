@@ -19,11 +19,15 @@
  *    - x, y and r will each contain the same number of elements
  *    - (start_x, start_y) and (end_x, end_y) will never lie on a circle's border
  *    - no circle borders intersect/touch (but they can be nested)
- *
  */
 
-function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-
+function circleCountry(x, y, r, startX, startY, endX, endY) {
+  return r.reduce((crossedCircles, radius, i) => {
+    const startRadius = Math.hypot(x[i] - startX, y[i] - startY);
+    const endRadius = Math.hypot(x[i] - endX, y[i] - endY);
+    if (startRadius < radius && endRadius > radius || startRadius > radius && endRadius < radius) crossedCircles++;
+    return crossedCircles;
+  }, 0);
 }
 
 module.exports = circleCountry;
