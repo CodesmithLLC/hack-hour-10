@@ -12,10 +12,23 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
-function bestProfit(stock_prices_yesterday) {
-    return !stock_prices_yesterday || !stock_prices_yesterday.length || !Array.isArray(stock_prices_yesterday)
-        ? 0
-        : Math.max(Math.max(Math.max(...stock_prices_yesterday.slice(1)) - stock_prices_yesterday[0], bestProfit(stock_prices_yesterday.slice(1))), 0)
+// Highest profit I could have made from 1 purchase and 1 subsequent sale.
+// Math.max() of sale (after) - purchase (before).
+// Choose when to buy. => 
+// Choose when to sell.
+
+function bestProfit(prices) {
+  if (!Array.isArray(prices) || !prices.length) return 0;
+
+  let buy = prices[0], sell = prices[0], profit = 0;
+
+  for (let i = 0; i < prices.length; i++) {
+    if (array[i] < buy) buy = array[i];
+    if (array[i] > sell) sell = array[i];
+    profit = Math.max(profit, sell - array[i], array[i] - buy);
+  }
+
+  return profit;
 }
 
 module.exports = bestProfit;
