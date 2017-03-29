@@ -23,7 +23,7 @@ function bestProfit(prices) {
   let buyIndex = 0, profit = 0;
 
   for (let i = 0; i < prices.length; i++) {
-    if (array[i] < array[buyIndex]) buyIndex = i;
+    if (prices[i] < prices[buyIndex]) buyIndex = i;
     profit = Math.max(profit, prices[i] - prices[buyIndex]);
   }
 
