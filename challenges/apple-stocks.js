@@ -20,11 +20,11 @@
 function bestProfit(prices) {
   if (!Array.isArray(prices) || !prices.length) return 0;
 
-  let buyIndex = 0, profit = 0;
+  let buy = prices[0], profit = 0;
 
   for (let i = 0; i < prices.length; i++) {
-    if (prices[i] < prices[buyIndex]) buyIndex = i;
-    profit = Math.max(profit, prices[i] - prices[buyIndex]);
+    if (prices[i] < buy) buy = prices[i];
+    profit = Math.max(profit, prices[i] - buy);
   }
 
   return profit;
