@@ -14,18 +14,17 @@
 
 // Highest profit I could have made from 1 purchase and 1 subsequent sale.
 // Math.max() of sale (after) - purchase (before).
-// Choose when to buy. => 
-// Choose when to sell.
+// Choose when to buy. => Low points. => 
+// Choose when to sell. => High points.
 
 function bestProfit(prices) {
   if (!Array.isArray(prices) || !prices.length) return 0;
 
-  let buy = prices[0], sell = prices[0], profit = 0;
+  let buyIndex = 0, profit = 0;
 
   for (let i = 0; i < prices.length; i++) {
-    if (array[i] < buy) buy = array[i];
-    if (array[i] > sell) sell = array[i];
-    profit = Math.max(profit, sell - array[i], array[i] - buy);
+    if (array[i] < array[buyIndex]) buyIndex = i;
+    profit = Math.max(profit, prices[i] - prices[buyIndex]);
   }
 
   return profit;
