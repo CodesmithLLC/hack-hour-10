@@ -14,13 +14,13 @@
  */
 
 function mergeArrays(arr1, arr2) {
-return !arr1 || !arr1.length
-        ? arr2
-        : !arr2 || !arr2.length
-            ? arr1
-            : arr1[0] <= arr2[0]
-                ? [arr1[0]].concat(mergeArrays(arr1.slice(1), arr2))
-                : [arr2[0]].concat(mergeArrays(arr1, arr2.slice(1)))
+  return !arr1 || !arr1.length
+    ? arr2
+    : !arr2 || !arr2.length
+      ? arr1
+      : arr1[0] <= arr2[0]
+        ? [arr1[0]].concat(mergeArrays(arr1.slice(1), arr2))
+        : [arr2[0]].concat(mergeArrays(arr1, arr2.slice(1)))
 }
 
 module.exports = mergeArrays;

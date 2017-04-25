@@ -197,7 +197,7 @@ function parseDates(str) {
     Nov: 10,
     Dec: 11
   };
-  
+
   // Create Date object to manipulate with "set" and "get" Date API
   const date = new Date();
   // Check if input is properly formatted with (day | month | Today), time and (AM | PM). If not, return current date.
@@ -242,12 +242,12 @@ function parseDates(str) {
   // All formats have time data stored in times variable
   hour = Number(times[0]);
   minutes = Number(times[1]);
-  
+
   // Midnight should be 0 instead of 12
   if (ampm === 'AM' && hour === 12) hour = 0;
   // Non-noon PM hours should increase by 12. Think military time.
   if (ampm === 'PM' && hour !== 12) hour += 12;
-  
+
   // Mutate Date object with input's hour and minutes
   date.setHours(hour);
   date.setMinutes(minutes);

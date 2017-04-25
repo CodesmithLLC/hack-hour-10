@@ -14,10 +14,10 @@
  */
 
 function binToDec(binary) {
-    for (var i = 0, binArr = binary.split(""), decimal = 0; binArr.length; i++) {
-        decimal += Number(binArr.pop()) * Math.pow(2, i);
-    }
-    return decimal;
+  for (var i = 0, binArr = binary.split(""), decimal = 0; binArr.length; i++) {
+    decimal += Number(binArr.pop()) * Math.pow(2, i);
+  }
+  return decimal;
 }
 
 module.exports = binToDec;

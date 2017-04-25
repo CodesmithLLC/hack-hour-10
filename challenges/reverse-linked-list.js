@@ -9,16 +9,16 @@
  */
 
 function Node(value) {
-    this.value = value;
-    this.next = null;
+  this.value = value;
+  this.next = null;
 }
 
 function reverseLinkedList(head, last = null) {
-    if (!head) return null;
-    const look = head.next;
-    head.next = last;
-    if (look) return reverseLinkedList(look, head);
-    return head;
+  if (!head) return null;
+  const look = head.next;
+  head.next = last;
+  if (look) return reverseLinkedList(look, head);
+  return head;
 }
 
-module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
+module.exports = { Node: Node, reverseLinkedList: reverseLinkedList };

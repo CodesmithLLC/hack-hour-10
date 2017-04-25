@@ -26,7 +26,7 @@ Challange:
   ** keep in mind time complexity
 */
 function missingNum(array) {
-	return (array.length + 1) * (array.length + 2) / 2 - array.reduce((a, c) => a + c);
+  return (array.length + 1) * (array.length + 2) / 2 - array.reduce((a, c) => a + c);
 }
 
 module.exports = missingNum;
