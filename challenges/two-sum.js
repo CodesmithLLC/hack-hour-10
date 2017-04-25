@@ -3,13 +3,13 @@
  */
 
 function twoSum(arr, n, count = 2) {
-  return !n && !count
-    ? true
-    : !arr || !arr.length
-      ? false
-      : !count
-        ? false
-        : twoSum(arr.slice(1), n - arr[0], count - 1) || twoSum(arr.slice(1), n, count);
+    return !n && !count
+        ? true
+        : !arr || !arr.length
+            ? false
+            : !count
+                ? false
+                : twoSum(arr.slice(1), n - arr[0], count - 1) || twoSum(arr.slice(1), n, count);
 }
 
 module.exports = twoSum;

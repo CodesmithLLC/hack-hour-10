@@ -11,13 +11,13 @@ findInOrderedSet(nums, 2);  -> false
 
 
 function findInOrderedSet(arr, target) {
-  return !arr || !arr.length
-    ? false
-    : arr.length === 1
-      ? arr[0] === target
-      : target < arr[Math.floor(arr.length / 2)]
-        ? findInOrderedSet(arr.slice(0, Math.floor(arr.length / 2)), target)
-        : findInOrderedSet(arr.slice(Math.floor(arr.length / 2)), target);
+	return !arr || !arr.length
+		? false
+		: arr.length === 1
+			? arr[0] === target
+			: target < arr[Math.floor(arr.length / 2)]
+				? findInOrderedSet(arr.slice(0, Math.floor(arr.length / 2)), target)
+				: findInOrderedSet(arr.slice(Math.floor(arr.length / 2)), target)
 }
 
 

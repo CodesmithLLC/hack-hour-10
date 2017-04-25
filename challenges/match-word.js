@@ -8,23 +8,22 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-  for (var i = 0, currentWord = [], wordArr = [], currBool = false; i < str.length; i++) {
-    if (str[i].match(/[a-zA-Z]/)) {
-      currentWord.push(str[i]);
-      currBool = true;
+    for (var i = 0, currentWord = [], wordArr = [], currBool = false; i < str.length; i++) {
+        if (str[i].match(/[a-zA-Z]/)) {
+            currentWord.push(str[i]);
+            currBool = true;
+        }
+        else if (currBool) {
+            wordArr.push(currentWord.join("").toLowerCase())
+            currentWord = [];
+            currBool = false;
+        }
     }
-    else if (currBool) {
-      wordArr.push(currentWord.join("").toLowerCase())
-      currentWord = [];
-      currBool = false;
-    }
-  }
-  if (currentWord.filter(e => e).length > 0) wordArr.push(currentWord.join("").toLowerCase());
-  for (var stack = [], k = 0; k < wordArr.length; k++) {
-    if (stack.length && (stack[stack.length - 1] === wordArr[k].split("").reverse().join(""))) stack.pop();
-    else stack.push(wordArr[k]);
-  }
-  return !stack.length;
+    if (currentWord.filter(e => e).length > 0) wordArr.push(currentWord.join("").toLowerCase())
+    for (var stack = [], k = 0; k < wordArr.length; k++)
+        if (stack.length && (stack[stack.length - 1] === wordArr[k].split("").reverse().join(""))) stack.pop();
+        else stack.push(wordArr[k])
+    return !stack.length;
 }
 
 module.exports = matchWord;

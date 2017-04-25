@@ -13,9 +13,9 @@
   */
 
 function anagrams(string, built = '', all = {}) {
-  if (!string) all[built] = true;
-  else string.split('').forEach((char, index) => anagrams(string.slice(0, index).concat(string.slice(index + 1)), built.concat(char), all));
-  return Object.keys(all);
+    if (!string) all[built] = true
+    else string.split('').forEach((char, index) => anagrams(string.slice(0, index).concat(string.slice(index + 1)), built.concat(char), all))
+    return Object.keys(all)
 }
 
 module.exports = anagrams;
