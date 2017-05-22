@@ -15,6 +15,7 @@ function validBST(tree) {
   if (tree.left === null || tree.right === null) return tree
   if (tree.left.value < tree.right.value) return false
   if (tree.left.value <= tree.value) return false
+  if (tree.left.value === null && tree.right.value === null) return true;
   validBST(tree.left), validBST(tree.right)
 
   return true;

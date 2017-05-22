@@ -17,18 +17,11 @@
  * H(); // -> 'H'
  */
 
-function H(letters = '') {
-  return `H${letters}`;
+function H(letters) {
+  return `H${letters ? letters : ''}`;
 }
-
-
+console.log(H());
 // const H = (letters) =>;
-
-
-
-
-
-
 
 /*
  * PART 2
@@ -41,24 +34,14 @@ function H(letters = '') {
  */
 
 function e(letters = '') {
-return `e${letters}`
+  return `e${letters ? letters : ''}`;
 }
-
 function l(letters = '') {
-  return `l${letters}`;
+  return `l${letters ? letters : ''}`;
 }
-
 function o(letters) {
-  return `o${letters}`;
+  return `o${letters ? letters : ''}`;
 }
-
-// const e = (letters) =>;
-// const l = (letters) =>;
-// const o = (letters) =>;
-
-
-
-
 
 /*
  * PART 3 PIPE
@@ -73,20 +56,14 @@ function o(letters) {
  * ello('J'); // -> 'Jello'
  */
 
-function pipe(functions) {
-  return input => input + '' +
-    functions.reduceRight((a,c,i,s) => {
-    return c(a);
-  },'')
-}
-
 // OR
 
-// const pipe = (functions) =>;
-
-
-const test = pipe([e, l, l, o])
-console.log(test('H'));
+const pipe = functions => x => functions.reduce((prev, curr) => curr(prev), x);
+const compose = functions => x => functions.reduceRight((a, b) => b(a), x);
+const test = pipe([H, e, l, l, o])();
+const testCompose = compose([H, e, l, l, o])();
+console.log(test);
+console.log(testCompose, 'composed');
 
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
@@ -124,16 +101,11 @@ console.log(test('H'));
  * helloWorld(); // -> 'Hello, World!'
  */
 
-function letterGenerator(letter = '') {
-  return input => `${letter}` + input
-
-}
+function letterGenerator(letter = '') {}
 
 // OR
 
 // const letterGenerator = (letter) =>;
-
-
 
 const objectToExport = {
   H,
@@ -141,7 +113,7 @@ const objectToExport = {
   l,
   o,
   pipe,
-  letterGenerator,
+  letterGenerator
 };
 
 module.exports = objectToExport;
