@@ -9,8 +9,15 @@
  * do not use division, becuase zero might be in the array and you cannot divide by zero
  */
 
-function getAllProducts(array) {
-
+function getAllProducts(array, answers = []) {
+  if (!array.length) return [0];
+  if (array.length === 1) return array;
+  let newArr = array;
+  let first = newArr.shift();
+  answers.push(newArr.reduce( (prev,curr) => prev * curr));
+  newArr.push(first)
+  if (answers.length < array.length) return getAllProducts(newArr, answers);
+  else return answers;
 }
-
+console.log(getAllProducts([1,2,3]));
 module.exports = getAllProducts;

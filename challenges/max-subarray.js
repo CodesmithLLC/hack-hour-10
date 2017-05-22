@@ -8,7 +8,23 @@
  */
 
 function maxSubarray(arr) {
+  let i = 0;
+  if (!arr.length) return 0;
+  if (arr.length === 1) return arr[0];
+  let sum = 0;
+  const possibles = [];
+  if (Math.max.apply(null, arr) <= 0) return Math.max.apply(null, arr);
 
+  while (arr[arr.length-1] <= 0 || arr[0] <= 0) {
+    if (arr[arr.length - 1] <= 0) arr.pop();
+    if (arr[0] <= 0) arr.shift();
+  }
+  while (i < arr.length) {
+    possibles.push(arr.slice(i).reduce((a, b) => a + b));
+    i += 1
+  }
+  console.log(Math.max.apply(null, possibles) || Math.max.apply(null, arr));
+  return Math.max.apply(null, possibles) || Math.max.apply(null, arr);
 }
-
+maxSubarray([-1,-2,100,-3,-4])
 module.exports = maxSubarray;

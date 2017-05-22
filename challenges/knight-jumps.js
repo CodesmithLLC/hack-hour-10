@@ -11,7 +11,11 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+  const place = str.replace(/[^1234567890]/g, "").split('');
+  let x = parseInt(place[0]);
+  let y = parseInt(place[1]);
+  let count = 0;
 }
+console.log(knightjumps('(4 5)'))
 
 module.exports = knightjumps;

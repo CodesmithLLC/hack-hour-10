@@ -17,19 +17,7 @@
  * H(); // -> 'H'
  */
 
-function H(letters) {
-
-}
-
-// OR
-
-// const H = (letters) =>;
-
-
-
-
-
-
+const H = (letters = 'H') => optional => `${letters ? letters : ''}${optional ? optional : ''}`;
 
 /*
  * PART 2
@@ -41,25 +29,11 @@ function H(letters) {
  * o(); // -> 'o'
  */
 
-function e(letters) {
+const e = (letters = 'e') => optional => `${letters ? letters : ''}${optional ? optional : ''}`;
 
-}
+const l = (letters = 'l') => optional => `${letters ? letters : ''}${optional ? optional : ''}`;
 
-function l(letters) {
-
-}
-
-function o(letters) {
-
-}
-
-// const e = (letters) =>;
-// const l = (letters) =>;
-// const o = (letters) =>;
-
-
-
-
+const o = (letters = 'o') => optional => `${letters ? letters : ''}${optional ? optional : ''}`;
 
 /*
  * PART 3 PIPE
@@ -74,18 +48,9 @@ function o(letters) {
  * ello('J'); // -> 'Jello'
  */
 
-function pipe(functions) {
-
-}
-
 // OR
 
-// const pipe = (functions) =>;
-
-
-
-
-
+const pipe = functions => x => functions.reduce((prev, curr) => curr(prev), x);
 /*
  * PART 4 DYNAMIC FUNCTION CREATION
  * Imagine if you had to create all strings in this manner.
@@ -122,15 +87,41 @@ function pipe(functions) {
  * helloWorld(); // -> 'Hello, World!'
  */
 
-function letterGenerator(letter) {
+const letterGenerator = letters => optional =>
+  `${letters ? letters : ''}${optional ? optional : ''}`;
 
-}
+const compose = args => x => args.reduceRight((a, b) => b(a), x);
 
-// OR
-
-// const letterGenerator = (letter) =>;
-
-
+const HelloPiped = pipe([
+  letterGenerator('H'),
+  letterGenerator('e'),
+  letterGenerator('l'),
+  letterGenerator('l'),
+  letterGenerator('o')
+])();
+const WorldPipe = pipe([
+  letterGenerator('W'),
+  letterGenerator('o'),
+  letterGenerator('r'),
+  letterGenerator('l'),
+  letterGenerator('d')
+])();
+console.log('pipe', HelloPiped, ' ', WorldPipe);
+const Hello = compose([
+  letterGenerator('H'),
+  letterGenerator('e'),
+  letterGenerator('l'),
+  letterGenerator('l'),
+  letterGenerator('o')
+])();
+const World = compose([
+  letterGenerator('W'),
+  letterGenerator('o'),
+  letterGenerator('r'),
+  letterGenerator('l'),
+  letterGenerator('d')
+])();
+console.log('compose', Hello, World);
 
 const objectToExport = {
   H,
@@ -138,7 +129,7 @@ const objectToExport = {
   l,
   o,
   pipe,
-  letterGenerator,
+  letterGenerator
 };
 
 module.exports = objectToExport;
