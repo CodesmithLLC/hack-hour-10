@@ -14,7 +14,7 @@
 */
 
 function drawStairs(n, spaces = n - 1) {
-	return n < 1 ? '' : spaces === n - 1 ? console.log(Array.from({ length: n }, (char, i) => i < spaces ? ' ' : '*').join('').concat(!spaces ? '' : drawStairs(n, spaces - 1))) : '\n' + Array.from({ length: n }, (char, i) => i < spaces ? ' ' : '*').join('').concat(!spaces ? '' : drawStairs(n, spaces - 1));
+  return n < 1 ? '' : spaces === n - 1 ? console.log(Array.from({ length: n }, (char, i) => i < spaces ? ' ' : '*').join('').concat(!spaces ? '' : drawStairs(n, spaces - 1))) : '\n' + Array.from({ length: n }, (char, i) => i < spaces ? ' ' : '*').join('').concat(!spaces ? '' : drawStairs(n, spaces - 1));
 }
 
 module.exports = drawStairs;

@@ -15,14 +15,14 @@
 function commonElements(array1, array2, array3, array4) {
   const freq = Array.prototype.slice.call(arguments).reduce((acc, cur, index) => {
     Object.keys(cur.reduce((a, c) => {
-      a[c] = true
-      return a
+      a[c] = true;
+      return a;
     }, {})).forEach(e => acc[e] = acc[e] === undefined ? 1 : acc[e] + 1)
-    return acc
-  }, {})
-  const result = []
-  for (let e in freq) if (freq[e] === arguments.length) result.push(e)
-  return result.length ? result.map(e => isNaN(e) ? e : Number(e)) : "Nothing in Common!"
+    return acc;
+  }, {});
+  const result = [];
+  for (let e in freq) if (freq[e] === arguments.length) result.push(e);
+  return result.length ? result.map(e => isNaN(e) ? e : Number(e)) : "Nothing in Common!";
 }
 
 module.exports = commonElements;
