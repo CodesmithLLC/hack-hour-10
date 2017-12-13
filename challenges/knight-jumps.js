@@ -11,20 +11,20 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-  const xCoord = Number(str[1])
-  const yCoord = Number(str[3])
-  const LOW = 1, HIGH = 8
+  const xCoord = Number(str[1]);
+  const yCoord = Number(str[3]);
+  const LOW = 1, HIGH = 8;
   const onBoard = (x, y) => x >= LOW && x <= HIGH && y >= LOW && y <= HIGH
   const dist = [2, 1], dir = [1, -1], vectors = [], moves = []
   for (let ds in dist)
     for (let dr in dir)
-      vectors.push(dist[ds] * dir[dr])
+      vectors.push(dist[ds] * dir[dr]);
   for (let x in vectors)
     for (let y in vectors)
-      if (Math.abs(vectors[x]) !== Math.abs(vectors[y])) moves.push({ x: vectors[x], y: vectors[y] })
-  const where = moves.map(coords => { return { x: coords.x + xCoord, y: coords.y + yCoord } })
-  const legal = where.filter(coords => onBoard(coords.x, coords.y))
-  return legal.length
+      if (Math.abs(vectors[x]) !== Math.abs(vectors[y])) moves.push({ x: vectors[x], y: vectors[y] });
+  const where = moves.map(coords => { return { x: coords.x + xCoord, y: coords.y + yCoord } });
+  const legal = where.filter(coords => onBoard(coords.x, coords.y));
+  return legal.length;
 }
 
 module.exports = knightjumps;

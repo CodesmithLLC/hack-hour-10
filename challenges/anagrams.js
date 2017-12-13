@@ -12,10 +12,11 @@
   * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
-function anagrams(string, built = '', all = {}) {
-  if (!string) all[built] = true;
-  else string.split('').forEach((char, index) => anagrams(string.slice(0, index).concat(string.slice(index + 1)), built.concat(char), all));
-  return Object.keys(all);
+function anagrams(str) {
+  if (str.length === 1) return [str];
+  return str.split('').reduce((acc, l, i) => [...acc, ...anagrams(str.slice(0, i) + str.slice(i + 1)).map(combo => l + combo)], []);
 }
 
 module.exports = anagrams;
+
+console.log(anagrams('abc')); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
