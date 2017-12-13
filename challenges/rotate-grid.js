@@ -17,14 +17,14 @@
  */
 
 function rotateGrid(grid, n) {
-  let notInPlace = [];
-  for (let x = 0; x < n; x++) {
-    notInPlace.push([]);
-    for (let y = 0; y < n; y++) {
-      notInPlace[x][y] = grid[n - 1 - y][x];
+    let notInPlace = [];
+    for (let x = 0; x < n; x++) {
+        notInPlace.push([])
+        for (let y = 0; y < n; y++) {
+            notInPlace[x][y] = grid[n - 1 - y][x];
+        }
     }
-  }
-  return notInPlace;
+    return notInPlace;
 }
 
 module.exports = rotateGrid;

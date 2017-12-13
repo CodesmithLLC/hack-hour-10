@@ -22,16 +22,16 @@
  */
 
 function EventEmitter() {
-  this.eventFuncPairs = {}
-  return this
+	this.eventFuncPairs = {}
+	return this
 }
 
-EventEmitter.prototype.on = function (funcName, func) {
-  this.eventFuncPairs[funcName] = !this.eventFuncPairs[funcName] ? [func] : this.eventFuncPairs[funcName].concat(func);
+EventEmitter.prototype.on = function(funcName, func) {
+	this.eventFuncPairs[funcName] = !this.eventFuncPairs[funcName] ? [func] : this.eventFuncPairs[funcName].concat(func)
 };
 
-EventEmitter.prototype.trigger = function (funcName, ...args) {
-  if (funcName in this.eventFuncPairs) this.eventFuncPairs[funcName].forEach(f => f(...args));
+EventEmitter.prototype.trigger = function(funcName, ...args) {
+	if (funcName in this.eventFuncPairs) this.eventFuncPairs[funcName].forEach(f => f(...args))
 };
 
 module.exports = EventEmitter;

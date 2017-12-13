@@ -20,8 +20,8 @@
 
 //  return the number associated with the name in the jazbook
 function findName(jazbook, name) {
-  const number = makePhoneBookObject(jazbook)[name]
-  return number ? number : false
+    const number = makePhoneBookObject(jazbook)[name]
+    return number ? number : false
 }
 
 // return an object literal representing the jazbook
@@ -30,8 +30,8 @@ function makePhoneBookObject(jazbook) {
 }
 
 const objectToExport = {
-  findName,
-  makePhoneBookObject,
+    findName,
+    makePhoneBookObject,
 };
 
 module.exports = objectToExport;

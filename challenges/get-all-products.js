@@ -10,18 +10,18 @@
  */
 
 function getAllProducts(array) {
-  if (!array.length) return [0];
-  const zeroes = array.reduce((a, c) => c === 0 ? ++a : a, 0);
-  switch (zeroes) {
-    case 0:
-      const prodAllnoZeroes = array.reduce((a, c) => a * c);
-      return array.map(e => prodAllnoZeroes / e);
-    case 1:
-      const prodAllExceptZero = array.reduce((a, c) => c === 0 ? a : a * c, 1);
-      return array.map(e => e !== 0 ? 0 : prodAllExceptZero);
-    default:
-      return array.map(e => 0);
-  }
+	if (!array.length) return [0];
+	const zeroes = array.reduce((a, c) => c === 0 ? ++a : a, 0);
+	switch (zeroes) {
+		case 0:
+			const prodAllnoZeroes = array.reduce((a, c) => a * c);
+			return array.map(e => prodAllnoZeroes / e);
+		case 1:
+			const prodAllExceptZero = array.reduce((a, c) => c === 0 ? a : a * c, 1);
+			return array.map(e => e !== 0 ? 0 : prodAllExceptZero);
+		default:
+			return array.map(e => 0);
+	}
 }
 
 module.exports = getAllProducts;
